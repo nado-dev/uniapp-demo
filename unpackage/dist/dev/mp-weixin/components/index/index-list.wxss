@@ -1,29 +1,100 @@
 
-#mk1{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* scoped 声明该CSS样式只能被组件使用 */
+#mk1.data-v-7dea0143{
     font-size: 25rpx;
     padding: 0 10rpx;
 }
-.u-f, .u-f-ac, .u-f-jac{
+.u-f.data-v-7dea0143, .u-f-ac.data-v-7dea0143, .u-f-jac.data-v-7dea0143{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
 }
-.u-f-ac{
+.u-f-ac.data-v-7dea0143{
     -webkit-box-align: center;
     -webkit-align-items: center;
             align-items: center;
 }
-.u-f-jac{
+.u-f-jac.data-v-7dea0143{
     -webkit-box-pack: center;
     -webkit-justify-content: center;
             justify-content: center;
 }
-.index-list{
+.index-list.data-v-7dea0143{
     /* 内边距 */
     padding: 20rpx; 
     border-bottom: 1rpx solid #EFEFEF;
 }
-.index-list1{
+.index-list1.data-v-7dea0143{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -34,14 +105,14 @@
     -webkit-align-items: center;
             align-items: center;
 }
-.index-list1>view>image{
+.index-list1>view>image.data-v-7dea0143{
     width: 100%;
     border-radius: 100%;
     margin: 10rpx;
     width: 90rpx;
     height: 90rpx;
 }
-.index-list1>view:first-child{
+.index-list1>view.data-v-7dea0143:first-child{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -50,7 +121,7 @@
             align-items: center;
     color: #999999;
 }
-.index-list1>view:last-child{
+.index-list1>view.data-v-7dea0143:last-child{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -60,19 +131,19 @@
     background: #F4F4F4;
     border-radius: 5rpx;
 }
-.index-list2{
+.index-list2.data-v-7dea0143{
     padding-top: 15rpx;
     font-size: 32rpx;
 }
-.index-list3{
+.index-list3.data-v-7dea0143{
     padding-top: 15rpx;
     position: relative;/* 相对定位 */
 }
-.index-list3>image{
+.index-list3>image.data-v-7dea0143{
     width: 100%;
     border-radius: 20rpx;
 }
-.index-list4{
+.index-list4.data-v-7dea0143{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -84,7 +155,7 @@
             align-items: center;
     padding: 15rpx 0;
 }
-.index-list4>view:first-child{ 
+.index-list4>view.data-v-7dea0143:first-child{ 
     display: -webkit-box; 
     display: -webkit-flex; 
     display: flex;
@@ -92,7 +163,7 @@
     -webkit-align-items: center;
             align-items: center;
 }
-.index-list4>view:last-child{
+.index-list4>view.data-v-7dea0143:last-child{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -100,11 +171,11 @@
     -webkit-align-items: center;
             align-items: center;
 }
-.index-list4>view{
+.index-list4>view.data-v-7dea0143{
     color: #999999;
 }
 /* 第四层 所有的图标和数字的组合 */
-.index-list4>view>view{
+.index-list4>view>view.data-v-7dea0143{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -112,19 +183,19 @@
     -webkit-align-items: center;
             align-items: center;
 }
-.index-list4>view>view:first-child{
+.index-list4>view>view.data-v-7dea0143:first-child{
     margin-right: 10rpx;
 }
 /* 点赞图标和踩图标 */
-.index-list4>view>view>view{
+.index-list4>view>view>view.data-v-7dea0143{
     margin-right:10rpx;
 }
-.index-list-play{
+.index-list-play.data-v-7dea0143{
     position: absolute;
     font-size: 120rpx;
     color: #FFFFFF;
 }
-.index-list-vinfo{
+.index-list-vinfo.data-v-7dea0143{
     position: absolute;
     background: rgba(51,51,51,0.72);
     color: #FFFFFF;
@@ -136,7 +207,7 @@
     font-size: 25rpx;
     padding: 0 10rpx;
 }
-.index-list4 .active,.index-list4 .active>view{
+.index-list4 .active.data-v-7dea0143,.index-list4 .active>view.data-v-7dea0143{
     color: #ffff00;
 }
 

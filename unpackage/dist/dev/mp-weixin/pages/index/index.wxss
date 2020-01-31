@@ -1,142 +1,19 @@
 
-#mk1{
-    font-size: 25rpx;
-    padding: 0 10rpx;
+.swiper-tab-list{
+    color: #969696;
+    font-weight: bold;
 }
-.u-f, .u-f-ac, .u-f-jac{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
+.uni-tab-bar .active{
+    color: #343434;
 }
-.u-f-ac{
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
+.active .swiper-tab-underLine{
+    border: 1rpx solid #EFDE33;
+    width: 70rpx;
+    margin: auto;
+    border-top: 6px solid #EFDE33;
+    border-radius: 10rpx;
 }
-.u-f-jac{
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-            justify-content: center;
-}
-.index-list{
-    /* 内边距 */
-    padding: 20rpx; 
-    border-bottom: 1rpx solid #EFEFEF;
-}
-.index-list1{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-            justify-content: space-between; /* 靠边 */
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-}
-.index-list1>view>image{
-    width: 100%;
-    border-radius: 100%;
-    margin: 10rpx;
-    width: 90rpx;
-    height: 90rpx;
-}
-.index-list1>view:first-child{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-    color: #999999;
-}
-.index-list1>view:last-child{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-    background: #F4F4F4;
-    border-radius: 5rpx;
-}
-.index-list2{
-    padding-top: 15rpx;
-    font-size: 32rpx;
-}
-.index-list3{
-    padding-top: 15rpx;
-    position: relative;/* 相对定位 */
-}
-.index-list3>image{
-    width: 100%;
-    border-radius: 20rpx;
-}
-.index-list4{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-            justify-content: space-between; /* 靠边 */
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-    padding: 15rpx 0;
-}
-.index-list4>view:first-child{ 
-    display: -webkit-box; 
-    display: -webkit-flex; 
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-}
-.index-list4>view:last-child{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-}
-.index-list4>view{
-    color: #999999;
-}
-/* 第四层 所有的图标和数字的组合 */
-.index-list4>view>view{
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-            align-items: center;
-}
-.index-list4>view>view:first-child{
-    margin-right: 10rpx;
-}
-/* 点赞图标和踩图标 */
-.index-list4>view>view>view{
-    margin-right:10rpx;
-}
-.index-list-play{
-    position: absolute;
-    font-size: 120rpx;
-    color: #FFFFFF;
-}
-.index-list-vinfo{
-    position: absolute;
-    background: rgba(51,51,51,0.72);
-    color: #FFFFFF;
-    /* 距离下边界的距离 */
-    bottom: 5rpx;
-    /* 距右边界的距离 */
-    right: 8rpx;
-    border-radius: 40rpx;
-    font-size: 25rpx;
-    padding: 0 10rpx;
-}
-.index-list4 .active,.index-list4 .active>view{
-    color: #ffff00;
+.uni-swiper-tab{
+    border-bottom: 1rpx solid #EEEEEE;
 }
 

@@ -96,9 +96,25 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--16-0!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/template.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-uni-app-loader/page-meta.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/uniapp/demo/pages/index/index.vue?vue&type=template&id=74c9d25e& ***!
   \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns, recyclableRender, components */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/loaders/templateLoader.js):\nSyntaxError: Unexpected token (1:134)\n    at Parser.raise (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:7012:17)\n    at Parser.unexpected (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:8405:16)\n    at Parser.parseExprAtom (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9661:20)\n    at Parser.parseExprSubscripts (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)\n    at Parser.parseMaybeUnary (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseObjectProperty (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10113:101)\n    at Parser.parseObjPropValue (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10138:101)\n    at Parser.parseObjectMember (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10062:10)\n    at Parser.parseObj (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9982:25)\n    at Parser.parseExprAtom (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9604:28)\n    at Parser.parseExprSubscripts (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9237:23)\n    at Parser.parseMaybeUnary (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9217:21)\n    at Parser.parseExprOps (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9083:23)\n    at Parser.parseMaybeConditional (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9056:23)\n    at Parser.parseMaybeAssign (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9015:21)\n    at Parser.parseObjectProperty (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10113:101)\n    at Parser.parseObjPropValue (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10138:101)\n    at Parser.parseObjectMember (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:10062:10)\n    at Parser.parseObj (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\@dcloudio\\uni-template-compiler\\node_modules\\@babel\\parser\\lib\\index.js:9982:25)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
+var components
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var recyclableRender = false
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 /* 19 */
@@ -121,65 +137,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/webpack-preprocess-loader??ref--12-1!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js!./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib??vue-loader-options!./node_modules/@dcloudio/webpack-uni-mp-loader/lib/style.js!D:/uniapp/demo/pages/index/index.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 21));};var _default =
-
-
-
-
-
-
-
-
-
-{
-  data: function data() {
-    return {
-      list: [
-      {
-        userPic: "../../static/demo/userpic/1.jpg",
-        userName: "昵称",
-        isFollow: false,
-        title: "标题",
-        type: "img", //image 图文 ，video 视频
-        titlePic: "../../static/demo/datapic/1.jpg",
-        likeInfo: {
-          index: 2, //0：未操作，1：已顶，2：已踩
-          likeNum: 11,
-          dislikeNum: 11 },
-
-
-        commentNum: 10,
-        shareNum: 10 },
-
-      {
-        userPic: "../../static/demo/userpic/1.jpg",
-        userName: "昵称",
-        isFollow: true,
-        title: "标题",
-        type: "video", //image 图文 ，video 视频
-        titlePic: "../../static/demo/datapic/1.jpg",
-        playNum: "20w",
-        length: "2:47",
-        likeInfo: {
-          index: 1, //0：未操作，1：已顶，2：已踩
-          likeNum: 11,
-          dislikeNum: 11 },
-
-
-        commentNum: 10,
-        shareNum: 10 }] };
-
-
-
-  },
-  methods: {},
-
-
-  components: {
-    indexList: indexList } };exports.default = _default;
+throw new Error("Module build failed (from ./node_modules/@dcloudio/webpack-uni-mp-loader/lib/script.js):\nError: Can't resolve '/components/index/swiper-tab-head.vue' in 'D:\\uniapp\\demo\\pages\\index'\n    at doResolve (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:180:19)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:15:1)\n    at resolver.doResolve (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:37:5)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:15:1)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn1 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:24:1)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn43 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:402:1)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn1 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:24:1)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn1 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:24:1)\n    at hook.callAsync (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\Resolver.js:238:5)\n    at _fn0 (eval at create (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\tapable\\lib\\HookCodeFactory.js:32:10), <anonymous>:15:1)\n    at fs.stat (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\DirectoryExistsPlugin.js:22:13)\n    at process.nextTick (D:\\HBuilder\\HBuilderX\\plugins\\uniapp-cli\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:73:15)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
 
 /***/ })
 ],[[15,"common/runtime","common/vendor"]]]);
