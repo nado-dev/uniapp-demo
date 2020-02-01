@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/me/me",
     "pages/paper/paper",
-    "pages/news/news"
+    "pages/news/news",
+    "pages/search/search",
+    "pages/addINput/addINput"
   ],
   "subPackages": [],
   "window": {
@@ -44,6 +46,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap71.json"
+  "usingComponents": {}
 }

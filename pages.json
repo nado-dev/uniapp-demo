@@ -59,6 +59,30 @@
             }
         }
        
+        ,{
+            "path" : "pages/search/search",
+            "style": {
+            	"app-plus":{
+                    "scrollIndicator":"none",//隐藏滚动条
+                    "titleNView":{
+                        //搜索框配置
+                        "autoBackButton":false,
+                        "searchInput":{
+                            "align":"left",//位置
+                            "backgroundColor":"#F7F7F7",
+                            "borderRadius":"4px",//圆角半径
+                            "placeholder":"(=ﾟωﾟ)=",//提示文字
+                            "disabled":false//是否禁用输入
+                        }
+                       
+                    }
+                }
+            }
+        }
+        ,{
+            "path" : "pages/addINput/addINput",
+            "style" : {}
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

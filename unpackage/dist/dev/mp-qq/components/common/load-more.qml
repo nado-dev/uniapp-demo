@@ -1,0 +1,1 @@
+<view class="load-more data-v-003aa236">{{''+loadText+''}}</view>

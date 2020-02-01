@@ -116,7 +116,10 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+//
+//
+//
 //
 //
 //
@@ -181,7 +184,56 @@ var _default =
   // 用于接收来自父组件的数据 
   props: {
     item: Object,
-    index: Number } };exports.default = _default;
+    index: Number },
+
+  methods: {
+    //关注
+    follow: function follow() {
+      if (this.item.isFollow) {
+        this.item.isFollow = !this.item.isFollow;
+        uni.showToast({
+          title: "取消关注成功" });
+
+      } else
+      {
+        this.item.isFollow = !this.item.isFollow;
+        uni.showToast({
+          title: "关注成功" });
+
+      }
+
+
+    },
+    //顶踩操作
+    likeOpration: function likeOpration(likeStat) {
+      if (likeStat == "like") {
+        if (this.item.likeInfo.index == 2) {
+          this.item.likeInfo.dislikeNum--;
+          this.item.likeInfo.likeNum++;
+          this.item.likeInfo.index = 1;
+        }
+        if (this.item.likeInfo.index == 0) {
+          this.item.likeInfo.likeNum++;
+          this.item.likeInfo.index = 1;
+        }
+      } else
+      {
+        if (this.item.likeInfo.index == 1) {
+          this.item.likeInfo.likeNum--;
+          this.item.likeInfo.dislikeNum++;
+          this.item.likeInfo.index = 2;
+        }
+        if (this.item.likeInfo.index == 0) {
+          this.item.likeInfo.dislikeNum++;
+          this.item.likeInfo.index = 2;
+        }
+      }
+    },
+    //进入详情页
+    openDetail: function openDetail() {
+      console.log("进入详情页");
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
