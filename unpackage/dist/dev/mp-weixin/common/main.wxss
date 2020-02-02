@@ -4767,16 +4767,19 @@ image{
 	display: flex;
 }
 .u-f-ac,.u-f-ajc{
+    /* 竖直居中 */
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
 }
 .u-f-ajc{
+    /* 组件居中 */
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
 .u-f-jsb{
+    /* 组件靠边 */
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;

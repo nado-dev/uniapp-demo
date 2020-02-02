@@ -17,7 +17,7 @@
                         "buttons":[
                             //左边 签到
                             {
-                                "color":"#000000",
+                                "color":"#FFFFFF",
                                 "colorPressed":"#BBBBBB",
                                 "float":"left",
                                 "fontSize":"24px",
@@ -27,7 +27,7 @@
                             },
                             //右边 编辑
                             {
-                                "color":"#000000",
+                                "color":"#FFFFFF",
                                 "colorPressed":"#BBBBBB",
                                 "float":"right",
                                 "fontSize":"24px",
@@ -55,14 +55,17 @@
         ,{
             "path" : "pages/news/news",
             "style" : {
-                "navigationBarTitleText":"动态"
+                "navigationBarTitleText":"动态",
+                "app-plus":{
+                    "titleNView":false
+                }
             }
         }
        
         ,{
             "path" : "pages/search/search",
             "style": {
-            	"app-plus":{
+            	"app-plus":{                
                     "scrollIndicator":"none",//隐藏滚动条
                     "titleNView":{
                         //搜索框配置
@@ -81,18 +84,24 @@
         }
         ,{
             "path" : "pages/addINput/addINput",
-            "style" : {}
+            "style" : {
+                "app-plus":{
+                    "scrollIndicator":"none",//隐藏滚动条
+                     "titleNView":false//禁用原生导航  
+                }
+            }
         }
+
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "demo",
-		"navigationBarBackgroundColor": "#FFF999",
+		"navigationBarBackgroundColor": "#009687",
 		"backgroundColor": "#F8F8F8"
 	},
     "tabBar":{
         "color":"#B5B5B5",
-        "selectedColor":"#f4ea2a",
+        "selectedColor":"#009687",
         "borderStyle":"black",
         "backgroundColor":"#FFFFFF",
         "list":[
@@ -100,25 +109,26 @@
                 "pagePath":"pages/index/index",
                 "text":"世界",
                 "iconPath":"static/tabBar/index.png",
-                "selectedIconPath":"static/tabBar/index_selected.png"
+                "selectedIconPath":"static/tabBar/index1.png"
             },
             {
                 "pagePath":"pages/news/news",
                 "text":"动态",
                 "iconPath":"static/tabBar/news.png",
-                "selectedIconPath":"static/tabBar/news_selected.png"
+                "selectedIconPath":"static/tabBar/news1.png"
             },
             {
                 "pagePath":"pages/paper/paper",
                 "text":"消息",
                 "iconPath":"static/tabBar/message.png",
-                "selectedIconPath":"static/tabBar/message_selected.png"
+                "selectedIconPath":"static/tabBar/msg1.png"
             },
             {
                 "pagePath":"pages/me/me",
+                // "pagePath":"pages/addINput/addINput",
                 "text":"我的",
                 "iconPath":"static/tabBar/me.png",
-                "selectedIconPath":"static/tabBar/me_selected.png"
+                "selectedIconPath":"static/tabBar/me1.png"
             }
         ]
     }

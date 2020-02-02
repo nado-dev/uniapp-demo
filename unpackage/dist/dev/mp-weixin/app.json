@@ -11,12 +11,12 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "demo",
-    "navigationBarBackgroundColor": "#FFF999",
+    "navigationBarBackgroundColor": "#009687",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
     "color": "#B5B5B5",
-    "selectedColor": "#f4ea2a",
+    "selectedColor": "#009687",
     "borderStyle": "black",
     "backgroundColor": "#FFFFFF",
     "list": [
@@ -24,27 +24,28 @@
         "pagePath": "pages/index/index",
         "text": "世界",
         "iconPath": "static/tabBar/index.png",
-        "selectedIconPath": "static/tabBar/index_selected.png"
+        "selectedIconPath": "static/tabBar/index1.png"
       },
       {
         "pagePath": "pages/news/news",
         "text": "动态",
         "iconPath": "static/tabBar/news.png",
-        "selectedIconPath": "static/tabBar/news_selected.png"
+        "selectedIconPath": "static/tabBar/news1.png"
       },
       {
         "pagePath": "pages/paper/paper",
         "text": "消息",
         "iconPath": "static/tabBar/message.png",
-        "selectedIconPath": "static/tabBar/message_selected.png"
+        "selectedIconPath": "static/tabBar/msg1.png"
       },
       {
         "pagePath": "pages/me/me",
         "text": "我的",
         "iconPath": "static/tabBar/me.png",
-        "selectedIconPath": "static/tabBar/me_selected.png"
+        "selectedIconPath": "static/tabBar/me1.png"
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap19.json"
 }

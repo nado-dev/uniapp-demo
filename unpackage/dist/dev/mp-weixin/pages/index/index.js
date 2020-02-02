@@ -142,7 +142,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 41));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 48));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 55));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 62));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 57));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 64));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 71));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 78));};var _default =
 
 
 
@@ -212,12 +212,12 @@ __webpack_require__.r(__webpack_exports__);
       swiperHeight: 500,
       tabIndex: 0, //默认id
       tabBars: [
-      { name: "关注", id: "focus" },
-      { name: "推荐", id: "feed" },
-      { name: "体育", id: "sport" },
-      { name: "热点", id: "hot" },
-      { name: "时政", id: "policy" },
-      { name: "娱乐", id: "entertain" }],
+      { name: "时间线", id: "timeline" },
+      { name: "综合1", id: "sundry" },
+      { name: "速报2", id: "news" },
+      { name: "欢乐恶搞", id: "dontComeHere" },
+      { name: "跑团", id: "paotuan" },
+      { name: "圈内", id: "inside" }],
 
 
       newsList: [
@@ -346,6 +346,7 @@ __webpack_require__.r(__webpack_exports__);
   //监听原生标题栏按钮点击事件
   //监听第二个按钮 转跳到发布页面
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+    // console.log(JSON.stringify(e));
     if (e.index == 1) {
       uni.navigateTo({
         url: "../addINput/addINput" });

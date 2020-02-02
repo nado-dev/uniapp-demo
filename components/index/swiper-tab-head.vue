@@ -38,12 +38,13 @@
     }
     .uni-tab-bar .active{
         color: #343434;
+        font-size:medium;
     }
     .active .swiper-tab-underLine{
-        border: 1upx solid #EFDE33;
+        border: 1upx solid #009687;
         width: 70upx;
         margin: auto;
-        border-top: 6px solid #EFDE33;
+        border-top: 6px solid #009687;
         border-radius: 10upx;
     }
     .uni-swiper-tab{

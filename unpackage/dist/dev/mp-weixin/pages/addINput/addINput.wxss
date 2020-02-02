@@ -1,0 +1,10 @@
+
+.tip-before-post image{
+    width: 100%;
+    height: 100%;
+}
+.tip-before-post button{
+    background: #009687;
+}
+
+

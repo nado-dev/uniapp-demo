@@ -3,12 +3,15 @@
 	display: flex;
 }
 .u-f-ac,.u-f-ajc{
+    /* 竖直居中 */
 	align-items: center;
 }
 .u-f-ajc{
+    /* 组件居中 */
 	justify-content: center;
 }
 .u-f-jsb{
+    /* 组件靠边 */
 	justify-content: space-between;
 }
 .u-f1{

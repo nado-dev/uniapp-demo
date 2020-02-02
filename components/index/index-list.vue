@@ -9,8 +9,8 @@
                 {{item.userName}}
             </view>
             <!-- 右边 关注按钮 -->
-            <view v-if="!item.isFollow" @tap="follow()">
-                <view class="icon iconfont icon-zengjia" :class="{'mk1':(!item.isFollow)}">
+            <view v-if="!isFollow" @tap="follow()">
+                <view class="icon iconfont icon-zengjia" :class="{'mk1':(!isFollow)}">
                     关注
                 </view>
             </view>
@@ -40,15 +40,15 @@
         <view class="index-list4">
             <!-- 左侧 顶踩 -->
             <view class="u-f-ac">
-                <view :class="{'active':(item.likeInfo.index == 1)}"
+                <view :class="{'active':(likeInfo.index == 1)}"
                 @tap="likeOpration('like')">
                     <view class="icon iconfont icon-icon_xiaolian-mian"></view>
-                    {{item.likeInfo.likeNum}}
+                    {{likeInfo.likeNum}}
                 </view>
-                <view :class="{'active':(item.likeInfo.index == 2)}"
+                <view :class="{'active':(likeInfo.index == 2)}"
                  @tap="likeOpration('dislike')">
                     <view class="icon iconfont icon-kulian"></view>
-                    {{item.likeInfo.dislikeNum}}
+                    {{likeInfo.dislikeNum}}
                 </view>               
             </view>
             <!-- 右侧 评论转发 -->
@@ -68,17 +68,24 @@
             item:Object,
             index:Number
         },
+        data() {
+            return {
+                // 来自父组件的值如要修改要在子组件内创建副本再进行修改
+                isFollow: this.item.isFollow,
+                likeInfo:this.item.likeInfo
+            }
+        },
         methods:{
             //关注
             follow(){
-                if(this.item.isFollow){
-                    this.item.isFollow = !this.item.isFollow;
+                if(this.isFollow){
+                    this.isFollow = !this.isFollow;
                     uni.showToast({
                         title:"取消关注成功"
                     });
                 }
                 else{
-                    this.item.isFollow = !this.item.isFollow;
+                    this.isFollow = !this.isFollow;
                     uni.showToast({
                         title:"关注成功"
                     });
@@ -89,25 +96,25 @@
             //顶踩操作
             likeOpration(likeStat){
                 if(likeStat == "like"){
-                    if(this.item.likeInfo.index == 2){
-                        this.item.likeInfo.dislikeNum--;
-                        this.item.likeInfo.likeNum++;
-                        this.item.likeInfo.index = 1;
+                    if(this.likeInfo.index == 2){
+                        this.likeInfo.dislikeNum--;
+                        this.likeInfo.likeNum++;
+                        this.likeInfo.index = 1;
                     }                     
-                    if(this.item.likeInfo.index == 0){
-                        this.item.likeInfo.likeNum++;
-                        this.item.likeInfo.index = 1;
+                    if(this.likeInfo.index == 0){
+                        this.likeInfo.likeNum++;
+                        this.likeInfo.index = 1;
                     }
                 }
                 else{
-                    if(this.item.likeInfo.index == 1){
-                        this.item.likeInfo.likeNum--;
-                        this.item.likeInfo.dislikeNum++;
-                        this.item.likeInfo.index=2;
+                    if(this.likeInfo.index == 1){
+                        this.likeInfo.likeNum--;
+                        this.likeInfo.dislikeNum++;
+                        this.likeInfo.index=2;
                     }
-                    if(this.item.likeInfo.index == 0){
-                        this.item.likeInfo.dislikeNum++;
-                        this.item.likeInfo.index=2;
+                    if(this.likeInfo.index == 0){
+                        this.likeInfo.dislikeNum++;
+                        this.likeInfo.index=2;
                     }
                 }
             },
@@ -224,6 +231,6 @@
     padding: 0 10upx;
 }
 .index-list4 .active,.index-list4 .active>view{
-    color: #ffff00;
+    color: #009687;
 }
 </style>

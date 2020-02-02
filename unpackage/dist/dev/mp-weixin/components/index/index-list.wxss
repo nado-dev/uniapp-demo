@@ -120,6 +120,13 @@
 
 
 
+
+
+
+
+
+
+
     /* scoped 声明该CSS样式只能被组件使用 */
 .mk1.data-v-7dea0143{
     font-size: 25rpx;
@@ -259,6 +266,6 @@
     padding: 0 10rpx;
 }
 .index-list4 .active.data-v-7dea0143,.index-list4 .active>view.data-v-7dea0143{
-    color: #ffff00;
+    color: #009687;
 }
 

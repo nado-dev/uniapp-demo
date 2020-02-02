@@ -14,11 +14,11 @@
 		methods: {
 			
 		},
-        
+        //监听搜索框文本变化
         onNavigationBarSearchInputChanged(e) {
             console.log(JSON.stringify(e.text))
         },
-        //确认
+        //监听搜索框文本确认
         onNavigationBarSearchInputConfirmed(e) {
             console.log(JSON.stringify(e.text))
         },
