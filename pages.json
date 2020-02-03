@@ -5,6 +5,7 @@
 			"style": {
 				"app-plus":{
                     "scrollIndicator":"none",//隐藏滚动条
+                    "bounce":"vertical",
                     "titleNView":{
                         //搜索框配置
                         "searchInput":{
@@ -57,7 +58,8 @@
             "style" : {
                 "navigationBarTitleText":"动态",
                 "app-plus":{
-                    "titleNView":false
+                    "titleNView":false,
+                    "bounce":"vertical"
                 }
             }
         }
@@ -92,6 +94,34 @@
             }
         }
 
+        ,{
+            "path" : "pages/topic-nav/topic-nav",
+            "style" : {
+                "navigationBarTitleText":"话题分类",
+                "app-plus":{
+                    "bounce":"vertical"
+                }
+            }
+        }
+        ,{
+            "path" : "pages/topic-detail/topic-detail",
+            "style" : {
+                "enablePullDownRefresh":true,
+                "app-plus":{
+                    "scrollIndicator":"none",
+                    "titleNView":{
+                        "type":"transparent",//渐变
+                        //每个按钮都是button数组里的一个对象
+                        "buttons":[
+                            {
+                                "type":"menu"//按钮样式的按钮
+                            }
+
+                        ]
+                    }
+                }
+            }
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

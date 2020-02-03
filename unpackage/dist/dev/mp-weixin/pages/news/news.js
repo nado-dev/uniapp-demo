@@ -133,20 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 83));};var _default =
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var newsNavBar = function newsNavBar() {return __webpack_require__.e(/*! import() | components/news/news-nav-bar */ "components/news/news-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/news/news-nav-bar.vue */ 95));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 102));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 83));};var topicNav = function topicNav() {return __webpack_require__.e(/*! import() | components/news/topic-nav */ "components/news/topic-nav").then(__webpack_require__.bind(null, /*! ../../components/news/topic-nav.vue */ 109));};var topicList = function topicList() {return __webpack_require__.e(/*! import() | components/news/topic-list */ "components/news/topic-list").then(__webpack_require__.bind(null, /*! ../../components/news/topic-list.vue */ 116));};var _default =
 
 
 
@@ -215,30 +202,191 @@ __webpack_require__.r(__webpack_exports__);
 {
   data: function data() {
     return {
-      tabIndex: 0, //当前选中的tab的索引值
-      tabBar: [{
-        name: "关注",
-        id: "follow" },
+      tabIndex: 0, //当前选中的tab的索引值 默认为1
+      tabBar: [
+      { name: "关注", id: "follow" },
+      { name: "话题", id: "topic" }],
 
-      {
-        name: "话题",
-        id: "topic" }] };
+      topicBanner: {
+        swiper: [
+        { src: "../../static/demo/banner1.jpg" },
+        { src: "../../static/demo/banner1.jpg" },
+        { src: "../../static/demo/banner1.jpg" }],
+
+        nav: [
+        { name: "技术" },
+        { name: "社畜" },
+        { name: "动画" },
+        { name: "小说" },
+        { name: "手游" },
+        { name: "摄影" }],
+
+        list: [
+        {
+          titlePic: "../../static/demo/topicpic/5.jpeg",
+          title: "这是芦苇",
+          desc: "想歪的自重",
+          totalPostNum: 148,
+          todayPostNum: 7 },
+
+        {
+          titlePic: "../../static/demo/topicpic/5.jpeg",
+          title: "这是芦苇",
+          desc: "想歪的自重",
+          totalPostNum: 148,
+          todayPostNum: 7 }] },
+
+
+
+      swiperHeight: 500,
+      followList: {
+        loadText: "上拉加载更多",
+        list: [
+        // 纯文字样式 textStyle
+        {
+          userPic: "../../static/demo/userpic/10.jpg",
+          userName: "ATM",
+          gender: "0", //0:女 1:男
+          age: 25,
+          isFollow: false,
+          title: "透明质酸钠",
+          textStyle: true,
+          PicTextStyle: false,
+          videoStyle: false,
+          shareStyle: false,
+          shareNum: 3498,
+          commentNum: 3456,
+          likeNum: 345,
+          location: "PekingU" },
+
+        //图文样式 PicTextStyle:true,
+        {
+          userPic: "../../static/demo/userpic/10.jpg",
+          userName: "31K473k",
+          gender: "1", //0:女 1:男
+          age: 25,
+          isFollow: false,
+          title: "...轻轻呼唤你的名字",
+          titlePic: "../../static/demo/datapic/13.jpg",
+          textStyle: false,
+          PicTextStyle: true,
+          videoStyle: false,
+          shareStyle: false,
+          location: "PekingU",
+          shareNum: 3498,
+          commentNum: 3456,
+          likeNum: 345 },
+
+        //视频样式
+        {
+          userPic: "../../static/demo/userpic/10.jpg",
+          userName: "momo",
+          gender: "0", //0:女 1:男
+          age: 25,
+          isFollow: false,
+          title: "欢乐恶搞不是法外之地",
+          titlePic: "../../static/demo/datapic/2.jpg",
+          textStyle: false,
+          PicTextStyle: false,
+          videoStyle: {
+            playNum: "34W",
+            length: "3:51" },
+
+          shareStyle: false,
+          location: "PekingU",
+          shareNum: 3498,
+          commentNum: 3456,
+          likeNum: 345 },
+
+        //分享样式
+        {
+          userPic: "../../static/demo/userpic/10.jpg",
+          userName: "ATM",
+          gender: "0", //0:女 1:男
+          age: 25,
+          isFollow: false,
+          title: "透明质酸钠",
+          titlePic: "",
+          textStyle: false,
+          PicTextStyle: false,
+          videoStyle: false,
+          shareStyle: {
+            shareTitle: "长笛",
+            sharePic: "../../static/demo/datapic/2.jpg" },
+
+          location: "PekingU",
+          shareNum: 3498,
+          commentNum: 3456,
+          likeNum: 345 }] } };
+
 
 
 
   },
   methods: {
-    naviPost: function naviPost() {
-      uni.navigateTo({
-        url: "../addINput/addINput" });
-
-    },
-    changTab: function changTab(index) {
+    //点击切换
+    changeTab: function changeTab(index) {
       this.tabIndex = index;
+    },
+    //tabBar滑动事件
+    tabChange: function tabChange(e) {
+      this.tabIndex = e.detail.current;
+    },
+    //上拉加载
+    loadMore: function loadMore() {var _this = this;
+      if (this.followList.loadText != "上拉加载更多") {
+        return; //如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
+      }
+      this.followList.loadText = "加载中(＾o＾)ﾉ";
+      //修改状态
+      setTimeout(function () {
+        //示例:加载2000ms后从服务端获取了新的数据
+        var obj = {
+          //视频样式          
+          userPic: "../../static/demo/userpic/10.jpg",
+          userName: "ATM",
+          gender: "0", //0:女 1:男
+          age: 25,
+          isFollow: false,
+          title: "透明质酸钠",
+          titlePic: "../../static/demo/datapic/2.jpg",
+          textStyle: false,
+          PicTextStyle: false,
+          videoStyle: {
+            playNum: "34W",
+            length: "3:51" },
+
+          shareStyle: false,
+          location: "PekingU",
+          shareNum: 3498,
+          commentNum: 3456,
+          likeNum: 345 };
+
+
+        _this.followList.list.push(obj); //追加
+
+        _this.followList.loadText = "上拉加载更多"; //复原状态              
+      }, 2000);
+
+      //this.followList.loadText = "没有更多数据";
+
     } },
 
   components: {
-    uniNavBar: uniNavBar } };exports.default = _default;
+    commonList: commonList,
+    newsNavBar: newsNavBar,
+    loadMore: loadMore,
+    topicNav: topicNav,
+    topicList: topicList },
+
+  onLoad: function onLoad() {var _this2 = this;
+    uni.getSystemInfo({
+      success: function success(res) {
+        var height = res.windowHeight - uni.upx2px(100); //tabBar的高度是100upx
+        _this2.swiperHeight = height;
+      } });
+
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

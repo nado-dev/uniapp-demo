@@ -30,5 +30,6 @@
       "list": []
     }
   },
-  "qqappid": "touristappid"
+  "qqappid": "touristappid",
+  "qqLibVersion": "1.6.3"
 }

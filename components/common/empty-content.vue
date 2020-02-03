@@ -1,5 +1,5 @@
 <template>
-    <view class="empty-content u-f-ajc animated fadeIn">
+    <view class="empty-content u-f-ajc animated fadeIn fast">
         <image src="../../static/common/LUWEI.png" 
         mode="widthFix"></image>
     </view>

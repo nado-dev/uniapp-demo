@@ -1,0 +1,1 @@
+<view class="topic-list u-f animated fadeInLeft"><image src="{{item.titlePic}}" mode="widthFix" lazy-load></image><view><view>{{"#"+item.title+"#"}}</view><view>{{item.desc}}</view><view>{{"动态 "+item.totalPostNum+" 今日 "+item.todayPostNum}}</view></view></view>

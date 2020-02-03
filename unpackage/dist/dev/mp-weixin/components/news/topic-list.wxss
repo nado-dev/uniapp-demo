@@ -1,0 +1,20 @@
+
+.topic-list>image{
+    width: 150rpx;
+    height: 150rpx;
+    border: 10rpx;
+    margin: 10rpx 20rpx;
+    border-radius: 10rpx;
+}
+.topic-list{
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.topic-list>view>view{
+    color: #A4A4A4;
+}
+/* 话题名称 */
+.topic-list>view>view:first-child{
+    color: #333333;
+    font-size: 32rpx;
+}
+

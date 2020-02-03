@@ -6,7 +6,7 @@
             <block v-for="(tab,index) in tabBars" :key="tab.id">
                 <view class="swiper-tab-list" 
                 :class="{'active':tabIndex == index}"
-                @tap="tabSwitch(index)">
+                @tap="tabSwitch(index)" >
                     {{tab.name}}
                     <view class="swiper-tab-underLine"> </view>
                 </view>

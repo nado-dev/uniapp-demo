@@ -1,5 +1,5 @@
 <template>
-    <view class="index-list animated fadeInLeft ">
+    <view class="index-list animated fadeInLeft fast">
         <!-- 第一层 -->
         <view class="index-list1">
             <!-- 左边 头像 昵称 -->

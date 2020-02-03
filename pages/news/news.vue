@@ -1,264 +1,293 @@
 <template>
     <view>
         <!-- 自定义导航栏 -->
-        <uni-nav-bar :statusBar="true" @clickRight="naviPost" backgroundColor="#009687">
-            <!-- 左边 -->
-            <block slot="left">
-                <view class="nav-left">
-                    <view class="icon iconfont icon-qiandao" ></view>
-                </view>
-            </block>
-            <!-- 中间 -->
-            <!-- index:数组索引 -->
-            <view class="nav-tab-bar u-f-ajc">
-                <!-- block生成了两个子组件，索引值分别未0，1 -->
-                <block v-for="(tab, index) in tabBar" :key="tab.id">
-                    <view class="u-f-ajc" :class="{'active':tabIndex == index}" @tap="changTab(index)">
-                        {{tab.name}}
-                        <view class="nav-tab-bar-underLine" v-if="tabIndex == index"></view>
-                    </view>
-                </block>
-            </view>
-            <!-- 右边 -->
-            <block slot="right">
-                <view class="nav-right ">
-                    <view class="icon iconfont icon-bianji1"></view>
-                </view>
-            </block>
-        </uni-nav-bar>
-        
-        <!-- 列表 -->
-        <view class="common-list u-f">
-            <!-- 左侧：用户头像 -->
-            <view class="common-list-l">
-                <image src="../../static/demo/userpic/10.jpg" mode="widthFix" lazy-load></image>
-            </view>
-            <!-- 右侧： -->
-            <view class="common-list-r">
-                <!-- 右侧第一层 -->
-                <view class="u-f-ac u-f-jsb">
-                    <!-- 右一左边 昵称 性别+年龄 -->
-                    <view class="u-f-ac">昵称
-                    <view class="icon iconfont icon-nan tag-age-gender" >25</view></view>
-                    <!-- 右一右边 关注按钮-->
-                    <view class="icon iconfont icon-zengjia">关注</view>
-                </view>
-                <!-- 右侧第二层 标题 -->
-                <view class="">标题</view>
-                <!-- 右侧第三层 图片/视频-->
-                <view class="u-f-ajc">
-                    <!-- 图片 -->
-                    <!-- <image src="../../static/demo/datapic/13.jpg" mode="widthFix" lazy-load></image> -->
-                    <!-- 视频 -->
-                    <!-- <view class="common-list-play icon iconfont icon-bofang"></view> -->
-                    <!-- <view class="common-list-playinfo">20w 次播放 2:45</view> -->
-                    <!-- 分享样式 -->
-                    <view class="common-list-share u-f-ac">
-                        <image src="../../static/demo/datapic/2.jpg" mode="widthFix" lazy-load></image>
-                        <view class="">标题</view>
-                    </view>
-                </view>
-                <!-- 右侧第四层 -->
-                <view class="u-f-ac u-f-jsb">
-                    <!-- 右四左边 地址 -->
-                    <view class="">Zhanjiang,Guangdong</view>
-                    <!-- 右四右边 转发 评论 点赞 -->
-                    <view class="u-f-ac">
-                        <view class="icon iconfont icon-zhuanfa">12</view>
-                        <view class="icon iconfont icon-pinglun">12</view>
-                        <view class="icon iconfont icon-dianzan">12</view>
-                    </view>
-                </view>
-            </view>
+        <news-nav-bar 
+        :tabBar="tabBar" 
+        :tabIndex="tabIndex" 
+        @changeTab="changeTab">
+        </news-nav-bar>
+      
+        <view class="uni-tab-bar">
+            <swiper class="swiper-box" 
+            :style="{height:swiperHeight+'px'}" 
+            :current="tabIndex"
+            @change="tabChange"> 
+            <!-- 关注 -->
+                <swiper-item>
+                    <scroll-view scroll-y="true" 
+                    class="list" @scrolltolower="loadMore()">          
+                        <!-- 列表 -->
+                        <block v-for="(item, index) in followList.list" :key="index">
+                            <common-list :item="item" :index="index"></common-list>
+                        </block>
+                        <!-- 上拉加载 -->
+                        <load-more :loadText="followList.loadText"></load-more>
+                    </scroll-view>
+                </swiper-item>      
+            <!-- 话题 -->
+                <swiper-item>
+                    <scroll-view scroll-y="true" 
+                    class="list">          
+                        <!-- 搜索框 -->
+                        <view class="search-input">
+                            <input placeholder="( ﾟ∀。)" class="uni-input" 
+                            placeholder-class="icon iconfont icon-sousuo topic-search"/>
+                        </view>
+                        
+                        <!-- 轮播图 -->
+                        <swiper class="topic-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+                            <block v-for="(item, index) in topicBanner.swiper" :key="index">
+                                <swiper-item>
+                                    <image :src="item.src" mode="widthFix" lazy-load></image>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                        <!-- 热门分类 -->
+                        <topic-nav :nav="topicBanner.nav"></topic-nav>
+                        <!-- 最近更新 -->
+                        <view class="topic-new">
+                            <view class="">最近更新 </view>
+                            <block v-for="(item,index) in topicBanner.list" :key="index">
+                                <topic-list :item="item" :index="index"></topic-list>
+                            </block>
+                        </view>
+                    </scroll-view>
+                </swiper-item>         
+            </swiper>
         </view>
     </view>
 </template>
 
 <script>
-    import uniNavBar from "../../components/uni-nav-bar/uni-nav-bar.vue";
-
+    import newsNavBar from "../../components/news/news-nav-bar.vue";
+    import commonList from "../../components/common/common-list.vue";
+    import loadMore from '../../components/common/load-more.vue';
+    import topicNav from "../../components/news/topic-nav.vue";
+    import topicList from "../../components/news/topic-list.vue"
     export default {
         data() {
             return {
-                tabIndex: 0,//当前选中的tab的索引值
-                tabBar: [{
-                        name: "关注",
-                        id: "follow"
-                    },
-                    {
-                        name: "话题",
-                        id: "topic"
-                    }
-                ]
-            }
+                tabIndex: 0,//当前选中的tab的索引值 默认为1
+                tabBar: [
+                    {name: "关注",id: "follow"},
+                    {name: "话题",id: "topic"}
+                ],
+                topicBanner:{
+                    swiper:[
+                        {src:"../../static/demo/banner1.jpg"},
+                        {src:"../../static/demo/banner1.jpg"},
+                        {src:"../../static/demo/banner1.jpg"}
+                    ],
+                    nav:[
+                        {name:"技术"},
+                        {name:"社畜"},
+                        {name:"动画"},
+                        {name:"小说"},
+                        {name:"手游"},
+                        {name:"摄影"}
+                    ],
+                    list:[
+                        {
+                            titlePic:"../../static/demo/topicpic/5.jpeg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },
+                        {
+                            titlePic:"../../static/demo/topicpic/5.jpeg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        }
+                    ]
+                },
+                swiperHeight:500,
+                followList:{
+                   loadText:"上拉加载更多",
+                    list:[
+                        // 纯文字样式 textStyle
+                        {
+                            userPic:"../../static/demo/userpic/10.jpg",
+                            userName:"ATM",
+                            gender:"0",//0:女 1:男
+                            age:25,
+                            isFollow:false,
+                            title:"透明质酸钠",
+                            textStyle:true,
+                            PicTextStyle:false,
+                            videoStyle:false,
+                            shareStyle:false,
+                            shareNum:3498,
+                            commentNum:3456,
+                            likeNum:345,
+                            location:"PekingU",
+                        },
+                        //图文样式 PicTextStyle:true,
+                        {
+                            userPic:"../../static/demo/userpic/10.jpg",
+                            userName:"31K473k",
+                            gender:"1",//0:女 1:男
+                            age:25,
+                            isFollow:false,
+                            title:"...轻轻呼唤你的名字",
+                            titlePic:"../../static/demo/datapic/13.jpg",
+                            textStyle:false,
+                            PicTextStyle:true,
+                            videoStyle:false,
+                            shareStyle:false,
+                            location:"PekingU",
+                            shareNum:3498,
+                            commentNum:3456,
+                            likeNum:345,
+                        },
+                        //视频样式
+                        {
+                            userPic:"../../static/demo/userpic/10.jpg",
+                            userName:"momo",
+                            gender:"0",//0:女 1:男
+                            age:25,
+                            isFollow:false,
+                            title:"欢乐恶搞不是法外之地",
+                            titlePic:"../../static/demo/datapic/2.jpg",
+                            textStyle:false,
+                            PicTextStyle:false,
+                            videoStyle:{
+                                playNum:"34W",
+                                length:"3:51"
+                            },
+                            shareStyle:false,
+                            location:"PekingU",
+                            shareNum:3498,
+                            commentNum:3456,
+                            likeNum:345,
+                        },
+                        //分享样式
+                        {
+                            userPic:"../../static/demo/userpic/10.jpg",
+                            userName:"ATM",
+                            gender:"0",//0:女 1:男
+                            age:25,
+                            isFollow:false,
+                            title:"透明质酸钠",
+                            titlePic:"",
+                            textStyle:false,
+                            PicTextStyle:false,
+                            videoStyle:false,
+                            shareStyle:{
+                                shareTitle:"长笛",
+                                sharePic:"../../static/demo/datapic/2.jpg"
+                            },
+                            location:"PekingU",
+                            shareNum:3498,
+                            commentNum:3456,
+                            likeNum:345,
+                        }
+                    ]
+                }              
+            };
         },
         methods: {
-            naviPost() {
-                uni.navigateTo({
-                    url:"../addINput/addINput"
-                })
-            },
-            changTab(index) {
+            //点击切换
+            changeTab(index) {
                 this.tabIndex = index;
+            },
+            //tabBar滑动事件
+            tabChange(e){
+                this.tabIndex = e.detail.current;
+            },
+            //上拉加载
+            loadMore(){
+                if( this.followList.loadText != "上拉加载更多"){
+                    return;//如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
+                }
+                this.followList.loadText = "加载中(＾o＾)ﾉ";
+                //修改状态
+                setTimeout(()=> {                  
+                    //示例:加载2000ms后从服务端获取了新的数据
+                    let obj = {                       
+                        //视频样式          
+                            userPic:"../../static/demo/userpic/10.jpg",
+                            userName:"ATM",
+                            gender:"0",//0:女 1:男
+                            age:25,
+                            isFollow:false,
+                            title:"透明质酸钠",
+                            titlePic:"../../static/demo/datapic/2.jpg",
+                            textStyle:false,
+                            PicTextStyle:false,
+                            videoStyle:{
+                                playNum:"34W",
+                                length:"3:51"
+                            },
+                            shareStyle:false,
+                            location:"PekingU",
+                            shareNum:3498,
+                            commentNum:3456,
+                            likeNum:345,
+                        
+                    };
+                    this.followList.list.push(obj);//追加
+                    
+                    this.followList.loadText = "上拉加载更多";     //复原状态              
+                }, 2000);
+                
+                //this.followList.loadText = "没有更多数据";
+                
             }
         },
         components: {
-            uniNavBar
-        }
+            commonList,
+            newsNavBar,
+            loadMore,
+            topicNav,
+            topicList
+        },
+        onLoad() {
+            uni.getSystemInfo({
+                success: (res) => {
+                    let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
+                    this.swiperHeight = height;
+                }
+            })
+        },
     }
 </script>
 
 <style>
-    .nav-left>view,
-    .nav-right>view {
-        font-size: 32upx;
+/* 搜索框外层view组件 */
+.search-input{
+    /* 内边距 */
+    padding: 20upx;
+}
+.search-input>input{ 
+    background: #F4F4F4;
+    border-radius: 10upx;
+}
+.topic-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+}
+.topic-swiper{
+/*    border: 1upx solid; */
+    padding: 0 20upx 20upx 20upx;
+}
+.topic-swiper image{
+    width: 100%;
+    border-radius: 20upx;
+}
+.topic-new{
+    padding: 20upx;
+    }
+.topic-new>view:first-child{
+    padding-bottom: 10upx;
+    font-size: 32upx;
+    }
+.topic-new>view:last-child{
+    padding: 10upx 0;
     }
 
-    .nav-left {
-        width: 100%;
-    }
-
-    .nav-left>view {
-        display: 1;
-        text-align: left;
-        font-size: 57upx;
-        color: #FFFFFF;
-
-    }
-
-    .nav-right {
-        width: 100%;
-
-    }
-
-    .nav-right>view {
-        display: 1;
-        text-align: right;
-        font-size: 57upx;
-        color: #FFFFFF;
-
-    }
-
-    .nav-tab-bar {
-        width: 100%;
-        margin: -10upx;
-        position: relative;
-    }
-
-    .nav-tab-bar>view {
-        /*  border: 1upx solid; */
-        /*  width: 50%; */
-        margin: -60upx;
-        font-size: medium;
-        padding: 0 90upx;
-        font-weight: bold;
-        color: #555500;
-    }
-
-    .nav-tab-bar-underLine {
-        border-bottom: 5upx solid #FFFFFF;
-        border-top: 5upx solid #FFFFFF;
-        width: 75upx;
-        border-radius: 20upx;
-        position: absolute;
-        top: 30upx;
-    }
-
-    .active {
-        font-size: 80upx;
-        color: #FFFFFF !important;
-    }
-    .common-list{
-       padding: 20upx;
-    }
-    .common-list-l image{
-        width: 90upx;
-        height: 90upx;
-        border-radius: 100%;
-    }
-    .common-list-l{
-        /* 不会被压缩 */
-        flex-shrink: 0;
-    }
-    .common-list-r{
-        /* 右边拉满 */
-        flex: 1;
-        margin-left: 15upx;
-        padding-bottom: 10upx;
-        border-bottom: 1upx solid #EEEEEE;
-    }
-    .common-list-r>view:nth-child(1){
-        
-    }
-    /* 昵称 年龄+性别样式 */
-    .common-list-r>view:nth-child(1)>view:first-child{
-        color: #999999;
-        font-size: 30upx;
-        line-height: 0;
-    }
-    .tag-age-gender{
-        background: #009687;
-        color: #FFFFFF;
-        font-size: 23upx;
-        padding: 0 5upx;
-        margin-left: 10upx;
-        border-radius: 15upx;
-    }
-    /* 关注按钮样式 */
-    .common-list-r>view:nth-child(1)>view:last-child{
-        background: #EEEEEE;
-        padding: 0 10upx;
-        font-size: small;
-    }
-    .common-list-r>view:nth-child(2){
-        font-size: large;
-        padding: 12upx 0;
-    }
-    .common-list-r>view:nth-child(3){
-        position: relative;
-    }
-    .common-list-r>view:nth-child(3)>image{
-        width:100%;
-        border-radius: 10upx;
-    }
-    .common-list-play,.common-list-playinfo{
-        position: absolute;
-        color: #FFFFFF;
-    }
-    .common-list-play{
-        font-size: 100upx;
-    }
-    .common-list-playinfo{
-        right: 10upx;
-        bottom: 10upx;
-        background: rgba(51,51,51,0.73);
-        border-radius: 20upx;
-        padding: 0 20upx;
-        font-size: 25upx;
-    }
-    /* 分享样式 */
-    .common-list-share{
-        background: #EEEEEE;
-       /* 宽度全部填充 */
-        width: 100%;
-        border-radius: 10upx;
-        padding: 10upx;
-    }
-    .common-list-share>image{
-        width: 200upx;
-        height: 150upx;
-        margin-right: 10upx;
-    }
-    .common-list-r>view:nth-child(4){
-        
-    }
-    
-    .common-list-r>view:nth-child(4)>view{
-        color: #AAAAAA;
-    }
-    /* 点赞、评论、转发样式 */
-    .common-list-r>view:nth-child(4)>view:nth-child(2)>view{
-        margin-left: 10upx;
-        padding: 5upx;
-    }
 </style>

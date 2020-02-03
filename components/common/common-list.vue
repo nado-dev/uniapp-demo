@@ -1,0 +1,183 @@
+<template>
+    <view class="common-list u-f animated fadeInLeft fast">
+        <!-- 左侧：用户头像 -->
+        <view class="common-list-l">
+            <image :src="item.userPic" mode="widthFix" lazy-load></image>
+        </view>
+        <!-- 右侧： -->
+        <view class="common-list-r">
+            <!-- 右侧第一层 -->
+            <view class="u-f-ac u-f-jsb">
+                <!-- 右一左边 昵称 性别+年龄 -->
+                <view class="u-f-ac">{{item.userName}}
+                <view class="tag-age-gender" 
+                :class="[item.gender==0?'icon iconfont icon-nan':'icon iconfont icon-nv']">{{item.age}}</view></view>
+                <!-- 右一右边 关注按钮-->
+                <view v-if="!isFollow" 
+                class="icon iconfont icon-zengjia" @tap="follow()">关注</view>
+                <view @tap="follow()" v-else>已关注</view>
+            </view>
+            <!-- 右侧第二层 标题 -->
+            <view class="">{{item.title}}</view>
+            <!-- 右侧第三层 图片/视频-->
+            <view class="u-f-ajc">
+                <!-- 图片 -->
+                <image v-if="item.PicTextStyle"  :src="item.titlePic" mode="widthFix" lazy-load></image>
+                <!-- 视频 -->
+                <template v-if="item.videoStyle">
+                    <image :src="item.titlePic" mode="widthFix" lazy-load></image>
+                    <view class="common-list-play icon iconfont icon-bofang"></view>
+                    <view class="common-list-playinfo">{{item.videoStyle.playNum}} 次播放 {{item.videoStyle.length}}</view>
+                </template>
+                
+                <!-- 分享样式 -->
+                <view v-if="item.shareStyle" class="common-list-share u-f-ac" >
+                    <image :src="item.shareStyle.sharePic" mode="widthFix" lazy-load></image>
+                    <view>{{item.shareStyle.shareTitle}}</view>
+                </view>
+            </view>
+            <!-- 右侧第四层 -->
+            <view class="u-f-ac u-f-jsb">
+                <!-- 右四左边 地址 -->
+                <view>{{item.location}}</view>
+                <!-- 右四右边 转发 评论 点赞 -->
+                <view class="u-f-ac">
+                    <view class="icon iconfont icon-zhuanfa">{{item.shareNum}}</view>
+                    <view class="icon iconfont icon-pinglun">{{item.commentNum}}</view>
+                    <view class="icon iconfont icon-dianzan">{{item.likeNum}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+    export default {
+        props:{           
+            item:Object,
+            index:Number           
+        },
+        data() {
+            return {
+                isFollow: this.item.isFollow
+            }
+        },
+        methods:{
+            follow(){
+                this.isFollow = !this.isFollow;
+                if(!this.isFollow){
+                    uni.showToast({
+                        title:"取消关注成功",
+                    })
+                }
+                else{
+                    uni.showToast({
+                        title:"关注成功",
+                    })
+                }
+            }
+        }
+    }
+</script>
+
+<style scoped>
+.common-list{
+       padding: 20upx;
+    }
+    .common-list-l image{
+        width: 70upx;
+        height: 70upx;
+        border-radius: 100%;
+    }
+    .common-list-l{
+        /* 不会被压缩 */
+        flex-shrink: 0;
+    }
+    .common-list-r{
+        /* 右边拉满 */
+        flex: 1;
+        margin-left: 15upx;
+        padding-bottom: 10upx;
+        border-bottom: 1upx solid #EEEEEE;
+    }
+    .common-list-r>view:nth-child(1){
+        
+    }
+    /* 昵称 年龄+性别样式 */
+    .common-list-r>view:nth-child(1)>view:first-child{
+        color: #999999;
+        font-size: 30upx;
+        line-height: 0;
+    }
+    .tag-age-gender{
+        background: #009687;
+        color: #FFFFFF;
+        font-size: 23upx;
+        padding: 0 5upx;
+        margin-left: 10upx;
+        border-radius: 15upx;
+    }
+    /* 关注按钮样式 */
+    .common-list-r>view:nth-child(1)>view:last-child{
+        background: #EEEEEE;
+        padding: 0 10upx;
+        font-size: small;
+    }
+    .common-list-r>view:nth-child(2){
+        font-size: medium;
+        padding: 12upx 0;
+    }
+    .common-list-r>view:nth-child(3){
+        position: relative;
+    }
+    .common-list-r>view:nth-child(3)>image{
+        width:100%;
+        border-radius: 10upx;
+        margin-bottom: 10upx;
+    }
+    .common-list-play,.common-list-playinfo{
+        position: absolute;
+        color: #FFFFFF;
+    }
+    .common-list-play{
+        font-size: 100upx;
+    }
+    .common-list-playinfo{
+        right: 10upx;
+        bottom: 10upx;
+        background: rgba(51,51,51,0.73);
+        border-radius: 20upx;
+        padding: 0 20upx;
+        font-size: 25upx;
+    }
+    /* 分享样式 */
+    .common-list-share{
+        background: #EEEEEE;
+       /* 宽度全部填充 */
+        width: 100%;
+        border-radius: 10upx;
+        padding: 10upx;
+    }
+    .common-list-share>image{
+        width: 200upx;
+        height: 150upx;
+        margin-right: 10upx;
+    }
+    .common-list-r>view:nth-child(4){
+        
+    }
+    
+    .common-list-r>view:nth-child(4)>view{
+        color: #AAAAAA;
+    } 
+    .common-list-r>view:nth-child(4)>view:first-child{
+        color: #AAAAAA;
+        font-size: smaller;
+    }
+    /* 点赞、评论、转发样式 */
+    .common-list-r>view:nth-child(4)>view:nth-child(2)>view{
+        margin-left: 10upx;
+        padding: 5upx;
+        font-size: small;
+    }
+</style>

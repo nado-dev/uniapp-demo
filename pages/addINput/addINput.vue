@@ -15,7 +15,7 @@
         <!-- 多行输入框 -->
         <view class="uni-textarea">
             <!-- v-mode 将文本输入框内容实时绑定 指定变量 内 -->
-            <textarea placeholder="说些什么吧" v-model="text"/>
+            <textarea placeholder="在发言前请先阅读相应板块版规" v-model="text"/>
         </view>
         
         <view >
@@ -70,11 +70,11 @@
                     confirmText: "保存",
                     success: res => {
                         if(res.confirm){
-                            alert("save");
+                            console.log("save");
                             // this.text = 
                         }
                         else{
-                             alert("dont save");
+                             console.log("dont save");
                         }
                         this.isTips2Save = true;
                         uni.navigateBack(

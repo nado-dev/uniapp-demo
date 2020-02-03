@@ -1,0 +1,31 @@
+
+.topic-nav.data-v-85e77b94{
+    /* border: 1upx solid; */
+    border-bottom: 1rpx solid #eeeeee;
+    border-top: 1rpx solid #eeeeee;
+    padding: 20rpx;
+} 
+/* 热门第一行 */
+.topic-nav>view.data-v-85e77b94:first-child{
+    margin-bottom: 10rpx;
+}
+.topic-nav>view:first-child>view.data-v-85e77b94:first-child{
+    color: #333333;
+    font-size: 32rpx;
+}
+.topic-nav>view:first-child>view.data-v-85e77b94:last-child{
+    color: #9E9E9E;
+} 
+/* 热门第二行 */
+.topic-nav>view.data-v-85e77b94:last-child{
+}
+.topic-nav>view:last-child>view.data-v-85e77b94{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+            flex: 1;
+    background-color: #EEEEEE;
+    color: #9E9E9E;
+    border-radius: 10rpx;
+    margin: 0 10rpx;
+}  
+
