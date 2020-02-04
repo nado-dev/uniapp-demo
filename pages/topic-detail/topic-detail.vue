@@ -241,7 +241,7 @@
         getData(){
             setTimeout(()=> {
             //1.获取数据
-            let arr=[
+            var arr=[
                 //图文样式 PicTextStyle:true,
                 {
                     userPic:"../../static/demo/userpic/10.jpg",
@@ -309,10 +309,7 @@
                 //3.关闭下拉刷新
                 uni.stopPullDownRefresh();}, 2000);
             },
-            //点击切换
-            changeTab(index) {
-                this.tabIndex = index;
-            },
+            
             
             //上拉加载
             loadMore(){
@@ -358,7 +355,7 @@
 			tabSwitch(index){
 			    //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
 			    this.tabIndex = index;
-			    //alert(index)
+			    //console.log(index)
 			},
 		}
 	}

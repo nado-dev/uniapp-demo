@@ -65,7 +65,7 @@
     .nav-left>view {
         display: 1;
         text-align: left;
-        font-size: 57upx;
+        font-size: 38upx;
         color: #FFFFFF;
     
     }
@@ -78,7 +78,7 @@
     .nav-right>view {
         display: 1;
         text-align: right;
-        font-size: 57upx;
+        font-size: 38upx;
         color: #FFFFFF;
     
     }

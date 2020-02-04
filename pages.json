@@ -50,7 +50,34 @@
         ,{
             "path" : "pages/paper/paper",
             "style" : {
-                "navigationBarTitleText":"消息"
+                "enablePullDownRefresh":true,
+                "navigationBarTitleText":"消息",
+                "app-plus":{
+                    "titleNView":{
+                        "buttons":[
+                            //左边 
+                            {
+                                "color":"#FFFFFF",
+                                "colorPressed":"#BBBBBB",
+                                "float":"left",
+                                "fontSize":"24px",
+                                "fontSrc":"/static/font/icon.ttf",
+                                "text":"\ue845"
+                                
+                            },
+                            //右边 
+                            {
+                                "color":"#FFFFFF",
+                                "colorPressed":"#BBBBBB",
+                                "float":"right",
+                                "fontSize":"24px",
+                                "fontSrc":"/static/font/icon.ttf",
+                                "text":"\ue684"
+                                
+                            }
+                        ]
+                    }
+                }
             }
         }
         ,{
@@ -98,14 +125,17 @@
             "path" : "pages/topic-nav/topic-nav",
             "style" : {
                 "navigationBarTitleText":"话题分类",
+                
                 "app-plus":{
                     "bounce":"vertical"
+                    
                 }
             }
         }
         ,{
             "path" : "pages/topic-detail/topic-detail",
             "style" : {
+                "navigationBarTitleText":"话题详情",
                 "enablePullDownRefresh":true,
                 "app-plus":{
                     "scrollIndicator":"none",
@@ -122,9 +152,57 @@
                 }
             }
         }
+        ,{
+            "path" : "pages/user-list/user-list",
+            "style" : {
+                "navigationBarTitleText":"我的好友",                
+                "app-plus":{
+                    "animationType":"slide-in-left",
+                    "scrollIndicator":"none",//隐藏滚动条
+                    "titleNView":{
+                        //搜索框配置
+                        "autoBackButton":false,
+                        "searchInput":{
+                            "align":"left",//位置
+                            "backgroundColor":"#F7F7F7",
+                            "borderRadius":"4px",//圆角半径
+                            "placeholder":"(=ﾟωﾟ)=",//提示文字
+                            "disabled":false//是否禁用输入
+                        }
+                       
+                    }
+                }
+                
+            }
+        }
+        ,{
+            "path" : "pages/user-chat/user-chat",
+            "style" : {
+                "navigationBarTitleText":"聊天页面",
+                "app-plus":{
+                    "titleNView":{
+                        "buttons":[ //标题栏按钮样式                           
+                            
+                            //右边 
+                            {
+                                "color":"#FFFFFF",
+                                "colorPressed":"#BBBBBB",
+                                "float":"right",
+                                "fontSize":"24px",
+                                "fontSrc":"/static/font/icon.ttf",
+                                "text":"\ue628"
+                                
+                            }
+                            
+                        ]
+                    }
+                }
+            }
+        }
     ],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		// "navigationBarTextStyle": "light",
+        "transparentTitle":"none"	,
 		"navigationBarTitleText": "demo",
 		"navigationBarBackgroundColor": "#009687",
 		"backgroundColor": "#F8F8F8"

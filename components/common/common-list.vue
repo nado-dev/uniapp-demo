@@ -10,8 +10,8 @@
             <view class="u-f-ac u-f-jsb">
                 <!-- 右一左边 昵称 性别+年龄 -->
                 <view class="u-f-ac">{{item.userName}}
-                <view class="tag-age-gender" 
-                :class="[item.gender==0?'icon iconfont icon-nan':'icon iconfont icon-nv']">{{item.age}}</view></view>
+                    <tag-gender-age :gender="item.gender" :age="item.age"></tag-gender-age>
+                </view>
                 <!-- 右一右边 关注按钮-->
                 <view v-if="!isFollow" 
                 class="icon iconfont icon-zengjia" @tap="follow()">关注</view>
@@ -52,10 +52,14 @@
 </template>
 
 <script>
+    import tagGenderAge from './tag-gender-age.vue';
     export default {
         props:{           
             item:Object,
             index:Number           
+        },
+        components:{
+            tagGenderAge
         },
         data() {
             return {
@@ -106,29 +110,23 @@
     /* 昵称 年龄+性别样式 */
     .common-list-r>view:nth-child(1)>view:first-child{
         color: #999999;
-        font-size: 30upx;
+        font-size: 28upx;
         line-height: 0;
     }
-    .tag-age-gender{
-        background: #009687;
-        color: #FFFFFF;
-        font-size: 23upx;
-        padding: 0 5upx;
-        margin-left: 10upx;
-        border-radius: 15upx;
-    }
+
     /* 关注按钮样式 */
     .common-list-r>view:nth-child(1)>view:last-child{
         background: #EEEEEE;
         padding: 0 10upx;
-        font-size: small;
+        font-size: 28upx;
     }
     .common-list-r>view:nth-child(2){
-        font-size: medium;
+        font-size: 26upx;
         padding: 12upx 0;
     }
     .common-list-r>view:nth-child(3){
         position: relative;
+        font-size: 24upx;
     }
     .common-list-r>view:nth-child(3)>image{
         width:100%;
@@ -145,7 +143,7 @@
     .common-list-playinfo{
         right: 10upx;
         bottom: 10upx;
-        background: rgba(51,51,51,0.73);
+        background: rgba(51,51,51,0.5);
         border-radius: 20upx;
         padding: 0 20upx;
         font-size: 25upx;
@@ -164,7 +162,7 @@
         margin-right: 10upx;
     }
     .common-list-r>view:nth-child(4){
-        
+     
     }
     
     .common-list-r>view:nth-child(4)>view{
@@ -172,12 +170,13 @@
     } 
     .common-list-r>view:nth-child(4)>view:first-child{
         color: #AAAAAA;
-        font-size: smaller;
+        font-size: 20upx !important;
+        
     }
     /* 点赞、评论、转发样式 */
     .common-list-r>view:nth-child(4)>view:nth-child(2)>view{
         margin-left: 10upx;
         padding: 5upx;
-        font-size: small;
+        font-size: 20upx !important;
     }
 </style>

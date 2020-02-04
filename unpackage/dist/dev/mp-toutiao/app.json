@@ -6,7 +6,8 @@
     "pages/news/news",
     "pages/search/search",
     "pages/addINput/addINput",
-    "pages/topic-nav/topic-nav"
+    "pages/topic-nav/topic-nav",
+    "pages/topic-detail/topic-detail"
   ],
   "subPackages": [],
   "window": {

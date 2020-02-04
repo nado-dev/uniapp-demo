@@ -7,7 +7,7 @@
                 <view class="swiper-tab-list" 
                 :class="{'active':tabIndex == index}"
                 @tap="tabSwitch(index)" >
-                    {{tab.name}}
+                    {{tab.name}} {{tab.num?tab.num:""}}
                     <view class="swiper-tab-underLine"> </view>
                 </view>
             </block>
@@ -34,11 +34,12 @@
 <style>
     .swiper-tab-list{
         color: #969696;
+        font-size: 30upx;
         font-weight: bold;
     }
     .uni-tab-bar .active{
         color: #343434;
-        font-size:medium;
+        font-size:38upx;
     }
     .active .swiper-tab-underLine{
         border: 1upx solid #009687;

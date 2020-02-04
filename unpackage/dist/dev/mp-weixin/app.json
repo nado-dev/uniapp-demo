@@ -7,11 +7,13 @@
     "pages/search/search",
     "pages/addINput/addINput",
     "pages/topic-nav/topic-nav",
-    "pages/topic-detail/topic-detail"
+    "pages/topic-detail/topic-detail",
+    "pages/user-list/user-list"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
+    "transparentTitle": "none",
     "navigationBarTitleText": "demo",
     "navigationBarBackgroundColor": "#009687",
     "backgroundColor": "#F8F8F8"
@@ -48,6 +50,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap13.json"
+  "usingComponents": {}
 }

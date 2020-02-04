@@ -88,14 +88,14 @@
                     ],
                     list:[
                         {
-                            titlePic:"../../static/demo/topicpic/5.jpeg",
+                            titlePic:"../../static/common/zheshiluwei.jpg",
                             title:"这是芦苇",
                             desc:"想歪的自重",
                             totalPostNum:148,
                             todayPostNum:7
                         },
                         {
-                            titlePic:"../../static/demo/topicpic/5.jpeg",
+                            titlePic:"../../static/common/zheshiluwei.jpg",
                             title:"这是芦苇",
                             desc:"想歪的自重",
                             totalPostNum:148,
@@ -274,10 +274,11 @@
 .topic-swiper{
 /*    border: 1upx solid; */
     padding: 0 20upx 20upx 20upx;
+    /* height: 100% !important; */
 }
 .topic-swiper image{
     width: 100%;
-    border-radius: 20upx;
+    border-radius: 20upx;   
 }
 .topic-new{
     padding: 20upx;

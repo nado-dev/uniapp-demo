@@ -7,7 +7,7 @@
         @clickLeft="back" @clickRight="submit"
         backgroundColor="#009687"
         color="#ffffff" >
-            <view class="u-f-ajc" @tap="changeVisibility()" >
+            <view class="u-f-ajc" @tap="changeVisibility()" style="font-size: 24upx;">
                 {{visiblity}}
                 <view class="icon iconfont icon-xialazhankai"></view>
             </view>
@@ -18,9 +18,9 @@
             <textarea placeholder="在发言前请先阅读相应板块版规" v-model="text"/>
         </view>
         
-        <view >
+       <!-- <view >
             文本框输入内容为{{text}}
-        </view>
+        </view> -->
         
         <!-- 上传多图 -->
         <!-- 监听了upload事件，接受子组件传来的imgList -->
@@ -32,10 +32,10 @@
                 <view class="u-f-ajc">
                     <image src="../../static/common/ACnyn.png" mode="widthFix"></image>                        
                 </view>     
-                <view> * 请不要发表<strong>涉政敏感信息</strong>，遵守相关法律法规。</view>
-                <view> * 请遵循<strong>总版规和各版块分版规</strong></view>
-                <view> * 发布内容前提为<strong>理解并愿意遵守所有版规及免责声明</strong></view>
-                <button type="primary" @tap="hidePopup()" size="mini">我同意并接受相关条款</button>
+                <view style="font-size: 24upx;"> * 请不要发表涉政敏感信息，遵守相关法律法规。</view>
+                <view style="font-size: 24upx;"> * 请遵循总版规和各版块分版规。</view>
+                <view style="font-size: 24upx;"> * 发布内容前提为理解并愿意遵守所有版规及免责声明。</view>
+                <button type="primary" @tap="hidePopup()" >我同意并接受相关条款</button>
             </view>
         </uni-popup>
 	</view>
@@ -100,7 +100,7 @@
             },
             //发布
             submit(){
-                alert("发布")
+                console.log("发布")
             },
             changeVisibility(){
                 uni.showActionSheet({

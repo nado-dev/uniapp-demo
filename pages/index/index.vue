@@ -143,12 +143,12 @@
 			tabSwitch(index){
                 //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
                 this.tabIndex = index;
-                //alert(index)
+                //console.log(index)
             },
             //tabBar滑动事件
             tabChange(e){
                 this.tabIndex = e.detail.current;
-                //alert(index);
+                //console.log(index);
             },
             //上拉加载更多
             loadMore(index){

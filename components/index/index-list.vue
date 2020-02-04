@@ -188,6 +188,7 @@
     justify-content: space-between; /* 靠边 */
     align-items: center;
     padding: 15upx 0;
+    font-size: 34upx;
 }
 .index-list4>view:first-child{ 
     display: flex;
@@ -202,6 +203,7 @@
 }
 /* 第四层 所有的图标和数字的组合 */
 .index-list4>view>view{
+    
     display: flex;
     align-items: center;
 }
@@ -232,5 +234,6 @@
 }
 .index-list4 .active,.index-list4 .active>view{
     color: #009687;
+    font-size: 38upx;
 }
 </style>
