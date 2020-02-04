@@ -4,4 +4,5 @@ uni-app demo
 
 个人学习用
 ***
-[教程](https://www.bilibili.com/video/av83114290)
+[课程](https://study.163.com/course/introduction.htm?courseId=1209188809#/courseDetail?tab=1)
+[其他](https://www.bilibili.com/video/av83114290)
