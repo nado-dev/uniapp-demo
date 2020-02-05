@@ -131,30 +131,154 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 90));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 111));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 104));};var _default =
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  components: {
+    indexList: indexList,
+    emptyContent: emptyContent,
+    loadMore: loadMore },
+
+  data: function data() {
+    return {
+      isSearch: false,
+      loadText: "上拉加载更多",
+      list: [],
+      keyword: "" };
 
   },
-  methods: {},
+  methods: {
+    //搜索事件
+    getData: function getData(val) {var _this = this;
+      uni.showLoading({
+        isSearch: false,
+        title: '搜索中',
+        mask: false });
 
+      //请求服务端 post keyword:value
+      setTimeout(function () {
+        _this.isSearch = true;
+        var arr = [
+
+        {
+          userPic: "../../static/demo/userpic/1.jpg",
+          userName: "new昵称",
+          isFollow: false,
+          title: "标题",
+          type: "img", //image 图文 ，video 视频
+          titlePic: "../../static/demo/datapic/1.jpg",
+          likeInfo: {
+            index: 2, //0：未操作，1：已顶，2：已踩
+            likeNum: 11,
+            dislikeNum: 11 },
+
+
+          commentNum: 10,
+          shareNum: 10 },
+
+        {
+          userPic: "../../static/demo/userpic/1.jpg",
+          userName: "new昵称",
+          isFollow: true,
+          title: "标题",
+          type: "video", //image 图文 ，video 视频
+          titlePic: "../../static/demo/datapic/1.jpg",
+          playNum: "20w",
+          length: "2:47",
+          likeInfo: {
+            index: 1, //0：未操作，1：已顶，2：已踩
+            likeNum: 11,
+            dislikeNum: 11 },
+
+
+          commentNum: 10,
+          shareNum: 10 }];
+
+
+
+        _this.list = arr;
+        uni.hideLoading();
+      }, 1000);
+
+    },
+    //上拉加载更多
+    loadMore: function loadMore() {var _this2 = this;
+      if (this.loadText != "上拉加载更多") {
+        return; //如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
+      }
+      this.loadText = "加载中(＾o＾)ﾉ";
+      //修改状态
+      setTimeout(function () {
+        //示例:加载2000ms后从服务端获取了新的数据
+        var obj = {
+          userPic: "../../static/demo/userpic/1.jpg",
+          userName: "昵称",
+          isFollow: false,
+          title: "标题",
+          type: "img", //image 图文 ，video 视频
+          titlePic: "../../static/demo/datapic/1.jpg",
+          likeInfo: {
+            index: 2, //0：未操作，1：已顶，2：已踩
+            likeNum: 11,
+            dislikeNum: 11 },
+
+
+          commentNum: 10,
+          shareNum: 10 };
+
+        _this2.list.push(obj); //追加
+
+        _this2.loadText = "上拉加载更多"; //复原状态              
+      }, 2000);
+
+      //this.loadText = "没有更多数据";
+
+    } },
 
   //监听搜索框文本变化
   onNavigationBarSearchInputChanged: function onNavigationBarSearchInputChanged(e) {
     console.log(JSON.stringify(e.text));
+    // if(e.text){
+    //     this.getData(e.text)
+    // }
   },
   //监听搜索框文本确认
   onNavigationBarSearchInputConfirmed: function onNavigationBarSearchInputConfirmed(e) {
+
     console.log(JSON.stringify(e.text));
+    if (e.text) {
+      this.getData(e.text);
+    }
+    this.keyword = e.text;
+  },
+  onReachBottom: function onReachBottom() {
+    this.loadMore();
+  },
+  onPullDownRefresh: function onPullDownRefresh() {
+    this.getData(this.keyword);
+    uni.stopPullDownRefresh();
   } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

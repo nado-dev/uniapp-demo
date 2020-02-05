@@ -1655,19 +1655,19 @@ function normalizeComponent (
 
 /***/ }),
 
-/***/ 150:
+/***/ 163:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 151);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 164);
 
 
 /***/ }),
 
-/***/ 151:
+/***/ 164:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -1698,7 +1698,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 152);
+module.exports = __webpack_require__(/*! ./runtime */ 165);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -1715,7 +1715,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 152:
+/***/ 165:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -2444,148 +2444,6 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ 195:
-/*!****************************************************!*\
-  !*** D:/uniapp/demo/components/uni-icons/icons.js ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
-  "pulldown": "\uE588",
-  "refreshempty": "\uE461",
-  "back": "\uE471",
-  "forward": "\uE470",
-  "more": "\uE507",
-  "more-filled": "\uE537",
-  "scan": "\uE612",
-  "qq": "\uE264",
-  "weibo": "\uE260",
-  "weixin": "\uE261",
-  "pengyouquan": "\uE262",
-  "loop": "\uE565",
-  "refresh": "\uE407",
-  "refresh-filled": "\uE437",
-  "arrowthindown": "\uE585",
-  "arrowthinleft": "\uE586",
-  "arrowthinright": "\uE587",
-  "arrowthinup": "\uE584",
-  "undo-filled": "\uE7D6",
-  "undo": "\uE406",
-  "redo": "\uE405",
-  "redo-filled": "\uE7D9",
-  "bars": "\uE563",
-  "chatboxes": "\uE203",
-  "camera": "\uE301",
-  "chatboxes-filled": "\uE233",
-  "camera-filled": "\uE7EF",
-  "cart-filled": "\uE7F4",
-  "cart": "\uE7F5",
-  "checkbox-filled": "\uE442",
-  "checkbox": "\uE7FA",
-  "arrowleft": "\uE582",
-  "arrowdown": "\uE581",
-  "arrowright": "\uE583",
-  "smallcircle-filled": "\uE801",
-  "arrowup": "\uE580",
-  "circle": "\uE411",
-  "eye-filled": "\uE568",
-  "eye-slash-filled": "\uE822",
-  "eye-slash": "\uE823",
-  "eye": "\uE824",
-  "flag-filled": "\uE825",
-  "flag": "\uE508",
-  "gear-filled": "\uE532",
-  "reload": "\uE462",
-  "gear": "\uE502",
-  "hand-thumbsdown-filled": "\uE83B",
-  "hand-thumbsdown": "\uE83C",
-  "hand-thumbsup-filled": "\uE83D",
-  "heart-filled": "\uE83E",
-  "hand-thumbsup": "\uE83F",
-  "heart": "\uE840",
-  "home": "\uE500",
-  "info": "\uE504",
-  "home-filled": "\uE530",
-  "info-filled": "\uE534",
-  "circle-filled": "\uE441",
-  "chat-filled": "\uE847",
-  "chat": "\uE263",
-  "mail-open-filled": "\uE84D",
-  "email-filled": "\uE231",
-  "mail-open": "\uE84E",
-  "email": "\uE201",
-  "checkmarkempty": "\uE472",
-  "list": "\uE562",
-  "locked-filled": "\uE856",
-  "locked": "\uE506",
-  "map-filled": "\uE85C",
-  "map-pin": "\uE85E",
-  "map-pin-ellipse": "\uE864",
-  "map": "\uE364",
-  "minus-filled": "\uE440",
-  "mic-filled": "\uE332",
-  "minus": "\uE410",
-  "micoff": "\uE360",
-  "mic": "\uE302",
-  "clear": "\uE434",
-  "smallcircle": "\uE868",
-  "close": "\uE404",
-  "closeempty": "\uE460",
-  "paperclip": "\uE567",
-  "paperplane": "\uE503",
-  "paperplane-filled": "\uE86E",
-  "person-filled": "\uE131",
-  "contact-filled": "\uE130",
-  "person": "\uE101",
-  "contact": "\uE100",
-  "images-filled": "\uE87A",
-  "phone": "\uE200",
-  "images": "\uE87B",
-  "image": "\uE363",
-  "image-filled": "\uE877",
-  "location-filled": "\uE333",
-  "location": "\uE303",
-  "plus-filled": "\uE439",
-  "plus": "\uE409",
-  "plusempty": "\uE468",
-  "help-filled": "\uE535",
-  "help": "\uE505",
-  "navigate-filled": "\uE884",
-  "navigate": "\uE501",
-  "mic-slash-filled": "\uE892",
-  "search": "\uE466",
-  "settings": "\uE560",
-  "sound": "\uE590",
-  "sound-filled": "\uE8A1",
-  "spinner-cycle": "\uE465",
-  "download-filled": "\uE8A4",
-  "personadd-filled": "\uE132",
-  "videocam-filled": "\uE8AF",
-  "personadd": "\uE102",
-  "upload": "\uE402",
-  "upload-filled": "\uE8B1",
-  "starhalf": "\uE463",
-  "star-filled": "\uE438",
-  "star": "\uE408",
-  "trash": "\uE401",
-  "phone-filled": "\uE230",
-  "compose": "\uE400",
-  "videocam": "\uE300",
-  "trash-filled": "\uE8DC",
-  "download": "\uE403",
-  "chatbubble-filled": "\uE232",
-  "chatbubble": "\uE202",
-  "cloud-download": "\uE8E4",
-  "cloud-upload-filled": "\uE8E5",
-  "cloud-upload": "\uE8E6",
-  "cloud-download-filled": "\uE8E9",
-  "headphones": "\uE8BF",
-  "shop": "\uE609" };exports.default = _default;
 
 /***/ }),
 
@@ -8620,6 +8478,148 @@ internalMixin(Vue);
 
 /***/ }),
 
+/***/ 236:
+/*!****************************************************!*\
+  !*** D:/uniapp/demo/components/uni-icons/icons.js ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  "pulldown": "\uE588",
+  "refreshempty": "\uE461",
+  "back": "\uE471",
+  "forward": "\uE470",
+  "more": "\uE507",
+  "more-filled": "\uE537",
+  "scan": "\uE612",
+  "qq": "\uE264",
+  "weibo": "\uE260",
+  "weixin": "\uE261",
+  "pengyouquan": "\uE262",
+  "loop": "\uE565",
+  "refresh": "\uE407",
+  "refresh-filled": "\uE437",
+  "arrowthindown": "\uE585",
+  "arrowthinleft": "\uE586",
+  "arrowthinright": "\uE587",
+  "arrowthinup": "\uE584",
+  "undo-filled": "\uE7D6",
+  "undo": "\uE406",
+  "redo": "\uE405",
+  "redo-filled": "\uE7D9",
+  "bars": "\uE563",
+  "chatboxes": "\uE203",
+  "camera": "\uE301",
+  "chatboxes-filled": "\uE233",
+  "camera-filled": "\uE7EF",
+  "cart-filled": "\uE7F4",
+  "cart": "\uE7F5",
+  "checkbox-filled": "\uE442",
+  "checkbox": "\uE7FA",
+  "arrowleft": "\uE582",
+  "arrowdown": "\uE581",
+  "arrowright": "\uE583",
+  "smallcircle-filled": "\uE801",
+  "arrowup": "\uE580",
+  "circle": "\uE411",
+  "eye-filled": "\uE568",
+  "eye-slash-filled": "\uE822",
+  "eye-slash": "\uE823",
+  "eye": "\uE824",
+  "flag-filled": "\uE825",
+  "flag": "\uE508",
+  "gear-filled": "\uE532",
+  "reload": "\uE462",
+  "gear": "\uE502",
+  "hand-thumbsdown-filled": "\uE83B",
+  "hand-thumbsdown": "\uE83C",
+  "hand-thumbsup-filled": "\uE83D",
+  "heart-filled": "\uE83E",
+  "hand-thumbsup": "\uE83F",
+  "heart": "\uE840",
+  "home": "\uE500",
+  "info": "\uE504",
+  "home-filled": "\uE530",
+  "info-filled": "\uE534",
+  "circle-filled": "\uE441",
+  "chat-filled": "\uE847",
+  "chat": "\uE263",
+  "mail-open-filled": "\uE84D",
+  "email-filled": "\uE231",
+  "mail-open": "\uE84E",
+  "email": "\uE201",
+  "checkmarkempty": "\uE472",
+  "list": "\uE562",
+  "locked-filled": "\uE856",
+  "locked": "\uE506",
+  "map-filled": "\uE85C",
+  "map-pin": "\uE85E",
+  "map-pin-ellipse": "\uE864",
+  "map": "\uE364",
+  "minus-filled": "\uE440",
+  "mic-filled": "\uE332",
+  "minus": "\uE410",
+  "micoff": "\uE360",
+  "mic": "\uE302",
+  "clear": "\uE434",
+  "smallcircle": "\uE868",
+  "close": "\uE404",
+  "closeempty": "\uE460",
+  "paperclip": "\uE567",
+  "paperplane": "\uE503",
+  "paperplane-filled": "\uE86E",
+  "person-filled": "\uE131",
+  "contact-filled": "\uE130",
+  "person": "\uE101",
+  "contact": "\uE100",
+  "images-filled": "\uE87A",
+  "phone": "\uE200",
+  "images": "\uE87B",
+  "image": "\uE363",
+  "image-filled": "\uE877",
+  "location-filled": "\uE333",
+  "location": "\uE303",
+  "plus-filled": "\uE439",
+  "plus": "\uE409",
+  "plusempty": "\uE468",
+  "help-filled": "\uE535",
+  "help": "\uE505",
+  "navigate-filled": "\uE884",
+  "navigate": "\uE501",
+  "mic-slash-filled": "\uE892",
+  "search": "\uE466",
+  "settings": "\uE560",
+  "sound": "\uE590",
+  "sound-filled": "\uE8A1",
+  "spinner-cycle": "\uE465",
+  "download-filled": "\uE8A4",
+  "personadd-filled": "\uE132",
+  "videocam-filled": "\uE8AF",
+  "personadd": "\uE102",
+  "upload": "\uE402",
+  "upload-filled": "\uE8B1",
+  "starhalf": "\uE463",
+  "star-filled": "\uE438",
+  "star": "\uE408",
+  "trash": "\uE401",
+  "phone-filled": "\uE230",
+  "compose": "\uE400",
+  "videocam": "\uE300",
+  "trash-filled": "\uE8DC",
+  "download": "\uE403",
+  "chatbubble-filled": "\uE232",
+  "chatbubble": "\uE202",
+  "cloud-download": "\uE8E4",
+  "cloud-upload-filled": "\uE8E5",
+  "cloud-upload": "\uE8E6",
+  "cloud-download-filled": "\uE8E9",
+  "headphones": "\uE8BF",
+  "shop": "\uE609" };exports.default = _default;
+
+/***/ }),
+
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -9569,7 +9569,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": {}, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" } }, "globalStyle": { "navigationBarTextStyle": "white", "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
@@ -9582,6 +9582,103 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "appid": "__UNI__D19B260" };exports.default = _default;
+
+/***/ }),
+
+/***/ 83:
+/*!*************************************!*\
+  !*** D:/uniapp/demo/common/time.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var gettime = {
+  // 计算当前日期星座
+  getHoroscope: function getHoroscope(date) {
+    var c = ['摩羯', '水瓶', '双鱼', '白羊', '金牛', '双子', '巨蟹', '狮子', '处女', '天秤', '天蝎', '射手', '摩羯'];
+    date = new Date(date);
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var startMonth = month - (day - 14 < '865778999988'.charAt(month));
+    return c[startMonth] + '座';
+  },
+  // 计算指定时间与当前的时间差
+  sumAge: function sumAge(data) {
+    var dateBegin = new Date(data.replace(/-/g, "/"));
+    var dateEnd = new Date(); //获取当前时间
+    var dateDiff = dateEnd.getTime() - dateBegin.getTime(); //时间差的毫秒数
+    var dayDiff = Math.floor(dateDiff / (24 * 3600 * 1000)); //计算出相差天数
+    var leave1 = dateDiff % (24 * 3600 * 1000); //计算天数后剩余的毫秒数
+    var hours = Math.floor(leave1 / (3600 * 1000)); //计算出小时数
+    //计算相差分钟数
+    var leave2 = leave1 % (3600 * 1000); //计算小时数后剩余的毫秒数
+    var minutes = Math.floor(leave2 / (60 * 1000)); //计算相差分钟数
+    //计算相差秒数
+    var leave3 = leave2 % (60 * 1000); //计算分钟数后剩余的毫秒数
+    var seconds = Math.round(leave3 / 1000);
+    return dayDiff + "天 " + hours + "小时 ";
+  },
+  // 获取聊天时间（相差300s内的信息不会显示时间）
+  getChatTime: function getChatTime(v1, v2) {
+    v1 = v1.toString().length < 13 ? v1 * 1000 : v1;
+    v2 = v2.toString().length < 13 ? v2 * 1000 : v2;
+    if ((parseInt(v1) - parseInt(v2)) / 1000 > 300) {
+      return this.gettime(v1);
+    }
+  },
+  // 人性化时间格式
+  gettime: function gettime(shorttime) {
+    shorttime = shorttime.toString().length < 13 ? shorttime * 1000 : shorttime;
+    var now = new Date().getTime();
+    var cha = (now - parseInt(shorttime)) / 1000;
+
+    if (cha < 43200) {
+      // 当天
+      return this.dateFormat(new Date(shorttime), "{A} {t}:{ii}");
+    } else if (cha < 518400) {
+      // 隔天 显示日期+时间
+      return this.dateFormat(new Date(shorttime), "{Mon}月{DD}日 {A} {t}:{ii}");
+    } else {
+      // 隔年 显示完整日期+时间
+      return this.dateFormat(new Date(shorttime), "{Y}-{MM}-{DD} {A} {t}:{ii}");
+    }
+  },
+
+  parseNumber: function parseNumber(num) {
+    return num < 10 ? "0" + num : num;
+  },
+
+  dateFormat: function dateFormat(date, formatStr) {
+    var dateObj = {},
+    rStr = /\{([^}]+)\}/,
+    mons = ['一', '二', '三', '四', '五', '六', '七', '八', '九', '十', '十一', '十二'];
+
+    dateObj["Y"] = date.getFullYear();
+    dateObj["M"] = date.getMonth() + 1;
+    dateObj["MM"] = this.parseNumber(dateObj["M"]);
+    dateObj["Mon"] = mons[dateObj['M'] - 1];
+    dateObj["D"] = date.getDate();
+    dateObj["DD"] = this.parseNumber(dateObj["D"]);
+    dateObj["h"] = date.getHours();
+    dateObj["hh"] = this.parseNumber(dateObj["h"]);
+    dateObj["t"] = dateObj["h"] > 12 ? dateObj["h"] - 12 : dateObj["h"];
+    dateObj["tt"] = this.parseNumber(dateObj["t"]);
+    dateObj["A"] = dateObj["h"] > 12 ? '下午' : '上午';
+    dateObj["i"] = date.getMinutes();
+    dateObj["ii"] = this.parseNumber(dateObj["i"]);
+    dateObj["s"] = date.getSeconds();
+    dateObj["ss"] = this.parseNumber(dateObj["s"]);
+
+    while (rStr.test(formatStr)) {
+      formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
+    }
+    return formatStr;
+  } };var _default =
+
+
+{
+  gettime: gettime };exports.default = _default;
 
 /***/ })
 

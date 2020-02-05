@@ -131,20 +131,237 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 97));};var tagGenderAge = function tagGenderAge() {return __webpack_require__.e(/*! import() | components/common/tag-gender-age */ "components/common/tag-gender-age").then(__webpack_require__.bind(null, /*! ../../components/common/tag-gender-age.vue */ 189));};var userList = function userList() {return __webpack_require__.e(/*! import() | components/user-list/user-list */ "components/user-list/user-list").then(__webpack_require__.bind(null, /*! ../../components/user-list/user-list.vue */ 196));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 104));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 111));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
+  components: {
+    swiperTabHead: swiperTabHead,
+    tagGenderAge: tagGenderAge,
+    userList: userList,
+    loadMore: loadMore,
+    emptyContent: emptyContent },
+
   data: function data() {
-    return {};
+    return {
+      swiperHeight: 500,
+      tabIndex: 0,
+      tabBars: [
+      { name: "互关", id: "huguan", num: 10 },
+      { name: "关注", id: "guanzhu", num: 20 },
+      { name: "粉丝", id: "fensi", num: 23 }],
+
+      tabList: [
+      {
+        loadText: "上拉加载更多",
+        list: [
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "1ATM",
+          gender: 1,
+          age: 28,
+          isFollow: true },
+
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false },
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false }] },
+
+
+
+      {
+        loadText: "上拉加载更多",
+        list: [
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "2ATM",
+          gender: 1,
+          age: 28,
+          isFollow: true },
+
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false }] },
+
+
+
+      {
+        loadText: "上拉加载更多",
+        list: [
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "3ATM",
+          gender: 1,
+          age: 28,
+          isFollow: true },
+
+        {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "ATM",
+          gender: 0,
+          age: 28,
+          isFollow: false }] }] };
+
+
+
+
+
+
 
 
   },
-  methods: {} };exports.default = _default;
+  onLoad: function onLoad() {var _this = this;
+    uni.getSystemInfo({
+      success: function success(res) {
+        var height = res.windowHeight - uni.upx2px(100); //tabBar的高度是100upx
+        _this.swiperHeight = height;
+      } });
+
+  },
+  methods: {
+    tabSwitch: function tabSwitch(index) {
+      //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
+      this.tabIndex = index;
+      //console.log(index)
+    },
+    follow: function follow() {
+      this.item.isFollow != this.item.isFollow;
+    },
+    //tabBar滑动事件
+    tabChange: function tabChange(e) {
+      this.tabIndex = e.detail.current;
+      //console.log(index);
+    },
+    loadMore: function loadMore(index) {var _this2 = this;
+      if (this.tabList[index].loadText != "上拉加载更多") {
+        return; //如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
+      }
+      this.tabList[index].loadText = "加载中(＾o＾)ﾉ";
+      //修改状态
+      setTimeout(function () {
+        //示例:加载2000ms后从服务端获取了新的数据
+        var obj = {
+          userpic: "../../static/demo/userpic/2.jpg",
+          name: "reATM",
+          gender: 1,
+          age: 28,
+          isFollow: true };
+
+        _this2.tabList[index].list.push(obj); //追加
+
+        _this2.tabList[index].loadText = "上拉加载更多"; //复原状态              
+      }, 2000);
+
+      //this.tabList[index].loadText = "没有更多数据";
+
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })
 

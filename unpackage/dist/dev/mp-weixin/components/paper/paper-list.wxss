@@ -4,8 +4,8 @@
     padding: 20rpx 0;
 }
 .paper-list>image.data-v-021f95cf{
-    width: 100rpx;
-    height: 100rpx;
+    width: 80rpx;
+    height: 80rpx;
     border-radius: 100%;
     margin-right: 20rpx;
     -webkit-flex-shrink: 0;
@@ -18,7 +18,7 @@
 }
 /* 昵称样式 */
 .paper-list>view>view.data-v-021f95cf:first-child{
-    font-size: large;
+    font-size: 28rpx;
 }
 /* 时间样式 */
 .paper-list>view>view:first-child>view.data-v-021f95cf{

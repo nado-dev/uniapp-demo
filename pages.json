@@ -94,6 +94,7 @@
         ,{
             "path" : "pages/search/search",
             "style": {
+                "enablePullDownRefresh":true,
             	"app-plus":{                
                     "scrollIndicator":"none",//隐藏滚动条
                     "titleNView":{
@@ -199,10 +200,26 @@
                 }
             }
         }
+        ,{
+            "path" : "pages/detail/detail",
+            "style" : {
+                "navigationBarTitleText":"内容页",
+                "app-plus":{
+                    "scrollIndicator":"none",
+                    "titleNView":{
+                        "buttons":[
+                            {
+                                "type":"menu"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "light",
-        "transparentTitle":"none"	,
+        "transparentTitle":"none",
 		"navigationBarTitleText": "demo",
 		"navigationBarBackgroundColor": "#009687",
 		"backgroundColor": "#F8F8F8"

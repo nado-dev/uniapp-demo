@@ -1,4 +1,10 @@
 {
   "navigationBarTitleText": "我的好友",
-  "usingComponents": {}
+  "usingComponents": {
+    "swiper-tab-head": "/components/index/swiper-tab-head",
+    "tag-gender-age": "/components/common/tag-gender-age",
+    "user-list": "/components/user-list/user-list",
+    "load-more": "/components/common/load-more",
+    "empty-content": "/components/common/empty-content"
+  }
 }

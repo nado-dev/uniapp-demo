@@ -127,6 +127,9 @@
 
 
 
+
+
+
     /* scoped 声明该CSS样式只能被组件使用 */
 .mk1.data-v-7dea0143{
     font-size: 25rpx;
@@ -212,6 +215,7 @@
     -webkit-align-items: center;
             align-items: center;
     padding: 15rpx 0;
+    font-size: 34rpx;
 }
 .index-list4>view.data-v-7dea0143:first-child{ 
     display: -webkit-box; 
@@ -234,8 +238,11 @@
 }
 /* 第四层 所有的图标和数字的组合 */
 .index-list4>view>view.data-v-7dea0143{
+    
     display: -webkit-box;
+    
     display: -webkit-flex;
+    
     display: flex;
     -webkit-box-align: center;
     -webkit-align-items: center;
@@ -267,5 +274,6 @@
 }
 .index-list4 .active.data-v-7dea0143,.index-list4 .active>view.data-v-7dea0143{
     color: #009687;
+    font-size: 38rpx;
 }
 

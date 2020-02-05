@@ -1,5 +1,5 @@
 <template>
-    <view class="index-list animated fadeInLeft fast">
+    <view class="index-list animated fadeInLeft fast" @tap="openDetail">
         <!-- 第一层 -->
         <view class="index-list1">
             <!-- 左边 头像 昵称 -->
@@ -121,6 +121,9 @@
             //进入详情页
             openDetail(){
                 console.log("进入详情页");
+                uni.navigateTo({
+                    url:"../../pages/detail/detail?detailData="+JSON.stringify(this.item),
+                })
             }
         }
 	}

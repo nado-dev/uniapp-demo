@@ -8,11 +8,12 @@
     "pages/addINput/addINput",
     "pages/topic-nav/topic-nav",
     "pages/topic-detail/topic-detail",
-    "pages/user-list/user-list"
+    "pages/user-list/user-list",
+    "pages/user-chat/user-chat",
+    "pages/detail/detail"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "white",
     "transparentTitle": "none",
     "navigationBarTitleText": "demo",
     "navigationBarBackgroundColor": "#009687",

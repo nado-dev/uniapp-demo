@@ -1,0 +1,64 @@
+
+.user-chat-list{
+/*    border: 1upx solid; */
+    margin: 10rpx;
+    padding: 20rpx 0;
+}
+.user-chat-list>image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+}
+.user-chat-list-body{
+    /* border: 1upx solid; */
+    position: relative;
+    background: #F4F4F4;
+    padding: 25rpx;
+    margin-left: 25rpx;
+    margin-right: 100rpx;
+    border-radius: 50rpx;
+}
+/* 聊天消息图片样式 */
+.user-chat-list-body>image{
+    max-width: 150rpx;
+    max-height: 200rpx;
+}
+/* after:可用于在元素内容之前或之后插入生成的内容。 */
+.user-chat-list-body:after{
+    /* absolute:相对于 static 定位以外的第一个父元素进行定位。 */
+    position: absolute;
+    left: -30rpx;
+    right: 0;
+    top: 20rpx;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 20rpx  solid #F4F4F4;
+    /* 右边框颜色显示，其余边框颜色透明，自动做收缩处理 */
+    border-color: transparent #F4F4F4 transparent transparent;
+}
+.user-chat-me{      
+  /*  border: 1upx solid; */
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	        justify-content: flex-end;
+}
+.user-chat-me .user-chat-list-body{
+	margin-right: 20rpx;
+	margin-left: 100rpx;
+    /* border: 1upx solid; */
+}
+/* 用来表示层级关系 */
+.user-chat-me .user-chat-list-body:after {
+	left: auto;
+	right: -30rpx;
+	border-color: transparent transparent transparent #F4F4F4;
+}
+.user-chat-time{
+    padding: 50rpx 0;
+    color: #a2a2a2;
+    font-size: 24rpx;
+}
+

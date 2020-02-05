@@ -9,7 +9,7 @@
 .nav-left>view.data-v-53b04d4e {
     display: 1;
     text-align: left;
-    font-size: 57rpx;
+    font-size: 38rpx;
     color: #FFFFFF;
 }
 .nav-right.data-v-53b04d4e {
@@ -18,7 +18,7 @@
 .nav-right>view.data-v-53b04d4e {
     display: 1;
     text-align: right;
-    font-size: 57rpx;
+    font-size: 38rpx;
     color: #FFFFFF;
 }
 .nav-tab-bar.data-v-53b04d4e {

@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uploadImages = function uploadImages() {return Promise.all(/*! import() | components/common/upload-images */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/common/upload-images")]).then(__webpack_require__.bind(null, /*! ../../components/common/upload-images.vue */ 145));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 155));};var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! ../../components/uni-popup/uni-popup.vue */ 162));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uploadImages = function uploadImages() {return Promise.all(/*! import() | components/common/upload-images */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/common/upload-images")]).then(__webpack_require__.bind(null, /*! ../../components/common/upload-images.vue */ 158));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 168));};var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! ../../components/uni-popup/uni-popup.vue */ 175));};var _default =
 
 
 
@@ -235,7 +235,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     //发布
     submit: function submit() {
-      alert("发布");
+      console.log("发布");
     },
     changeVisibility: function changeVisibility() {var _this2 = this;
       uni.showActionSheet({

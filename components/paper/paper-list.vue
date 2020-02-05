@@ -1,21 +1,21 @@
 <template>
    
-            <!-- u-f-ac 套用flex布局 使得各个组件左右排列  -->
-            <view class="paper-list u-f-ac animated fadeInLeft fast" @tap="openChattingPage">
-                <!-- 左边 头像 -->
-                <image :src="item.userPic" mode="widthFix" lazy-load></image>
-                <!-- 右边 消息详情 -->
-                <view class="">
-                    <!-- 右上 昵称 时间 -->
-                    <view class="u-f-ac u-f-jsb">{{item.userName}}<view class="">{{item.time}}</view></view>
-                    <!-- 右下 信息 角标 -->
-                    <view class="u-f-ac u-f-jsb" style="font-size: 22upx;">{{item.msg}}
-                        <template v-if="item.unreadNum > 0">
-                            <uni-badge :text="item.unreadNum" type="error"></uni-badge>
-                        </template>
-                    </view>
-                </view>          
-            </view>
+        <!-- u-f-ac 套用flex布局 使得各个组件左右排列  -->
+        <view class="paper-list u-f-ac animated fadeInLeft fast" @tap="openChattingPage">
+            <!-- 左边 头像 -->
+            <image :src="item.userPic" mode="widthFix" lazy-load></image>
+            <!-- 右边 消息详情 -->
+            <view class="">
+                <!-- 右上 昵称 时间 -->
+                <view class="u-f-ac u-f-jsb">{{item.userName}}<view class="">{{item.time}}</view></view>
+                <!-- 右下 信息 角标 -->
+                <view class="u-f-ac u-f-jsb" style="font-size: 22upx;">{{item.msg}}
+                    <template v-if="item.unreadNum > 0">
+                        <uni-badge :text="item.unreadNum" type="error"></uni-badge>
+                    </template>
+                </view>
+            </view>          
+        </view>
         
 </template>
 
@@ -32,7 +32,7 @@
         methods:{
             openChattingPage(){
                 uni.navigateTo({
-                    url:"../../pages/user-chat/user-chat"
+                    url:"../../pages/user-chat/user-chat?chatData="+JSON.stringify(this.item)
                 });
                 
             }

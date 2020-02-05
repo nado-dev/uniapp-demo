@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 91));};var topicInfo = function topicInfo() {return __webpack_require__.e(/*! import() | components/topic/topic-info */ "components/topic/topic-info").then(__webpack_require__.bind(null, /*! ../../components/topic/topic-info.vue */ 169));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 84));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 124));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 104));};var topicInfo = function topicInfo() {return __webpack_require__.e(/*! import() | components/topic/topic-info */ "components/topic/topic-info").then(__webpack_require__.bind(null, /*! ../../components/topic/topic-info.vue */ 182));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 97));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 137));};var _default =
 
 
 
@@ -442,10 +442,7 @@ __webpack_require__.r(__webpack_exports__);
         //3.关闭下拉刷新
         uni.stopPullDownRefresh();}, 2000);
     },
-    //点击切换
-    changeTab: function changeTab(index) {
-      this.tabIndex = index;
-    },
+
 
     //上拉加载
     loadMore: function loadMore() {var _this2 = this;
@@ -491,7 +488,7 @@ __webpack_require__.r(__webpack_exports__);
     tabSwitch: function tabSwitch(index) {
       //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
       this.tabIndex = index;
-      //alert(index)
+      //console.log(index)
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
