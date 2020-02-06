@@ -1,0 +1,327 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 分享 */
+    /* 主体 */
+.more-share{
+    z-index: 110;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+}
+.more-share-hover{
+    background: #EEEEEE;
+}
+    /* 标题和取消 主体样式*/
+.more-share-title, .more-share-bottom{
+   
+    font-size: 35rpx;
+    padding: 25rpx;
+}
+    /* 滚动选择栏 */
+.more-share-body{
+    border-bottom: 1rpx solid #EEEEEE;
+    /* 不会换行 */
+    white-space: nowrap;
+    width: 100%;
+    height: 200rpx;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    line-height: 170rpx;
+}
+    /* 选项图标和文字具体样式 */
+.more-share-item{
+   
+     width: 25%;
+     display: -webkit-inline-box;
+     display: -webkit-inline-flex;
+     display: inline-flex;
+     -webkit-box-pack: center;
+     -webkit-justify-content: center;
+             justify-content: center;
+     -webkit-box-align: center;
+     -webkit-align-items: center;
+             align-items: center;
+     -webkit-box-orient: vertical;
+     -webkit-box-direction: normal;
+     -webkit-flex-direction: column;
+             flex-direction: column;
+}
+.more-share-item>view:first-child{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    color: #FFFFFF;
+    font-size: 55rpx;
+}
+.more-share-item>view:last-child{
+    color: #666666;
+}
+.share-wechat{
+    background: #2AD19B;
+}
+.share-wxfriends{
+    background: #514D4C;
+}
+.share-weibo{
+     background: #EE5E5E;
+}
+.share-QQ{
+     background: #4A73BA;
+}
+.share-more{
+    background: #C7ABC5;
+}
+    /* 蒙版 */
+.more-share-mask{
+    z-index: 99;
+    background:  rgba(55,55,55,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+    
+

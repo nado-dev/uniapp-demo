@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "我的",
-  "usingComponents": {}
+  "usingComponents": {
+    "more-share": "/components/common/more-share"
+  }
 }

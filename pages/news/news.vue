@@ -113,7 +113,7 @@
                         {
                             userPic:"../../static/demo/userpic/10.jpg",
                             userName:"ATM",
-                            gender:"0",//0:女 1:男
+                            gender:0,//0:女 1:男
                             age:25,
                             isFollow:false,
                             title:"透明质酸钠",
@@ -130,7 +130,7 @@
                         {
                             userPic:"../../static/demo/userpic/10.jpg",
                             userName:"31K473k",
-                            gender:"1",//0:女 1:男
+                            gender:1,//0:女 1:男
                             age:25,
                             isFollow:false,
                             title:"...轻轻呼唤你的名字",
@@ -148,7 +148,7 @@
                         {
                             userPic:"../../static/demo/userpic/10.jpg",
                             userName:"momo",
-                            gender:"0",//0:女 1:男
+                            gender:0,//0:女 1:男
                             age:25,
                             isFollow:false,
                             title:"欢乐恶搞不是法外之地",
@@ -169,7 +169,7 @@
                         {
                             userPic:"../../static/demo/userpic/10.jpg",
                             userName:"ATM",
-                            gender:"0",//0:女 1:男
+                            gender:0,//0:女 1:男
                             age:25,
                             isFollow:false,
                             title:"透明质酸钠",

@@ -20,9 +20,8 @@
                 </view>
             </view>
         </view>
-        <view class="index-list2"
-        @tap="openDetail()">{{item.title}}</view>
-        <view class="index-list3 u-f-ajc" @tap="openDetail()">
+        <view class="index-list2">{{item.title}}</view>
+        <view class="index-list3 u-f-ajc">
             <!-- 图片 -->
             <image :src="item.titlePic" 
             mode="widthFix" lazy-load></image>

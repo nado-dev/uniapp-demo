@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var newsNavBar = function newsNavBar() {return __webpack_require__.e(/*! import() | components/news/news-nav-bar */ "components/news/news-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/news/news-nav-bar.vue */ 130));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 137));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 104));};var topicNav = function topicNav() {return __webpack_require__.e(/*! import() | components/news/topic-nav */ "components/news/topic-nav").then(__webpack_require__.bind(null, /*! ../../components/news/topic-nav.vue */ 144));};var topicList = function topicList() {return __webpack_require__.e(/*! import() | components/news/topic-list */ "components/news/topic-list").then(__webpack_require__.bind(null, /*! ../../components/news/topic-list.vue */ 151));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var newsNavBar = function newsNavBar() {return __webpack_require__.e(/*! import() | components/news/news-nav-bar */ "components/news/news-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/news/news-nav-bar.vue */ 142));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 149));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 106));};var topicNav = function topicNav() {return __webpack_require__.e(/*! import() | components/news/topic-nav */ "components/news/topic-nav").then(__webpack_require__.bind(null, /*! ../../components/news/topic-nav.vue */ 156));};var topicList = function topicList() {return __webpack_require__.e(/*! import() | components/news/topic-list */ "components/news/topic-list").then(__webpack_require__.bind(null, /*! ../../components/news/topic-list.vue */ 163));};var _default =
 
 
 
@@ -248,7 +248,7 @@ __webpack_require__.r(__webpack_exports__);
         {
           userPic: "../../static/demo/userpic/10.jpg",
           userName: "ATM",
-          gender: "0", //0:女 1:男
+          gender: 0, //0:女 1:男
           age: 25,
           isFollow: false,
           title: "透明质酸钠",
@@ -265,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
         {
           userPic: "../../static/demo/userpic/10.jpg",
           userName: "31K473k",
-          gender: "1", //0:女 1:男
+          gender: 1, //0:女 1:男
           age: 25,
           isFollow: false,
           title: "...轻轻呼唤你的名字",
@@ -283,7 +283,7 @@ __webpack_require__.r(__webpack_exports__);
         {
           userPic: "../../static/demo/userpic/10.jpg",
           userName: "momo",
-          gender: "0", //0:女 1:男
+          gender: 0, //0:女 1:男
           age: 25,
           isFollow: false,
           title: "欢乐恶搞不是法外之地",
@@ -304,7 +304,7 @@ __webpack_require__.r(__webpack_exports__);
         {
           userPic: "../../static/demo/userpic/10.jpg",
           userName: "ATM",
-          gender: "0", //0:女 1:男
+          gender: 0, //0:女 1:男
           age: 25,
           isFollow: false,
           title: "透明质酸钠",

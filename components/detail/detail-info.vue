@@ -6,7 +6,8 @@
         </view>
         <!-- 右侧： -->
         <view class="common-list-r">
-            <view class="">
+            <!-- 右一、右二 -->
+            <view>
                 <!-- 右侧第一层 -->
                 <view class="u-f-ac u-f-jsb">
                     <!-- 右一左边 昵称 性别+年龄 -->
@@ -25,7 +26,7 @@
             </view>
             
             <!-- 右侧第三层 标题 -->
-            <view class="">{{item.title}}</view>
+            <view class>{{item.title}}</view>
             <!-- 右侧第四层 图片/视频-->
             <view class="u-f-ajc" style="flex-direction: column;">
                 <!-- 图片 -->

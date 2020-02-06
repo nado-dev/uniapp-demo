@@ -44,7 +44,17 @@
 	    ,{
             "path" : "pages/me/me",
             "style" : {
-                "navigationBarTitleText":"我的"
+                "navigationBarTitleText":"我的",
+                "app-plus":{
+                    "scrollIndicator":"none",
+                    "titleNView":{
+                        "buttons":[
+                            {
+                                "type":"menu"
+                            }
+                        ]
+                    }
+                }
             }
         }
         ,{
@@ -193,8 +203,7 @@
                                 "fontSrc":"/static/font/icon.ttf",
                                 "text":"\ue628"
                                 
-                            }
-                            
+                            }                           
                         ]
                     }
                 }
@@ -214,6 +223,25 @@
                         ]
                     }
                 }
+            }
+        }
+        ,{
+            "path" : "pages/user-setting/user-setting",
+            "style" : {
+                "navigationBarTitleText":"设置"
+                
+            }
+        }
+        ,{
+            "path" : "pages/user-set-password/user-set-password",
+            "style" : {
+                "navigationBarTitleText":"修改密码"
+            }
+        }
+        ,{
+            "path" : "pages/user-setting-email/user-setting-email",
+            "style" : {
+                 "navigationBarTitleText":"绑定邮箱"
             }
         }
     ],

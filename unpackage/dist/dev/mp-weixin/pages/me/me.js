@@ -131,20 +131,28 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-var _default =
-{
-  data: function data() {
-    return {};
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var moreShare = function moreShare() {return Promise.all(/*! import() | components/common/more-share */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/common/more-share")]).then(__webpack_require__.bind(null, /*! ../../components/common/more-share.vue */ 118));};var _default =
 
+
+
+
+
+
+
+
+{
+  components: {
+    moreShare: moreShare },
+
+  data: function data() {
+    return {
+      isShareShow: false };
 
   },
-  methods: {} };exports.default = _default;
+  methods: {
+    togle: function togle() {
+      this.isShareShow = !this.isShareShow;
+    } } };exports.default = _default;
 
 /***/ })
 

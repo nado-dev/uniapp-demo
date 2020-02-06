@@ -1,1 +1,1 @@
-<view></view>
+<view><view data-event-opts="{{[['tap',[['togle',['$event']]]]]}}" bindtap="__e">nmsl</view><more-share vue-id="1" isShareShow="{{isShareShow}}" data-event-opts="{{[['^togle',[['togle']]]]}}" bind:togle="__e" bind:__l="__l"></more-share></view>

@@ -1,0 +1,13 @@
+
+.u-comment-list-child.data-v-1140aba6{
+    padding: 20rpx;
+    background: #F4F4F4;
+    border-bottom: 1rpx solid #EEEEEE;
+    /* 属性不会向外扩张，向内挤压 */
+    box-sizing: border-box;
+    /* 留出头像的距离 */
+    margin-left: 70rpx;
+    width: auto;
+}
+
+
