@@ -20,11 +20,14 @@
                     ,url:"../../pages/user-set-password/user-set-password"},
 				    {name:"绑定邮箱", icon:"", clickType:"navigateTo"
                     ,url:"../../pages/user-setting-email/user-setting-email"},
-				    {name:"资料编辑", icon:""},
+				    {name:"资料编辑", icon:"" ,clickType:"navigateTo"
+                    ,url:"../../pages/user-setting-userinfo/user-setting-userinfo"},
 				    {name:"消息"    , icon:""},
 				    {name:"清除缓存", icon:""},
-				    {name:"意见反馈", icon:""},
-				    {name:"关于我们", icon:""},
+				    {name:"意见反馈", icon:"", clickType:"navigateTo"
+                    ,url:"../../pages/user-setting-help/user-setting-help"},
+				    {name:"关于", icon:"", clickType:"navigateTo"
+                    ,url:"../../pages/user-set-about/user-set-about"},
 				],
 			}
 		},

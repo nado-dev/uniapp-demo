@@ -244,6 +244,24 @@
                  "navigationBarTitleText":"绑定邮箱"
             }
         }
+        ,{
+            "path" : "pages/user-setting-userinfo/user-setting-userinfo",
+            "style" : {
+                 "navigationBarTitleText":"修改资料"
+            }
+        }
+        ,{
+            "path" : "pages/user-setting-help/user-setting-help",
+            "style" : {
+                "navigationBarTitleText":"意见反馈"
+            }
+        }
+        ,{
+            "path" : "pages/user-set-about/user-set-about",
+            "style" : {
+                 "navigationBarTitleText":"关于"
+            }
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "light",

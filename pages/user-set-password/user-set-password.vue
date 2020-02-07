@@ -45,26 +45,30 @@
                              icon:"none",
                             title:"旧密码不能为空!"
                         })
+                         return false;
                     }
                     else if(!this.newPw || this.newPw == ""){
                         uni.showToast({
                              icon:"none",
                             title:"新密码不能为空!"
                         })
+                         return false;
                     }
                     else if(!this.comfirmedPw || this.comfirmedPw == ""){
                         uni.showToast({
                              icon:"none",
                             title:"请输入新密码以确认!"
                         })
+                         return false;
                     }
                     else if(this.newPw !== this.comfirmedPw){
                         uni.showToast({
                             icon:"none",
                             title:"新密码输入不一致,请重新输入!"
                         })
+                         return false;
                     }
-                    return false;
+                   
                 }
             },
             //提交

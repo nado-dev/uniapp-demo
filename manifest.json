@@ -51,18 +51,18 @@
             "ios" : {},
             /* SDK配置 */
             "sdkConfigs" : {}
-        }
+        },
+        "nvueLaunchMode" : "fast"
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "usingComponents":true,
+        "usingComponents" : true,
         "appid" : "",
         "setting" : {
             "urlCheck" : false
-        },
-        "usingComponents" : true
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
