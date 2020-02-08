@@ -1,0 +1,13 @@
+
+.home-ad-pic{
+   
+   padding: 20rpx 20rpx;
+}
+.home-ad-pic>image{
+    width: 100%;
+    border-radius: 20rpx;
+}
+.home-list{
+    padding: 20rpx 20rpx;
+}
+

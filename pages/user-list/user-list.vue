@@ -1,5 +1,6 @@
 <template>
 	<view>
+        
     <!-- 好友列表 -->
         <!-- tab切换 -->
         <swiper-tab-head
@@ -15,7 +16,7 @@
             @change="tabChange"> 
                 <swiper-item v-for="(items,index) in tabList" :key="index">
                     <scroll-view scroll-y="true" 
-                    class="list" 
+                    class="list"
                     @scrolltolower="loadMore(index)">          
                     <!-- 有内容 图文列表和加载框-->
                         <template  v-if="items.list.length != 0">

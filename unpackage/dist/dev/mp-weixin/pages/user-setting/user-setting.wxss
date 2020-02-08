@@ -1,0 +1,12 @@
+
+.body{
+    padding:0 20rpx;
+}
+.user-setting-logout-btn{
+    position: fixed;
+    bottom: 180rpx;
+    left: 20rpx;
+    right: 20rpx;
+    background: #009687;
+}
+

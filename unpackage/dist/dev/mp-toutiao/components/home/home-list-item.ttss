@@ -1,0 +1,17 @@
+
+.home-list-item.data-v-0bb17f87{
+    padding: 10rpx 10rpx;
+    border-top: 1rpx solid #CCCCCC;
+    border-bottom: 1rpx solid #CCCCCC;
+}
+.home-list-hover.data-v-0bb17f87{
+    background: #EEEEEE;
+}
+.home-list-item>view.data-v-0bb17f87:last-child{
+   
+    color: #CCCCCC;
+}
+.home-list-item>view.data-v-0bb17f87:first-child{
+    font-size: 32rpx;
+}
+

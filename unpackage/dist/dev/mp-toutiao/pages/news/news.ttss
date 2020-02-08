@@ -256,6 +256,8 @@
 
 
 
+
+
 /* 搜索框外层view组件 */
 .search-input{
     /* 内边距 */
@@ -280,6 +282,7 @@
 .topic-swiper{
 /*    border: 1upx solid; */
     padding: 0 20rpx 20rpx 20rpx;
+    /* height: 100% !important; */
 }
 .topic-swiper image{
     width: 100%;

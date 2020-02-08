@@ -5,7 +5,7 @@
             <!-- 第三方登录 -->
             <other-login></other-login>
             <!-- 账号密码登录 -->
-            <view class="u-f-ajc">
+            <view class="u-f-ajc" @tap="openLogin">
                 <view class="icon iconfont icon-jinru"> </view>账号密码登录
             </view>
            
@@ -49,6 +49,13 @@
             otherLogin,
             homeData
         },
+        methods:{
+            openLogin(){
+                uni.navigateTo({
+                    url:"../login/login"
+                })
+            }
+        },
         data(){
             return{
                 isLogin:true,
@@ -57,7 +64,7 @@
                     {name:"实名认证", icon:"huiyuanvip", clickType:"", url:""},
                 ],
                 homeInfo:{
-                    userPic:"../../static/demo/userpic/12.jpg",
+                    userPic:"../../static/ATMpic.jpg",
                     userName:"ATM",
                     totalVistor:123,
                     todayVistor:12

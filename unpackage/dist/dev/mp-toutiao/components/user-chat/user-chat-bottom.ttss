@@ -1,0 +1,41 @@
+
+.user-chat-bottom{
+  /* border: 1upx solid; */
+   position: fixed; 
+   /* 置于底部 */
+   bottom: 0;
+   left: 0;
+   right: 0;
+   height: 100rpx;
+   padding: 0 20rpx;
+   background: #FFFFFF;
+   border-top: 3rpx solid #EEEEEE;
+}
+.user-chat-bottom>input{
+   /* border: 1upx solid #009687; */
+     /* 占满剩余所有空间 */
+    -webkit-box-flex:1;
+    -webkit-flex:1;
+            flex:1;
+    background: #EEEEEE;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
+    padding-left: 10rpx;
+    border-radius: 10rpx;
+}
+.user-chat-bottom>view{  
+    width: 100rpx;
+    margin-right: 14rpx;
+    margin-left: 14rpx;
+    background: #009687;
+    font-size: 40rpx;
+    padding: 0;
+    border-radius: 10rpx;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.user-chat-bottom>view:first-child{
+   background: #FFFFFF;
+   color: #009687;
+}
+

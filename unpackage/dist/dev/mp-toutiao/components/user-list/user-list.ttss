@@ -1,0 +1,23 @@
+
+.user-list.data-v-4d990c58{
+  /*  border: 1upx solid; */
+    margin: 0 20rpx;
+    border-bottom: 1rpx #EEEEEE solid;
+    padding: 10rpx 10rpx;
+    height: 150rpx;
+}
+.user-list-userpic>image.data-v-4d990c58{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    /* border: 1upx solid; */
+    margin-right: 20rpx;
+}
+.user-list>view.data-v-4d990c58:last-child{
+    color: #CCCCCC;
+    font-size: 42rpx;
+}
+.icon-zengjia1.data-v-4d990c58{
+    color: #F87918 !important;
+}
+

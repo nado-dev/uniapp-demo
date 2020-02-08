@@ -1,0 +1,1 @@
+<view class="body"><block tt:for="{{list}}" tt:for-item="item" tt:for-index="index" tt:key="index"><block><home-list-item vue-id="{{'1-'+index}}" item="{{item}}" index="{{index}}" bind:__l="__l"></home-list-item></block></block><button class="user-setting-logout-btn" type="primary">退出登录</button></view>

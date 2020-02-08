@@ -1,0 +1,12 @@
+
+.user-set-about-img>image{
+   
+    width: 400rpx;
+    height: 400rpx;
+    margin-left: 180rpx;
+}
+.user-set-about-img>view{
+    text-align: center;
+    color: #009687;
+}
+

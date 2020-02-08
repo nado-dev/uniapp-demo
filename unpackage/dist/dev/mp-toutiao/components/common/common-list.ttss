@@ -1,4 +1,3 @@
-
 .common-list.data-v-57e41fee{
        padding: 20rpx;
 }
@@ -26,29 +25,22 @@
     /* 昵称 年龄+性别样式 */
 .common-list-r>view:nth-child(1)>view.data-v-57e41fee:first-child{
         color: #999999;
-        font-size: 30rpx;
+        font-size: 28rpx;
         line-height: 0;
-}
-.tag-age-gender.data-v-57e41fee{
-        background: #009687;
-        color: #FFFFFF;
-        font-size: 23rpx;
-        padding: 0 5rpx;
-        margin-left: 10rpx;
-        border-radius: 15rpx;
 }
     /* 关注按钮样式 */
 .common-list-r>view:nth-child(1)>view.data-v-57e41fee:last-child{
         background: #EEEEEE;
         padding: 0 10rpx;
-        font-size: small;
+        font-size: 28rpx;
 }
 .common-list-r>view.data-v-57e41fee:nth-child(2){
-        font-size: medium;
+        font-size: 26rpx;
         padding: 12rpx 0;
 }
 .common-list-r>view.data-v-57e41fee:nth-child(3){
         position: relative;
+        font-size: 24rpx;
 }
 .common-list-r>view:nth-child(3)>image.data-v-57e41fee{
         width:100%;
@@ -65,7 +57,7 @@
 .common-list-playinfo.data-v-57e41fee{
         right: 10rpx;
         bottom: 10rpx;
-        background: rgba(51,51,51,0.73);
+        background: rgba(51,51,51,0.5);
         border-radius: 20rpx;
         padding: 0 20rpx;
         font-size: 25rpx;
@@ -90,12 +82,12 @@
 }
 .common-list-r>view:nth-child(4)>view.data-v-57e41fee:first-child{
         color: #AAAAAA;
-        font-size: smaller;
+        font-size: 20rpx !important;
 }
     /* 点赞、评论、转发样式 */
 .common-list-r>view:nth-child(4)>view:nth-child(2)>view.data-v-57e41fee{
         margin-left: 10rpx;
         padding: 5rpx;
-        font-size: small;
+        font-size: 20rpx !important;
 }
 

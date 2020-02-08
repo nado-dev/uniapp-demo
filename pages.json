@@ -262,6 +262,31 @@
                  "navigationBarTitleText":"关于"
             }
         }
+        ,{
+            "path" : "pages/login/login",
+            "style" : {
+                 "navigationBarTitleText":"登录",
+                 "app-plus":{
+                     "titleNView":false,
+                     "scrollIndicator":"none"
+                 }
+            }
+        }
+        ,{
+            "path" : "pages/user-space/user-space",
+            "style" : {
+                 "navigationBarTitleText":"个人空间",
+                 "app-plus":{
+                     "scrollIndicator":"none",
+                     "titleNView":{
+                         "type":"transparent",
+                         "buttons":[                            
+                             {"type":"menu"}
+                         ]
+                     }
+                 }
+            }
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "light",

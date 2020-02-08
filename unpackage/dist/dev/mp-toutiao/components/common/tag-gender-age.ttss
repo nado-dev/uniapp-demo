@@ -1,0 +1,16 @@
+
+.tag-age-gender.data-v-082a2866{
+    background: #009687;
+    color: #FFFFFF;
+    font-size: 20rpx;
+    padding: -5rpx 0rpx;
+    margin-left: 10rpx;
+    border-radius: 15rpx;
+}
+.male.data-v-082a2866{
+    background: blue;
+}
+.female.data-v-082a2866{
+    background: pink;
+}
+

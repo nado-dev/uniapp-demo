@@ -1,0 +1,1 @@
+<view class="u-f1 u-f-ajc u-f-column data-v-4b1d5a15"><view class="data-v-4b1d5a15">{{item.name}}</view>{{item.num+''}}</view>

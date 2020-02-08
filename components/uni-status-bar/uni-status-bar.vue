@@ -1,5 +1,5 @@
 <template>
-	<view :style="{ height: statusBarHeight }" class="uni-status-bar">
+	<view :style="{ height: statusBarHeight, 'background': backgroundColor}" class="uni-status-bar">
 		<slot />
 	</view>
 </template>
@@ -7,6 +7,12 @@
 <script>
 	var statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
 	export default {
+        props:{
+            backgroundColor:{
+                type:String,
+                default:''
+            }
+        },
 		name: 'UniStatusBar',
 		data() {
 			return {

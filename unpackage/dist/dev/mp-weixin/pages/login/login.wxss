@@ -1,0 +1,85 @@
+/* 公共按钮 */
+.user-set-btn{
+	width: 100%;
+	margin: 20rpx 0;
+	background: #FFE933!important;
+	border: 0!important;
+	color: #333333!important;
+}
+.user-set-btn-disable{
+	background: #F4F4F4!important;
+	border: 1rpx solid #EEEEEE!important;
+	color: #909090!important;
+}
+.body{
+	padding: 0 20rpx!important;
+}
+.common-input{
+	font-size: 30rpx;
+	border-bottom: 1rpx solid #F4F4F4;
+}
+.pureColor{
+    height: 400rpx;    
+    background: rgba(0,150,135,0.5);  
+    margin-bottom: 100rpx;
+}
+.icon-guanbi{
+    position: fixed;
+    top: 60rpx;
+    left: 30rpx;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.user-setting-logout-btn{
+    margin: 30rpx;
+    background: #009687;
+}
+.login-status{
+    margin: 20rpx 0;
+}
+.login-color{
+    color: #9E9E9E;
+}
+.login-input-box{
+    position: relative;
+}
+.login-input-box .forget-input{
+    /* 腾出150upx的空间防止遮档 */
+    padding-right: 150rpx;
+}
+.login-input-box .vericode-input{
+    padding-right: 150rpx;
+}
+.login-input-box .forget{
+    /* 容器声明reletive 子组件可以用absolute 来针对容器相对定位 */
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 150rpx;
+}
+.login-input-box .vericode{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 150rpx;
+    background: #EEEEEE;
+}
+.vericode-active{
+    background: #009687 !important;
+}
+.login-input-box .phone-verify{
+    width: 50rpx;
+    font-weight: bold;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.login-input-box .phone-verify-input{
+    padding-left: 80rpx;
+}
+
+

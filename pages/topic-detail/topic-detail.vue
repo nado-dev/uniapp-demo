@@ -12,15 +12,29 @@
         <view class="topic-detail-list">
             <!-- 循环出默认和最新 -->
             <block v-for="(item, index) in tablist" :key="index">
-                <template v-if="tabIndex == index">
+                <template v-if="tabIndex == 0">
                     <!-- 列表 -->
-                    <block v-for="(list, listIndex) in item.list" :key="listIndex">
+                    <view class="">
+                        默认
+                    </view>
+                    <block v-for="(list, listIndex) in tablist[0].list" :key="listIndex">
                         <common-list :item="list" :index="listIndex"></common-list>          
                     </block>
                     <!-- 上拉加载 -->
-                    <load-more :loadText="item.loadText"></load-more>
+                    <load-more :loadText="tablist[0].loadText"></load-more>
                 </template>
                
+               <template v-else>
+                   <view class="">
+                       最新
+                   </view>
+                   <!-- 列表 -->
+                   <block v-for="(list, listIndex) in tablist[1].list" :key="listIndex">
+                       <common-list :item="list" :index="listIndex"></common-list>          
+                   </block>
+                   <!-- 上拉加载 -->
+                   <load-more :loadText="tablist[1].loadText"></load-more>
+               </template>
             </block>
         </view>
 	</view>
@@ -54,7 +68,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"ATM",
-                                    gender:"0",//0:女 1:男
+                                    gender:0,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"透明质酸钠",
@@ -71,7 +85,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"31K473k",
-                                    gender:"1",//0:女 1:男
+                                    gender:1,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"...轻轻呼唤你的名字",
@@ -89,7 +103,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"momo",
-                                    gender:"0",//0:女 1:男
+                                    gender:0,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"欢乐恶搞不是法外之地",
@@ -110,7 +124,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"ATM",
-                                    gender:"0",//0:女 1:男
+                                    gender:1,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"透明质酸钠",
@@ -139,7 +153,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"ATM",
-                                    gender:"0",//0:女 1:男
+                                    gender:0,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"透明质酸钠",
@@ -156,7 +170,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"31K473k",
-                                    gender:"1",//0:女 1:男
+                                    gender:1,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"...轻轻呼唤你的名字",
@@ -174,7 +188,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"momo",
-                                    gender:"0",//0:女 1:男
+                                    gender:0,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"欢乐恶搞不是法外之地",
@@ -195,7 +209,7 @@
                                 {
                                     userPic:"../../static/demo/userpic/10.jpg",
                                     userName:"ATM",
-                                    gender:"0",//0:女 1:男
+                                    gender:1,//0:女 1:男
                                     age:25,
                                     isFollow:false,
                                     title:"透明质酸钠",
@@ -246,7 +260,7 @@
                 {
                     userPic:"../../static/demo/userpic/10.jpg",
                     userName:"31K473k",
-                    gender:"1",//0:女 1:男
+                    gender:0,//0:女 1:男
                     age:25,
                     isFollow:false,
                     title:"刷新后数据...轻轻呼唤你的名字",
@@ -264,7 +278,7 @@
                 {
                     userPic:"../../static/demo/userpic/10.jpg",
                     userName:"momo",
-                    gender:"0",//0:女 1:男
+                    gender:0,//0:女 1:男
                     age:25,
                     isFollow:false,
                     title:"刷新后数据 欢乐恶搞不是法外之地",
@@ -285,7 +299,7 @@
                 {
                     userPic:"../../static/demo/userpic/10.jpg",
                     userName:"ATM",
-                    gender:"0",//0:女 1:男
+                    gender:0,//0:女 1:男
                     age:25,
                     isFollow:false,
                     title:"刷新后数据 透明质酸钠",
@@ -325,7 +339,7 @@
                         //视频样式          
                             userPic:"../../static/demo/userpic/10.jpg",
                             userName:"ATM",
-                            gender:"0",//0:女 1:男
+                            gender:0,//0:女 1:男
                             age:25,
                             isFollow:false,
                             title:"透明质酸钠",

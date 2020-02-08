@@ -1,0 +1,25 @@
+
+.home-info.data-v-29d4a5ce{
+    padding: 20rpx;
+    border-bottom: 1rpx solid #CCCCCC;
+}
+.home-info-hover.data-v-29d4a5ce{
+    background: #CCCCCC;
+}
+.home-info>view.data-v-29d4a5ce:last-of-type{
+    height: 100%;
+    width: 70rpx;
+    color: #CCCCCC;
+}
+.home-info>view:first-child>view.data-v-29d4a5ce:first-child{
+    font-size: 40rpx !important;
+}
+.home-info>image.data-v-29d4a5ce{
+    -webkit-flex-shrink: 0;
+            flex-shrink: 0;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 100%;
+    margin-right: 20rpx;
+}
+

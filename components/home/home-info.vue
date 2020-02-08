@@ -1,5 +1,5 @@
 <template>
-    <view class="u-f-ac home-info" hover-class="home-info-hover">
+    <view class="u-f-ac home-info" hover-class="home-info-hover" @tap="toUserSpace">
         <!-- 左边头像 -->
         <image :src="homeInfo.userPic" mode="widthFix" lazy-load></image>
         <!-- 中间信息 -->
@@ -18,6 +18,13 @@
     export default {
         props:{
             homeInfo:Object
+        },
+        methods:{
+            toUserSpace(){
+                uni.navigateTo({
+                    url:"../../pages/user-space/user-space"
+                })
+            }
         }
     }
 </script>

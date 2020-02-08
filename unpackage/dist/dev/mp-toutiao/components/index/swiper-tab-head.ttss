@@ -1,11 +1,12 @@
 
 .swiper-tab-list{
     color: #969696;
+    font-size: 30rpx;
     font-weight: bold;
 }
 .uni-tab-bar .active{
     color: #343434;
-    font-size:medium;
+    font-size:38rpx;
 }
 .active .swiper-tab-underLine{
     border: 1rpx solid #009687;

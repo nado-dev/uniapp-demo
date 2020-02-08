@@ -1,5 +1,5 @@
 <template>
-    <view class="index-list animated fadeInLeft fast" @tap="openDetail">
+    <view class="index-list animated fadeInLeft fast" >
         <!-- 第一层 -->
         <view class="index-list1">
             <!-- 左边 头像 昵称 -->
@@ -20,8 +20,8 @@
                 </view>
             </view>
         </view>
-        <view class="index-list2">{{item.title}}</view>
-        <view class="index-list3 u-f-ajc">
+        <view class="index-list2" @tap="openDetail">{{item.title}}</view>
+        <view class="index-list3 u-f-ajc" @tap="openDetail">
             <!-- 图片 -->
             <image :src="item.titlePic" 
             mode="widthFix" lazy-load></image>

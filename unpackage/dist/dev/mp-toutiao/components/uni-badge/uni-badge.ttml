@@ -1,0 +1,1 @@
+<block tt:if="{{text}}"><text data-event-opts="{{[['tap',[['onClick']]]]}}" class="{{(('uni-badge data-v-275ae2a0')+' '+(inverted?'uni-badge--'+type+' uni-badge--'+size+' uni-badge--'+type+'-inverted':'uni-badge--'+type+' uni-badge--'+size))}}" style="{{(badgeStyle)}}" bindtap="__e">{{text}}</text></block>

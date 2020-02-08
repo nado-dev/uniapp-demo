@@ -1,1 +1,1 @@
-<view>搜索页</view>
+<view><block tt:if="{{list.length>0}}"><block tt:for="{{list}}" tt:for-item="item" tt:for-index="index" tt:key="index"><block><index-list vue-id="{{'1-'+index}}" item="{{item}}" index="{{index}}" bind:__l="__l"></index-list></block></block><load-more vue-id="2" loadText="{{loadText}}" bind:__l="__l"></load-more></block><block tt:else><block tt:if="{{list.length<1&&isSearch}}"><empty-content vue-id="3" bind:__l="__l"></empty-content></block><block tt:else><view class="blank"></view></block></block></view>

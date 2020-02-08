@@ -58,7 +58,7 @@
         <view class="user-setting-userinfo-list u-f-ac u-f-jsb">
             <view class="">地区</view> 
             <view class="u-f-ac" @tap="showMulLinkageThreePicker">
-                {{pickerText}}
+                {{location}}
                 <view class="icon iconfont icon-bianji1"></view>
             </view>
         </view>
@@ -93,7 +93,7 @@
                 job:"未设置",
                 birthday:" 未设置 ",
                 cityPickerValueDefault:[0,0,1],//默认选中的地址
-                pickerText:"未设置"
+                location:"未设置"
 			}
 		},
 		methods: {
@@ -102,7 +102,7 @@
                 this.$refs.mpvueCityPicker.show()
             },
             onConfirm(e) {
-                this.pickerText = e.label;
+                this.location = e.label;
             },
             // 修改头像
             changeImg(){
@@ -197,7 +197,7 @@
 @import "../../common/form.css";
 .user-setting-logout-btn{
     position: fixed;
-    bottom: 400upx;
+    bottom: 100upx;
     left: 20upx;
     right: 20upx;
     background: #009687;
