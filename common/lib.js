@@ -7,11 +7,18 @@ const NetWork = {
 		// 获取当前网络状态
 		uni.getNetworkType({
 			success: (res) => {
-				if(res.networkType!=='none'){ this.isConnect=true; return;}
-				uni.showToast({
-					icon:"none",
-					title: '请先连接网络',
-				});
+				if(res.networkType!=='none'){ 
+                    uni.showToast({
+                    	icon:"none",
+                    	title: '当前使用'+res.networkType+"网络",
+                    });
+                    this.isConnect=true; 
+                    return;
+                }
+                    uni.showToast({
+                        icon:"none",
+                        title: '请先连接网络',
+                    });
 			}
 		})
 		// 监听网络状态变化
@@ -23,6 +30,12 @@ const NetWork = {
 					title: '您目前处于断网状态',
 				});
 			}
+            else{
+                uni.showToast({
+                	icon:"none",
+                	title: '当前使用'+res.networkType+"网络",
+                });
+            }
 		})
 	}
 }

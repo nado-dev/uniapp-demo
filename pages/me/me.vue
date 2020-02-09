@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="animated fadeIn faster">
         <!-- 未登录 -->
         <template v-if="!isLogin">
             <!-- 第三方登录 -->

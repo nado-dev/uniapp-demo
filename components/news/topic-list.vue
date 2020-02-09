@@ -1,5 +1,5 @@
 <template>
-    <view class="topic-list u-f animated fadeInLeft fast" @tap="openTopicDetial">
+    <view class="topic-list u-f animated fadeIn faster" @tap="openTopicDetial">
        <!-- 左边 图片-->
         <image :src="item.titlePic" mode="widthFix"  lazy-load></image>
        <!-- 右边 -->

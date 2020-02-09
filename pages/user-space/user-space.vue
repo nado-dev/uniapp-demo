@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="animated fadeIn faster">
         <user-space-head :userInfo="userInfo" ></user-space-head>   
 	
         <!-- 用户信息 -->
@@ -30,6 +30,10 @@
             <!-- 上拉加载 -->
             <load-more :loadText="this.loadText"></load-more>
         </template>
+        
+        <!--操作菜单 -->
+        <user-space-popup :isPopupShow="isPopupShow"
+        @hidePopup='hidePopup' @addBlackList='addBlackList'  @remark='remark'></user-space-popup>
     </view>
 </template>
 
@@ -40,6 +44,7 @@
 	import userSpaceUserinfo from '../../components/user-space/user-space-userinfo.vue'
     import commonList from "../../components/common/common-list.vue";
     import homeData from "../../components/home/home-data.vue";
+    import userSpacePopup from '../../components/user-space/user-space-popup.vue'
     export default {
         components:{
             userSpaceHead,
@@ -47,10 +52,12 @@
             swiperTabHead,
             userSpaceUserinfo,
             commonList,
-            loadMore
+            loadMore,
+            userSpacePopup
         },
         data(){
             return {
+                isPopupShow:false,
                 tabIndex:1,
                 userInfo:{
                     userPic:"../../static/ATMpic.jpg",
@@ -159,6 +166,17 @@
         },
        
         methods:{
+            hidePopup(){
+                this.isPopupShow = false
+            },
+            // 拉黑
+            addBlackList(){
+                console.log("拉黑")
+            },
+            // 备注
+            remark(){
+                console.log("备注")
+            },
             follow()
             {
                 this.userInfo.isFollow != this.userInfo.isFollow;
@@ -210,6 +228,9 @@
             //上拉加载
             this.loadMore();  
         },
+        onNavigationBarButtonTap() {
+            this.isPopupShow = true
+        }
     }
 
 	

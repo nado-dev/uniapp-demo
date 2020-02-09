@@ -23,7 +23,8 @@
 				    {name:"资料编辑", icon:"" ,clickType:"navigateTo"
                     ,url:"../../pages/user-setting-userinfo/user-setting-userinfo"},
 				    {name:"消息"    , icon:""},
-				    {name:"清除缓存", icon:""},
+				    {name:"清除缓存", icon:"", clickType:"clear"
+                    ,url:""},
 				    {name:"意见反馈", icon:"", clickType:"navigateTo"
                     ,url:"../../pages/user-setting-help/user-setting-help"},
 				    {name:"关于", icon:"", clickType:"navigateTo"

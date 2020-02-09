@@ -1,6 +1,6 @@
 <template>
     <!-- 输入框 -->
-    <view class="user-chat-bottom u-f-ac">
+    <view class="user-chat-bottom u-f-ac animated fadeInDown faster">
         <view class="icon iconfont icon-gengduo" @tap="selectEmoji"></view>
         <!-- 文本框+图标 -->
         <input type="text" placeholder="(ゝ∀･)" v-model="text"/>

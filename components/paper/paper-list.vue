@@ -1,7 +1,7 @@
 <template>
    
         <!-- u-f-ac 套用flex布局 使得各个组件左右排列  -->
-        <view class="paper-list u-f-ac animated fadeInLeft fast" @tap="openChattingPage">
+        <view class="paper-list u-f-ac animated fadeIn faster" @tap="openChattingPage">
             <!-- 左边 头像 -->
             <image :src="item.userPic" mode="widthFix" lazy-load></image>
             <!-- 右边 消息详情 -->

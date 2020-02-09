@@ -126,6 +126,8 @@
             "path" : "pages/addINput/addINput",
             "style" : {
                 "app-plus":{
+                    "animationType":"slide-in-bottom",
+                    "animationDuration":200,
                     "scrollIndicator":"none",//隐藏滚动条
                      "titleNView":false//禁用原生导航  
                 }
@@ -149,6 +151,7 @@
                 "navigationBarTitleText":"话题详情",
                 "enablePullDownRefresh":true,
                 "app-plus":{
+                    "animationType":"slide-in-bottom",
                     "scrollIndicator":"none",
                     "titleNView":{
                         "type":"transparent",//渐变

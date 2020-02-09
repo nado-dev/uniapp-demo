@@ -1,5 +1,5 @@
 <template>
-    <view class="animated fade-in fast" v-if="isShareShow">
+    <view class="animated fadeIn faster" v-if="isShareShow">
         <!-- 蒙版 -->
         <view class="more-share-mask"  @tap="togle"></view>
             
