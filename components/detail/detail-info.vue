@@ -1,5 +1,5 @@
 <template>
-    <view class="common-list u-f animated fadeInLeft fast">
+    <view class="common-list u-f animated fadeIn fast">
         <!-- 左侧：用户头像 -->
         <view class="common-list-l">
             <image :src="item.userPic" mode="widthFix" lazy-load></image>

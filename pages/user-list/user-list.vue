@@ -9,7 +9,7 @@
         @tabSwitch="tabSwitch">
         </swiper-tab-head>
         
-        <view class="uni-tab-bar">
+        <view class="uni-tab-bar" style="background-color: #EEEEEE;">
             <swiper class="swiper-box" 
             :style="{height:swiperHeight+'px'}" 
             :current="tabIndex"

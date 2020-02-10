@@ -9,7 +9,7 @@
         @tabSwitch="tabSwitch">
         </swiper-tab-head>
         <!-- 列表 -->
-        <view class="topic-detail-list">
+        <view class="topic-detail-list" style="background-color: #EEEEEE;">
             <!-- 循环出默认和最新 -->
             <block v-for="(item, index) in tablist" :key="index">
                 <template v-if="tabIndex == 0">

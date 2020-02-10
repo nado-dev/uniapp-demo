@@ -40,7 +40,9 @@
     border-bottom: 1upx solid #eeeeee;
     border-top: 1upx solid #eeeeee;
     padding: 20upx;
-    
+    background-color: #FFFFFF;
+    margin: 10upx 15upx;
+    box-shadow: 0 1upx 2upx rgba(0, 0, 0, .3);
 } 
 /* 热门第一行 */
 .topic-nav>view:first-child{
@@ -60,8 +62,8 @@
 .topic-nav>view:last-child>view{
     flex: 1;
     background-color: #EEEEEE;
-    color: #9E9E9E;
-    border-radius: 10upx;
+    color: #6E6E6E;
     margin: 0 10upx;
+    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
 }  
 </style>

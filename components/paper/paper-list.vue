@@ -44,7 +44,10 @@
 
     .paper-list{
         border-bottom: 1upx solid #EEEEEE;
-        padding: 20upx 0;
+        padding: 20upx 10upx;
+        background-color: #FFFFFF !important; 
+        box-shadow: 0 1upx 1upx rgba(0, 0, 0, .3);
+        margin:10upx 0;
     }
     .paper-list>image{
         width: 80upx;
@@ -52,6 +55,7 @@
         border-radius: 100%;
         margin-right: 20upx;
         flex-shrink: 0;
+        box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
     }
     .paper-list>view{
         flex: 1;/*右边填充所有空间*/

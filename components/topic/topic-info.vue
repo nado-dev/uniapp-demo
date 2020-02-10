@@ -45,7 +45,8 @@
     .topic-bg>image{
         position: absolute;
         width: 100%;
-        filter: blur(5px);/*滤镜*/
+        filter: blur(2px);/*滤镜*/
+        box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
     }
     .topic-info{
         padding: 0 25upx;
@@ -66,6 +67,7 @@
         border-radius: 20upx ;
         position: absolute;/*绝对定位上一层要相对定位*/
         top: -75upx;/*穿到上一组件 用负值*/
+        box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
     }
     .topic-info-c{
         

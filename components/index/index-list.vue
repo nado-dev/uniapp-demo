@@ -147,11 +147,15 @@
     /* 内边距 */
     padding: 20upx; 
     border-bottom: 1upx solid #EFEFEF;
+    margin:15upx 20upx;
+    background-color: #FFFFFF !important; 
+    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
 }
 .index-list1{
     display: flex;
     justify-content: space-between; /* 靠边 */
     align-items: center;
+    
 }
 .index-list1>view>image{
     width: 100%;
@@ -159,6 +163,7 @@
     margin: 10upx;
     width: 90upx;
     height: 90upx;
+    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
 }
 .index-list1>view:first-child{
     display: flex;
@@ -171,6 +176,7 @@
     align-items: center;
     background: #F4F4F4;
     border-radius: 5upx;
+    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
 }
 
 .index-list2{
@@ -180,10 +186,12 @@
 .index-list3{
     padding-top: 15upx;
     position: relative;/* 相对定位 */
+     box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
 }
 .index-list3>image{
     width: 100%;
-    border-radius: 20upx;
+    /* border-radius: 20upx; */
+    
 }
 .index-list4{
     display: flex;

@@ -10,7 +10,7 @@
         <!-- 点击事件：current随tabIndex的改变
              滑动事件：@change事件更新了tabIndex的值，选中了相应的tab
          -->
-        <view class="uni-tab-bar">           
+        <view class="uni-tab-bar" style="background-color: #EEEEEE;">           
             <swiper class="swiper-box" 
             :style="{height:swiperHeight+'px'}" 
             :current="tabIndex"

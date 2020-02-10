@@ -45,6 +45,9 @@
         border-bottom: 1upx #EEEEEE solid;
         padding: 10upx 10upx;
         height: 150upx;
+        background-color: #FFFFFF !important; 
+        margin: 10upx 15upx;
+        box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
     }
     .user-list-userpic>image{
         width: 100upx;
@@ -52,6 +55,7 @@
         border-radius: 100%;
         /* border: 1upx solid; */
         margin-right: 20upx;
+        box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
     }
     .user-list>view:last-child{
         color: #CCCCCC;

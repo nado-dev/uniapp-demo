@@ -1,5 +1,5 @@
 <template>
-	<view class="body">
+	<view class="body" style="background-color: #EEEEEE;">
         <!-- 操作菜单 -->
        <paper-left-popup
        :isPopupShow="isPopupShow" @hidePopup="hidePopup" 

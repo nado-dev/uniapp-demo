@@ -1,5 +1,5 @@
 <template>
-    <view>
+    <view  style="background-color: #EEEEEE;">
         <!-- 自定义导航栏 -->
         <news-nav-bar 
         :tabBar="tabBar" 
@@ -265,7 +265,7 @@
 }
 .search-input>input{ 
     background: #F4F4F4;
-    border-radius: 10upx;
+    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
 }
 .topic-search{
     display: flex;
@@ -280,15 +280,16 @@
 }
 .topic-swiper image{
     width: 100%;
-    border-radius: 20upx;   
+    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
 }
 .topic-new{
     padding: 20upx;
-    }
+    
+}
 .topic-new>view:first-child{
     padding-bottom: 10upx;
     font-size: 32upx;
-    }
+}
 .topic-new>view:last-child{
     padding: 10upx 0;
     }

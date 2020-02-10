@@ -49,6 +49,6 @@
         border-radius: 10upx;
     }
     .uni-swiper-tab{
-        border-bottom: 1upx solid #EEEEEE;
+        border-bottom: 0 4upx 8upx rgba(0, 0, 0, .3);
     }
 </style>

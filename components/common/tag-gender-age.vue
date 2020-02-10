@@ -22,7 +22,7 @@
         padding: -5upx 0upx;
         margin-left: 10upx;
         border-radius: 15upx;
-      
+        box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
     }
     .male{
         background: blue;

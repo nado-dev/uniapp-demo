@@ -33,11 +33,13 @@
         height: 150upx;
         border: 10upx;
         margin: 10upx 20upx;
-        border-radius: 10upx;
+        box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);
     }
     .topic-list{
         border-bottom: 1upx solid #EEEEEE;
-        
+        box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
+        background-color: #FFFFFF !important;
+        margin: 10upx 15upx;
     }
     .topic-list>view>view{
         color: #A4A4A4;
