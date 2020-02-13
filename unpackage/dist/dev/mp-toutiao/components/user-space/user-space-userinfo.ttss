@@ -1,0 +1,17 @@
+
+.user-space-detailedInfo-item{
+    padding: 20rpx 0;
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.user-space-detailedInfo{
+    padding: 0 30rpx;
+}
+.user-space-detailedInfo-item>view{
+    color: #AAAAAA;
+}
+.user-space-detailedInfo-item>view:first-child{
+    color: #333333;
+    font-size: 35rpx;
+    padding: 15rpx 0;
+}  
+

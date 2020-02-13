@@ -93,7 +93,9 @@
                 this.vericode = "";
             },
 			back(){
-                uni.navigateBack()
+                uni.navigateBack({
+                    delta:1
+                });
             },
             submit(){
                 //账号密码登录
@@ -197,7 +199,7 @@
     font-size: 40upx;
     font-weight: bold;
     color: #FFFFFF;
-    
+    z-index: 100;
 }
 .user-setting-logout-btn{
     margin: 30upx;

@@ -8,8 +8,9 @@
 .topic-bg>image.data-v-3b609799{
     position: absolute;
     width: 100%;
-    -webkit-filter: blur(5px);
-            filter: blur(5px);/*滤镜*/
+    -webkit-filter: blur(2px);
+            filter: blur(2px);/*滤镜*/
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .topic-info.data-v-3b609799{
     padding: 0 25rpx;
@@ -32,6 +33,7 @@
     border-radius: 20rpx;
     position: absolute;/*绝对定位上一层要相对定位*/
     top: -75rpx;/*穿到上一组件 用负值*/
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }
 .topic-info-c.data-v-3b609799{
     

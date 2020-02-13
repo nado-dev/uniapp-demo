@@ -58,7 +58,7 @@
         },
         data(){
             return{
-                isLogin:true,
+                isLogin:false,
                 list:[
                     {name:"浏览历史", icon:"liulan", clickType:"", url:""},
                     {name:"实名认证", icon:"huiyuanvip", clickType:"", url:""},

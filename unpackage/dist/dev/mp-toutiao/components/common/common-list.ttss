@@ -1,5 +1,9 @@
+
 .common-list.data-v-57e41fee{
        padding: 20rpx;
+       margin:15rpx 20rpx;
+       background-color: #FFFFFF !important; 
+       box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .common-list-l image.data-v-57e41fee{
         width: 70rpx;
@@ -10,6 +14,9 @@
         /* 不会被压缩 */
         -webkit-flex-shrink: 0;
                 flex-shrink: 0;
+}
+.common-list-l>image.data-v-57e41fee{
+        box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .common-list-r.data-v-57e41fee{
         /* 右边拉满 */
@@ -33,6 +40,7 @@
         background: #EEEEEE;
         padding: 0 10rpx;
         font-size: 28rpx;
+        box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .common-list-r>view.data-v-57e41fee:nth-child(2){
         font-size: 26rpx;
@@ -41,11 +49,12 @@
 .common-list-r>view.data-v-57e41fee:nth-child(3){
         position: relative;
         font-size: 24rpx;
+        box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .common-list-r>view:nth-child(3)>image.data-v-57e41fee{
         width:100%;
-        border-radius: 10rpx;
         margin-bottom: 10rpx;
+        box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .common-list-play.data-v-57e41fee,.common-list-playinfo.data-v-57e41fee{
         position: absolute;
@@ -58,7 +67,6 @@
         right: 10rpx;
         bottom: 10rpx;
         background: rgba(51,51,51,0.5);
-        border-radius: 20rpx;
         padding: 0 20rpx;
         font-size: 25rpx;
 }
@@ -67,7 +75,6 @@
         background: #EEEEEE;
        /* 宽度全部填充 */
         width: 100%;
-        border-radius: 10rpx;
         padding: 10rpx;
 }
 .common-list-share>image.data-v-57e41fee{
@@ -88,6 +95,6 @@
 .common-list-r>view:nth-child(4)>view:nth-child(2)>view.data-v-57e41fee{
         margin-left: 10rpx;
         padding: 5rpx;
-        font-size: 20rpx !important;
+        font-size: 25rpx !important;
 }
 

@@ -1655,6 +1655,121 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 15:
+/*!***************************************!*\
+  !*** D:/uniapp/demo/common/config.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 配置信息
+
+//websocket
+
+// 其他参数
+var _default = {
+  // api请求前缀
+  webUrl: 'https://ceshi2.dishait.cn/api/v1' };exports.default = _default;
+
+/***/ }),
+
+/***/ 16:
+/*!************************************!*\
+  !*** D:/uniapp/demo/common/lib.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 15));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // 网络监听
+var NetWork = { // 网络状态
+  isConnect: false, // 监听网络状态
+  On: function On() {var _this = this; // 获取当前网络状态
+    uni.getNetworkType({ success: function success(res) {if (res.networkType !== 'none') {uni.showToast({ icon: "none", title: '当前使用' + res.networkType + "网络" });_this.isConnect = true;return;}uni.showToast({ icon: "none", title: '请先连接网络' });} }); // 监听网络状态变化
+    uni.onNetworkStatusChange(function (res) {_this.isConnect = res.isConnected;if (!res.isConnected) {uni.showToast({ icon: "none", title: '您目前处于断网状态' });} else {uni.showToast({ icon: "none", title: '当前使用' + res.networkType + "网络" });}});} }; // app更新
+var Update = function Update() {};var _default = { NetWork: NetWork, Update: Update };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -7686,19 +7801,19 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 251:
+/***/ 261:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 252);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 262);
 
 
 /***/ }),
 
-/***/ 252:
+/***/ 262:
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -7729,7 +7844,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 253);
+module.exports = __webpack_require__(/*! ./runtime */ 263);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -7746,7 +7861,7 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ 253:
+/***/ 263:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8509,7 +8624,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 331:
+/***/ 341:
 /*!************************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/province.js ***!
   \************************************************************************/
@@ -8659,7 +8774,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 332:
+/***/ 342:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/city.js ***!
   \********************************************************************/
@@ -10173,7 +10288,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 333:
+/***/ 343:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/area.js ***!
   \********************************************************************/
@@ -22726,7 +22841,19 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 369:
+/***/ 4:
+/*!*********************************!*\
+  !*** D:/uniapp/demo/pages.json ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/***/ }),
+
+/***/ 400:
 /*!****************************************************!*\
   !*** D:/uniapp/demo/components/uni-icons/icons.js ***!
   \****************************************************/
@@ -22865,18 +22992,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   "cloud-download-filled": "\uE8E9",
   "headphones": "\uE8BF",
   "shop": "\uE609" };exports.default = _default;
-
-/***/ }),
-
-/***/ 4:
-/*!*********************************!*\
-  !*** D:/uniapp/demo/pages.json ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 /***/ }),
 
@@ -23786,7 +23901,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置" }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码" }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱" }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料" }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈" }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于" }, "pages/login/login": { "navigationBarTitleText": "登录" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置" }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码" }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱" }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料" }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈" }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于" }, "pages/login/login": { "navigationBarTitleText": "登录" }, "pages/user-space/user-space": { "navigationBarTitleText": "个人空间" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
@@ -23802,7 +23917,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 85:
+/***/ 87:
 /*!*************************************!*\
   !*** D:/uniapp/demo/common/time.js ***!
   \*************************************/

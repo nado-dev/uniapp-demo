@@ -1,28 +1,27 @@
 <template>
     <!-- 背景 + 用户基本信息 -->
-    <view class="user-space-head u-f-ajc">
+    <view class='user-space-head u-f-ajc'>
         <!-- 背景图 -->
-        <image :src="getBgImg" mode="widthFix" lazy-load @tap="switchBg"></image>
-        <view class="user-space-head-info u-f-ajc u-f-column">
+        <image :src='getBgImg' mode='widthFix' lazy-load @tap='switchBg'></image>
+        <view class='user-space-head-info u-f-ajc u-f-column'>
             <!-- 头像 -->
-            <image :src="userInfo.userPic" mode="widthFix" lazy-load></image>
+            <image :src='userInfo.userPic' mode='widthFix' lazy-load></image>
             <!-- 昵称 + 性别年龄 -->
-            <view class="user-space-margin u-f-ac">{{userInfo.userName}}
-            <tag-gender-age :gender="userInfo.gender" :age="userInfo.age"></tag-gender-age></view>
+            <view class='user-space-margin u-f-ac'>{{userInfo.userName}}
+            <tag-gender-age :gender='userInfo.gender' :age='userInfo.age'></tag-gender-age></view>
             <!-- 关注按钮 -->
-            <view v-if="!isFollow" @tap="follow" >
-                <view  class="icon iconfont icon-zengjia 
-                user-space-head-btn user-space-margin active">关注</view>
+            <view v-if='!isFollow' @tap='follow' >
+                <view  class='icon iconfont icon-zengjia user-space-head-btn user-space-margin active'>关注</view>
             </view>
-            <view v-else @tap="follow"  class="animated bounceIn faster">
-                <view  class="user-space-head-btn user-space-margin">已关注</view>
+            <view v-else @tap='follow'  class='animated bounceIn faster'>
+                <view  class='user-space-head-btn user-space-margin'>已关注</view>
             </view>
         </view>
     </view>
 </template>
 
 <script>
-     import tagGenderAge from "../common/tag-gender-age.vue";
+     import tagGenderAge from '../common/tag-gender-age.vue';
      export default {
          data() {
              return {
@@ -39,7 +38,7 @@
          computed:{
              getBgImg(){
                  // 计算属性 属性的值由变量改变而实时计算
-                 return "../../static/bgimg/"+this.bgimg+".jpg"
+                 return '../../static/bgimg/'+this.bgimg+'.jpg'
              }
          },
          methods: {
@@ -53,13 +52,13 @@
          	    if(this.isFollow){
          	        this.isFollow = !this.isFollow;
          	        uni.showToast({
-         	            title:"取消关注成功"
+         	            title:'取消关注成功'
          	        });
          	    }
          	    else{
          	        this.isFollow = !this.isFollow;
          	        uni.showToast({
-         	            title:"关注成功"
+         	            title:'关注成功'
          	        });
          	    }
          	    

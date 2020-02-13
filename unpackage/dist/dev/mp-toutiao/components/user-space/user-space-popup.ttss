@@ -1,0 +1,48 @@
+
+.paper-left-popup-mask{
+    position: fixed;
+    /* 铺满整个窗口 */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(55,55,55,0.5);
+    /* 层级关系小于菜单 */
+    z-index: 1999;
+}
+.paper-left-popup{
+    position: fixed;
+    right: 0;
+    top: 90rpx;
+    background: #FFFFFF;
+    font-size: 35rpx !important;
+    /* 
+    z-index 属性设置元素的堆叠顺序。
+    拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+    Z-index 仅能在定位元素上奏效（
+    例如 position:absolute;）！ */
+    z-index: 2000;
+    width: 55%;
+   /* height: 10%; */
+    box-shadow: 1rpx 1rpx 20rpx 2rpx #CCCCCC;/*四边阴影*/
+}
+.paper-left-popup>view{
+    /* border: 1upx solid; */
+    padding: 20rpx;
+}
+.paper-left-popup>view:first-child{
+    border-bottom: 1rpx solid #EEEEEE;
+}
+.paper-left-popup>view>view{
+     /* font-weight: bold; */
+}
+/* 文字效果 */
+.paper-left-popup>view>view>view{
+   /*  border: 1upx solid; */
+     padding-left: 40rpx;
+     /* font-size: 28upx; */
+}
+.paper-left-popup-hover{
+     background-color: #EEEEEE;
+}
+

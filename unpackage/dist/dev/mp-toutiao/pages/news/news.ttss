@@ -265,7 +265,7 @@
 }
 .search-input>input{ 
     background: #F4F4F4;
-    border-radius: 10rpx;
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }
 .topic-search{
     display: -webkit-box;
@@ -286,7 +286,7 @@
 }
 .topic-swiper image{
     width: 100%;
-    border-radius: 20rpx;
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }
 .topic-new{
     padding: 20rpx;

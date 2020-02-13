@@ -6,6 +6,7 @@
     padding: -5rpx 0rpx;
     margin-left: 10rpx;
     border-radius: 15rpx;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .male.data-v-082a2866{
     background: blue;

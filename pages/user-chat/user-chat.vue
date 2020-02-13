@@ -5,7 +5,9 @@
         <!-- 底部的bottom是固定的，所以要动态计算前面这个框架的高度，以免遮档 -->
             <!-- 聊天列表 -->
             <block v-for="(item,index) in list" :key="index">
-                <user-chat-list :item="item"  :index="index"></user-chat-list>
+                <view class="chat-item">
+                    <user-chat-list :item="item"  :index="index"></user-chat-list>
+                </view>
             </block>
             
           
@@ -47,7 +49,7 @@
             this.initData();
         },
         onReady() {
-            this.pageToButtom();
+            this.pageToButtom(true);
         },
 		methods: {
             //func1初始化参数
@@ -78,19 +80,41 @@
                 this.pageToButtom();
             },
              //func2滚动条置于底部
-            pageToButtom(){
-               	let q=uni.createSelectorQuery();
-                q.select('#scroll-view').boundingClientRect();
-                q.selectAll('.user-chat-item').boundingClientRect();
-                q.exec((res)=>{
-                    res[1].forEach((ret)=>{
-                        this.style.itemH += ret.height;
-                    });
+            pageToButtom(isfirst = false){
+               	let q=uni.createSelectorQuery().in(this);
+                let itemH = q.selectAll('.chat-item') ;
+                this.$nextTick(()=>{
+                    itemH.fields({
+                        size:true
+                    },
+                    data =>{
+                        if(data){
+                            if(isfirst){
+                                for(let i = 0; i<data.length; i++){
+                                    this.style.itemH += data[i].height;
+                                }
+                            }
+                            else{
+                                // last element
+                                this.style.itemH += data[data.height-1];
+                            }
+                            this.style.itemH += data.height;
+                            if(this.style.itemH > this.style.contentH){
+                                this.scrollTop=this.style.itemH ;
+                            }
+                        }
+                    }).exec();
+                // q.select('#scroll-view').boundingClientRect();
+                // q.selectAll('.user-chat-item').boundingClientRect();
+                // q.exec((res)=>{
+                //     res[1].forEach((ret)=>{
+                //         this.style.itemH += ret.height;
+                //     });
                    
-                    if(this.style.itemH > this.style.contentH){
-                        this.scrollTop=this.style.itemH ;
+                //     if(this.style.itemH > this.style.contentH){
+                //         this.scrollTop=this.style.itemH ;
                       
-                    }
+                //     }
                 					
                 })
                 

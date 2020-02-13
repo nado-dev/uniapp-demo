@@ -153,6 +153,9 @@
     /* 内边距 */
     padding: 20rpx; 
     border-bottom: 1rpx solid #EFEFEF;
+    margin:15rpx 20rpx;
+    background-color: #FFFFFF !important; 
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .index-list1.data-v-7dea0143{
     display: -webkit-box;
@@ -171,6 +174,7 @@
     margin: 10rpx;
     width: 90rpx;
     height: 90rpx;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .index-list1>view.data-v-7dea0143:first-child{
     display: -webkit-box;
@@ -190,6 +194,7 @@
             align-items: center;
     background: #F4F4F4;
     border-radius: 5rpx;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .index-list2.data-v-7dea0143{
     padding-top: 15rpx;
@@ -198,10 +203,11 @@
 .index-list3.data-v-7dea0143{
     padding-top: 15rpx;
     position: relative;/* 相对定位 */
+     box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }
 .index-list3>image.data-v-7dea0143{
     width: 100%;
-    border-radius: 20rpx;
+    /* border-radius: 20upx; */
 }
 .index-list4.data-v-7dea0143{
     display: -webkit-box;

@@ -4,6 +4,9 @@
     border-bottom: 1rpx solid #eeeeee;
     border-top: 1rpx solid #eeeeee;
     padding: 20rpx;
+    background-color: #FFFFFF;
+    margin: 10rpx 15rpx;
+    box-shadow: 0 1rpx 2rpx rgba(0, 0, 0, .3);
 } 
 /* 热门第一行 */
 .topic-nav>view.data-v-85e77b94:first-child{
@@ -24,8 +27,8 @@
     -webkit-flex: 1;
             flex: 1;
     background-color: #EEEEEE;
-    color: #9E9E9E;
-    border-radius: 10rpx;
+    color: #6E6E6E;
     margin: 0 10rpx;
+    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }  
 

@@ -31,7 +31,14 @@
                         console.log(JSON.stringify(res))
                         console.log('login success:', res);
                         // 更新保存在 store 中的登录状态
-                        console.log("登录成功 保存到本地 修改当前登录状态")
+                        console.log("登录成功 保存到本地 修改当前登录状态");
+                        
+                        uni.getUserInfo({
+                            provider:provider.id,
+                            success: (infoRes) => {
+                                console.log(JSON.stringify(infoRes.userInfo));
+                            }
+                        })
                     },
                     fail: (err) => {
                         console.log('login fail:', err);

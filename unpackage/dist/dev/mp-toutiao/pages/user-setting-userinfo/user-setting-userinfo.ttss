@@ -20,7 +20,7 @@
 }
 .user-setting-logout-btn{
     position: fixed;
-    bottom: 400rpx;
+    bottom: 100rpx;
     left: 20rpx;
     right: 20rpx;
     background: #009687;

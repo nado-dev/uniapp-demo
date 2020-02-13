@@ -16,6 +16,6 @@
     border-radius: 10rpx;
 }
 .uni-swiper-tab{
-    border-bottom: 1rpx solid #EEEEEE;
+    border-bottom: 0 4rpx 8rpx rgba(0, 0, 0, .3);
 }
 

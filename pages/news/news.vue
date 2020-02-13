@@ -102,7 +102,37 @@
                             desc:"想歪的自重",
                             totalPostNum:148,
                             todayPostNum:7
-                        }
+                        },{
+                            titlePic:"../../static/common/zheshiluwei.jpg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },{
+                            titlePic:"../../static/common/zheshiluwei.jpg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },{
+                            titlePic:"../../static/common/zheshiluwei.jpg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },{
+                            titlePic:"../../static/common/zheshiluwei.jpg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },{
+                            titlePic:"../../static/common/zheshiluwei.jpg",
+                            title:"这是芦苇",
+                            desc:"想歪的自重",
+                            totalPostNum:148,
+                            todayPostNum:7
+                        },
                     ]
                 },
                 swiperHeight:500,
