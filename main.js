@@ -10,10 +10,17 @@ import config from "./common/config.js"
 Vue.prototype.config = config
 import lib from './common/lib.js'
 Vue.prototype.lib = lib
+import User from "./common/user.js"
+Vue.prototype.User = User
+
+import request from "./common/request.js"
+Vue.prototype.$http = request
+
 
 const app = new Vue({
     ...App,
     config,
-    lib
+    lib,
+    // User,
 })
 app.$mount()

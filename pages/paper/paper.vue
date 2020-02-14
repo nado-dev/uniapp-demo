@@ -33,11 +33,11 @@
                 loadText:"上拉加载更多",
 				list:[
                     {
-                        userPic:"../../static/demo/userpic/14.jpg",
-                        userName:"ATM",
+                        userPic:"",
+                        userName:"此功能仅为前端展示用",
                         time:"12:45",
-                        msg:"[图片]",
-                        unreadNum:6
+                        msg:"OPPS",
+                        unreadNum:0
                     },
                     {
                         userPic:"../../static/demo/userpic/14.jpg",
@@ -46,34 +46,7 @@
                         msg:"[图片]",
                         unreadNum:0
                     },
-                    {
-                        userPic:"../../static/demo/userpic/14.jpg",
-                        userName:"ATM",
-                        time:"12:45",
-                        msg:"[图片]",
-                        unreadNum:6
-                    },
-                    {
-                        userPic:"../../static/demo/userpic/14.jpg",
-                        userName:"ATM",
-                        time:"12:45",
-                        msg:"[图片]",
-                        unreadNum:0
-                    },
-                    {
-                        userPic:"../../static/demo/userpic/14.jpg",
-                        userName:"ATM",
-                        time:"12:45",
-                        msg:"[图片]",
-                        unreadNum:6
-                    },
-                    {
-                        userPic:"../../static/demo/userpic/14.jpg",
-                        userName:"ATM",
-                        time:"12:45",
-                        msg:"[图片]",
-                        unreadNum:0
-                    },
+                   
                     {
                         userPic:"../../static/demo/userpic/14.jpg",
                         userName:"ATM",
@@ -102,10 +75,9 @@
                 this.isPopupShow = true;
             }
             if(e.index == 0){
-               console.log("left button clicked");
-               uni.navigateTo({
+                this.User.navigate({
                    url:"../user-list/user-list"
-               })
+               });
             }
         },
 		methods: {

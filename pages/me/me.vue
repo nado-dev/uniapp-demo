@@ -79,9 +79,9 @@
         },
         onNavigationBarButtonTap(e){
            if(e.index == 0){
-                uni.navigateTo({
+               this.User.navigate({
                     url:"../user-setting/user-setting"
-                })
+                });
            }
        }
 	}

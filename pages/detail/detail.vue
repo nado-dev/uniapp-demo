@@ -124,6 +124,13 @@
             },
             //提交评论
             submit(data){
+                if(!data || data.length == 0){
+                    uni.showToast({
+                        icon:'none',
+                        position:'bottom',
+                        title:'评论不能为空'
+                    })
+                }
                 let obj ={
                     commentId:1,
                     fatherReplyId:0,
