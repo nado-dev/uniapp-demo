@@ -72,66 +72,7 @@
                 swiperHeight:500,
                 tabIndex:0,//默认id
                 tabBars:[],
-                newsList:[
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                        {
-                            userPic:"../../static/demo/userpic/1.jpg",
-                            userName:"昵称",
-                            isFollow:false,
-                            title:"标题",
-                            type:"img",//image 图文 ，video 视频
-                            titlePic:"../../static/demo/datapic/1.jpg",
-                            likeInfo:{
-                                index:2,//0：未操作，1：已顶，2：已踩
-                                likeNum:11,
-                                dislikeNum:11,
-                                
-                            },                     
-                            commentNum:10,
-                            shareNum:10,
-                        },
-                        {
-                            userPic:"../../static/demo/userpic/1.jpg",
-                            userName:"昵称",
-                            isFollow:true,
-                            title:"标题",
-                            type:"video",//image 图文 ，video 视频
-                            titlePic:"../../static/demo/datapic/1.jpg",
-                            playNum:"20w",
-                            length:"2:47",
-                            likeInfo:{
-                                index:1,//0：未操作，1：已顶，2：已踩
-                                likeNum:11,
-                                dislikeNum:11,
-                                
-                            },                     
-                            commentNum:10,
-                            shareNum:10,
-                        }
-                    ]},
-                    {
-                        loadText:"上拉加载更多",
-                        list:[]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[]
-                    },
-                ]
+                newsList:[]
 			}
 		},
 		methods: {
@@ -193,7 +134,7 @@
                 this.newsList[currentIndex].firstload = true;
                 // 拿到最后一页
                 if (list.length < 10) {
-                    this.newsList[currentIndex].loadText="没有更多数据了";
+                    this.newsList[currentIndex].loadText="没有更多数据了(`ε´ )";
                 }else{
                     this.newsList[currentIndex].loadText="上拉加载更多";
                 }
@@ -206,11 +147,11 @@
                     userPic:item.user.userpic,
                     userName:item.user.username,
                     // isFollow:!!item.user.fens.length,
-                    isFollow:item.user.fens.length,
+                    isFollow:!!item.user.fens.length,
                     id:item.id,
                     title:item.title,
                     type:"img", // img:图文,video:视频
-                    titlepic:item.titlepic,
+                    titlePic:!!item.images[0].url ? item.images[0].url : '',
                     video:false,
                     path:item.path,
                     share:!!item.share,
@@ -228,6 +169,7 @@
                 //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
                 this.tabIndex = index;
                 //console.log(index)
+                this.getList();
             },
             //tabBar滑动事件
             tabChange(e){

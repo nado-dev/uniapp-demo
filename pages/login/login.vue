@@ -101,6 +101,13 @@
                 //账号密码登录
                 if(this.isLoginById){
                     console.log("login: id:"+this.userName+" pw:"+this.pw)
+                    return this.User.login({
+                        url:"user/login",
+                        data:{
+                            username:this.userName,
+                            password:this.pw
+                        }
+                    })
                 }
                 else{
                     console.log("login: phonenum:"+this.phoneNum+" verify code:"+this.vericode)

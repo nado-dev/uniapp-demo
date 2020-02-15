@@ -18,7 +18,7 @@
         <user-chat-bottom @submit="submit"></user-chat-bottom>
         
         <!-- 分享 -->
-       <more-share :isShareShow="isShareShow" @togle="togle"></more-share>
+       <more-share :isShareShow="isShareShow" @togle="togle" :sharedata="sharedata"></more-share>
         
         
 	</view>
@@ -39,88 +39,130 @@
         },
 		data() {
 			return {
+                // 分享内容 
+                sharedata:{
+                    title:"",
+                    url:"",
+                    titlePic:"",
+                    shareType:0
+                },
                 isShareShow : false ,//分享栏是否出现
                 comment:{
-                    commentCount:23,
+                    commentCount:0,
                     list:[],
-                    loginUserInfo:{}
                 },
 				//图文样式 PicTextStyle:true,
 				detail:{
-				    userPic:"../../static/demo/userpic/10.jpg",
-				    userName:"31K4t3k",
-				    gender:1,//0:女 1:男
-				    age:25,
+				    userPic:"",
+				    userName:"",
+				    gender:0,//0:女 1:男
+				    age:0,
+                    content:'',
 				    isFollow:false,
-				    title:"...轻轻呼唤你的名字",
-				    titlePic:"../../static/demo/datapic/13.jpg",
-                    morePic:["../../static/demo/datapic/13.jpg",
-                             "../../static/demo/datapic/15.jpg",
-                             "../../static/demo/datapic/12.jpg"],
+				    title:"",
+				    titlePic:"",
+                    morePic:[],
 				    textStyle:false,
 				    PicTextStyle:true,
 				    videoStyle:false,
 				    shareStyle:false,
-				    location:"PekingU",
-				    shareNum:3498,
-				    commentNum:3456,
-				    likeNum:345,
+				    location:"",
+				    shareNum:0,
+				    commentNum:0,
+				    likeNum:0,
+                    createTime:0
 				},
 			}
 		},
 		methods: {
+            // 初始化分享内容
+            __initShare(obj){
+                this.sharedata = {
+                    title : obj.title,
+                    content : obj.content,
+                    url:"http://aaronfang.fun/",
+                    titlePic:obj.titlePic?obj.titlePic:"",
+                    shareType:0
+                }
+            },
 			//初始化
             initdata(obj){
                 // 获取登陆用户信息
-                this.loginUserInfo = obj
                //1、修改标题
                uni.setNavigationBarTitle({
                    title:obj.title
                });
+               uni.showLoading({
+                   title:'加载中┃電柱┃',
+                   mask:true
+               });
+               // 加载分享内容
+               this.__initShare(obj);
+                obj.morePic = [];
+                obj.content = '';
+                obj.likeNum = obj.likeInfo.likeNum;
+                this.detail = obj;
+                this.comment.commentCount = obj.commentNum
+                // 获取文章详情
+                this.getDetail();
+                if(this.comment.commentNum){
+                    this.getComment();
+                }
+            },
+            async getDetail(){
+                let [err,res] = await this.$http.get('post/'+this.detail.id);
+                let error = this.$http.errorCheck(err,res,()=>{
+                    uni.hideLoading();
+                },()=>{
+                    uni.hideLoading();
+                });
+                if(!error) return;
+                let data = res.data.data.detail;
+                this.detail.content = data.content;
+                let images = [];
+                if(data.images.length != 0){
+                    for (let i = 0; i < data.images.length; i++) {
+                        images.push(data.images[i].url);
+                    }
+                    
+                    this.detail.morePic = images;
+                    this.detail.PicTextStyle = true
+                }
+                // this.detail.age = data.user.userinfo.age;
+                // this.detail.gender = data.user.userinfo.sex;
+                this.detail.createTime = data.creat_time;
+                console.log(this.detail.morePic)
+                return uni.hideLoading();
             },
             //获取评论
-            getComment(){
-                let arr = [
-                        //fatherReplyId：指示评论父级id
-                        //commentId:评论标识号
-                        
-                        //一级评论
-                        {
-                            commentId:1,
-                            fatherReplyId:0,
-                            userPic:"../../static/demo/userpic/1.jpg",
-                            userName:"ATM",
-                            time:"1580908445",
-                            content:"我已经。没有办法相信红名了。",
-                            
-                        },
-                        //二级评论
-                        {
-                            commentId:2,
-                            fatherReplyId:1,
-                            userPic:"../../static/demo/userpic/1.jpg",
-                            userName:"ATM",
-                            time:"1580908445",
-                            content:"我已经。没有办法相信红名了。",
-                            
-                        },
-                        //三级评论
-                        {
-                            commentId:3,
-                            fatherReplyId:2,
-                            userPic:"../../static/demo/userpic/1.jpg",
-                            userName:"ATM",
-                            time:"1580908445",
-                            content:"我已经。没有办法相信红名了。",
-                            
-                        },
-                    ];
-                    
-                    for (let i=0 ;i<arr.length; i++) {
-                        arr[i].time = time.gettime.gettime(arr[i].time);
+            async getComment(){
+                let [err,res] = await this.$http.get('post/'+this.detail.id+'/comment');
+                if (!this.$http.errorCheck(err,res)) return;
+                let list = res.data.data.list;
+                this.comment.list = this.comment.list.concat(this.__ArrSort(list));
+            },
+            __ArrSort(arr,id = 0){
+            var temp = [],lev=0;
+            var forFn = function(arr, id, lev){
+                for (var i = 0; i < arr.length; i++) {
+                    var item = arr[i];
+                    if (item.fid==id) {
+                        item.lev=lev;
+                        temp.push({
+                            id:item.id,
+                            fid:item.fid,
+                            userid:item.user.id,
+                            userPic:item.user.userpic,
+                            userName:item.user.username,
+                            time:time.gettime.gettime(item.create_time),
+                            content:item.data,
+                        });
+                        forFn(arr,item.id,lev+1);
                     }
-                    // alert("go")
-                    this.comment.list = arr;
+                }
+            };
+            forFn(arr, id, lev);
+            return temp;
             },
             //提交评论
             submit(data){

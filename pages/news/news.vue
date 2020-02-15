@@ -33,6 +33,7 @@
                         <!-- 搜索框 -->
                         <view class="search-input">
                             <input placeholder="( ﾟ∀。)" class="uni-input" 
+                            disabled @tap="openSearch"
                             placeholder-class="icon iconfont icon-sousuo topic-search"/>
                         </view>
                         
@@ -75,65 +76,9 @@
                     {name: "话题",id: "topic"}
                 ],
                 topicBanner:{
-                    swiper:[
-                        {src:"../../static/demo/banner1.jpg"},
-                        {src:"../../static/demo/banner1.jpg"},
-                        {src:"../../static/demo/banner1.jpg"}
-                    ],
-                    nav:[
-                        {name:"技术"},
-                        {name:"社畜"},
-                        {name:"动画"},
-                        {name:"小说"},
-                        {name:"手游"},
-                        {name:"摄影"}
-                    ],
-                    list:[
-                        {
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },
-                        {
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },{
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },{
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },{
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },{
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },{
-                            titlePic:"../../static/common/zheshiluwei.jpg",
-                            title:"这是芦苇",
-                            desc:"想歪的自重",
-                            totalPostNum:148,
-                            todayPostNum:7
-                        },
-                    ]
+                    swiper:[],
+                    nav:[],
+                    list:[]
                 },
                 swiperHeight:500,
                 followList:{
@@ -221,6 +166,57 @@
             };
         },
         methods: {
+            __init(){
+                this.getSwiper();
+                this.getHot();
+                this.getNav();
+            },
+            // 获取广告
+            async getSwiper(){
+                let [err,res] = await this.$http.get('adsense/0');
+                if (!this.$http.errorCheck(err,res)) return;
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push({
+                        src:list[i].src,
+                        url:list[i].url
+                    })
+                }
+                this.topicBanner.swiper = arr;
+            },
+            // 获取热门分类
+            async getNav(){
+                let [err,res] = await this.$http.get('topicclass');
+                if (!this.$http.errorCheck(err,res)) return;
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push({
+                        id:list[i].id,
+                        name:list[i].classname
+                    })
+                }
+                this.topicBanner.nav = arr;
+            },
+            // 获取热门话题
+            async getHot(){
+                let [err,res] = await this.$http.get('hottopic');
+                if (!this.$http.errorCheck(err,res)) return;
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push({
+                        id:list[i].id,
+                        titlePic:list[i].titlepic,
+                        title:list[i].title,
+                        desc:list[i].desc,
+                        totalPostNum:list[i].post_count,
+                        todayPostNum:list[i].todaypost_count,
+                    })
+                }
+                this.topicBanner.list = arr;
+            },
             //点击切换
             changeTab(index) {
                 this.tabIndex = index;
@@ -267,6 +263,12 @@
                 
                 //this.followList.loadText = "没有更多数据";
                 
+            },
+            // 打开搜索页
+            openSearch(){
+                uni.navigateTo({
+                    url:'../search/search?searchType=topic'
+                });
             }
         },
         components: {
@@ -283,6 +285,7 @@
                     this.swiperHeight = height;
                 }
             })
+            this.__init();
         },
     }
 </script>

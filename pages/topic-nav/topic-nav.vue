@@ -28,15 +28,18 @@
                                 <!-- 上拉加载 -->
                             <load-more :loadText="items.loadText"></load-more> 
                        </template >
-                            
+                        
+                        <template v-else-if="!items.firstload">
+                            <view class="u-f-ajc" style="font-size: 50upx; font-weight: bold;color: #CCCCCC;padding-top: 100upx;">
+                                Loading...
+                            </view>
+                        </template>    
                     <!-- 无内容 展示图片-->  
                     <!-- 无内容默认 -->
                        <template v-else>
                           
                             <empty-content></empty-content>
-                        </template>
-                           
-                        
+                        </template>                     
                     </scroll-view>
                 </swiper-item>         
             </swiper>
@@ -54,172 +57,8 @@
 			return {
                 swiperHeight:500,
 				tabIndex:0,//默认id
-				tabBars:[
-				    {name:"时间线",id:"timeline"      },
-				    {name:"综合1",id:"sundry"         },
-				    {name:"速报2",id:"news"           },
-				    {name:"欢乐恶搞",id:"dontComeHere"},
-				    {name:"跑团",id:"paotuan"         },
-				    {name:"圈内",id:"inside"          },
-				   
-				],
-                newsList:[
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]},
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]
-                    },
-                    {
-                        loadText:"上拉加载更多",
-                        list:[
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            },
-                            {
-                                titlePic:"../../static/common/zheshiluwei.jpg",
-                                title:"这是芦苇",
-                                desc:"想歪的自重",
-                                totalPostNum:148,
-                                todayPostNum:7
-                            }
-                        ]
-                    },
-                ]
+				tabBars:[],
+                newsList:[]
 			}
 		},
         components:{
@@ -235,28 +74,87 @@
                     this.swiperHeight = height;
                 }
             })
+            this.getNav();
         },
 		methods: {
+            async getList(){
+                let currentIndex = this.tabIndex;
+                let url = `topicclass/${this.tabBars[this.tabIndex].id}/topic/${this.newsList[this.tabIndex].page}`;
+                let [err,res] = await this.$http.get(url,{});
+                let error = this.$http.errorCheck(err,res,()=>{
+                    this.newsList[currentIndex].loadText="上拉加载更多";
+                },()=>{
+                    this.newsList[currentIndex].loadText="上拉加载更多";
+                });
+                console.log(res)
+                if (!error) return;
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push({
+                            id:list[i].id,
+                            titlePic:list[i].titlepic,
+                            title:list[i].title,
+                            desc:list[i].desc,
+                            totalPostNum:list[i].post_count,
+                            todayPostNum:list[i].todaypost_count,
+                    });
+                }
+                this.newsList[currentIndex].list = this.newsList[currentIndex].page > 1 
+                    ? this.newsList[currentIndex].list.concat(arr) : arr;
+                this.newsList[currentIndex].firstload = true;
+                // 拿到最后一页
+                if (list.length < 10) {
+                    this.newsList[currentIndex].loadText="没有更多数据了(`ε´ )";
+                }else{
+                    this.newsList[currentIndex].loadText="上拉加载更多";
+                }
+                return;
+            },
+            async getNav(){
+                let [err, res] = await this.$http.get('topicclass');
+                if(err){
+                    return  uni.showToast({
+                        title: '加载失败',
+                        icon:'none'
+                    });
+                }
+                if(res.data.errorCode){
+                    return  uni.showToast({
+                        title: res.data.msg,
+                        icon:'none'
+                    });
+                }
+                console.log(res)
+                let list = res.data.data.list;
+                let arr = [];
+                let arr2 = [];
+                for (let i = 0; i < list.length; i++) {
+                    arr.push({
+                        id:list[i].id,
+                        name:list[i].classname
+                    })
+                    
+                    arr2.push({
+                        loadText:"上拉加载更多",
+                        list:[],
+                        page:1,
+                        firstload:false
+                    })
+                }
+                this.tabBars = arr;
+                this.newsList = arr2;
+                this.tabBars.length > 0 && this.getList();
+            },
             loadMore(index){
                 if( this.newsList[index].loadText != "上拉加载更多"){
                     return;//如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
                 }
                 this.newsList[index].loadText = "加载中(＾o＾)ﾉ";
                 //修改状态
-                setTimeout(()=> {                  
-                    //示例:加载2000ms后从服务端获取了新的数据
-                    let obj = {                       
-                       titlePic:"../../static/common/zheshiluwei.jpg",
-                       title:"这是芦苇",
-                       desc:"想歪的自重",
-                       totalPostNum:148,
-                       todayPostNum:7
-                    };
-                    this.newsList[index].list.push(obj);//追加
-                    
-                    this.newsList[index].loadText = "上拉加载更多";     //复原状态              
-                }, 2000);
-                
+                // 修改状态
+                this.newsList[this.tabIndex].page++;
+                this.getList();
                 //this.newsList[index].loadText = "没有更多数据";
                 
             },
@@ -264,11 +162,13 @@
 			tabSwitch(index){
 			    //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
 			    this.tabIndex = index;
+                this.getList()
 			    //console.log(index)
 			},
             //tabBar滑动事件
             tabChange(e){
                 this.tabIndex = e.detail.current;
+                this.getList()
                 //console.log(index);
             }
 		}

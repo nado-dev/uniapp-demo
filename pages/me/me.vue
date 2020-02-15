@@ -54,7 +54,35 @@
                 uni.navigateTo({
                     url:"../login/login"
                 })
-            }
+            },
+            
+            isLogin_func(){
+                if (!this.User.token){
+                    this.isLogin = false;
+                    this.homeInfo={
+                        userpic:"",
+                        username:"",
+                        totalnum:0,
+                        todaynum:0,
+                    };
+                    this.homeData[0].num = 0;
+                    this.homeData[1].num = 0;
+                    this.homeData[2].num = 0;
+                    this.homeData[3].num = 0;
+                    return;
+                }
+                // 用户已登录
+                this.homeInfo.id = this.User.userinfo.id;
+                this.homeInfo.userPic = this.User.userinfo.userpic;
+                this.homeInfo.userName = this.User.userinfo.username;
+                this.homeInfo.totalVistor = this.User.counts.post_count || 0;
+                this.homeInfo.todayVistor = this.User.counts.today_posts_count || 0;
+                this.homeData[0].num = this.User.counts.post_count || 0;
+                this.homeData[1].num = this.User.counts.post_count || 0;
+                this.homeData[2].num = this.User.counts.comments_count || 0;
+                this.homeData[3].num = this.User.counts.withfen_count || 0;
+                this.isLogin = true;
+            },
         },
         data(){
             return{
@@ -70,10 +98,10 @@
                     todayVistor:12
                 },
                 homeData:[
-                    {name:"动态", num:12},
-                    {name:"评论", num:12},
-                    {name:"收藏", num:12},
-                    {name:"点赞", num:12}
+                    {name:"动态", num:0},
+                    {name:"评论", num:0},
+                    {name:"收藏", num:0},
+                    {name:"点赞", num:0}
                 ]
             }
         },
@@ -83,6 +111,11 @@
                     url:"../user-setting/user-setting"
                 });
            }
+       },
+       onShow() {
+           console.log(this.User.token)
+           console.log(this.User.userinfo)
+           this.isLogin_func()
        }
 	}
 </script>

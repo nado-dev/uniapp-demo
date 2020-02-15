@@ -8,9 +8,9 @@
                         </view>
                         <view class="uni-uploader-body">
                             <view class="uni-uploader__files">
-                                <view class="icon iconfont icon-shanchu" @tap="deletePic()"> </view>
                                 <block v-for="(image,index) in imageList" :key="index">
                                     <view class="uni-uploader__file">
+                                        <view class="icon iconfont icon-shanchu" @tap="deletePic()"> </view>
                                         <image class="uni-uploader__img" :src="image" :data-src="image" 
                                         @tap="previewImage" ></image>
                                     </view>

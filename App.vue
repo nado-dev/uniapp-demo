@@ -3,7 +3,9 @@
 		onLaunch: function() {
             // 网络监听
 			console.log('App Launch')
-            this.lib.NetWork.On()
+            this.lib.NetWork.On();
+            // 初始化用户状态
+            this.User.__init();
 		},
 		onShow: function() {
 			console.log('App Show')

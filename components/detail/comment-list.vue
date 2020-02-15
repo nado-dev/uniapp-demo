@@ -1,7 +1,7 @@
 <template>
    
         <!-- 主体 -->
-   <view class="uni-comment-list " :class="{'u-comment-list-child':item.fatherReplyId != 0}">
+   <view class="uni-comment-list " :class="{'u-comment-list-child':item.fid != 0}">
         <!--左 头像 -->
         <view class="uni-comment-face"><image :src="item.userPic" mode="widthFix"></image></view>
         <!--右   -->

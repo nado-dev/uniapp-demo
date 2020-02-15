@@ -33,18 +33,27 @@
 export default {
 		props:{
 			isShareShow:Boolean,
-           
+            sharedata:Object
 		},
 		data() {
 			return {
-				shareText: 'share test',
-				href:"https://uniapp.dcloud.io",
-				image: 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/app/share-logo@3.png',
+                title:"",
+				shareText: '',
+				href:"",
+				image: '',
 				shareType:1,//1文字 2图片 0图文 5小程序
                 providerList:[]
 			}
 		},
-		
+		watch:{
+            sharedata(newValue, oldValue){
+                this.title = newValue.title
+                this.shareText = newValue.content;
+                this.herf = newValue.url;
+                this.image = newValue.titlePic;
+                this.shareType = newValue.shareType;
+            }
+        },
 		methods:{
             
                 loadShareList(){
@@ -160,8 +169,8 @@ export default {
 					case 0:
 						shareOPtions.summary = this.shareText;
 						shareOPtions.imageUrl = this.image;
-						shareOPtions.title = '欢迎体验uniapp';
-						shareOPtions.href = 'https://uniapp.dcloud.io';
+						shareOPtions.title =  this.title;
+						shareOPtions.href = this.href;
 						break;
 					case 1:
 						shareOPtions.summary = this.shareText;
@@ -170,14 +179,8 @@ export default {
 						shareOPtions.imageUrl = this.image;
 						break;
 					case 5:
-						shareOPtions.imageUrl = this.image ? this.image : 'https://img-cdn-qiniu.dcloud.net.cn/uniapp/app/share-logo@3.png'
-						shareOPtions.title = '欢迎体验uniapp';
-						shareOPtions.miniProgram = {
-							id:'gh_33446d7f7a26',
-							path:'/pages/tabBar/component/component',
-							webUrl:'https://uniapp.dcloud.io',
-							type:0
-						};
+						shareOPtions.imageUrl = this.image 
+						shareOPtions.title =  this.title;
 						break;
 					default:
 						break;
@@ -186,9 +189,17 @@ export default {
 				if(shareOPtions.type === 0 && plus.os.name === 'iOS'){//如果是图文分享，且是ios平台，则压缩图片 
 					shareOPtions.imageUrl = await this.compress();
 				}
-				if(shareOPtions.type === 1 && shareOPtions.provider === 'qq'){//如果是分享文字到qq，则必须加上href和title
-					shareOPtions.href = 'https://uniapp.dcloud.io';
-					shareOPtions.title = '欢迎体验uniapp';
+				
+                if(shareOPtions.provider === 'qq'){//如果是分享文字到qq，则必须加上href和title
+					shareOPtions.type = 1 ;
+                    shareOPtions.href = this.href;
+					shareOPtions.title = this.title;
+				}
+                if(shareOPtions.provider === 'sinaweibo'){//如果是分享文字到wb，则必须加上href和title
+					shareOPtions.type = 1 ;
+                    shareOPtions.imageUrl = ""
+                    shareOPtions.href = this.href;
+					shareOPtions.title = this.title;
 				}
 				uni.share(shareOPtions);
 			},

@@ -2,7 +2,15 @@
 	<view>
         <template v-if="list.length > 0">
             <block v-for="(item, index) in list" :key="index">
-                <index-list :item="item" :index="index"></index-list>
+                <!-- 搜po -->
+                <template v-if="searchType == 'post'">
+                    <index-list :item="item" :index="index"></index-list>
+                </template>
+                <!-- 搜话题 -->
+                <template v-if="searchType == 'topic'">
+                    <topic-list :item="item" :index="index"></topic-list>
+                </template>
+                
             </block>
             <load-more :loadText="loadText"></load-more>
         </template>
@@ -20,73 +28,71 @@
     import indexList from "../../components/index/index-list.vue";
     import emptyContent from "../../components/common/empty-content.vue";
     import loadMore from '../../components/common/load-more.vue';
+    import topicList from '../../components/news/topic-list.vue';
 	export default {
         components:{
             indexList,
             emptyContent,
-            loadMore
+            loadMore,
+            topicList
         },
 		data() {
 			return {
                 isSearch:false,
                 loadText:"上拉加载更多",
 				list:[],
-                keyword:""
+                keyword:"",
+                page:1,
+                searchType:"post"
 			}
 		},
 		methods: {
             //搜索事件
-            getData(val){
+            async getData(){
                 uni.showLoading({
                     isSearch:false,
-                    title: '搜索中',
+                    title: '搜索中(｀･ω･)',
                     mask: false
                 });
                 //请求服务端 post keyword:value
-                setTimeout(()=> {
-                    this.isSearch = true;
-                    let arr = [
-                        
-                            {
-                                userPic:"../../static/demo/userpic/1.jpg",
-                                userName:"new昵称",
-                                isFollow:false,
-                                title:"标题",
-                                type:"img",//image 图文 ，video 视频
-                                titlePic:"../../static/demo/datapic/1.jpg",
-                                likeInfo:{
-                                    index:2,//0：未操作，1：已顶，2：已踩
-                                    likeNum:11,
-                                    dislikeNum:11,
-                                    
-                                },                     
-                                commentNum:10,
-                                shareNum:10,
-                            },
-                            {
-                                userPic:"../../static/demo/userpic/1.jpg",
-                                userName:"new昵称",
-                                isFollow:true,
-                                title:"标题",
-                                type:"video",//image 图文 ，video 视频
-                                titlePic:"../../static/demo/datapic/1.jpg",
-                                playNum:"20w",
-                                length:"2:47",
-                                likeInfo:{
-                                    index:1,//0：未操作，1：已顶，2：已踩
-                                    likeNum:11,
-                                    dislikeNum:11,
-                                    
-                                },                     
-                                commentNum:10,
-                                shareNum:10,
-                            }
-                    
-                    ];
-                    this.list = arr;
+                let url = '';
+                switch (this.searchType){
+                    case "topic":
+                        url = 'search/topic';
+                        break;
+                    case "post":
+                        url = 'search/post';
+                        break;
+                }
+                
+                let [err,res] =await this.$http.post(url,{
+                    keyword:this.keyword,
+                    page:this.page
+                },{token:true, checkToken:false});
+                let error = this.$http.errorCheck(err,res,()=>{
                     uni.hideLoading();
-                }, 1000);
-               
+                    this.isSearch=true;
+                },()=>{
+                    uni.hideLoading();
+                    this.isSearch=true;
+                });
+                console.log(res)
+                if (!error) return;
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push(this.__format(list[i]));
+                }
+                this.list = this.page > 1
+                    ? this.list.concat(arr) : arr;
+                this.isSearch = true;
+                // 拿到最后一页
+                if (list.length < 10) {
+                    this.loadText="没有更多数据了(`ε´ )";
+                }else{
+                    this.loadText="上拉加载更多";
+                }
+                uni.hideLoading();
             },
              //上拉加载更多
 			loadMore(){
@@ -95,48 +101,59 @@
 			    }
 			    this.loadText = "加载中(＾o＾)ﾉ";
 			    //修改状态
-			    setTimeout(()=> {                  
-			        //示例:加载2000ms后从服务端获取了新的数据
-			        let obj = {                       
-			            userPic:"../../static/demo/userpic/1.jpg",
-			            userName:"昵称",
-			            isFollow:false,
-			            title:"标题",
-			            type:"img",//image 图文 ，video 视频
-			            titlePic:"../../static/demo/datapic/1.jpg",
-			            likeInfo:{
-			                index:2,//0：未操作，1：已顶，2：已踩
-			                likeNum:11,
-			                dislikeNum:11,
-			                
-			            },                     
-			            commentNum:10,
-			            shareNum:10,
-			        };
-			        this.list.push(obj);//追加
-			        
-			        this.loadText = "上拉加载更多";     //复原状态              
-			    }, 2000);
-			    
-			    //this.loadText = "没有更多数据";
-			    
-			}
+                this.loadText = "加载中(＾o＾)ﾉ";
+                this.page++;
+                this.getData();
+            },
+            __format(item){
+                switch (this.searchType){
+                    case "post":
+                        return {
+                            userid:item.user.id,
+                            userPic:item.user.userpic,
+                            userName:item.user.username,
+                            // isFollow:!!item.user.fens.length,
+                            // isFollow:!!item.user.fens.length,
+                            isFollow:!!item.user.fens ? !!item.user.fens.length :false,
+                            id:item.id,
+                            title:item.title,
+                            type:"img", // img:图文,video:视频
+                            titlePic:!!item.images[0].url ? item.images[0].url : '',
+                            video:false,
+                            path:item.path,
+                            share:!!item.share,
+                            likeInfo:{
+                                index:(item.support.length>0) ? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+                                likeNum:item.ding_count,
+                                dislikeNum:item.cai_count,
+                            },
+                            commentNum:item.comment_count,
+                            shareNum:item.sharenum,
+                        }
+                        break;
+                    case "topic":
+                        return {
+                            id:item.id,
+                            titlePic:item.titlepic,
+                            title:item.title,
+                            desc:item.desc,
+                            totalPostNum:item.post_count,
+                            todayPostNum:item.todaypost_count
+                        }
+                        break;
+                }
+            }
 		},
         //监听搜索框文本变化
         onNavigationBarSearchInputChanged(e) {
-            console.log(JSON.stringify(e.text));
-             // if(e.text){
-             //     this.getData(e.text)
-             // }
         },
         //监听搜索框文本确认
         onNavigationBarSearchInputConfirmed(e) {
-           
            console.log(JSON.stringify(e.text));
            if(e.text){
-               this.getData(e.text)
+               this.keyword = e.text;
+               this.getData()
            }
-           this.keyword = e.text;
         },
         onReachBottom() {
             this.loadMore()
@@ -144,8 +161,27 @@
         onPullDownRefresh() {
             this.getData(this.keyword);
             uni.stopPullDownRefresh();
+        },
+        onLoad(e){
+            if (!e) return;
+            this.searchType = e.searchType || 'post';
+            // #ifdef APP-PLUS
+            let pageTitle = '搜索文章';
+            if (this.searchType == 'topic') {
+                pageTitle = '搜索话题';
+            } else if(this.searchType == 'user'){
+                pageTitle = '搜索用户';
+            }
+            let currentWebview = this.$mp.page.$getAppWebview();  
+            let tn = currentWebview.getStyle().titleNView;  
+            tn.searchInput.placeholder = pageTitle; 
+            currentWebview.setStyle({  
+                titleNView: tn  
+            });
+            // #endif
+            // 开启监听
+            // uni.$on('updateData',this.updateData);
         }
-
 	}
 </script>
 

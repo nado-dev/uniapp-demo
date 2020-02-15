@@ -21,6 +21,6 @@ const app = new Vue({
     ...App,
     config,
     lib,
-    // User,
+    User,
 })
 app.$mount()

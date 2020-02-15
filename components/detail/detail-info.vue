@@ -20,18 +20,18 @@
                     <view @tap="follow()" v-else>已关注</view>
                 </view>
                 <!-- 右侧第二层 时间 -->
-                <view class="common-list-r-time">
-                    26天前
+                <view class="common-list-r-time" v-show="item.createTime">
+                    {{item.createTime}}
                 </view>
             </view>
             
             <!-- 右侧第三层 标题 -->
-            <view class>{{item.title}}</view>
+            <view class>{{item.content}}</view>
             <!-- 右侧第四层 图片/视频-->
             <view class="u-f-ajc" style="flex-direction: column;">
                 <!-- 图片 -->
                 <block v-for="(pic , index) in item.morePic" :key="index">                    
-                    <image v-if="item.PicTextStyle"  :src="pic" mode="widthFix" 
+                    <image v-if="item.PicTextStyle"  :src="pic"  mode="widthFix" 
                     lazy-load  @tap="imgdetail(index) "
                     style="margin-bottom:15upx ;"></image>
                 </block>
