@@ -4,7 +4,7 @@
             <block v-for="(item, index) in list" :key="index">
                 <!-- 搜po -->
                 <template v-if="searchType == 'post'">
-                    <index-list :item="item" :index="index"></index-list>
+                    <index-list :item="item" :index="index"  @changeevent="updateData"></index-list>
                 </template>
                 <!-- 搜话题 -->
                 <template v-if="searchType == 'topic'">
@@ -47,6 +47,23 @@
 			}
 		},
 		methods: {
+            updateData(data){
+                switch (data.type){
+                    case 'guanzhu':
+                        this.updateGuanZhu(data)
+                        break;
+                    case value:
+                        break;
+                }
+            },
+            // 更新关注信息
+            updateGuanZhu(data){
+                this.list.forEach((item,index)=>{
+                    if (item.userid === data.userid) {
+                        item.isFollow = data.data;
+                    }
+                })
+            },
             //搜索事件
             async getData(){
                 uni.showLoading({
@@ -113,12 +130,12 @@
                             userPic:item.user.userpic,
                             userName:item.user.username,
                             // isFollow:!!item.user.fens.length,
-                            // isFollow:!!item.user.fens.length,
-                            isFollow:!!item.user.fens ? !!item.user.fens.length :false,
+                            isFollow:!!item.user.fens.length,
+                            // isFollow:!!item.user.fens ? !!item.user.fens.length :false,
                             id:item.id,
                             title:item.title,
                             type:"img", // img:图文,video:视频
-                            titlePic:!!item.images[0].url ? item.images[0].url : '',
+                            titlePic:!!item.images[0]? item.images[0].url : '',
                             video:false,
                             path:item.path,
                             share:!!item.share,
@@ -180,7 +197,7 @@
             });
             // #endif
             // 开启监听
-            // uni.$on('updateData',this.updateData);
+            uni.$on('updateData',this.updateData);
         }
 	}
 </script>

@@ -18,7 +18,9 @@
     "pages/user-setting-help/user-setting-help",
     "pages/user-set-about/user-set-about",
     "pages/login/login",
-    "pages/user-space/user-space"
+    "pages/user-space/user-space",
+    "pages/user-bind-phone/user-bind-phone",
+    "pages/user-safe/user-safe"
   ],
   "subPackages": [],
   "window": {
@@ -60,5 +62,5 @@
     ]
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap48.json"
+  "sitemapLocation": "sitemap54.json"
 }

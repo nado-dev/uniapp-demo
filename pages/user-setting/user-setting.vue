@@ -3,7 +3,7 @@
 		<block v-for="(item, index) in list" :key="index">
             <home-list-item :item="item" :index="index"></home-list-item>
         </block>
-        <button class="user-setting-logout-btn" type="primary">退出登录</button>
+        <button class="user-setting-logout-btn" type="primary" @tap="User.logout()">退出登录</button>
 	</view>
 </template>
 
@@ -17,7 +17,7 @@
 			return {
 				list:[
 				    {name:"账号与安全", icon:"", clickType:"navigateTo"
-                    ,url:"../../pages/user-set-password/user-set-password"},
+                    ,url:"../../pages/user-safe/user-safe"},
 				    {name:"绑定邮箱", icon:"", clickType:"navigateTo"
                     ,url:"../../pages/user-setting-email/user-setting-email"},
 				    {name:"资料编辑", icon:"" ,clickType:"navigateTo"

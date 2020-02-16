@@ -3,7 +3,7 @@
         <!-- 未登录 -->
         <template v-if="!isLogin">
             <!-- 第三方登录 -->
-            <other-login></other-login>
+            <other-login :noback="true"  @logining="isLogin_func"></other-login>
             <!-- 账号密码登录 -->
             <view class="u-f-ajc" @tap="openLogin">
                 <view class="icon iconfont icon-jinru"> </view>账号密码登录
@@ -73,14 +73,14 @@
                 }
                 // 用户已登录
                 this.homeInfo.id = this.User.userinfo.id;
-                this.homeInfo.userPic = this.User.userinfo.userpic;
+                this.homeInfo.userPic = this.User.userinfo.userpic || '/static/ATMpic.jpg';
                 this.homeInfo.userName = this.User.userinfo.username;
-                this.homeInfo.totalVistor = this.User.counts.post_count || 0;
-                this.homeInfo.todayVistor = this.User.counts.today_posts_count || 0;
-                this.homeData[0].num = this.User.counts.post_count || 0;
-                this.homeData[1].num = this.User.counts.post_count || 0;
-                this.homeData[2].num = this.User.counts.comments_count || 0;
-                this.homeData[3].num = this.User.counts.withfen_count || 0;
+                this.homeInfo.totalVistor = 0;
+                this.homeInfo.todayVistor = 0;
+                this.homeData[0].num = 0;
+                this.homeData[1].num = 0;
+                this.homeData[2].num = 0;
+                this.homeData[3].num = 0;
                 this.isLogin = true;
             },
         },
@@ -113,9 +113,11 @@
            }
        },
        onShow() {
-           console.log(this.User.token)
-           console.log(this.User.userinfo)
            this.isLogin_func()
+           console.log(this.User.userinfo)
+           console.log(this.homeInfo)
+           console.log(this.homeData)
+           
        }
 	}
 </script>

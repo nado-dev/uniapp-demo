@@ -10,19 +10,18 @@
             <view class="u-f-ac u-f-jsb">
                 <!-- 右一左边 昵称 性别+年龄 -->
                 <view class="u-f-ac">{{item.userName}}
-                    <tag-gender-age :gender="item.gender" :age="item.age"></tag-gender-age>
                 </view>
                 <!-- 右一右边 关注按钮-->
-                <view v-if="!isFollow" 
+                <view v-if="!item.isFollow" 
                 class="icon iconfont icon-zengjia" @tap="follow()">关注</view>
                 <view @tap="follow()" v-else>已关注</view>
             </view>
             <!-- 右侧第二层 标题 -->
-            <view class="">{{item.title}}</view>
+            <view class="" @tap.stop="openDetail" >{{item.title}}</view>
             <!-- 右侧第三层 图片/视频-->
-            <view class="u-f-ajc">
+            <view class="u-f-ajc" @tap.stop="openDetail">
                 <!-- 图片 -->
-                <image v-if="item.PicTextStyle"  :src="item.titlePic" mode="widthFix" lazy-load></image>
+                <image v-if="item.titlePic"  :src="item.titlePic" mode="widthFix" lazy-load></image>
                 <!-- 视频 -->
                 <template v-if="item.videoStyle">
                     <image :src="item.titlePic" mode="widthFix" lazy-load></image>
@@ -67,19 +66,40 @@
             }
         },
         methods:{
-            follow(){
-                this.isFollow = !this.isFollow;
-                if(!this.isFollow){
-                    uni.showToast({
-                        title:"取消关注成功",
-                    })
-                }
-                else{
-                    uni.showToast({
-                        title:"关注成功",
-                    })
-                }
-            }
+            openDetail(){
+                uni.navigateTo({
+                    url:'../../pages/detail/detail?detailData='+JSON.stringify(this.item)
+                })
+            },
+           //关注
+           async follow(){
+               try{
+                   let [err,res] = await this.$http.post('follow',{
+                       follow_id:this.item.userid
+                   },{
+                       token:true,
+                       checkToken:true,
+                       checkAuth:true
+                   });
+               // 错误处理
+                   if (!this.$http.errorCheck(err,res)){
+                       return;
+                   }
+               // 通知首页修改数据
+                   uni.showToast({ title: '关注成功' });
+                   let resdata = {
+                       type:"guanzhu",
+                       userid:this.item.userid,
+                       data:true
+                   };
+               // 通知父组件
+                   this.$emit('changeevent',resdata);
+               // 通知首页
+                   uni.$emit('updateData',resdata);    
+               }catch(e){
+                   //TODO handle the exception
+               }
+           },
         }
     }
 </script>

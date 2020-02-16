@@ -824,8 +824,10 @@ radio-group label, checkbox-group label{
 
 /* textarea */
 .uni-textarea{
+    margin-top: 30upx;
 	width:100%;
 	background:#FFF;
+    border: 1upx solid #EEEEEE;
 }
 .uni-textarea textarea{
 	width:96%;

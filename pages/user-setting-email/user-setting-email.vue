@@ -1,17 +1,17 @@
 <template>
     <view>
-        <input type="password"  v-model="email"
+        <input type="text"  v-model="email"
                 class="uni-input common-input" 
                 placeholder="输入邮箱"/>
                 
-        <input type="password"  v-model="Pw"
+        <input type="text"  v-model="Pw"
                 class="uni-input common-input" 
-                placeholder="输入密码"/>
+                placeholder="确认您的手机号码"/>
                 
         <button class="user-setting-logout-btn "
         :class="{'user-set-btn-disable':disable}"
         type="primary" @tap="submit" :disabled="disable"
-        :loading="loading">修改密码</button>
+        :loading="loading">绑定邮箱</button>
     </view>
 </template>
 
@@ -26,9 +26,23 @@
 			}
 		},
 		methods: {
+            verifyEmailFormat(){
+                // 验证邮箱格式
+                let ePattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+                if(!ePattern.test(this.email)){
+                    uni.showToast({
+                        title: '请输入正确邮箱格式',
+                        icon:"none"
+                    });
+                    return false;
+                }
+                return true;
+            },
+            
             check(){
                 if(this.email && this.Pw &&
-                this.email != "" && this.Pw != ""){
+                this.email != "" && this.Pw != "" && this.verifyEmailFormat() 
+                &&  this.Pw === this.User.userinfo.phone){
                        return true ;
                 }
                 
@@ -36,21 +50,28 @@
                     if(!this.email || this.email == ""){
                         uni.showToast({
                              icon:"none",
-                            title:"邮箱不能为空!"
+                            title:"邮箱不能为空"
                         })
                      return false;
                     }
-                    else if(!this.Pw || this.Pw == ""){
+                    else if(!this.Pw || this.Pw == "" ){
                         uni.showToast({
                              icon:"none",
-                            title:"密码不能为空!"
-                        })
+                            title:"手机不能为空"
+                        }) 
+                        return false;
+                    }
+                    else if(this.Pw !== this.User.userinfo.phone){
+                    uni.showToast({
+                         icon:"none",
+                        title:"手机与当前登录账号不一致"
+                    })
                   
                     return false;
                 }
               }
             },
-			submit(){
+			async  submit(){
 			    this.loading = true;
 			    this.disable = true;
 			    if(!this.check()){
@@ -58,11 +79,27 @@
 			        this.disable = true;
 			        return;
 			    }			 
-			    uni.showToast({
-			        title: '验证通过',
-			        icon:"success"
-			    });
-			    this.loading = false;
+			   	let [err,res] =await this.$http.post('/user/bindemail',{
+                    email:this.email,
+                    phone:this.Pw
+                },{
+                    token:true,
+                    checkToken:true
+                });
+                if (!this.$http.errorCheck(err,res)){
+                    return this.loading=this.disable=false;
+                }
+                // 绑定成功
+                this.loading = this.disabled = false;
+               	// 修改状态，缓存
+                this.User.userinfo.email = this.email;
+                uni.setStorageSync("userinfo",this.User.userinfo);
+                return uni.showToast({
+                    title: '绑定成功！',
+                    success: () => {
+                        uni.navigateBack({ delta: 1 });
+                    }
+                });
 			},
             //实时监听数据
             change(){

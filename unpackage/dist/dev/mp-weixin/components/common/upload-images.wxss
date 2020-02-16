@@ -16,6 +16,7 @@
     color: #FFFFFF;
     padding: 2rpx 10rpx;
     border-radius: 10rpx;
+    z-index: 100rpx;
 }
 .uni-uploader__files{
     position: relative;

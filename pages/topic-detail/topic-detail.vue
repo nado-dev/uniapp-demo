@@ -18,7 +18,7 @@
                         {{tabBars[index].name}}
                     </view>
                     <block v-for="(list, listIndex) in item.list" :key="listIndex">
-                        <common-list :item="list" :index="listIndex"></common-list>          
+                        <common-list :item="list" :index="listIndex" @changeevent="updateData"></common-list>          
                     </block>
                     <!-- 上拉加载 -->
                     <load-more :loadText="item.loadText"></load-more>
@@ -79,6 +79,7 @@
         },
         onLoad(e) {
             this.__init(JSON.parse(e.detail))
+            uni.$once('updateData',this.updateData)
         },
 		methods: {
         __init(obj){
@@ -114,8 +115,7 @@
 			        userid:item.user.id,
 			        userPic:item.user.userpic,
 			        userName:item.user.username,
-			        // isFollow:!!item.user.fens.length,
-			        isFollow:!!item.user.fens?!!item.user.fens.length:0,
+			        isFollow:!!item.user.fens.length,
 			        id:item.id,
 			        title:item.title,
 			        type:"img", // img:图文,video:视频
@@ -124,7 +124,8 @@
 			        path:item.path,
 			        share:!!item.share,
 			        likeInfo:{
-			            index:!!item.support? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+			            // index:!!item.support? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+			            index: 0,//0:没有操作，1:顶,2:踩；
 			            likeNum:item.ding_count,
 			            dislikeNum:item.cai_count,
 			        },
@@ -152,6 +153,23 @@
                 this.tablist[this.tabIndex].page = 1;
 			    this.getList();
 			},
+            updateData(data){
+                switch (data.type){
+                    case 'guanzhu':
+                        this.updateGuanZhu(data)
+                        break;
+                    case value:
+                        break;
+                }
+            },
+            // 更新关注信息
+            updateGuanZhu(data){
+                this.tablist[this.tabIndex].list.forEach((item,index)=>{
+                    if (item.userid === data.userid) {
+                        item.isFollow = data.data;
+                    }
+                })
+            },
 		}
 	}
 </script>

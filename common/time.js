@@ -79,7 +79,14 @@ const gettime = {
 			formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
 		}
 		return formatStr;
-	}
+	},
+    
+    // 获取年龄
+    	getAgeByBirthday(data){
+    		let birthday=new Date(data.replace(/-/g, "\/")); 
+    		let d=new Date(); 
+    		return d.getFullYear()-birthday.getFullYear()-((d.getMonth()<birthday.getMonth()|| d.getMonth()==birthday.getMonth() && d.getDate()<birthday.getDate())?1:0);
+    	}
 }
 
 export default{

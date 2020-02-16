@@ -66,6 +66,7 @@ export default{
 	},
 	// 验证用户权限
 	checkAuth(checkAuth){
+        // 是否已经绑定手机
 		if (checkAuth && !User.userinfo.phone) {
 			uni.showToast({ title: '请先绑定手机号码', icon:"none" })
 			uni.navigateTo({
@@ -74,5 +75,25 @@ export default{
 			return false;
 		}
 		return true;
-	}
+	},
+    // 上传图片
+    // 上传图片
+    upload(url,options = {}){
+        options.url = this.config.baseUrl+url;
+        options.header = options.header || this.config.header;
+        options.fileType = options.fileType || "image";
+        options.formData = options.formData || {};
+        options.filePath = options.filePath;
+        options.name = options.name;
+        // TODO：token增加等操作
+        if (options.token) {
+            // 验证是否登录
+            if (!this.checkToken(options.checkToken)) return;
+            // 验证权限
+            if (!this.checkAuth(options.checkAuth)) return; 
+            options.header.token = User.token;
+        }
+        
+        return uni.uploadFile(options);
+    },
 }

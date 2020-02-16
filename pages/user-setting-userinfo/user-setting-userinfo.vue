@@ -21,7 +21,7 @@
         <view class="user-setting-userinfo-list u-f-ac u-f-jsb">
             <view class="">性别 </view> 
             <view class="u-f-ac" @tap="changeOne('gender')">
-                {{gender}}
+                {{sexOptions[gender]}}
                 <view class="icon iconfont icon-bianji1"></view>
             </view>
         </view>
@@ -42,7 +42,7 @@
         <view class="user-setting-userinfo-list u-f-ac u-f-jsb">
             <view class="">情感 </view> 
             <view class="u-f-ac" @tap="changeOne('qinggan')">
-                {{qinggan}}
+                {{qgOptions[qinggan]}}
                 <view class="icon iconfont icon-bianji1"></view>
             </view>
         </view>
@@ -75,7 +75,7 @@
 <script>
     // 引入三级联动
     import mpvueCityPicker from "../../components/mpvue-citypicker/mpvueCityPicker.vue";
-    
+    import Time from "../../common/time.js"
     let sexOptions = ['未设置','男','女']; 
     let qgOptions = ['未设置','未婚','已婚']; 
     let jobOptions = ['未设置','IT','教师','服务业从业者','公务员','学生']; 
@@ -86,14 +86,17 @@
         },
 		data() {
 			return {
-				userPic:"../../static/demo/userpic/10.jpg",
-                userName:"ATM",
-                gender:"未设置",
-                qinggan:"未设置",
-                job:"未设置",
-                birthday:" 未设置 ",
+				userPic:"",
+                userName:"",
+                gender:"",
+                qinggan:"",
+                job:"",
+                birthday:"  ",
                 cityPickerValueDefault:[0,0,1],//默认选中的地址
-                location:"未设置"
+                location:"",
+                sexOptions : ['未设置','男','女'],
+                qgOptions :['未设置','未婚','已婚'],
+                jobOptions : ['未设置','IT','教师','服务业从业者','公务员','学生']
 			}
 		},
 		methods: {
@@ -105,15 +108,36 @@
                 this.location = e.label;
             },
             // 修改头像
-            changeImg(){
-                uni.chooseImage({
+            // 修改头像
+            async changeImg(){
+                let [err,res] =await uni.chooseImage({
                     count:1,
-                    sizeType:["compressed"],
-                    success: (res) => {
-                        this.userPic = res.tempFilePaths;
-                        // console.log(res.tempFilePath)
-                    }
-                })
+                    sizeType:['compressed']
+                });
+                if (!res) return;
+                // 上传
+                uni.showLoading({ title: '上传中...', mask: false });
+                let [err2,res2] = await this.$http.upload('edituserpic',{
+                    name: 'userpic',
+                    filePath: res.tempFilePaths[0],
+                    token:true,
+                    checkToken:true
+                });
+                // 请求失败
+                let data = JSON.parse(res2.data);
+                // 上传失败
+                if (err2 || data.errorCode) {
+                    uni.showToast({ title: data.msg ? data.msg : '上传失败', icon:"none" });
+                    uni.hideLoading();
+                    return false;
+                }
+                // 成功
+                uni.hideLoading();
+                uni.showToast({ title: '修改头像成功!' });
+                this.userPic = data.data;
+                // 修改状态，存储
+                this.User.userinfo.userpic = this.userpic;
+                uni.setStorageSync("userinfo",this.User.userinfo);
             },
             // 单列选择
             changeOne(option){
@@ -122,7 +146,7 @@
                         uni.showActionSheet({
                             itemList:sexOptions,
                             success: (res) => {
-                               this.gender = sexOptions[res.tapIndex]
+                               this.gender = res.tapIndex
                             }
                         })
                        break;
@@ -130,7 +154,7 @@
                         uni.showActionSheet({
                             itemList:qgOptions,
                             success: (res) => {
-                               this.qinggan = qgOptions[res.tapIndex]
+                               this.qinggan = res.tapIndex
                             }
                         })
                         break;
@@ -147,8 +171,28 @@
                    
                 }
             },
-			submit(){
-                
+			async submit(){
+            let data = {
+                    name:this.userName,
+                    sex:this.gender,
+                    qg:this.qinggan,
+                    job:this.job,
+                    birthday:this.birthday,
+                    path:this.location,
+                    age:Time.gettime.getAgeByBirthday(this.birthday),
+                };
+                let [err,res] = await this.$http.post('edituserinfo',data,{
+                    token:true,
+                    checkToken:true
+                });
+                // 请求失败处理
+                if (!this.$http.errorCheck(err,res)) return;
+                // 成功
+                uni.showToast({ title: '修改成功！' });
+                // 修改状态，缓存
+                this.User.userinfo.username = this.userName;
+                this.User.userinfo.userinfo = data;
+                uni.setStorageSync('userinfo',this.User.userinfo);
             },
             getDate(type) {
                 const date = new Date();
@@ -190,6 +234,15 @@
                 this.$refs.mpvueCityPicker.pickerCancel()
             }
         },
+        onLoad() {
+                this.userPic = this.User.userinfo.userpic;
+                this.userName = this.User.userinfo.username;
+                this.gender = this.User.userinfo.userinfo.sex || 0;
+                this.qinggan = this.User.userinfo.userinfo.qg || 0;
+                this.job = this.User.userinfo.userinfo.job || "请填写";
+                this.birthday = this.User.userinfo.userinfo.birthday || "请填写";
+                this.location = this.User.userinfo.userinfo.path || "请填写";
+            },
 	}
 </script>
 

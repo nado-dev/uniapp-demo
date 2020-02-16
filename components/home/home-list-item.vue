@@ -3,7 +3,8 @@
     hover-class="home-list-hover" @tap="clickEven">
         <view class="icon iconfont" v-if="item.icon"
         :class="['icon-'+item.icon]"></view>{{item.name}}
-        <view class="icon iconfont icon-jinru"></view>
+        <!-- <view class="icon iconfont icon-jinru"></view> -->
+        <view class="icon iconfont" :class="{'icon-jinru':!item.data}">{{item.data || ''}}</view>
     </view>
 </template>
 
@@ -29,11 +30,12 @@
                     case "clear":
                        uni.showModal({
                            title:"提示",
-                           content:"是否清除缓存？",
+                           content:"是否清除缓存？确定将清除您的登录状态",
                            confirmText:"立即清除",
                            success: (res) => {
                                if(res.confirm){
                                    // 清除缓存
+                                   uni.User.logout(false);
                                    uni.clearStorage();
                                    uni.showToast({
                                        title:"清除成功！",

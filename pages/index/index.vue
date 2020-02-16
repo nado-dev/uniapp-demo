@@ -23,7 +23,7 @@
                         <template  v-if="items.list.length != 0">
                             <block v-for="(item,index1) in items.list" :key="index1">
                                 <!-- 图文列表 传入item和index的值 -->
-                                <index-list :item="item" :index="index1"></index-list>
+                                <index-list :item="item" :index="index1" @changeevent="updateData"></index-list>
                             </block>	
                                 <!-- 上拉加载 -->
                             <load-more :loadText="items.loadText"></load-more> 
@@ -76,6 +76,23 @@
 			}
 		},
 		methods: {
+            updateData(data){
+                switch (data.type){
+                    case 'guanzhu':
+                        this.updateGuanZhu(data)
+                        break;
+                    case value:
+                        break;
+                }
+            },
+            // 更新关注信息
+            updateGuanZhu(data){
+                this.newsList[this.tabIndex].list.forEach((item,index)=>{
+                    if (item.userid === data.userid) {
+                        item.isFollow = data.data;
+                    }
+                })
+            },
             // 获取文章分类
             async getNav(){
                 let [err, res] = await this.$http.get('postclass');
@@ -151,7 +168,7 @@
                     id:item.id,
                     title:item.title,
                     type:"img", // img:图文,video:视频
-                    titlePic:!!item.images[0].url ? item.images[0].url : '',
+                    titlePic:!!item.images[0]? item.images[0].url : '',
                     video:false,
                     path:item.path,
                     share:!!item.share,
@@ -199,6 +216,9 @@
                 }
             })
             this.getNav();
+            // 监听监听自定义事件。事件可以由 uni.$emit 触发。
+            // 回调函数会接收 uni.$emit 传递的参数
+            uni.$on('updateData',this.updateData)
         },
         //监听原生标题栏搜索输入框点击事件
         onNavigationBarSearchInputClicked(){

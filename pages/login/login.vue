@@ -55,7 +55,7 @@
         <view class="other-login-title u-f-ajc">
             第三方登录
         </view>
-        <other-login></other-login>
+        <other-login :noback="false" ></other-login>
         <!-- 协议 -->
         <view class="login-agreement u-f-ajc login-color">
             注册即代表您同意<view class="">《xxx》协议</view>
@@ -97,7 +97,7 @@
                     delta:1
                 });
             },
-            submit(){
+            async submit(){
                 //账号密码登录
                 if(this.isLoginById){
                     console.log("login: id:"+this.userName+" pw:"+this.pw)
@@ -110,7 +110,15 @@
                     })
                 }
                 else{
+                    // 手机验证
                     console.log("login: phonenum:"+this.phoneNum+" verify code:"+this.vericode)
+                    return this.User.login({
+                        url:"user/phonelogin",
+                        data:{
+                            phone:this.phoneNum,
+                            code:this.vericode
+                        }
+                    })
                 }
             },
             // 切换登陆方式
@@ -141,7 +149,7 @@
                 }
             },
             //获取验证码
-            getVericode(){
+            async getVericode(){
                 this.vericodeAble = false
                 if(this.countDown > 0){
                     return ;//禁用
@@ -156,12 +164,29 @@
                         this.vericodeAble = true
                         return
                     }
-                    //TODO 请求服务器，发送验证码到手机
-                    //发送成功 开始倒计时
-                    this.countDown = 5;
+                    // 请求服务器，发送验证码到手机
+                    let [err, res] = await this.$http.post('user/sendcode',{
+                        phone:this.phoneNum
+                    });
+                    // 请求失败
+                    this.$http.errorCheck(err, res)
+                    if(res.data.errCode === 30001) {
+                        uni.showToast({
+                            title:"操作过于频繁，请稍后再试",
+                            icon:"none"
+                        })
+                        return;
+                    }
+                    uni.showToast({
+                        title:res.data.msg,
+                        duration:3000,
+                        icon:"none"
+                    });
+                    // 发送成功 开始倒计时
+                    this.countDown = 60;
                     let timer = setInterval(()=>{
                          this.countDown--;
-                         if(this.countDown == 0){
+                         if(this.countDown === 0){
                             this.vericodeAble = true
                             clearInterval(timer);
                             this.countDown = 0;

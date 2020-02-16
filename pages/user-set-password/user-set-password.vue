@@ -72,7 +72,7 @@
                 }
             },
             //提交
-			submit(){
+			async submit(){
                 this.loading = true;
                 this.disable = true;
                 if(!this.check()){
@@ -80,11 +80,29 @@
                     this.disable = true;
                     return;
                 }
-                setTimeout(function() {}, 1000);
-                uni.showToast({
-                    title: '验证通过',
-                    icon:"success"
-                });
+                let [err,res] = await this.$http.post('/repassword',{
+                    oldpassword:this.oldPw || 0,
+                    newpassword:this.newPw,
+                    renewpassword:this.newPw,
+                },{
+                    token:true,
+                    checkToken:true
+                })
+                if(!this.$http.errorCheck(err,res)){
+                    this.loading = this.disable = false;
+                    return;
+                }
+                // 修改状态，缓存
+                this.User.userinfo.password = true;
+                uni.setStorageSync('userinfo',this.User.userinfo);
+                this.loading = this.disable = false;
+                return uni.showToast({
+                    title: '修改密码成功！',
+                    success: () => {
+                        uni.navigateBack({ delta: 1 });
+                    }
+                }); 
+                 
                 this.loading = false;
             },
             //实时监听数据

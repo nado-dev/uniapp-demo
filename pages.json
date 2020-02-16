@@ -290,6 +290,18 @@
                  }
             }
         }
+        ,{
+            "path" : "pages/user-bind-phone/user-bind-phone",
+            "style" : {
+                "navigationBarTitleText":"绑定手机"
+            }
+        }
+        ,{
+            "path" : "pages/user-safe/user-safe",
+            "style" : {
+                "navigationBarTitleText":"账号与安全"
+            }
+        }
     ],
 	"globalStyle": {
 		// "navigationBarTextStyle": "light",

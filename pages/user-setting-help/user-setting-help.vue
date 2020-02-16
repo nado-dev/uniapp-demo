@@ -9,6 +9,10 @@
                 <button class="user-setting-logout-btn "
                 type="primary" @tap="submit" >意见反馈</button>
         </view>
+        <view class="uni-textarea">
+            <!-- v-mode 将文本输入框内容实时绑定 指定变量 内 -->
+            <textarea placeholder="期待您的宝贵意见,我们会及时与您取得联络" v-model="text"/>
+        </view>
     </view>
 </template>
 
@@ -22,6 +26,7 @@
         },
 		data() {
 			return {
+                text:"",
 				list:[
                     {title:"开发者", content:"Af"},
                     {title:"课程链接[官方]", 
@@ -30,9 +35,22 @@
                 ]
 			}
 		},
-		methods: {
-			submit(){
-			    
+		 methods: {
+			async submit(){
+                uni.showLoading();
+                let data = {
+                    data:this.text
+                }
+			    let [err,res] = await this.$http.post('feedback',data,{
+			        token:true,
+			        checkToken:true
+			    });
+                // 请求失败处理
+                if (!this.$http.errorCheck(err,res)) return;
+                // 成功
+                uni.hideLoading();
+                uni.showToast({ title: '提交成功，感谢您的宝贵意见！' });
+                this.text = ""
 			},
 		}
 	}

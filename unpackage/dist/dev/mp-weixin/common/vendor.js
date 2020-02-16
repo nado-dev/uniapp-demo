@@ -1670,7 +1670,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 // 其他参数
 var _default = {
   // api请求前缀
-  webUrl: 'https://ceshi2.dishait.cn/api/v1' };exports.default = _default;
+  webUrl: 'http://test2.aaronfang.fun/api/v1/',
+  // 图片请求前缀
+  picUrl: "http://test2.aaronfang.fun/" };exports.default = _default;
 
 /***/ }),
 
@@ -1767,6 +1769,259 @@ var NetWork = { // 网络状态
     uni.onNetworkStatusChange(function (res) {_this.isConnect = res.isConnected;if (!res.isConnected) {uni.showToast({ icon: "none", title: '您目前处于断网状态' });} else {uni.showToast({ icon: "none", title: '当前使用' + res.networkType + "网络" });}});} }; // app更新
 var Update = function Update() {};var _default = { NetWork: NetWork, Update: Update };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 17:
+/*!*************************************!*\
+  !*** D:/uniapp/demo/common/user.js ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+{
+  // 用户token
+  // token:false,
+  // token:'a8c3418a9b519f4551236064dd798dd6228c9935',
+  token: false,
+  // 用户信息
+  userinfo: false,
+  // 权限验证跳转
+  // 用户统计相关
+  // counts:{}
+  // 绑定第三方登陆情况
+  userbind: false,
+  navigate: function navigate(options) {var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'navigateTo';
+    // 是否登录验证
+    if (!_request.default.checkToken(true)) return;
+    // 验证是否绑定手机号
+    if (!_request.default.checkAuth(true)) return;
+    // if (!NoCheck) {
+    //     if (!$http.checkAuth(true)) return;
+    // }
+    // 跳转
+    switch (type) {
+      case 'navigateTo':
+        uni.navigateTo(options);
+        break;
+      case 'redirectTo':
+        uni.redirectTo(options);
+        break;
+      case 'reLaunch':
+        uni.reLaunch(options);
+        break;
+      case 'switchTab':
+        uni.switchTab(options);
+        break;}
+
+  },
+  // 初始化
+  __init: function __init() {
+    // 获取用户信息
+    this.userinfo = uni.getStorageSync("userinfo");
+    this.token = uni.getStorageSync("token");
+    // this.counts = uni.getStorageSync("counts");
+    this.userbind = uni.getStorageSync("userbind");
+    // this.OnUserCounts();
+    // 如果用户id存在，则连接 
+    // if (this.userinfo.id) {
+    // 	// 连接socket
+    // 	$chat.Open();
+    // }
+  },
+  // 登录
+  login: function () {var _login = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var options,_ref,_ref2,err,res,_args = arguments;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:options = _args.length > 0 && _args[0] !== undefined ? _args[0] : {};
+              uni.showLoading({ title: '登录中...', mask: true });
+              // 请求登录
+              _context.next = 4;return _request.default.post(options.url, options.data);case 4:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];if (
+
+              _request.default.errorCheck(err, res)) {_context.next = 11;break;}
+              uni.hideLoading();return _context.abrupt("return",
+              false);case 11:
+
+              // 登录成功 保存状态
+              this.token = res.data.data.token;
+              this.userinfo = this.__formatUserinfo(res.data.data);
+              // 本地存储
+              uni.setStorageSync("userinfo", this.userinfo);
+              uni.setStorageSync("token", this.token);
+              // 获取用户相关统计
+              // await this.getCounts();
+              // 连接socket
+              // if (this.userinfo.id) {
+              // 	$chat.Open();
+              // }
+              // 成功提示
+              uni.hideLoading();
+              uni.showToast({ title: '登录成功' });
+              // 返回上一步
+              if (!options.Noback) {
+                uni.navigateBack({ delta: 1 });
+              }return _context.abrupt("return",
+              true);case 19:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}(),
+
+
+  // 退出登录
+  logout: function () {var _logout = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var showToast,_args2 = arguments;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:showToast = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : true;_context2.next = 3;return (
+
+                _request.default.post('/user/logout', {}, {
+                  token: true,
+                  checkToken: true }));case 3:
+
+              // 清除缓存
+              uni.removeStorageSync('userinfo');
+              uni.removeStorageSync('token');
+              // uni.removeStorageSync('counts');
+              // 清除状态
+              this.token = false;
+              this.userinfo = false;
+              this.userbind = false;
+              // this.counts = {};
+              // 关闭socket
+              // $chat.Close();
+              // 返回home页面
+              uni.switchTab({ url: "/pages/me/me" });
+              // 退出成功
+              if (!showToast) {_context2.next = 11;break;}return _context2.abrupt("return",
+              uni.showToast({ title: '退出登录成功' }));case 11:case "end":return _context2.stop();}}}, _callee2, this);}));function logout() {return _logout.apply(this, arguments);}return logout;}(),
+
+
+
+  // // 获取用户相关统计信息
+  //  async getCounts(){
+  //      // 统计获取用户相关数据（总文章数，今日文章数，评论数 ，关注数，粉丝数，文章总点赞数）
+  //      let [err,res] =await $http.get('/user/getcounts/'+this.userinfo.id,{},{
+  //          token:true,checkToken:true
+  //      })
+  //      // 请求错误处理
+  //      if (!$http.errorCheck(err,res)) return;
+  //      // 成功
+  //      this.counts = res.data.data;
+  //      // 存储缓存
+  //      uni.setStorageSync("counts", this.counts);
+  //  },
+  // userinfo格式转换
+  __formatUserinfo: function __formatUserinfo(obj) {
+    // 手机/邮箱/账号登录
+    if (obj.logintype == "username" || obj.logintype == "email" || obj.logintype == "phone") {
+      // 设置默认头像
+      obj.userpic = obj.userpic || '/static/ATMpic.jpg';
+      return obj;
+    }
+    // 第三方登录（已绑定）
+    if (obj.user && obj.user_id > 0) {
+      return {
+        id: obj.user.id,
+        username: obj.user.username || obj.nickname,
+        userpic: obj.user.userpic || obj.avatarurl,
+        phone: obj.user.phone,
+        email: obj.user.email,
+        status: obj.user.status,
+        create_time: obj.user.create_time,
+        logintype: obj.logintype,
+        password: obj.user.password,
+        token: obj.token,
+        userinfo: {
+          id: obj.user.userinfo.id,
+          user_id: obj.user.userinfo.user_id,
+          age: obj.user.userinfo.age,
+          sex: obj.user.userinfo.sex,
+          qg: obj.user.userinfo.qg,
+          job: obj.user.userinfo.job,
+          path: obj.user.userinfo.path,
+          birthday: obj.user.userinfo.birthday } };
+
+
+    }
+    // 第三方登录（未绑定）
+    return {
+      id: obj.user_id,
+      username: obj.nickname,
+      userpic: obj.avatarurl,
+      phone: false,
+      email: false,
+      status: 1,
+      create_time: false,
+      logintype: obj.logintype,
+      token: obj.token,
+      userinfo: false };
+
+  },
+
+  // 转换第三方登录格式
+  __formatOtherLogin: function __formatOtherLogin(provider, options) {
+    return {
+      provider: provider,
+      openid: options.userInfo.unionId || options.userInfo.openId,
+      expires_in: options.authResult.expires_in,
+      nickName: options.userInfo.nickName,
+      avatarUrl: options.userInfo.avatarUrl };
+
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 18:
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ 19);
+
+
+/***/ }),
+
+/***/ 19:
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() {
+  return this || (typeof self === "object" && self);
+})() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(/*! ./runtime */ 20);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
 
 /***/ }),
 
@@ -7801,67 +8056,7 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 261:
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ 262);
-
-
-/***/ }),
-
-/***/ 262:
-/*!************************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// This method of obtaining a reference to the global object needs to be
-// kept identical to the way it is obtained in runtime.js
-var g = (function() {
-  return this || (typeof self === "object" && self);
-})() || Function("return this")();
-
-// Use `getOwnPropertyNames` because not all browsers support calling
-// `hasOwnProperty` on the global `self` object in a worker. See #183.
-var hadRuntime = g.regeneratorRuntime &&
-  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
-
-// Save the old regeneratorRuntime in case it needs to be restored later.
-var oldRuntime = hadRuntime && g.regeneratorRuntime;
-
-// Force reevalutation of runtime.js.
-g.regeneratorRuntime = undefined;
-
-module.exports = __webpack_require__(/*! ./runtime */ 263);
-
-if (hadRuntime) {
-  // Restore the original runtime.
-  g.regeneratorRuntime = oldRuntime;
-} else {
-  // Remove the global property added by runtime.js.
-  try {
-    delete g.regeneratorRuntime;
-  } catch(e) {
-    g.regeneratorRuntime = undefined;
-  }
-}
-
-
-/***/ }),
-
-/***/ 263:
+/***/ 20:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8593,6 +8788,116 @@ if (hadRuntime) {
 
 /***/ }),
 
+/***/ 21:
+/*!****************************************!*\
+  !*** D:/uniapp/demo/common/request.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 15));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+{
+  config: {
+    baseUrl: _config.default.webUrl,
+    header: _defineProperty({
+      'Content-Type': 'application/json;charset=UTF-8' }, "Content-Type",
+    'application/x-www-form-urlencoded'),
+
+    data: {},
+    method: "GET",
+    dataType: "json" },
+
+  request: function request() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    options.header = options.header || this.config.header;
+    options.method = options.method || this.config.method;
+    options.dataType = options.dataType || this.config.dataType;
+    options.url = this.config.baseUrl + options.url;
+    // TODO：token增加等操作
+    if (options.token) {
+      // 验证用户是否登录
+      if (!this.checkToken(options.checkToken)) return;
+      // 验证用户操作权限（验证是否绑定手机号码）
+      if (!this.checkAuth(options.checkAuth)) return;
+      options.header.token = _user.default.token;
+    }
+    return uni.request(options);
+  },
+  get: function get(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    options.url = url;
+    options.data = data;
+    options.method = 'GET';
+    return this.request(options);
+  },
+  post: function post(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    options.url = url;
+    options.data = data;
+    options.method = 'POST';
+    return this.request(options);
+  },
+  // 错误处理
+  errorCheck: function errorCheck(err, res) {var errfun = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;var resfun = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    if (err) {
+      typeof errfun === 'function' && errfun();
+      uni.showToast({ title: '加载失败', icon: "none" });
+      return false;
+    }
+    if (res.data.errorCode) {
+      typeof errfun === 'function' && resfun();
+      uni.showToast({ title: res.data.msg, icon: "none" });
+      return false;
+    }
+    return true;
+  },
+  // 验证用户是否登录
+  checkToken: function checkToken(_checkToken) {
+    if (_checkToken && !_user.default.token) {
+      uni.showToast({ title: '请先登录', icon: "none" });
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return false;
+    }
+    return true;
+  },
+  // 验证用户权限
+  checkAuth: function checkAuth(_checkAuth) {
+    // 是否已经绑定手机
+    if (_checkAuth && !_user.default.userinfo.phone) {
+      uni.showToast({ title: '请先绑定手机号码', icon: "none" });
+      uni.navigateTo({
+        url: '/pages/user-bind-phone/user-bind-phone' });
+
+      return false;
+    }
+    return true;
+  },
+  // 上传图片
+  // 上传图片
+  upload: function upload(url) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    options.url = this.config.baseUrl + url;
+    options.header = options.header || this.config.header;
+    options.fileType = options.fileType || "image";
+    options.formData = options.formData || {};
+    options.filePath = options.filePath;
+    options.name = 'userpic';
+    // TODO：token增加等操作
+    if (options.token) {
+      // 验证是否登录
+      if (!this.checkToken(options.checkToken)) return;
+      // 验证权限
+      if (!this.checkAuth(options.checkAuth)) return;
+      options.header.token = _user.default.token;
+    }
+
+    return uni.uploadFile(options);
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -8624,7 +8929,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 341:
+/***/ 359:
 /*!************************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/province.js ***!
   \************************************************************************/
@@ -8774,7 +9079,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 342:
+/***/ 360:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/city.js ***!
   \********************************************************************/
@@ -10288,7 +10593,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 343:
+/***/ 361:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/area.js ***!
   \********************************************************************/
@@ -22853,7 +23158,7 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 400:
+/***/ 418:
 /*!****************************************************!*\
   !*** D:/uniapp/demo/components/uni-icons/icons.js ***!
   \****************************************************/
@@ -23901,7 +24206,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置" }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码" }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱" }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料" }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈" }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于" }, "pages/login/login": { "navigationBarTitleText": "登录" }, "pages/user-space/user-space": { "navigationBarTitleText": "个人空间" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置" }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码" }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱" }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料" }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈" }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于" }, "pages/login/login": { "navigationBarTitleText": "登录" }, "pages/user-space/user-space": { "navigationBarTitleText": "个人空间" }, "pages/user-bind-phone/user-bind-phone": { "navigationBarTitleText": "绑定手机" }, "pages/user-safe/user-safe": { "navigationBarTitleText": "账号与安全" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
@@ -23917,7 +24222,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 87:
+/***/ 92:
 /*!*************************************!*\
   !*** D:/uniapp/demo/common/time.js ***!
   \*************************************/

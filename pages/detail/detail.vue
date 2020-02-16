@@ -2,7 +2,7 @@
 	<view>
         <view class="icon iconfont icon-gengduo tempShare" @tap="togle()"></view>
         <!-- 详情 -->
-		<detail-info :item="detail"></detail-info>
+		<detail-info :item="detail" @changeevent="updateData"></detail-info>
         
         <!-- 评论 -->
         <view class="u-comment-title">最新评论 {{comment.commentCount}}</view>
@@ -75,6 +75,9 @@
 			}
 		},
 		methods: {
+            updateData(data){
+               this.detail.isFollow = data.data;
+            },
             // 初始化分享内容
             __initShare(obj){
                 this.sharedata = {
@@ -104,6 +107,7 @@
                 this.detail = obj;
                 this.comment.commentCount = obj.commentNum
                 // 获取文章详情
+                console.log(obj)
                 this.getDetail();
                 if(this.comment.commentNum){
                     this.getComment();
