@@ -79,7 +79,7 @@
         },
         onLoad(e) {
             this.__init(JSON.parse(e.detail))
-            uni.$once('updateData',this.updateData)
+            uni.$on('updateData',this.updateData)
         },
 		methods: {
         __init(obj){
@@ -158,7 +158,11 @@
                     case 'guanzhu':
                         this.updateGuanZhu(data)
                         break;
-                    case value:
+                    case "support":
+                        this.updateSupport(data);
+                        break;
+                    case 'updateComment':
+                        this.updateComment(data);
                         break;
                 }
             },
@@ -169,6 +173,24 @@
                         item.isFollow = data.data;
                     }
                 })
+            },
+            updateComment(data){
+                        // 拿到当前对象
+                let obj = this.tablist[this.tabIndex].list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                obj.commentNum++; // 评论数+1
+            },
+            updateSupport(data){
+                let obj = this.tablist[this.tabIndex].list.find((item)=>{
+                    return item.id === data.post_id;
+                })
+                if(!obj || obj.infonum.index === 1) return;
+                if (data.do === 1) {
+                    obj.likeInfo.index = 1;
+                    obj.likeNum++;
+                }
             },
 		}
 	}

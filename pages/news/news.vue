@@ -17,11 +17,22 @@
                     <scroll-view scroll-y="true" 
                     class="list" @scrolltolower="loadMore()">          
                         <!-- 列表 -->
-                        <block v-for="(item, index) in followList.list" :key="index">
-                            <common-list :item="item" :index="index"></common-list>
-                        </block>
-                        <!-- 上拉加载 -->
+                        <template v-if="followList.list.length > 0">
+                            <block v-for="(item, index) in followList.list" :key="index">
+                                <common-list :item="item" :index="index"></common-list>
+                            </block>
+                            <!-- 上拉加载 -->
                         <load-more :loadText="followList.loadText"></load-more>
+                        </template>
+                        
+                        <template v-else-if="!followList.firstload">
+                            <view style="font-size: 50upx;font-weight: bold;color: #CCCCCC;
+                            padding-top: 100upx;" class="u-f-ajc">Loading ...</view>
+                        </template>
+                        
+                        <template v-else>
+                            <empty-content></empty-content>
+                        </template>
                     </scroll-view>
                 </swiper-item>      
             
@@ -67,6 +78,7 @@
     import loadMore from '../../components/common/load-more.vue';
     import topicNav from "../../components/news/topic-nav.vue";
     import topicList from "../../components/news/topic-list.vue"
+    import emptyContent from "../../components/common/empty-content.vue"
     export default {
         data() {
             return {
@@ -83,85 +95,9 @@
                 swiperHeight:500,
                 followList:{
                    loadText:"上拉加载更多",
-                    list:[
-                        // 纯文字样式 textStyle
-                        {
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"ATM",
-                            gender:0,//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"透明质酸钠",
-                            textStyle:true,
-                            PicTextStyle:false,
-                            videoStyle:false,
-                            shareStyle:false,
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                            location:"PekingU",
-                        },
-                        //图文样式 PicTextStyle:true,
-                        {
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"31K473k",
-                            gender:1,//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"...轻轻呼唤你的名字",
-                            titlePic:"../../static/demo/datapic/13.jpg",
-                            textStyle:false,
-                            PicTextStyle:true,
-                            videoStyle:false,
-                            shareStyle:false,
-                            location:"PekingU",
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                        },
-                        //视频样式
-                        {
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"momo",
-                            gender:0,//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"欢乐恶搞不是法外之地",
-                            titlePic:"../../static/demo/datapic/2.jpg",
-                            textStyle:false,
-                            PicTextStyle:false,
-                            videoStyle:{
-                                playNum:"34W",
-                                length:"3:51"
-                            },
-                            shareStyle:false,
-                            location:"PekingU",
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                        },
-                        //分享样式
-                        {
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"ATM",
-                            gender:0,//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"透明质酸钠",
-                            titlePic:"",
-                            textStyle:false,
-                            PicTextStyle:false,
-                            videoStyle:false,
-                            shareStyle:{
-                                shareTitle:"长笛",
-                                sharePic:"../../static/demo/datapic/2.jpg"
-                            },
-                            location:"PekingU",
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                        }
-                    ]
+                   firstload:false,
+                   pages:1,
+                   list:[]
                 }              
             };
         },
@@ -231,52 +167,71 @@
                     return;//如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
                 }
                 this.followList.loadText = "加载中(＾o＾)ﾉ";
-                //修改状态
-                setTimeout(()=> {                  
-                    //示例:加载2000ms后从服务端获取了新的数据
-                    let obj = {                       
-                        //视频样式          
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"ATM",
-                            gender:"0",//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"透明质酸钠",
-                            titlePic:"../../static/demo/datapic/2.jpg",
-                            textStyle:false,
-                            PicTextStyle:false,
-                            videoStyle:{
-                                playNum:"34W",
-                                length:"3:51"
-                            },
-                            shareStyle:false,
-                            location:"PekingU",
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                        
-                    };
-                    this.followList.list.push(obj);//追加
-                    
-                    this.followList.loadText = "上拉加载更多";     //复原状态              
-                }, 2000);
-                
-                //this.followList.loadText = "没有更多数据";
-                
+                this.followList.pages++;
+                this.getFollowPostList();
             },
             // 打开搜索页
             openSearch(){
                 uni.navigateTo({
                     url:'../search/search?searchType=topic'
                 });
-            }
+            },
+            // 转换格式
+            __format(item){
+                return {
+                    userid:item.user.id,
+                    userPic:item.user.userpic,
+                    userName:item.user.username,
+                    isFollow:!!item.user.fens.length,
+                    id:item.id,
+                    title:item.title,
+                    type:"img", // img:图文,video:视频
+                    titlePic:!!item.images[0] ? item.images[0].url : '',
+                    video:false,
+                    path:item.path,
+                    share:!!item.share,
+                    likeInfo:{
+                        // index:!!item.support? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+                        index: 0,//0:没有操作，1:顶,2:踩；
+                        likeNum:item.ding_count,
+                        dislikeNum:item.cai_count,
+                    },
+                    commentNum:item.comment_count,
+                    shareNum:item.sharenum,
+                    likeNum:item.ding_count
+                }
+            },
+            // 获取动态列表
+            async getFollowPostList(){
+                let url = `followpost/${this.followList.pages}`;
+                let [err,res] = await this.$http.get(url,{},{
+                    token:true
+                });
+                if (!this.$http.errorCheck(err,res)) {
+                    this.followList.firstload = true;
+                    return this.followList.loadText="上拉加载更多";
+                }
+                let arr = [];
+                console.log(res)
+                console.log(this.followList.pages)
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push(this.__format(list[i]));
+                }
+                this.followList.list = this.followList.pages > 1 
+                                    ? this.followList.list.concat(arr) : arr;
+                this.followList.firstload = true;
+                this.followList.loadText=list.length < 10 ? "没有更多数据了" : "上拉加载更多";
+                return;
+            },
         },
         components: {
             commonList,
             newsNavBar,
             loadMore,
             topicNav,
-            topicList
+            topicList,
+            emptyContent
         },
         onLoad() {
             uni.getSystemInfo({
@@ -287,6 +242,9 @@
             })
             this.__init();
         },
+        onShow() {
+            this.getFollowPostList();
+        }
     }
 </script>
 

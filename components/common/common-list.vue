@@ -43,7 +43,7 @@
                 <view class="u-f-ac">
                     <view class="icon iconfont icon-zhuanfa">{{item.shareNum}}</view>
                     <view class="icon iconfont icon-pinglun">{{item.commentNum}}</view>
-                    <view class="icon iconfont icon-dianzan">{{item.likeNum}}</view>
+                    <view class="icon iconfont icon-dianzan" >{{item.likeNum}}</view>
                 </view>
             </view>
         </view>
@@ -100,6 +100,33 @@
                    //TODO handle the exception
                }
            },
+           async likeOpration(likeStat){
+               let index = 1 ; // 操作后的状态
+               if(this.item.likeInfo.index === index) return; // 状态相同不修改
+               let [err,res] = await this.$http.post('support',{
+                   post_id:this.item.id,
+                   type:index-1
+               },{
+                   token:true,
+                   checkToken:true,
+                   checkAuth:true
+               });
+               // 错误处理
+               if (!this.$http.errorCheck(err,res)) return;
+               uni.showToast({
+                   title: index == 1 ? "顶+1" : "踩+1"
+               });
+               let resdata = {
+                   type:"support",
+                   post_id:this.item.id,
+                   do:index
+               };
+               // 通知父组件
+               this.$emit('changeevent',resdata);
+               // 通知全局
+               uni.$emit("updateData",resdata);
+               return;
+           }
         }
     }
 </script>
@@ -205,5 +232,9 @@
         margin-left: 10upx;
         padding: 5upx;
         font-size: 25upx !important;
+    }
+    .active{
+        color: #009687 !important;
+        font-size: 32upx;
     }
 </style>

@@ -52,9 +52,38 @@
                     case 'guanzhu':
                         this.updateGuanZhu(data)
                         break;
-                    case value:
+                    case 'support':
+                        this.updateSupport(data);
+                        break;
+                    case 'updateComment':
+                        this.updateComment(data);
                         break;
                 }
+            },
+            updateComment(data){
+                // 拿到当前对象
+                let obj = this.list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                obj.commentNum++; // 评论数+1
+            },
+            // 更新顶踩
+            updateSupport(data){
+            // 拿到当前对象
+                let obj = this.list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                let oldindex = obj.likeInfo.index; // 操作前的状态
+                obj.likeInfo.index = data.do // 操作后的状态
+                if (oldindex !== 0) { //之前操作过
+                    oldindex == 1 ? obj.likeInfo.likeNum-- : obj.likeInfo.dislikeNum--;
+                }
+                if (obj.likeInfo.index !== 0) {  // 当前操作
+                    obj.likeInfo.index == 1 
+                        ? obj.likeInfo.likeNum++ : obj.likeInfo.dislikeNum++;
+                }    
             },
             // 更新关注信息
             updateGuanZhu(data){

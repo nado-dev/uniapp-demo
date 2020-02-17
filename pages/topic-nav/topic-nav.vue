@@ -23,7 +23,7 @@
                         <template  v-if="items.list.length != 0">
                             <block v-for="(item,index1) in items.list" :key="index1">
                                 <!-- 话题列表 传入item和index的值 -->
-                                 <topic-list :item="item" :index="index1"></topic-list>
+                                 <topic-list :item="item" :index="index1" :ischange="ischange"></topic-list>
                             </block>	
                                 <!-- 上拉加载 -->
                             <load-more :loadText="items.loadText"></load-more> 
@@ -58,7 +58,8 @@
                 swiperHeight:500,
 				tabIndex:0,//默认id
 				tabBars:[],
-                newsList:[]
+                newsList:[],
+                ischange:false
 			}
 		},
         components:{
@@ -67,7 +68,14 @@
             loadMore,
             topicList
         },
-        onLoad() {
+        onLoad(e) {
+            if (e.ischange) {
+                this.ischange = true;
+                // 修改页面标题
+                uni.setNavigationBarTitle({
+                    title:"选择所属话题"
+                })
+            }
             uni.getSystemInfo({
                 success: (res) => {
                     let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx

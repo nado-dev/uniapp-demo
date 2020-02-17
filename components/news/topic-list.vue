@@ -15,10 +15,21 @@
     export default {
         props:{
             item:Object,
-            index:Number
+            index:Number,
+            ischange:{
+                type:Boolean,
+                default:false
+            }
         },
         methods:{
             openTopicDetial(){
+                if(this.ischange){
+                    uni.$emit('changeTopic',{id:this.item.id, title:this.item.title})
+                    uni.navigateBack({
+                        delta:1
+                    })
+                    return
+                }
                 uni.navigateTo({
                     url:"../../pages/topic-detail/topic-detail?detail="+JSON.stringify(this.item)
                 })

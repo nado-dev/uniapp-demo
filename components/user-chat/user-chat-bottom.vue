@@ -3,7 +3,7 @@
     <view class="user-chat-bottom u-f-ac animated fadeInDown faster">
         <view class="icon iconfont icon-gengduo" @tap="selectEmoji"></view>
         <!-- 文本框+图标 -->
-        <input type="text" placeholder="(ゝ∀･)" v-model="text"/>
+        <input type="text" :placeholder="UserName" v-model="text" :focus="focus" @blur="blur ">  </input>
         <view class="icon iconfont icon-fabu u-f-ajc" @tap="submit"> </view>
     </view>
     <!-- 输入框 --> 
@@ -11,6 +11,16 @@
 
 <script>
     export default {
+        props: {
+                focus: {
+                    type:Boolean,
+                    default:false,
+                },
+                UserName:{
+                    type:String,
+                    default:"(ゝ∀･)"
+                }
+            },
         data(){
             return{
                 text:""
@@ -48,6 +58,9 @@
                         }
                     },
                 })
+            },
+            blur(){
+                this.$emit('blur');
             }
         }
     }

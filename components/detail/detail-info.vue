@@ -48,14 +48,14 @@
                 </view>
             </view>
             <!-- 右侧第五层 -->
-            <view class="u-f-ac u-f-jsb">
+            <view class="u-f-ac u-f-jsb detail-info-bottom" >
                 <!-- 右四左边 地址 -->
                 <view>{{item.location}}</view>
                 <!-- 右四右边 转发 评论 点赞 -->
                 <view class="u-f-ac">
                     <view class="icon iconfont icon-zhuanfa">{{item.shareNum}}</view>
                     <view class="icon iconfont icon-pinglun">{{item.commentNum}}</view>
-                    <view class="icon iconfont icon-dianzan">{{item.likeNum}}</view>
+                    <view class="icon iconfont icon-dianzan" :class="{'active':item.likeInfo.index == 1}" @tap="likeOpration('like')">{{item.likeNum}}</view>
                 </view>
             </view>
         </view>
@@ -99,7 +99,7 @@
                     };
                 // 通知父组件
                     this.$emit('changeevent',resdata);
-                // 通知
+                // 通知全局
                     uni.$emit('updateData',resdata);    
                 }catch(e){
                     //TODO handle the exception
@@ -113,6 +113,33 @@
                     urls:this.item.morePic,
                     indicator:"number"
                 })
+            },
+            async likeOpration(likeStat){
+                let index = 1 ; // 操作后的状态
+                if(this.item.likeInfo.index === index) return; // 状态相同不修改
+                let [err,res] = await this.$http.post('support',{
+                    post_id:this.item.id,
+                    type:index-1
+                },{
+                    token:true,
+                    checkToken:true,
+                    checkAuth:true
+                });
+                // 错误处理
+                if (!this.$http.errorCheck(err,res)) return;
+                uni.showToast({
+                    title: index == 1 ? "顶+1" : "踩+1"
+                });
+                let resdata = {
+                    type:"support",
+                    post_id:this.item.id,
+                    do:index
+                };
+                // 通知父组件
+                this.$emit('changeevent',resdata);
+                // 通知全局
+                uni.$emit("updateData",resdata);
+                return;
             }
         }
     }
@@ -144,5 +171,9 @@
         background: #EEEEEE;
         padding: 0 10upx;
         font-size: 28upx;
+    }
+    .active{
+        color: #009687 !important;
+        font-size: 32upx;
     }
 </style>

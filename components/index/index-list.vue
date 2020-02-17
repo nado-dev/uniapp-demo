@@ -31,7 +31,7 @@
                  <!-- 视频基本信息 --> 
                 <view class="index-list-vinfo">
                     {{item.playNum}}次播放 {{item.length}}     
-                </view>
+                </view >
             </template>
             
           
@@ -105,29 +105,57 @@
                 }
             },
             //顶踩操作
-            likeOpration(likeStat){
-                if(likeStat == "like"){
-                    if(item.likeInfo.index == 2){
-                        item.likeInfo.dislikeNum--;
-                        item.likeInfo.likeNum++;
-                        item.likeInfo.index = 1;
-                    }                     
-                    if(item.likeInfo.index == 0){
-                        item.likeInfo.likeNum++;
-                        item.likeInfo.index = 1;
-                    }
-                }
-                else{
-                    if(item.likeInfo.index == 1){
-                        item.likeInfo.likeNum--;
-                        item.likeInfo.dislikeNum++;
-                        item.likeInfo.index=2;
-                    }
-                    if(item.likeInfo.index == 0){
-                        item.likeInfo.dislikeNum++;
-                        this.likeInfo.index=2;
-                    }
-                }
+            async likeOpration(likeStat){
+                console.log("likeop")
+                // if(likeStat == "like"){
+                //     if(this.item.likeInfo.index == 2){
+                //         this.item.likeInfo.dislikeNum--;
+                //         this.item.likeInfo.likeNum++;
+                //         this.item.likeInfo.index = 1;
+                //     }                     
+                //     if(this.item.likeInfo.index == 0){
+                //         this.item.likeInfo.likeNum++;
+                //         this.item.likeInfo.index = 1;
+                //     }
+                // }
+                // else{
+                //     if(this.item.likeInfo.index == 1){
+                //         this.item.likeInfo.likeNum--;
+                //        this.item.likeInfo.dislikeNum++;
+                //         this.item.likeInfo.index=2;
+                //     }
+                //     if(this.item.likeInfo.index == 0){
+                //         this.item.likeInfo.dislikeNum++;
+                //         this.likeInfo.index=2;
+                //     }
+                // }
+                // 1是顶  2是踩
+                
+                    let index = (likeStat === 'like') ? 1 : 2; // 操作后的状态
+                    if(this.item.likeInfo.index === index) return; // 状态相同不修改
+                    let [err,res] = await this.$http.post('support',{
+                        post_id:this.item.id,
+                        type:index-1
+                    },{
+                        token:true,
+                        checkToken:true,
+                        checkAuth:true
+                    });
+                    // 错误处理
+                    if (!this.$http.errorCheck(err,res)) return;
+                    uni.showToast({
+                        title: index == 1 ? "顶+1" : "踩+1"
+                    });
+                    let resdata = {
+                        type:"support",
+                        post_id:this.item.id,
+                        do:index
+                    };
+                    // 通知父组件
+                    this.$emit('changeevent',resdata);
+                    // 通知全局
+                    uni.$emit("updateData",resdata);
+                
             },
             //进入详情页
             openDetail(){

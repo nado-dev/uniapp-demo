@@ -5,7 +5,7 @@
         <!--左 头像 -->
         <view class="uni-comment-face"><image :src="item.userPic" mode="widthFix"></image></view>
         <!--右   -->
-        <view class="uni-comment-body">
+        <view class="uni-comment-body" hover-class="uni-comment-body-hover" @tap.stop="reply">
             <!-- 用户名 -->
             <view class="uni-comment-top">
                 <text>{{item.userName}}</text>
@@ -30,9 +30,9 @@
             index:Number
         },
         methods:{
-            reply(){
-                console.log("回复")
-            }
+            reply() {
+                this.$emit('reply',this.item)
+            },
         }
     }
 </script>
@@ -49,5 +49,7 @@
         margin-left: 70upx;
         width: auto;
     }
-
+    .uni-comment-body-hover{
+        background: #EEEEEE;
+    }
 </style>

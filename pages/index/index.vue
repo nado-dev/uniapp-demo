@@ -79,11 +79,46 @@
             updateData(data){
                 switch (data.type){
                     case 'guanzhu':
-                        this.updateGuanZhu(data)
+                        this.updateGuanZhu(data);
                         break;
-                    case value:
+                        
+                    case 'support':
+                        this.updateSupport(data);
+                        break;
+                    
+                    case 'updateList':
+                        this.updateList(data);
+                        break;
+                    case 'updateComment':
+                        this.updateComment(data);
                         break;
                 }
+            },
+            // 更新评论
+            updateComment(data){
+            // 拿到当前对象
+                let obj = this.newsList[this.tabIndex].list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                obj.commentNum++; // 评论数+1
+            },
+            // 更新顶踩
+            updateSupport(data){
+            // 拿到当前对象
+                let obj = this.newsList[this.tabIndex].list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                let oldindex = obj.likeInfo.index; // 操作前的状态
+                obj.likeInfo.index = data.do // 操作后的状态
+                if (oldindex !== 0) { //之前操作过
+                    oldindex == 1 ? obj.likeInfo.likeNum-- : obj.likeInfo.dislikeNum--;
+                }
+                if (obj.likeInfo.index !== 0) {  // 当前操作
+                    obj.likeInfo.index == 1 
+                        ? obj.likeInfo.likeNum++ : obj.likeInfo.dislikeNum++;
+                }    
             },
             // 更新关注信息
             updateGuanZhu(data){
@@ -92,6 +127,16 @@
                         item.isFollow = data.data;
                     }
                 })
+            },
+            // 更新列表
+            updateList(data){
+                // 第一种，直接追加
+                let index = this.tabBars.findIndex((val)=>{
+                    return val.id === data.post_class_id;
+                })
+                if (index > -1) {
+                    this.newsList[index].list.push(this.__format(data));
+                }
             },
             // 获取文章分类
             async getNav(){
@@ -231,9 +276,9 @@
         //监听第二个按钮 转跳到发布页面
         onNavigationBarButtonTap(e) {
             // console.log(JSON.stringify(e));
-            if(e.index == 1 || e.index == 0){
+            if(e.index == 1 ){
                 this.User.navigate({
-                    url:"../addINput/addINput"
+                    url:"../addINput/addINput?postClass="+JSON.stringify(this.tabBars)
                 });
             }          
         }

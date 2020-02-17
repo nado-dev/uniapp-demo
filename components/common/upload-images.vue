@@ -4,11 +4,11 @@
                     <view class="uni-uploader">
                         <view class="uni-uploader-head">
                             <view class="uni-uploader-title">点击可预览选好的图片</view>
-                            <view class="uni-uploader-info">{{imageList.length}}/9</view>
+                            <view class="uni-uploader-info">{{imglist.length}}/9</view>
                         </view>
                         <view class="uni-uploader-body">
                             <view class="uni-uploader__files">
-                                <block v-for="(image,index) in imageList" :key="index">
+                                <block v-for="(image,index) in imglist" :key="index">
                                     <view class="uni-uploader__file">
                                         <view class="icon iconfont icon-shanchu" @tap="deletePic()"> </view>
                                         <image class="uni-uploader__img" :src="image" :data-src="image" 
@@ -37,9 +37,11 @@
     	['compressed', 'original']
     ]
 	export default {
+        props:{
+            imglist:Array
+        },
 		data() {
 			return {
-				imageList: [],
 				sourceTypeIndex: 2,
 				sourceType: ['拍照', '相册', '拍照或相册'],
 				sizeTypeIndex: 2,
@@ -60,17 +62,20 @@
 				}
 				// #endif
 			
-				if (this.imageList.length === 9) {
+				if (this.imglist.length === 9) {
 			        return;
 				}
 				uni.chooseImage({
 					sourceType: sourceType[this.sourceTypeIndex],
 					sizeType: sizeType[this.sizeTypeIndex],
-					count: this.imageList.length + this.count[this.countIndex] > 9 ? 9 - this.imageList.length : this.count[this.countIndex],
+					count: this.imglist.length + this.count[this.countIndex] > 9 ? 9 - this.imglist.length : this.count[this.countIndex],
 					success: (res) => {
-						this.imageList = this.imageList.concat(res.tempFilePaths);
-                        // 可以调用父组件的upload方法,并把imageList传给父组件
-                        this.$emit('upload',this.imageList)
+						// this.imageList = this.imageList.concat(res.tempFilePaths);
+      //                   // 可以调用父组件的upload方法,并把imageList传给父组件
+      //                   this.$emit('upload',this.imageList)
+                        for (let i = 0; i < res.tempFilePaths.length; i++) {
+                            this.Upload(res.tempFilePaths[i]);
+                        }
 					},
 					fail: (err) => {
 						// #ifdef APP-PLUS
@@ -118,10 +123,7 @@
                     content:"是否删除所有图片",
                     success:(res)=>{
                         if(res.confirm){
-                            this.imageList= []
-                             // 可以调用父组件的upload方法,并把imageList传给父组件
-                             // prop 用于接受父组件传来的数据
-                            this.$emit('upload',this.imageList)
+                            this.$emit('del')
                         }
                     }
                 })
@@ -130,7 +132,7 @@
             	var current = e.target.dataset.src
             	uni.previewImage({
             		current: current,
-            		urls: this.imageList
+            		urls: this.imglist
             	})
             },
             async checkPermission(code) {
@@ -154,7 +156,30 @@
             	}
             
             	return status;
-            }
+            },
+            // 上传多图
+            async Upload(filePath){
+                try{
+                    let [err2,res2] = await this.$http.upload('image/uploadmore',{
+                        name: 'imglist[]',
+                        filePath:filePath,
+                        token:true,
+                        checkToken:true
+                    }); 
+                    let data = JSON.parse(res2.data);
+                    // 上传失败
+                    if (err2 || data.errorCode) {
+                        uni.showToast({ title: data.msg ? data.msg : '上传失败', icon:"none" });
+                        return false;
+                    }
+                    // 上传成功
+                    let list = data.data.list;
+                    // 通知父组件
+                    this.$emit('upload',list[0])
+                }catch(e){
+                    return;
+                }
+            },
 		}
 	}
 </script>
