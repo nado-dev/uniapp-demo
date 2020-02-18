@@ -6,6 +6,10 @@
        @addFriend="addFriend" @clearPaperList="clearPaperList">
        </paper-left-popup>
         
+        <view class="paper-friendlist u-f-ajc" @tap="NavToFriendList">
+            我的好友
+            <view class="icon iconfont icon-jinru"> </view>
+        </view>
         <!-- 消息 列表-->
          <block v-for="(item,index) in list" :key="index">
             <paper-list :item="item" :index="index"></paper-list>
@@ -152,6 +156,11 @@
                 //赋值
                 //关闭下拉刷新
                 }, 2000);
+            },
+            NavToFriendList(){
+                uni.navigateTo({
+                    url:"../user-list/user-list"
+                })
             }
 		}
 	}
@@ -161,6 +170,8 @@
     .body{
         padding: 0 20upx;
     }
-   
+   .paper-friendlist{
+       padding:30upx 0;
+   }
      
 </style>

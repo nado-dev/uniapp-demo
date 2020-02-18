@@ -5,7 +5,7 @@
             <!-- 左边 头像 昵称 -->
             <view >
                 <image :src="item.userPic" 
-                mode="widthFix" lazy-load></image>
+                mode="widthFix" lazy-load @tap.stop="openSpace"></image>
                 {{item.userName}}
             </view>
             <!-- 右边 关注按钮 -->
@@ -162,6 +162,13 @@
                 console.log("进入详情页");
                 uni.navigateTo({
                     url:"../../pages/detail/detail?detailData="+JSON.stringify(this.item),
+                })
+                
+                this.User.addHistoryList(this.item)
+            },
+            openSpace(){
+                uni.navigateTo({
+                    url:'../../pages/user-space/user-space?userid='+this.item.userid
                 })
             }
         }

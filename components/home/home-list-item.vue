@@ -18,8 +18,12 @@
             clickEven(){
                 switch (this.item.clickType){
                     case "navigateTo":
+                    let option = {url: this.item.url};
                         if(this.item.url){
-                             uni.navigateTo({url: this.item.url});
+                             if(this.item.auth){
+                                 return this.User.navigate(option)
+                             }
+                             uni.navigateTo(option);
                         }
                         break;
                     case "switchTab":
@@ -28,23 +32,29 @@
                         }
                         break;
                     case "clear":
-                       uni.showModal({
-                           title:"提示",
-                           content:"是否清除缓存？确定将清除您的登录状态",
-                           confirmText:"立即清除",
-                           success: (res) => {
-                               if(res.confirm){
-                                   // 清除缓存
-                                   uni.User.logout(false);
-                                   uni.clearStorage();
-                                   uni.showToast({
-                                       title:"清除成功！",
-                                       duration:1000
-                                   });
-                               }
-                           }
-                       });
-                        break;
+                        uni.showModal({
+                            title:"提示",
+                            content:"是否清除缓存？确定将清除您的登录状态",
+                            confirmText:"立即清除",
+                            success: (res) => {
+                                if(res.confirm){
+                                    // 清除缓存
+                                    uni.User.logout(false);
+                                    uni.clearStorage();
+                                    uni.showToast({
+                                        title:"清除成功！",
+                                        duration:1000
+                                    });
+                                }
+                            }
+                        });
+                        case "nothing":
+                            uni.showToast({
+                                title:"更新中",
+                                icon:'none'
+                            });
+                            uni.navigateTo({url: this.item.url});
+                            break;
                 }
             }
         }

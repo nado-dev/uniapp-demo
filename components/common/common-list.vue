@@ -2,7 +2,7 @@
     <view class="common-list u-f animated fadeIn faster">
         <!-- 左侧：用户头像 -->
         <view class="common-list-l">
-            <image :src="item.userPic" mode="widthFix" lazy-load></image>
+            <image :src="item.userPic" mode="widthFix" lazy-load @tap.stop="openSpace"></image>
         </view>
         <!-- 右侧： -->
         <view class="common-list-r">
@@ -53,7 +53,11 @@
 <script>
     import tagGenderAge from './tag-gender-age.vue';
     export default {
-        props:{           
+        props:{
+            noJump:{
+                type:Boolean,
+                default:false
+            },
             item:Object,
             index:Number           
         },
@@ -126,6 +130,12 @@
                // 通知全局
                uni.$emit("updateData",resdata);
                return;
+           },
+           openSpace(){
+               if(this.noJump)  return;
+               uni.navigateTo({
+                   url:'../../pages/user-space/user-space?userid='+this.item.userid
+               })
            }
         }
     }

@@ -177,11 +177,11 @@
                         //搜索框配置
                         "autoBackButton":false,
                         "searchInput":{
+                            "disabled":true,
                             "align":"left",//位置
                             "backgroundColor":"#F7F7F7",
                             "borderRadius":"4px",//圆角半径
-                            "placeholder":"(=ﾟωﾟ)=",//提示文字
-                            "disabled":false//是否禁用输入
+                            "placeholder":"搜索用户(=ﾟωﾟ)="//提示文字
                         }
                        
                     }
@@ -300,6 +300,19 @@
             "path" : "pages/user-safe/user-safe",
             "style" : {
                 "navigationBarTitleText":"账号与安全"
+            }
+        }
+        ,{
+            "path" : "pages/user-history/user-history",
+            "style" : {
+                "navigationBarTitleText":"浏览历史",
+                "app-plus":{
+                    "titleNView":{
+                        "buttons":[
+                            {"type":"close"}
+                        ]
+                    }
+                }
             }
         }
     ],

@@ -2,13 +2,17 @@
 	<view>
         <template v-if="list.length > 0">
             <block v-for="(item, index) in list" :key="index">
-                <!-- 搜po -->
+                <!-- 搜文章 -->
                 <template v-if="searchType == 'post'">
                     <index-list :item="item" :index="index"  @changeevent="updateData"></index-list>
                 </template>
                 <!-- 搜话题 -->
                 <template v-if="searchType == 'topic'">
                     <topic-list :item="item" :index="index"></topic-list>
+                </template>
+                <!-- 搜po -->
+                <template v-else>
+                    <user-list :item="item" :index="index" hidden></user-list>
                 </template>
                 
             </block>
@@ -29,12 +33,14 @@
     import emptyContent from "../../components/common/empty-content.vue";
     import loadMore from '../../components/common/load-more.vue';
     import topicList from '../../components/news/topic-list.vue';
+    import userList from '../../components/user-list/user-list.vue';
 	export default {
         components:{
             indexList,
             emptyContent,
             loadMore,
-            topicList
+            topicList,
+            userList
         },
 		data() {
 			return {
@@ -109,6 +115,9 @@
                     case "post":
                         url = 'search/post';
                         break;
+                    case "user":
+                        url = 'search/user';
+                        break;
                 }
                 
                 let [err,res] =await this.$http.post(url,{
@@ -129,6 +138,7 @@
                 for (let i = 0; i < list.length; i++) {
                     arr.push(this.__format(list[i]));
                 }
+                console.log(arr)
                 this.list = this.page > 1
                     ? this.list.concat(arr) : arr;
                 this.isSearch = true;
@@ -185,6 +195,16 @@
                             desc:item.desc,
                             totalPostNum:item.post_count,
                             todayPostNum:item.todaypost_count
+                        }
+                        break;
+                    case "user":
+                        return {
+                            id:item.id,
+                            userpic:item.userpic,
+                            name:item.username,
+                            // age:item.userinfo.age,
+                            // gender:item.userinfo.sex,
+                            isFollow:false 
                         }
                         break;
                 }

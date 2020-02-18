@@ -3,7 +3,7 @@
         <!-- 左边 头像 -->
         <view class="u-f-jsb u-f-ac">
             <view class="user-list-userpic">
-                <image :src="item.userpic" mode="widthFix" lazy-load></image>
+                <image :src="item.userpic" mode="widthFix" lazy-load @tap.stop="openSpace"></image>
             </view>
             <!-- 中间 -->
             <view class="u-f-ac">
@@ -12,16 +12,18 @@
                     {{item.name}}
                 </view>
                 <!-- 中间下 -->
-                <tag-gender-age :age="item.age" :gender="item.gender"></tag-gender-age>
             </view>
         </view>
         <!-- 右边 选择图标 -->
-        <template v-if="item.isFollow">
+        <view v-show="!hidden">
+             <template v-if="item.isFollow " >
              <view class="icon  iconfont icon-xuanze-yixuan" ></view>
-        </template> 
-        <template v-else>
-            <view class="icon  iconfont icon-zengjia1" ></view>
-        </template>              
+            </template> 
+            <template v-else>
+                <view class="icon  iconfont icon-zengjia1" ></view>
+            </template>  
+        </view>
+                   
     </view>
 </template>
 
@@ -33,7 +35,18 @@
         },
         props:{
             item:Object,
-            index:Number
+            index:Number,
+            hidden:{
+                type:Boolean,
+                default:false
+            }
+        },
+        methods:{
+             openSpace(){
+               uni.navigateTo({
+                   url:'../../pages/user-space/user-space?userid='+this.item.id
+               })
+           }
         }
     }
 </script>

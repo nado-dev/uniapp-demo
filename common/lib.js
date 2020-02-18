@@ -1,3 +1,5 @@
+import $http from "./request.js";
+
 // 网络监听
 const NetWork = {
 	// 网络状态
@@ -44,33 +46,49 @@ const NetWork = {
 const Update = function(){
 	// #ifdef APP-PLUS  
 	plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) {  
-		uni.request({  
-			url: 'http://www.example.com/update/',  
-			data: {  
-				version: widgetInfo.version,  
-				name: widgetInfo.name  
-			},  
-			success: (result) => {  
-				var data = result.data;  
-				if (data.update && data.wgtUrl) {  
-					uni.downloadFile({  
-						url: data.wgtUrl,  
-						success: (downloadResult) => {  
-							if (downloadResult.statusCode === 200) {  
-								plus.runtime.install(downloadResult.tempFilePath, {  
-									force: false  
-								}, function() {  
-									console.log('install success...');  
-									plus.runtime.restart();  
-								}, function(e) {  
-									console.error('install fail...');  
-								});  
-							}  
-						}  
-					});  
-				}  
-			}  
-		});  
+        $http.post('update',{
+            ver:widgetInfo.version,
+        }).then((res) =>{
+            let [err,result] = res;
+            // 错误判断
+            if(!$http.errorCheck(err, result))  return;
+            // 成功
+            var data = result.data;
+            if(!data.url) {
+                // wuxugenxin
+                uni.showToast({
+                    title: '无需更新'
+                });
+                return;
+            }
+            else{
+                uni.showModal({
+                    title:'发现新版本',
+                    content:"最新版本:"+data.version,
+                    cancelText:"放弃更新",
+                    confirmText:"立即更新",
+                    success: (res) => {
+                        if(res.confirm){
+                            uni.downloadFile({
+                                url: data.wgtUrl,  
+                                success: (downloadResult) => {  
+                                    if (downloadResult.statusCode === 200) {  
+                                        plus.runtime.install(downloadResult.tempFilePath, {  
+                                            force: false  
+                                        }, function() {  
+                                            console.log('install success...');  
+                                            plus.runtime.restart();  
+                                        }, function(e) {  
+                                            console.error('install fail...');  
+                                        });  
+                                    }  
+                                }  
+                            });  
+                        }
+                    }
+                })
+            }
+        });
 	});  
 	// #endif  
 }

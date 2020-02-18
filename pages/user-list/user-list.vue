@@ -27,7 +27,11 @@
                                 <!-- 上拉加载 -->
                             <load-more :loadText="items.loadText"></load-more> 
                        </template >
-                            
+                        
+                        <template v-else-if="!items.firstload">
+                            <view style="font-size: 50upx;font-weight: bold;color: #CCCCCC;
+                            padding-top: 100upx;" class="u-f-ajc">Loading ...</view>
+                        </template>
                     <!-- 无内容 展示图片-->  
                     <!-- 无内容默认 -->
                        <template v-else>
@@ -42,9 +46,9 @@
         </view>
         
         <!-- 好友列表 -->
-        <block v-for="(item, index) in list" :key="index">
+       <!-- <block v-for="(item, index) in list" :key="index">
             <user-list :item="item" :index="index"></user-list>
-        </block>
+        </block> -->
 	</view>
 </template>
 
@@ -68,115 +72,29 @@
                 swiperHeight:500,
                 tabIndex:0,
 				tabBars:[
-				    {name:"互关",id:"huguan", num:10   },
-				    {name:"关注",id:"guanzhu",num:20   },
-				    {name:"粉丝",id:"fensi",  num:23   },              
+				    {name:"互关",id:"huguan" },
+				    {name:"关注",id:"guanzhu"  },
+				    {name:"粉丝",id:"fensi"  },              
 				],
                 tabList:[
                     {
                         loadText:"上拉加载更多",
-                        list:[                    
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"1ATM",
-                                gender:1,
-                                age:28,
-                                isFollow:true
-                            },
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }, {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }
-                        ]
+                        list:[],
+                        page:1,
+                        firstload:false
                     },
                     {                        
                         loadText:"上拉加载更多",
-                        list:[                    
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"2ATM",
-                                gender:1,
-                                age:28,
-                                isFollow:true
-                            },
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }
-                        ]                       
+                        list:[],
+                        page:1,
+                        firstload:false
+                                       
                     },
                     {
                         loadText:"上拉加载更多",
-                        list:[                    
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"3ATM",
-                                gender:1,
-                                age:28,
-                                isFollow:true
-                            },
-                            {
-                                userpic:"../../static/demo/userpic/2.jpg",
-                                name:"ATM",
-                                gender:0,
-                                age:28,
-                                isFollow:false
-                            }
-                        ]                       
+                        list:[]  ,
+                        page:1,
+                        firstload:false
                     }
                 ]
                 
@@ -192,19 +110,80 @@
                 }
             })
         },
+        onShow() {
+            this.__init();
+        },
 		methods: {
+            __init(){
+                this.getList();
+            },
+            
 			tabSwitch(index){
 			    //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
 			    this.tabIndex = index;
 			    //console.log(index)
+                if (!this.tabList[this.tabIndex].firstload) {
+                    this.getList();
+                }
 			},
+            
             follow(){
                 this.item.isFollow !=this.item.isFollow;
             },
+            
             //tabBar滑动事件
             tabChange(e){
                 this.tabIndex = e.detail.current;
                 //console.log(index);
+                if (!this.tabList[this.tabIndex].firstload) {
+                    this.getList();
+                }
+            },
+            getUrl(){
+                let arr = ['friends/','follows/','fens/'];
+                return arr[this.tabIndex]+this.tabList[this.tabIndex].page;
+            },
+            // 获取列表
+            async getList(){
+                try{
+                    let currentIndex = this.tabIndex;
+                    let [err,res] = await this.$http.get(this.getUrl(),{},{
+                        token:true,
+                        checkToken:true
+                    });
+                    // 错误处理
+                    if (!this.$http.errorCheck(err,res)) {
+                        this.tabList[currentIndex].loadText="上拉加载更多";
+                        return;
+                    }
+                    // 获取成功
+                    let arr = [];
+                    
+                    let list = res.data.data.list;
+                    for (let i = 0; i < list.length; i++) {
+                        arr.push(this.__format(list[i],currentIndex));
+                    }
+                    console.log(res)
+                    console.log(list)
+                    
+                    
+                    this.tabList[currentIndex].list = this.tabList[currentIndex].page > 1 ? this.tabList[currentIndex].list.concat(arr) : arr;
+                    this.tabList[currentIndex].firstload = true;
+                    this.tabList[currentIndex].loadText= list.length < 10 ? "没有更多数据了" : "上拉加载更多";
+                    return;
+                }catch(e){
+                    return;
+                }
+            },
+            __format(item,currentIndex){
+                return {
+                    id:item.userinfo.user_id,
+                    userpic:item.userpic,
+                    name:item.username,
+                    age:item.userinfo.age,
+                    gender:item.userinfo.sex,
+                    isFollow:currentIndex !== 2 
+                }
             },
             loadMore(index){
                 if( this.tabList[index].loadText != "上拉加载更多"){
@@ -212,24 +191,16 @@
                 }
                 this.tabList[index].loadText = "加载中(＾o＾)ﾉ";
                 //修改状态
-                setTimeout(()=> {                  
-                    //示例:加载2000ms后从服务端获取了新的数据
-                    let obj = {                       
-                       userpic:"../../static/demo/userpic/2.jpg",
-                       name:"reATM",
-                       gender:1,
-                       age:28,
-                       isFollow:true
-                    };
-                    this.tabList[index].list.push(obj);//追加
-                    
-                    this.tabList[index].loadText = "上拉加载更多";     //复原状态              
-                }, 2000);
-                
-                //this.tabList[index].loadText = "没有更多数据";
+                this.tabList[index].page++;
+                this.getList();
                 
             }
-		}
+		},
+        onNavigationBarSearchInputClicked(e){
+            uni.navigateTo({
+                url:"../search/search?searchType=user"
+            })
+        }
 	}
 </script>
 

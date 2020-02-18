@@ -41,7 +41,6 @@
     import homeInfo from "../../components/home/home-info.vue";
     import otherLogin from "../../components/home/other-login.vue";
     import homeData from "../../components/home/home-data.vue"
-	
     export default {
         components:{
             homeListItem,
@@ -88,7 +87,7 @@
             return{
                 isLogin:false,
                 list:[
-                    {name:"浏览历史", icon:"liulan", clickType:"", url:""},
+                    {name:"浏览历史", icon:"liulan", clickType:"nothing", url:"/pages/user-history/user-history"},
                     {name:"实名认证", icon:"huiyuanvip", clickType:"", url:""},
                 ],
                 homeInfo:{

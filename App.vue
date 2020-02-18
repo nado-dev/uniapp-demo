@@ -6,6 +6,8 @@
             this.lib.NetWork.On();
             // 初始化用户状态
             this.User.__init();
+            // 检查更新
+            // this.lib.Update();
 		},
 		onShow: function() {
 			console.log('App Show')

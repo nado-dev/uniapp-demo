@@ -3,19 +3,20 @@
     <view class='user-space-head u-f-ajc'>
         <!-- 背景图 -->
         <image :src='getBgImg' mode='widthFix' lazy-load @tap='switchBg'></image>
-        <view class='user-space-head-info u-f-ajc u-f-column'>
-            <!-- 头像 -->
+            <view class='user-space-head-info u-f-ajc u-f-column'>
+                <!-- 头像 -->
             <image :src='userInfo.userPic' mode='widthFix' lazy-load></image>
             <!-- 昵称 + 性别年龄 -->
-            <view class='user-space-margin u-f-ac'>{{userInfo.userName}}
-            <tag-gender-age :gender='userInfo.gender' :age='userInfo.age'></tag-gender-age></view>
+            <view class='user-space-margin u-f-ac'>{{userInfo.userName}} </view>
             <!-- 关注按钮 -->
-            <view v-if='!isFollow' @tap='follow' >
-                <view  class='icon iconfont icon-zengjia user-space-head-btn user-space-margin active'>关注</view>
-            </view>
-            <view v-else @tap='follow'  class='animated bounceIn faster'>
-                <view  class='user-space-head-btn user-space-margin'>已关注</view>
-            </view>
+           <view v-if="!userInfo.isme">
+               <view v-if='!userInfo.isFollow' @tap.stop='follow' >
+                   <view  class='icon iconfont icon-zengjia user-space-head-btn user-space-margin active'>关注</view>
+               </view>
+               <view v-else class='animated bounceIn faster' @tap.stop='follow'>
+                   <view  class='user-space-head-btn user-space-margin'>已关注</view>
+               </view>
+           </view>
         </view>
     </view>
 </template>
@@ -48,22 +49,34 @@
                  num++
                  this.bgimg = (num) % 5;
              },
-         	follow(){
-         	    if(this.isFollow){
-         	        this.isFollow = !this.isFollow;
-         	        uni.showToast({
-         	            title:'取消关注成功'
-         	        });
-         	    }
-         	    else{
-         	        this.isFollow = !this.isFollow;
-         	        uni.showToast({
-         	            title:'关注成功'
-         	        });
-         	    }
-         	    
-         	    
-         	},
+         	async follow(){
+                try{
+                    let url = this.userInfo.isFollow ? 'unfollow' : 'follow';
+                    uni.showLoading({ title: 'loading...', mask: false });
+                    let [err,res] = await this.$http.post(url,{
+                        follow_id:this.userInfo.id
+                    },{
+                        token:true,
+                        checkToken:true,
+                        checkAuth:true
+                    });
+                    // 错误处理
+                    if (!this.$http.errorCheck(err,res)){
+                        return uni.hideLoading();
+                    }
+                    // 成功
+                    uni.hideLoading();
+                    uni.showToast({ 
+                        title: this.userInfo.isFollow ? '取消关注成功' : '关注成功' ,
+                        icon:"none"
+                    });
+                    // 通知父组件修改状态
+                    this.$emit('update',!this.userInfo.isFollow);
+                }catch(e){
+                    console.log(e)
+                    return;
+                }
+            },
          }
      }
 </script>

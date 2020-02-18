@@ -9,7 +9,7 @@
 	            <uni-collapse-item :title="item.title" :show-animation="true" :contentdata="item.content"></uni-collapse-item>
 	        </block>
 	    </uni-collapse>
-        
+        <button type="default" @tap="checkUpdate">检查更新</button>
 	</view>
 </template>
 
@@ -32,7 +32,9 @@
 			}
 		},
 		methods: {
-			
+			checkUpdate(){
+                this.lib.Update();
+            }
 		}
 	}
 </script>

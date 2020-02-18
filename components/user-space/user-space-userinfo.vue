@@ -20,6 +20,12 @@
                 个人信息
             </view>
             <view class="">
+                性别    {{userInfo.gender}}
+            </view>
+            <view class="">
+                年龄    {{userInfo.age}}
+            </view>
+            <view class="">
                 星座    {{getStarSign}}
             </view>
             <view class="">

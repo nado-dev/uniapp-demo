@@ -4,13 +4,15 @@
         <view class="paper-left-popup-mask" v-show="isPopupShow" @tap="hidePopup()"> 
         <!-- 菜单的优先级在蒙版之上 显示 -->
             <view class="paper-left-popup " v-show="isPopupShow">
-                <!-- 第一层 添加好友 -->
-                <view class="u-f-ac" hover-class="paper-left-popup-hover" @tap="addBlackList()">
-                    <view class="icon iconfont icon-sousuo u-f-ac"><view>拉黑</view></view>
+                <!-- 第一层  -->
+                <view class="u-f-ac" hover-class="paper-left-popup-hover" @tap="addBlackList">
+                    <view class="icon iconfont icon-guanbi u-f-ac">
+                        <view>{{isblack ? '移除黑名单':"加入黑名单"}}</view>
+                    </view>
                 </view>
-                <!-- 第二层 清空未读提示-->
-                <view class="u-f-ac" hover-class="paper-left-popup-hover" @tap="remark()">
-                    <view class="icon iconfont icon-qingchu u-f-ac"><view>备注</view></view>
+                <!-- 第二层 -->
+                <view class="u-f-ac" hover-class="paper-left-popup-hover" @tap="chat">
+                    <view class="icon iconfont icon-jinru u-f-ac"><view>聊天(暂不可用)</view></view>
                 </view>
             </view>
         </view>
@@ -20,6 +22,7 @@
 <script>
     export default {
         props:{
+            isblack:Boolean,
             isPopupShow:Boolean
         },
         methods:{
@@ -30,8 +33,8 @@
             addBlackList(){
                 this.$emit('addBlackList')
             },
-            remark(){
-                this.$emit('remark')
+            chat(){
+                this.$emit('chat')
             }
         }
     }

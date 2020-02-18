@@ -106,6 +106,46 @@
                 this.getSwiper();
                 this.getHot();
                 this.getNav();
+                uni.$on('updateData',this.updateData)
+            },
+            updateData(data){
+                switch (data.type){
+                    case 'guanzhu':
+                        this.updateGuanZhu(data)
+                        break;
+                    case "support":
+                        this.updateSupport(data);
+                        break;
+                    case 'updateComment':
+                        this.updateComment(data);
+                        break;
+                }
+            },
+            updateComment(data){
+                        // 拿到当前对象
+                let obj = this.followList.list.find(value =>{
+                    return value.id === data.post_id;
+                });
+                if (!obj) return;
+                obj.commentNum++; // 评论数+1
+            },
+            // 更新关注信息
+            updateGuanZhu(data){
+                this.followList.list.forEach((item,index)=>{
+                    if (item.userid === data.userid) {
+                        item.isFollow = data.data;
+                    }
+                })
+            },
+            updateSupport(data){
+                let obj = this.followList.list.find((item)=>{
+                    return item.id === data.post_id;
+                })
+                if(!obj || obj.infonum.index === 1) return;
+                if (data.do === 1) {
+                    obj.likeInfo.index = 1;
+                    obj.likeNum++;
+                }
             },
             // 获取广告
             async getSwiper(){

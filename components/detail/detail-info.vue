@@ -2,7 +2,7 @@
     <view class="common-list u-f animated fadeIn fast">
         <!-- 左侧：用户头像 -->
         <view class="common-list-l">
-            <image :src="item.userPic" mode="widthFix" lazy-load></image>
+            <image :src="item.userPic" mode="widthFix" lazy-load @tap.stop="openSpace"></image>
         </view>
         <!-- 右侧： -->
         <view class="common-list-r">
@@ -140,6 +140,11 @@
                 // 通知全局
                 uni.$emit("updateData",resdata);
                 return;
+            },
+            openSpace(){
+                uni.navigateTo({
+                    url: '../../pages/user-space/user-space?userid='+this.item.userid,
+                });
             }
         }
     }

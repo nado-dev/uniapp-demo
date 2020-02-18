@@ -32,6 +32,7 @@
         },
 		data() {
 			return {
+                userinfo:{},
                 list:[],
                 style:{
                     contentH:0,
@@ -44,13 +45,25 @@
 		},
         //加载时就转化时间，更新formatedTime
         onLoad(e) {
-            this.initdata(JSON.parse(e.chatData));
-            this.getData();
             this.initData();
+            if(e.userinfo){
+                this.initdata(JSON.parse(e.userinfo));
+                this.userinfo = JSON.parse(e.userinfo)
+            }
+            else this.initdata(JSON.parse(e.chatData));
+            this.getData();
         },
         onReady() {
             this.pageToButtom(true);
         },
+        onNavigationBarButtonTap(e) {
+            if(e){
+                uni.navigateTo({
+                    url: '../../pages/user-space/user-space?userid='+this.userinfo.id,
+                })
+            }
+        },
+            
 		methods: {
             //func1初始化参数
             initData(){
@@ -68,7 +81,7 @@
                 let nowtime = Math.round(new Date() / 1000);
                 let newitem = {
                     isMyMsg:true,
-                    userPic:"../../static/demo/userpic/15.jpg",
+                    userPic:this.userinfo.userPic || '/static/common/ACnyn',
                     type:"text",
                     data:chatText,
                     time:"1586262166" ,//时间戳：js默认10位，php：13位，转化要在最低三位补零
@@ -104,18 +117,7 @@
                             }
                         }
                     }).exec();
-                // q.select('#scroll-view').boundingClientRect();
-                // q.selectAll('.user-chat-item').boundingClientRect();
-                // q.exec((res)=>{
-                //     res[1].forEach((ret)=>{
-                //         this.style.itemH += ret.height;
-                //     });
-                   
-                //     if(this.style.itemH > this.style.contentH){
-                //         this.scrollTop=this.style.itemH ;
-                      
-                //     }
-                					
+                
                 })
                 
             },
@@ -128,13 +130,13 @@
                           isMyMsg:false,
                           userPic:"../../static/demo/userpic/16.jpg",
                           type:"text",
-                          data:"聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容聊天内容",
+                          data:"聊天功能开发中",
                           time:"1586262166" //时间戳：js默认10位，php：13位，转化要在最低三位补零
                          
                       },
                       {
                           isMyMsg:true,
-                          userPic:"../../static/demo/userpic/15.jpg",
+                          userPic:this.userinfo.userPic,
                           type:"img",
                           data:"../../static/demo/datapic/34.jpg",
                           time:"1586262166" //时间戳：js默认10位，php：13位，转化要在最低三位补零

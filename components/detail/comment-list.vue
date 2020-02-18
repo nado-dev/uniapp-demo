@@ -3,7 +3,7 @@
         <!-- 主体 -->
    <view class="uni-comment-list " :class="{'u-comment-list-child':item.fid != 0}">
         <!--左 头像 -->
-        <view class="uni-comment-face"><image :src="item.userPic" mode="widthFix"></image></view>
+        <view class="uni-comment-face"><image @tap.stop="openSpace" :src="item.userPic" mode="widthFix"></image></view>
         <!--右   -->
         <view class="uni-comment-body" hover-class="uni-comment-body-hover" @tap.stop="reply">
             <!-- 用户名 -->
@@ -33,6 +33,11 @@
             reply() {
                 this.$emit('reply',this.item)
             },
+             openSpace(){
+                uni.navigateTo({
+                    url: '../../pages/user-space/user-space?userid='+this.item.userid,
+                });
+            }
         }
     }
 </script>

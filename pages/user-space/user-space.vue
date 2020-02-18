@@ -1,6 +1,6 @@
 <template>
 	<view class="animated fadeIn faster">
-        <user-space-head :userInfo="userInfo" ></user-space-head>   
+        <user-space-head :userInfo="userInfo" @update="updateGuanZhu"></user-space-head>   
 	
         <!-- 用户信息 -->
         <view class="home-data user-space-data u-f-ac ">
@@ -22,18 +22,32 @@
             <!-- 首页 -->
              <user-space-userinfo :userInfo="this.userInfo"></user-space-userinfo>
         </template>
-        <template v-else>
-            <!-- 列表 -->
-            <block v-for="(item, index) in list" :key="index">
-                <common-list :item="item" :index="index"></common-list>          
-            </block>
-            <!-- 上拉加载 -->
-            <load-more :loadText="this.loadText"></load-more>
+        
+        <template v-if="tabIndex == 1">
+            <template v-if="firstload">
+                <template v-if="list.length > 0">
+                    <!-- 列表 -->
+                    <block v-for="(item, index) in list" :key="index">
+                        <common-list :item="item" :index="index" noJump></common-list>          
+                    </block>
+                    <!-- 上拉加载 -->
+                    <load-more :loadText="this.loadText"></load-more>
+                </template>
+                <template v-else>
+                    <empty-content></empty-content>
+                </template>
+            </template>
+           
+            <template v-else>
+                <view style="font-size: 50upx;font-weight: bold;color: #CCCCCC;
+                padding-top: 100upx;" class="u-f-ajc">Loading ...</view>
+            </template>
+            
         </template>
         
         <!--操作菜单 -->
-        <user-space-popup :isPopupShow="isPopupShow"
-        @hidePopup='hidePopup' @addBlackList='addBlackList'  @remark='remark'></user-space-popup>
+        <user-space-popup :isPopupShow="isPopupShow" :isblack="userInfo.isblack"
+        @hidePopup='hidePopup' @addBlackList='addBlackList'  @chat='chat'></user-space-popup>
     </view>
 </template>
 
@@ -45,6 +59,9 @@
     import commonList from "../../components/common/common-list.vue";
     import homeData from "../../components/home/home-data.vue";
     import userSpacePopup from '../../components/user-space/user-space-popup.vue'
+    import Time from "../../common/time.js"
+    import emptyContent from '../../components/common/empty-content.vue'
+    
     export default {
         components:{
             userSpaceHead,
@@ -53,29 +70,18 @@
             userSpaceUserinfo,
             commonList,
             loadMore,
-            userSpacePopup
+            userSpacePopup,
+            emptyContent
         },
         data(){
             return {
                 isPopupShow:false,
-                tabIndex:1,
-                userInfo:{
-                    userPic:"../../static/ATMpic.jpg",
-                    userName:"ATM",
-                    gender:0,
-                    age:28,
-                    regtime:"2019-12-11",
-                    id:12344,
-                    birthday:"1988-12-3",
-                    qinggan:"未设置",
-                    job:"未设置",
-                    location:"未设置",
-                    isFollow:true
-                },
+                tabIndex:0,
+                userInfo:{},
                 spaceData:[
-                    {name:"获赞", num:"10k"},
-                    {name:"关注", num:'345'},
-                    {name:"粉丝", num:'5623'},
+                    {name:"发布动态", num:""},
+                    {name:"关注", num:''},
+                    {name:"粉丝", num:''},
                 ],
                 tabBars:[
                     {name:"主页",id:"zhuye" },
@@ -83,106 +89,122 @@
                  
                 ],
                 loadText:"上拉加载更多",
-                list:[
-                    // 纯文字样式 textStyle
-                    {
-                        userPic:"../../static/demo/userpic/10.jpg",
-                        userName:"ATM",
-                        gender:0,//0:女 1:男
-                        age:25,
-                        isFollow:false,
-                        title:"透明质酸钠",
-                        textStyle:true,
-                        PicTextStyle:false,
-                        videoStyle:false,
-                        shareStyle:false,
-                        shareNum:3498,
-                        commentNum:3456,
-                        likeNum:345,
-                        location:"PekingU",
-                    },
-                    //图文样式 PicTextStyle:true,
-                    {
-                        userPic:"../../static/demo/userpic/10.jpg",
-                        userName:"31K473k",
-                        gender:1,//0:女 1:男
-                        age:25,
-                        isFollow:false,
-                        title:"...轻轻呼唤你的名字",
-                        titlePic:"../../static/demo/datapic/13.jpg",
-                        textStyle:false,
-                        PicTextStyle:true,
-                        videoStyle:false,
-                        shareStyle:false,
-                        location:"PekingU",
-                        shareNum:3498,
-                        commentNum:3456,
-                        likeNum:345,
-                    },
-                    //视频样式
-                    {
-                        userPic:"../../static/demo/userpic/10.jpg",
-                        userName:"momo",
-                        gender:0,//0:女 1:男
-                        age:25,
-                        isFollow:false,
-                        title:"欢乐恶搞不是法外之地",
-                        titlePic:"../../static/demo/datapic/2.jpg",
-                        textStyle:false,
-                        PicTextStyle:false,
-                        videoStyle:{
-                            playNum:"34W",
-                            length:"3:51"
-                        },
-                        shareStyle:false,
-                        location:"PekingU",
-                        shareNum:3498,
-                        commentNum:3456,
-                        likeNum:345,
-                    },
-                    //分享样式
-                    {
-                        userPic:"../../static/demo/userpic/10.jpg",
-                        userName:"ATM",
-                        gender:1,//0:女 1:男
-                        age:25,
-                        isFollow:false,
-                        title:"透明质酸钠",
-                        titlePic:"",
-                        textStyle:false,
-                        PicTextStyle:false,
-                        videoStyle:false,
-                        shareStyle:{
-                            shareTitle:"长笛",
-                            sharePic:"../../static/demo/datapic/2.jpg"
-                        },
-                        location:"PekingU",
-                        shareNum:3498,
-                        commentNum:3456,
-                        likeNum:345,
-                    }
-                ]
+                page:1,
+                firstload:false,
+                list:[]
             }
         },
        
         methods:{
+            __init(userid){
+                // 初始化用户信息
+                this.getUserInfo(userid)
+                // 初始化统计数据
+                this.getCounts(userid)
+            },
+            // 初始化用户信息
+            async getUserInfo(userid){
+                let sexArr=['未知','男','女'];
+                let qgArr=['秘密','未婚','已婚'];
+                // 用户本人
+                let isme,info,isguanzhu,isblack;
+                if (userid == this.User.userinfo.id) {
+                    info = this.User.userinfo;
+                    isme = true;
+                    isguanzhu = false;
+                    isblack = false;
+                }else{
+                    // 非本人，获取用户信息
+                    let [err,res] = await this.$http.post('getuserinfo',{
+                        user_id:userid
+                    },{
+                        token:true
+                    })
+                    // 错误处理
+                    if (!this.$http.errorCheck(err,res)) return;
+                    info = res.data.data;
+                    isme = false;
+                    isguanzhu = !!res.data.data.fens.length;
+                    isblack = !!res.data.data.blacklist.length;
+                }
+                let regtime = info.create_time ? Time.gettime.dateFormat(new Date(info.create_time*1000),'{Y}-{MM}-{DD}') : "未知";
+                this.userInfo = {
+                    isme:isme,
+                    bgimg:1,
+                    userPic:info.userpic,
+                    userName:info.username,
+                    gender:sexArr[info.userinfo.sex] || "不限",
+                    age:info.userinfo.age,
+                    isFollow:isguanzhu,
+                    isblack:isblack,
+                    regtime:regtime,
+                    id:info.id,
+                    birthday:info.userinfo.birthday || "未知",
+                    job:info.userinfo.job || "未知",
+                    location:info.userinfo.path || "未知",
+                    qinggan:qgArr[info.userinfo.qg] || '秘密'
+                }
+                console.log(this.userInfo)
+            },
+            // 初始化统计数据
+            async getCounts(id){
+                let counts;
+                if (id == this.User.userinfo.id) {
+                    counts = this.User.counts;
+                }else{
+                    let [err,res] =await this.$http.get('user/getcounts/'+id);
+                    if (!this.$http.errorCheck(err,res)) return;
+                    counts = res.data.data;
+                }
+                if (counts) {
+                    this.spaceData[0].num = counts.post_count;
+                    this.spaceData[1].num = counts.withfollow_count;
+                    this.spaceData[2].num = counts.withfen_count;
+                }
+            },
             hidePopup(){
                 this.isPopupShow = false
             },
             // 拉黑
-            addBlackList(){
+            async addBlackList(){
                 console.log("拉黑")
+              
+                uni.showLoading({ title: 'Loading...', mask: false });
+                let url = this.userInfo.isblack ? '/removeblack' : '/addblack';
+                let msg = this.userInfo.isblack ? '移除黑名单' : '加入黑名单';
+                let [err,res] = await this.$http.post(url,{
+                    id:this.userInfo.id
+                },{
+                    token:true,
+                    checkToken:true,
+                    checkAuth:true
+                });
+                // 错误处理
+                if (!this.$http.errorCheck(err,res)) {
+                    uni.hideLoading();
+                    return this.hidePopup();
+                }
+                // 成功
+                uni.hideLoading();
+                uni.showToast({ title: msg+'成功' });
+                this.userInfo.isblack = !this.userInfo.isblack;
+                this.hidePopup();
             },
             // 备注
-            remark(){
-                console.log("备注")
+            chat(){
+                uni.navigateTo({
+                    url:"../user-chat/user-chat?userinfo="+JSON.stringify(this.userInfo)
+                })
             },
+            
             follow()
             {
                 this.userInfo.isFollow != this.userInfo.isFollow;
             },
             tabSwitch(index){
                 this.tabIndex = index
+                if (this.firstload || index === 0) return;
+                this.getList();
             },
             //上拉加载
             loadMore(){
@@ -190,39 +212,63 @@
                     return;//如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
                 }
                 this.loadText = "加载中(＾o＾)ﾉ";
-                //修改状态
-                setTimeout(()=> {                  
-                    //示例:加载2000ms后从服务端获取了新的数据
-                    let obj = {                       
-                        //视频样式          
-                            userPic:"../../static/demo/userpic/10.jpg",
-                            userName:"ATM",
-                            gender:0,//0:女 1:男
-                            age:25,
-                            isFollow:false,
-                            title:"透明质酸钠",
-                            titlePic:"../../static/demo/datapic/2.jpg",
-                            textStyle:false,
-                            PicTextStyle:false,
-                            videoStyle:{
-                                playNum:"34W",
-                                length:"3:51"
-                            },
-                            shareStyle:false,
-                            location:"PekingU",
-                            shareNum:3498,
-                            commentNum:3456,
-                            likeNum:345,
-                        
-                    };
-                    this.list.push(obj);//追加
-                    
-                    this.loadText = "上拉加载更多";     //复原状态              
-                }, 1000);
-                
-                //this.tablist[this.tabIndex] .loadText = "没有更多数据";
+                this.page++;
+                this.getList()();
                 
             },
+            updateGuanZhu(val){
+                this.userInfo.isFollow = val;
+                let resdata = {
+                    type:"guanzhu",
+                    userid:this.userInfo.id,
+                    data:val
+                };
+                uni.$emit('updateData',resdata);
+            },
+            // 获取列表
+            async getList(){
+                let page =this.page;
+                let url = this.userInfo.isme ? `user/post/${page}` : `user/${this.userinfo.id}/post/${page}`;
+                let index = this.tabIndex;
+                let [err,res] = await this.$http.get(url,{},{ token:true });
+                if (!this.$http.errorCheck(err,res)) {
+                    return this.loadText="上拉加载更多";
+                }
+                let arr = [];
+                let list = res.data.data.list;
+                for (let i = 0; i < list.length; i++) {
+                    arr.push(this.__format(list[i]));
+                }
+                this.list = page > 1 ? this.tablist[index].list.concat(arr) : arr;
+                this.firstload = true;
+                this.loadText= list.length < 10 ? "没有更多数据了" : "上拉加载更多";
+                return;
+            },
+            // 转换格式
+            __format(item){
+                return {
+                    userid:item.user.id,
+                    userPic:item.user.userpic,
+                    userName:item.user.username,
+                    isFollow:!!item.user.fens.length,
+                    id:item.id,
+                    title:item.title,
+                    type:"img", // img:图文,video:视频
+                    titlePic:!!item.images[0] ? item.images[0].url : '',
+                    video:false,
+                    path:item.path,
+                    share:!!item.share,
+                    likeInfo:{
+                        // index:!!item.support? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+                        index: 0,//0:没有操作，1:顶,2:踩；
+                        likeNum:item.ding_count,
+                        dislikeNum:item.cai_count,
+                    },
+                    commentNum:item.comment_count,
+                    shareNum:item.sharenum,
+                    likeNum:item.ding_count
+                }
+            }
         },
         onReachBottom() {
             //上拉加载
@@ -230,6 +276,9 @@
         },
         onNavigationBarButtonTap() {
             this.isPopupShow = true
+        },
+        onLoad(e) {
+            this.__init(e.userid)
         }
     }
 

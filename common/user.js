@@ -9,7 +9,7 @@ export default{
     userinfo:false,
     // 权限验证跳转
     // 用户统计相关
-    // counts:{}
+    counts:{},
     // 绑定第三方登陆情况
     userbind : false,
     navigate(options,type='navigateTo' ){
@@ -41,9 +41,9 @@ export default{
     		// 获取用户信息
     		this.userinfo = uni.getStorageSync("userinfo");
     		this.token = uni.getStorageSync("token");
-    		// this.counts = uni.getStorageSync("counts");
+    		this.counts = uni.getStorageSync("counts");
     		this.userbind = uni.getStorageSync("userbind");
-    		// this.OnUserCounts();
+    		this.OnUserCounts();
     		// 如果用户id存在，则连接 
     		// if (this.userinfo.id) {
     		// 	// 连接socket
@@ -67,7 +67,7 @@ export default{
     		uni.setStorageSync("userinfo",this.userinfo);
     		uni.setStorageSync("token", this.token);
     		// 获取用户相关统计
-    		// await this.getCounts();
+    		await this.getCounts();
     		// 连接socket
     		// if (this.userinfo.id) {
     		// 	$chat.Open();
@@ -92,12 +92,12 @@ export default{
             // 清除缓存
             uni.removeStorageSync('userinfo');
             uni.removeStorageSync('token');
-            // uni.removeStorageSync('counts');
+            uni.removeStorageSync('counts');
             // 清除状态
             this.token = false;
             this.userinfo = false;
             this.userbind = false;
-            // this.counts = {};
+            this.counts = {};
             // 关闭socket
             // $chat.Close();
             // 返回home页面
@@ -107,20 +107,39 @@ export default{
                 return uni.showToast({ title: '退出登录成功' });
             }
         },
-        
-       // // 获取用户相关统计信息
-       //  async getCounts(){
-       //      // 统计获取用户相关数据（总文章数，今日文章数，评论数 ，关注数，粉丝数，文章总点赞数）
-       //      let [err,res] =await $http.get('/user/getcounts/'+this.userinfo.id,{},{
-       //          token:true,checkToken:true
-       //      })
-       //      // 请求错误处理
-       //      if (!$http.errorCheck(err,res)) return;
-       //      // 成功
-       //      this.counts = res.data.data;
-       //      // 存储缓存
-       //      uni.setStorageSync("counts", this.counts);
-       //  },
+        OnUserCounts(){
+            uni.$on('updateData',(data)=>{
+                // 文章数+1
+                if (data.type == 'updateList'){
+                    this.counts.post_count++;
+                }
+                // 评论数+1
+                if (data.type == 'updateComment') {
+                    this.counts.comments_count++;
+                }
+                // // 粉丝数和关注数变化
+                if (data.type == 'guanzhu') {
+                    data.data ? 
+                        this.counts.withfollow_count++ 
+                        : this.counts.withfollow_count--;
+                }
+                // 更新缓存
+                uni.setStorageSync("counts", this.counts);
+            })
+        },
+       // 获取用户相关统计信息
+        async getCounts(){
+            // 统计获取用户相关数据（总文章数，今日文章数，评论数 ，关注数，粉丝数，文章总点赞数）
+            let [err,res] =await $http.get('/user/getcounts/'+this.userinfo.id,{},{
+                token:true,checkToken:true
+            })
+            // 请求错误处理
+            if (!$http.errorCheck(err,res)) return;
+            // 成功
+            this.counts = res.data.data;
+            // 存储缓存
+            uni.setStorageSync("counts", this.counts);
+        },
     // userinfo格式转换
     	__formatUserinfo(obj){
     		// 手机/邮箱/账号登录
@@ -179,4 +198,25 @@ export default{
 			avatarUrl:options.userInfo.avatarUrl,
 		}
 	},
+    // 加入浏览历史
+    addHistoryList(item){
+        // 取出缓存
+        console.log(this.userinfo)
+        let list = uni.getStorageSync('HistoryList_'+this.userinfo.id);
+        list = list ? JSON.parse(list) : [];
+        // 查看当前记录是否存在
+        let index = list.findIndex((val)=>{
+            return val.id === item.userid;
+        })
+        // 不存在直接追加
+        if (index == -1) {
+            list.push(item);
+            uni.setStorageSync('HistoryList_'+this.userinfo.id,JSON.stringify(list))
+            console.log("加入缓存成功");
+        }
+    },
+    // 清除浏览历史
+    clearHistory(){
+        uni.removeStorageSync('HistoryList_'+this.userinfo.id);
+    },
 }
