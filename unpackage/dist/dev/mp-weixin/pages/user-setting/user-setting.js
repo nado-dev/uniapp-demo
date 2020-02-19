@@ -138,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var homeListItem = function homeListItem() {return __webpack_require__.e(/*! import() | components/home/home-list-item */ "components/home/home-list-item").then(__webpack_require__.bind(null, /*! ../../components/home/home-list-item.vue */ 207));};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var homeListItem = function homeListItem() {return __webpack_require__.e(/*! import() | components/home/home-list-item */ "components/home/home-list-item").then(__webpack_require__.bind(null, /*! ../../components/home/home-list-item.vue */ 220));};var _default =
 
 
 
@@ -157,17 +157,17 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     return {
       list: [
       { name: "账号与安全", icon: "", clickType: "navigateTo",
-        url: "../../pages/user-safe/user-safe" },
+        url: "../../pages/user-safe/user-safe", auth: true },
       { name: "绑定邮箱", icon: "", clickType: "navigateTo",
-        url: "../../pages/user-setting-email/user-setting-email" },
+        url: "../../pages/user-setting-email/user-setting-email", auth: true },
       { name: "资料编辑", icon: "", clickType: "navigateTo",
-        url: "../../pages/user-setting-userinfo/user-setting-userinfo" },
-      { name: "消息", icon: "" },
-      { name: "清除缓存", icon: "", clickType: "clear",
+        url: "../../pages/user-setting-userinfo/user-setting-userinfo", auth: true },
+      { name: "消息", icon: "", auth: true },
+      { name: "清除缓存", icon: "", clickType: "clear", auth: false,
         url: "" },
-      { name: "意见反馈", icon: "", clickType: "navigateTo",
+      { name: "意见反馈", icon: "", clickType: "navigateTo", auth: true,
         url: "../../pages/user-setting-help/user-setting-help" },
-      { name: "关于", icon: "", clickType: "navigateTo",
+      { name: "关于", icon: "", clickType: "navigateTo", auth: false,
         url: "../../pages/user-set-about/user-set-about" }] };
 
 

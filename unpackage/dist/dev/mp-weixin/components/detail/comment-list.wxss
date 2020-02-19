@@ -9,5 +9,7 @@
     margin-left: 70rpx;
     width: auto;
 }
-
+.uni-comment-body-hover.data-v-1140aba6{
+    background: #EEEEEE;
+}
 

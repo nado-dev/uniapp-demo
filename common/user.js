@@ -12,15 +12,15 @@ export default{
     counts:{},
     // 绑定第三方登陆情况
     userbind : false,
-    navigate(options,type='navigateTo' ){
+    navigate(options,Nocheck = false,type = 'navigateTo' ){
         // 是否登录验证
-        if (!$http.checkToken(true)) return;
-        // 验证是否绑定手机号
-        if (!$http.checkAuth(true)) return;
-        // if (!NoCheck) {
-        //     if (!$http.checkAuth(true)) return;
-        // }
-        // 跳转
+        if (!Nocheck) {
+            if (!$http.checkAuth(true)) return;
+        
+            if (!$http.checkToken(true)) return;
+            // 验证是否绑定手机号
+            if (!$http.checkAuth(true)) return;
+        }// 跳转
         switch(type){
             case 'navigateTo':
                  uni.navigateTo(options);
@@ -193,7 +193,8 @@ export default{
 		return {
 			provider:provider,
 			openid:options.userInfo.unionId || options.userInfo.openId,
-			expires_in:options.authResult.expires_in,
+			expires_in:7200,
+			// expires_in:!!options.authResult.expires_in ? options.authResult.expires_in:7200,
 			nickName:options.userInfo.nickName,
 			avatarUrl:options.userInfo.avatarUrl,
 		}

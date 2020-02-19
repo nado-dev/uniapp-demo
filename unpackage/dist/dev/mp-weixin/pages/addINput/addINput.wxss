@@ -6,5 +6,8 @@
 .tip-before-post button{
     background: #009687;
 }
-
+.user-setting-userinfo-list{
+    padding: 20rpx;
+    border-bottom: #F4F4F4;
+}
 

@@ -133,7 +133,37 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 181));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 188));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 195));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 202));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 187));};var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 194));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 201));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 208));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 215));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -200,17 +230,92 @@ __webpack_require__.r(__webpack_exports__);
     indexList: indexList, // 添加组件
     swiperTabHead: swiperTabHead,
     loadMore: loadMore,
-    emptyContent: emptyContent },
+    emptyContent: emptyContent,
+
+    uniNavBar: uniNavBar },
+
 
   data: function data() {
     return {
-      swiperHeight: 500,
+      // swiperHeight:500,
       tabIndex: 0, //默认id
       tabBars: [],
       newsList: [] };
 
   },
   methods: {
+    search: function search() {
+      uni.navigateTo({
+        url: "../search/search" });
+
+    },
+    post: function post() {
+      this.User.navigate({
+        url: "../addINput/addINput?postClass=" + JSON.stringify(this.tabBars) });
+
+    },
+    updateData: function updateData(data) {
+      switch (data.type) {
+        case 'guanzhu':
+          this.updateGuanZhu(data);
+          break;
+
+        case 'support':
+          this.updateSupport(data);
+          break;
+
+        case 'updateList':
+          this.updateList(data);
+          break;
+        case 'updateComment':
+          this.updateComment(data);
+          break;}
+
+    },
+    // 更新评论
+    updateComment: function updateComment(data) {
+      // 拿到当前对象
+      var obj = this.newsList[this.tabIndex].list.find(function (value) {
+        return value.id === data.post_id;
+      });
+      if (!obj) return;
+      obj.commentNum++; // 评论数+1
+    },
+    // 更新顶踩
+    updateSupport: function updateSupport(data) {
+      // 拿到当前对象
+      var obj = this.newsList[this.tabIndex].list.find(function (value) {
+        return value.id === data.post_id;
+      });
+      if (!obj) return;
+      var oldindex = obj.likeInfo.index; // 操作前的状态
+      obj.likeInfo.index = data.do; // 操作后的状态
+      if (oldindex !== 0) {//之前操作过
+        oldindex == 1 ? obj.likeInfo.likeNum-- : obj.likeInfo.dislikeNum--;
+      }
+      if (obj.likeInfo.index !== 0) {// 当前操作
+        obj.likeInfo.index == 1 ?
+        obj.likeInfo.likeNum++ : obj.likeInfo.dislikeNum++;
+      }
+    },
+    // 更新关注信息
+    updateGuanZhu: function updateGuanZhu(data) {
+      this.newsList[this.tabIndex].list.forEach(function (item, index) {
+        if (item.userid === data.userid) {
+          item.isFollow = data.data;
+        }
+      });
+    },
+    // 更新列表
+    updateList: function updateList(data) {
+      // 第一种，直接追加
+      var index = this.tabBars.findIndex(function (val) {
+        return val.id === data.post_class_id;
+      });
+      if (index > -1) {
+        this.newsList[index].list.push(this.__format(data));
+      }
+    },
     // 获取文章分类
     getNav: function () {var _getNav = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _ref, _ref2, err, res, list, arr, arr2, i;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   this.$http.get('postclass'));case 2:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];if (!
@@ -286,7 +391,7 @@ __webpack_require__.r(__webpack_exports__);
         id: item.id,
         title: item.title,
         type: "img", // img:图文,video:视频
-        titlePic: !!item.images[0].url ? item.images[0].url : '',
+        titlePic: !!item.images[0] ? item.images[0].url : '',
         video: false,
         path: item.path,
         share: !!item.share,
@@ -319,21 +424,38 @@ __webpack_require__.r(__webpack_exports__);
       }
       this.newsList[index].loadText = "加载中(＾o＾)ﾉ";
       //修改状态
-      // 修改状态
+      // 修改状态/
       this.newsList[this.tabIndex].page++;
       this.getList();
       //this.newsList[index].loadText = "没有更多数据";
 
+    },
+
+    clickLeft: function clickLeft() {
+      uni.navigateTo({
+        url: "../search/search" });
+
+    },
+    clickRight: function clickRight() {
+      this.User.navigate({
+        url: "../addINput/addINput?postClass=" + JSON.stringify(this.tabBars) });
+
     } },
 
-  onLoad: function onLoad() {var _this2 = this;
-    uni.getSystemInfo({
-      success: function success(res) {
-        var height = res.windowHeight - uni.upx2px(100); //tabBar的高度是100upx
-        _this2.swiperHeight = height;
-      } });
 
+
+
+  onLoad: function onLoad() {
+    // uni.getSystemInfo({
+    //     success: (res) => {
+    //         let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
+    //         this.swiperHeight = height;
+    //     }
+    // })
     this.getNav();
+    // 监听监听自定义事件。事件可以由 uni.$emit 触发。
+    // 回调函数会接收 uni.$emit 传递的参数
+    uni.$on('updateData', this.updateData);
   },
   //监听原生标题栏搜索输入框点击事件
   onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {
@@ -346,9 +468,9 @@ __webpack_require__.r(__webpack_exports__);
   //监听第二个按钮 转跳到发布页面
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
     // console.log(JSON.stringify(e));
-    if (e.index == 1 || e.index == 0) {
+    if (e.index == 1) {
       this.User.navigate({
-        url: "../addINput/addINput" });
+        url: "../addINput/addINput?postClass=" + JSON.stringify(this.tabBars) });
 
     }
   } };exports.default = _default;

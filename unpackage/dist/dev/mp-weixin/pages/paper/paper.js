@@ -133,7 +133,33 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var paperList = function paperList() {return __webpack_require__.e(/*! import() | components/paper/paper-list */ "components/paper/paper-list").then(__webpack_require__.bind(null, /*! ../../components/paper/paper-list.vue */ 235));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 195));};var paperLeftPopup = function paperLeftPopup() {return __webpack_require__.e(/*! import() | components/paper/paper-left-popup */ "components/paper/paper-left-popup").then(__webpack_require__.bind(null, /*! ../../components/paper/paper-left-popup.vue */ 242));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var paperList = function paperList() {return __webpack_require__.e(/*! import() | components/paper/paper-list */ "components/paper/paper-list").then(__webpack_require__.bind(null, /*! ../../components/paper/paper-list.vue */ 248));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 208));};var paperLeftPopup = function paperLeftPopup() {return __webpack_require__.e(/*! import() | components/paper/paper-left-popup */ "components/paper/paper-left-popup").then(__webpack_require__.bind(null, /*! ../../components/paper/paper-left-popup.vue */ 255));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -225,7 +251,11 @@ __webpack_require__.r(__webpack_exports__);
     //操作菜单
     addFriend: function addFriend() {
       console.log("添加好友");
+
       this.hidePopup();
+      uni.navigateTo({
+        url: '../search/search?searchType=user' });
+
     },
     //清空列表
     clearPaperList: function clearPaperList() {
@@ -287,6 +317,11 @@ __webpack_require__.r(__webpack_exports__);
         //赋值
         //关闭下拉刷新
       }, 2000);
+    },
+    NavToFriendList: function NavToFriendList() {
+      uni.navigateTo({
+        url: "../user-list/user-list" });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

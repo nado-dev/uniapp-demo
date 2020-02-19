@@ -97,4 +97,8 @@
         padding: 5rpx;
         font-size: 25rpx !important;
 }
+.active.data-v-57e41fee{
+        color: #009687 !important;
+        font-size: 32rpx;
+}
 

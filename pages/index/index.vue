@@ -1,6 +1,36 @@
 <template>
-	<view>
+	<view style="background-color: #EEEEEE;" >
+        
+       
+        <!-- #ifndef APP-PLUS || H5 -->
+            <view style="display: flex;
+                align-items: center;
+                padding:0 20upx;height: 88upx;
+                position: fixed;z-index: 9999;
+                left: 0;
+                top: 0;
+                right: 0;
+                background: #FFFFFF;">
+                    <view class="iconfont icon-sousuo " 
+                    style="position: absolute;left: 30upx;color: #CCCCCC;"></view>
+                    <input style="flex: 1;padding: 5upx 0 5upx 50upx;border-radius: 4px;background: #F7F7F7;" 
+                    placeholder="搜索" disabled=true @tap="search"
+                    placeholder-style="color: #CCCCCC;"/>
+                    <!-- <text style="padding-left:20upx;"
+                     @click="post">发布</text> -->
+                     <view class="icon iconfont icon-fabu" style="margin-left:100upx;font-size: 30upx; 
+                     color: #000000; background-color: #F7F7F7 !important; padding: 10upx 10upx;
+                     box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);" @click="post">
+                         发布文章
+                     </view>
+            </view>
+            <view style="height: 88upx;"></view>
+       
+        <!-- #endif -->
+        	
+          
         <swiper-tab-head 
+       
         :tabBars="tabBars" 
         :tabIndex="tabIndex"
         @tabSwitch="tabSwitch">
@@ -10,9 +40,9 @@
         <!-- 点击事件：current随tabIndex的改变
              滑动事件：@change事件更新了tabIndex的值，选中了相应的tab
          -->
-        <view class="uni-tab-bar" style="background-color: #EEEEEE;">           
+         <view class="uni-tab-bar">
             <swiper class="swiper-box" 
-            :style="{height:swiperHeight+'px'}" 
+            :style="{height:swiperHeight+'px'}"
             :current="tabIndex"
             @change="tabChange"> 
                 <swiper-item v-for="(items,index) in newsList" :key="index">
@@ -44,17 +74,20 @@
                     </scroll-view>
                 </swiper-item>         
             </swiper>
-        </view>
  
       <!-- 传入item和index的值 -->
        <!-- <block v-for="(item,index) in list" :key="index">            
             <index-list :item="item" :index="index"></index-list>
         </block>	 -->	
 	</view>
+    </view>
 </template>
 
 <script>
     // 引入组件
+    // #ifndef APP-PLUS
+            import uniNavBar from "../../components/uni-nav-bar/uni-nav-bar.vue";
+    // #endif
     import indexList from "../../components/index/index-list.vue";
     import swiperTabHead from '../../components/index/swiper-tab-head.vue';
     import loadMore from '../../components/common/load-more.vue';
@@ -65,7 +98,10 @@
             indexList,  // 添加组件
             swiperTabHead,
             loadMore,
-            emptyContent
+            emptyContent,
+            // #ifndef APP-PLUS
+                uniNavBar
+            //  #endif
         },
 		data() {
 			return {
@@ -76,6 +112,16 @@
 			}
 		},
 		methods: {
+            search(){
+                uni.navigateTo({
+                    url:"../search/search"
+                })
+            },
+            post(){
+                this.User.navigate({
+                    url:"../addINput/addINput?postClass="+JSON.stringify(this.tabBars)
+                });
+            },
             updateData(data){
                 switch (data.type){
                     case 'guanzhu':
@@ -246,12 +292,26 @@
                 }
                 this.newsList[index].loadText = "加载中(＾o＾)ﾉ";
                 //修改状态
-                // 修改状态
+                // 修改状态/
                 this.newsList[this.tabIndex].page++;
                 this.getList();
                 //this.newsList[index].loadText = "没有更多数据";
                 
-            }
+            },
+           //#ifdef MP
+                clickLeft(){
+                    uni.navigateTo({
+                        url:"../search/search"
+                    })
+                },
+                clickRight(){
+                    this.User.navigate({
+                        url:"../addINput/addINput?postClass="+JSON.stringify(this.tabBars)
+                    });
+                },
+               
+            //#endif
+            
 		},
         onLoad() {
             uni.getSystemInfo({
@@ -281,6 +341,23 @@
                     url:"../addINput/addINput?postClass="+JSON.stringify(this.tabBars)
                 });
             }          
+            if(e.index == 0 ){
+                 uni.showLoading({ title: '刷新中...', mask: true });
+                 this.tabIndex = 0;
+                 for(let i = 0;i < this.newsList.length ;i++){
+                     this.newsList[this.tabIndex].page = 1
+                 }
+                 this.getList()
+                 uni.hideLoading();
+            }          
+        },
+        onPullDownRefresh() {
+            this.tabIndex = 0;
+            for(let i = 0;i < this.newsList.length ;i++){
+                this.newsList[this.tabIndex].page = 1
+            }
+            this.getList()
+            uni.stopPullDownRefresh()
         }
 	}
 </script>

@@ -7,14 +7,15 @@
             // 初始化用户状态
             this.User.__init();
             // 检查更新
-            // this.lib.Update();
+            this.lib.Update();
 		},
 		onShow: function() {
 			console.log('App Show')
 		},
 		onHide: function() {
 			console.log('App Hide')
-		}
+		},
+        
 	}
 </script>
 
@@ -25,4 +26,11 @@
     @import "./common/uni.css";
     /* 公共样式 */
     @import "./common/common.css";
+   /* page{
+        background: #FFFFFF;
+        height: 100%;
+    } */
+    ::-webkit-scrollbar{
+        display: none;
+    }
 </style>

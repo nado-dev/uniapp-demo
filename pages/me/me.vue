@@ -13,13 +13,16 @@
         
         <!-- 已登录 -->
         <template v-else>
-              <home-info :homeInfo="homeInfo"></home-info>          
+             <home-info :homeInfo="homeInfo"></home-info>          
             <!-- 动态 评论 收藏数量 -->
-            <view class="home-data u-f-ac ">
-                <block v-for="(item, index) in homeData" :key="index">
-                    <home-data :item="item" :index="index"></home-data>
-                </block>
-            </view>
+            <!-- #ifdef APP-PLUS || H5 -->
+                <view class="home-data u-f-ac u-f1 u-f-ajc ">
+                    <block v-for="(item, index) in homeData" :key="index">
+                        <home-data :item="item" :index="index"></home-data>
+                    </block>
+                </view>
+            <!-- #endif -->
+            
          </template>
         <!-- 广告banner -->
         <view class="home-ad-pic u-f-ajc">
@@ -74,13 +77,17 @@
                 this.homeInfo.id = this.User.userinfo.id;
                 this.homeInfo.userPic = this.User.userinfo.userpic || '/static/ATMpic.jpg';
                 this.homeInfo.userName = this.User.userinfo.username;
-                this.homeInfo.totalVistor = 0;
-                this.homeInfo.todayVistor = 0;
-                this.homeData[0].num = 0;
-                this.homeData[1].num = 0;
-                this.homeData[2].num = 0;
-                this.homeData[3].num = 0;
+                this.homeInfo.totalVistor =  this.User.counts.post_count ||0;
+                this.homeInfo.todayVistor = this.User.counts.today_posts_count ||0;
+                this.homeData[0].num = this.User.counts.post_count||0;
+                this.homeData[1].num = this.User.counts.post_count ||0;
+                this.homeData[2].num = this.User.counts.comments_count ||0;
+                this.homeData[3].num = this.User.counts.withfen_count ||0;
                 this.isLogin = true;
+                
+                // uni.reLaunch({
+                //     url:"/pages/me/me"
+                // })
             },
         },
         data(){
@@ -88,13 +95,15 @@
                 isLogin:false,
                 list:[
                     {name:"浏览历史", icon:"liulan", clickType:"nothing", url:"/pages/user-history/user-history"},
-                    {name:"实名认证", icon:"huiyuanvip", clickType:"", url:""},
+                    {name:"实名认证", icon:"huiyuanvip", clickType:"tips", url:""},
+                    {name:"设置", icon:"keyboard", clickType:"navigateTo"
+                    , url:"/pages/user-setting/user-setting",auth:true, Nocheck:true},
                 ],
                 homeInfo:{
-                    userPic:"../../static/ATMpic.jpg",
-                    userName:"ATM",
-                    totalVistor:123,
-                    todayVistor:12
+                    userPic:"",
+                    userName:"",
+                    totalVistor:0,
+                    todayVistor:0
                 },
                 homeData:[
                     {name:"动态", num:0},
@@ -106,9 +115,12 @@
         },
         onNavigationBarButtonTap(e){
            if(e.index == 0){
-               this.User.navigate({
+               // this.User.navigate({
+               //      url:"../user-setting/user-setting"
+               //  });
+               uni.navigateTo({
                     url:"../user-setting/user-setting"
-                });
+               })
            }
        },
        onShow() {
@@ -134,5 +146,19 @@
 .home-list{
     padding: 20upx 20upx ;
    
+}
+ .home-data{
+        
+        padding: 20upx 80upx; 
+    }
+.home-data>view{
+   
+    color: #989898;
+}
+.home-data>view>view{
+  
+    font-size: 36upx;
+    color: #000000 !important;
+    font-weight: bold;
 }
 </style>

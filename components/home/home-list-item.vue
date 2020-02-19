@@ -21,7 +21,10 @@
                     let option = {url: this.item.url};
                         if(this.item.url){
                              if(this.item.auth){
-                                 return this.User.navigate(option)
+                                 if(this.item.Nocheck){
+                                    return this.User.navigate(option,true)
+                                 }
+                                return this.User.navigate(option,false)
                              }
                              uni.navigateTo(option);
                         }
@@ -54,6 +57,12 @@
                                 icon:'none'
                             });
                             uni.navigateTo({url: this.item.url});
+                            break;
+                        case "tips":
+                            uni.showToast({
+                                icon:"none",
+                                title:"功能开发中( `_っ´)"
+                            })
                             break;
                 }
             }

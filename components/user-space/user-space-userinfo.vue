@@ -6,7 +6,7 @@
                 账号信息
             </view>
             <!-- 使用时间 -->
-            <view class="">
+          <view class="">
                 注册时间    {{userInfo.regtime}}
             </view>
             <!-- 账号信息 id -->
@@ -47,14 +47,23 @@
         props:{
             userInfo:Object
         },
+        // data() {
+        //     return {
+        //         userInfo_1:this.userInfo
+        //     }
+        // },
         computed:{
             getRegAge(){
-                return time.gettime.sumAge(this.userInfo.regtime)
+                return this.userInfo.regtime?time.gettime.sumAge(this.userInfo.regtime):"未知"
             },
             getStarSign(){
                 return time.gettime.getHoroscope(this.userInfo.birthday)
             }
         },
+        created() {
+            console.log("传入的信息")
+            console.log(this.userInfo)
+        }
     }
 </script>
 

@@ -133,7 +133,22 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var uploadImages = function uploadImages() {return Promise.all(/*! import() | components/common/upload-images */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/common/upload-images")]).then(__webpack_require__.bind(null, /*! ../../components/common/upload-images.vue */ 277));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 284));};var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! ../../components/uni-popup/uni-popup.vue */ 291));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var uploadImages = function uploadImages() {return __webpack_require__.e(/*! import() | components/common/upload-images */ "components/common/upload-images").then(__webpack_require__.bind(null, /*! ../../components/common/upload-images.vue */ 297));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 187));};var uniPopup = function uniPopup() {return __webpack_require__.e(/*! import() | components/uni-popup/uni-popup */ "components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! ../../components/uni-popup/uni-popup.vue */ 304));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -188,12 +203,24 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
+      open: ['仅自己可见', '所有人可见'],
       isTips2Save: false,
       showpop_up: true,
       title: "",
-      visiblity: "综合1",
+      postClass: {
+        id: 0, //当前选中的分类id   
+        title: "", // 当前选中的分类名称
+        range: [], //可选项
+        list: [] //服务端获取的分类列表
+      },
+      topic: {
+        id: 0, //当前选中的话题id   
+        title: "" },
+
       text: "", //把text绑定到表单中
-      imglist: [] };
+      imglist: [],
+      imglistIds: [],
+      isOpen: 1 };
 
   },
   methods: {
@@ -206,10 +233,20 @@ __webpack_require__.r(__webpack_exports__);
         success: function success(res) {
           if (res.confirm) {
             console.log("save");
-            // this.text = 
+            // 本地存储
+            var obj = {
+              isOpen: _this.isOpen,
+              text: _this.text,
+              imglist: _this.imglist,
+              imglistIds: _this.imglistIds,
+              postClass: _this.postClass,
+              topic: _this.topic };
+
+            uni.setStorageSync('addinput', JSON.stringify(obj));
           } else
           {
             console.log("dont save");
+            uni.removeStorage({ key: "addinput" }); // 清除缓存
           }
           _this.isTips2Save = true;
           uni.navigateBack(
@@ -224,8 +261,10 @@ __webpack_require__.r(__webpack_exports__);
 
     },
 
-    upload: function upload(arr) {
-      this.imglist = arr;
+    upload: function upload(item) {
+      this.imglist.push(item.url);
+      this.imglistIds.push({ id: item.id });
+      console.log(this.imglist);
     },
     //返回
     back: function back() {
@@ -233,41 +272,115 @@ __webpack_require__.r(__webpack_exports__);
         delta: 1000 });
 
     },
-    //发布
-    submit: function submit() {
-      console.log("发布");
-    },
-    changeVisibility: function changeVisibility() {var _this2 = this;
+    // 发布
+    submit: function () {var _submit = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _ref, _ref2, err, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (
+                this.postClass.id) {_context.next = 2;break;}return _context.abrupt("return",
+                uni.showToast({
+                  title: '请选择分类', icon: "none" }));case 2:
+
+
+                uni.showLoading({ title: '发布中(*´∀`)', mask: true });_context.prev = 3;_context.next = 6;return (
+
+                  this.$http.post('post/create', {
+                    imglist: JSON.stringify(this.imglistIds),
+                    text: this.text,
+                    isopen: this.isOpen,
+                    topic_id: this.topic.id,
+                    post_class_id: this.postClass.id },
+                  {
+                    token: true,
+                    checkToken: true,
+                    checkAuth: true }));case 6:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];
+
+                console.log(JSON.stringify(this.imglistIds));
+                // 发布失败
+                if (this.$http.errorCheck(err, res)) {_context.next = 15;break;}
+                uni.showToast({
+                  title: res.msg,
+                  icon: "none" });
+
+                uni.hideLoading();return _context.abrupt("return");case 15:
+
+
+                // 发布成功
+                uni.hideLoading();
+                uni.showToast({
+                  title: '发布成功！' });
+
+                console.log(res);
+                this.isTips2Save = true;
+                uni.$emit('updateData', {
+                  type: "updateList",
+                  data: res.data.data.detail });
+
+                uni.navigateBack({ delta: 1 });_context.next = 27;break;case 23:_context.prev = 23;_context.t0 = _context["catch"](3);
+
+
+                console.log(_context.t0);return _context.abrupt("return");case 27:case "end":return _context.stop();}}}, _callee, this, [[3, 23]]);}));function submit() {return _submit.apply(this, arguments);}return submit;}(),
+
+
+
+
+    changePostClass: function changePostClass() {var _this2 = this;
       uni.showActionSheet({
-        itemList: ["时间线", "综合1", "速报2", "欢乐恶搞", "跑团", "圈内"],
+        itemList: this.postClass.range,
         success: function success(res) {
-          switch (res.tapIndex) {
-            case 0:
-              _this2.visiblity = "时间线";
-              break;
-            case 1:
-              _this2.visiblity = "综合1";
-              break;
-            case 2:
-              _this2.visiblity = "速报2";
-              break;
-            case 3:
-              _this2.visiblity = "欢乐恶搞";
-              break;
-            case 4:
-              _this2.visiblity = "跑团";
-              break;
-            case 5:
-              _this2.visiblity = "圈内";
-              break;}
-
-
+          _this2.postClass.id = _this2.postClass.list[res.tapIndex].id;
+          _this2.postClass.title = _this2.postClass.list[res.tapIndex].name;
         } });
 
+    },
+
+    changeTopic: function changeTopic() {
+      uni.navigateTo({
+        url: "/pages/topic-nav/topic-nav?ischange=" + true });
 
     },
+
     hidePopup: function hidePopup() {
       this.showpop_up = false;
+    },
+
+    changeOne: function changeOne() {var _this3 = this;
+      uni.showActionSheet({
+        itemList: this.open,
+        success: function success(res) {
+          _this3.isOpen = res.tapIndex;
+        } });
+
+    },
+
+    getPostClass: function () {var _getPostClass = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2(postClass) {var arr, i, _ref3, _ref4, err, res, list, _arr2, arr2, _i2;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!
+                postClass) {_context2.next = 5;break;}
+                this.postClass.list = postClass;
+                arr = [];
+                for (i = 0; i < postClass.length; i++) {
+                  arr.push(postClass[i].name);
+                }return _context2.abrupt("return",
+                this.postClass.range = arr);case 5:_context2.prev = 5;_context2.next = 8;return (
+
+
+                  this.$http.get('postclass'));case 8:_ref3 = _context2.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];if (
+                this.$http.errorCheck(err, res)) {_context2.next = 14;break;}return _context2.abrupt("return");case 14:
+                list = res.data.data.list;
+                _arr2 = [], arr2 = [];
+                for (_i2 = 0; _i2 < list.length; _i2++) {
+                  _arr2.push(list[_i2].classname);
+                  arr2.push({
+                    id: list[_i2].id,
+                    name: list[_i2].classname });
+
+                }
+                this.postClass.range = _arr2;
+                this.postClass.list = arr2;_context2.next = 24;break;case 21:_context2.prev = 21;_context2.t0 = _context2["catch"](5);return _context2.abrupt("return");case 24:case "end":return _context2.stop();}}}, _callee2, this, [[5, 21]]);}));function getPostClass(_x) {return _getPostClass.apply(this, arguments);}return getPostClass;}(),
+
+
+
+
+    // 清空图片
+    delImgList: function delImgList() {
+      this.imglist = [],
+      this.imglistIds = [];
     } },
 
 
@@ -278,6 +391,34 @@ __webpack_require__.r(__webpack_exports__);
       this.saveAsDraft();
       return true;
     }
+  },
+  onLoad: function onLoad(e) {var _this4 = this;
+    // 读取缓存
+    var res = uni.getStorageSync('addinput');
+    if (res) {
+      res = JSON.parse(res);
+      this.isOpen = res.isOpen;
+      this.imglistIds = res.imglistIds || [];
+      if (this.imglistIds.length) {
+        this.imglist = res.imglist;
+      }
+      this.text = res.text;
+      if (res.postClass) {
+        this.postClass = res.postClass;
+      }
+      if (res.topic) {
+        this.topic = res.topic;
+      }
+    }
+    // 获取板块列表
+    var postClass = e.postClass ? JSON.parse(e.postClass) : false;
+    this.getPostClass(postClass);
+    // 获取评论列表
+    uni.$on('changeTopic', function (data) {
+      console.log(data);
+      _this4.topic.id = data.id;
+      _this4.topic.title = "#".concat(data.title, "#");
+    });
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

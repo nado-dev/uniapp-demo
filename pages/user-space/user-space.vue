@@ -1,5 +1,10 @@
 <template>
 	<view class="animated fadeIn faster">
+        <!-- #ifndef APP-PLUS -->
+        		<view class="iconfont icon-gengduo" 
+                style="position: absolute;right: 15upx;top: 15upx;z-index: 1000;color: #FFFFFF;background: rgba(51, 51, 51, 0.4);border-radius: 100%;padding: 20upx;font-size: 32upx;line-height: 1;" @tap="showPopup"></view>
+        <!-- #endif -->
+        
         <user-space-head :userInfo="userInfo" @update="updateGuanZhu"></user-space-head>   
 	
         <!-- 用户信息 -->
@@ -8,8 +13,11 @@
                 <home-data :item="item" :index="index"></home-data>
             </block>
         </view>
+        
         <!-- 分割线 -->
-        <view style="height: 20upx; background: #F4F4F4;"> </view>
+        <view style="height: 20upx; background: #F4F4F4;">
+       
+         </view>
         <!-- tabBar -->
         <swiper-tab-head 
         :tabBars="tabBars" 
@@ -144,6 +152,7 @@
                     location:info.userinfo.path || "未知",
                     qinggan:qgArr[info.userinfo.qg] || '秘密'
                 }
+                console.log("用户信息")
                 console.log(this.userInfo)
             },
             // 初始化统计数据
@@ -161,6 +170,7 @@
                     this.spaceData[1].num = counts.withfollow_count;
                     this.spaceData[2].num = counts.withfen_count;
                 }
+                
             },
             hidePopup(){
                 this.isPopupShow = false
@@ -242,6 +252,8 @@
                 this.list = page > 1 ? this.tablist[index].list.concat(arr) : arr;
                 this.firstload = true;
                 this.loadText= list.length < 10 ? "没有更多数据了" : "上拉加载更多";
+                console.log("发帖信息")
+                console.log(this.list)
                 return;
             },
             // 转换格式
@@ -268,6 +280,9 @@
                     shareNum:item.sharenum,
                     likeNum:item.ding_count
                 }
+            },
+            showPopup(){
+                this.isPopupShow = true
             }
         },
         onReachBottom() {
@@ -279,7 +294,15 @@
         },
         onLoad(e) {
             this.__init(e.userid)
-        }
+        },
+        // #ifdef MP
+            onShareAppMessage(res) {
+                return{
+                    title:this.detail.title,
+                    path:'/pages/user-space/user-space?userid='+JSON.stringify(this.userInfo)
+                }
+            }
+        // #endif
     }
 
 	

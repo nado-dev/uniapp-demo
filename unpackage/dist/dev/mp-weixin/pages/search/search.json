@@ -4,6 +4,7 @@
     "index-list": "/components/index/index-list",
     "empty-content": "/components/common/empty-content",
     "load-more": "/components/common/load-more",
-    "topic-list": "/components/news/topic-list"
+    "topic-list": "/components/news/topic-list",
+    "user-list": "/components/user-list/user-list"
   }
 }

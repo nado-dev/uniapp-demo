@@ -737,7 +737,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -1684,7 +1684,26 @@ var _default = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 17));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1773,6 +1792,120 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
 /***/ }),
 
 /***/ 17:
+/*!****************************************!*\
+  !*** D:/uniapp/demo/common/request.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 15));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+{
+  config: {
+    baseUrl: _config.default.webUrl,
+    header: _defineProperty({
+      'Content-Type': 'application/json;charset=UTF-8' }, "Content-Type",
+    'application/x-www-form-urlencoded'),
+
+    data: {},
+    method: "GET",
+    dataType: "json" },
+
+  request: function request() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    options.header = options.header || this.config.header;
+    options.method = options.method || this.config.method;
+    options.dataType = options.dataType || this.config.dataType;
+    options.url = this.config.baseUrl + options.url;
+    // TODO：token增加等操作
+    if (options.token) {
+      // 验证用户是否登录
+      if (!this.checkToken(options.checkToken)) return;
+      // 验证用户操作权限（验证是否绑定手机号码）
+      if (!this.checkAuth(options.checkAuth)) return;
+      options.header.token = _user.default.token;
+    }
+    return uni.request(options);
+  },
+  get: function get(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    options.url = url;
+    options.data = data;
+    options.method = 'GET';
+    return this.request(options);
+  },
+  post: function post(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    options.url = url;
+    options.data = data;
+    options.method = 'POST';
+    return this.request(options);
+  },
+  // 错误处理
+  errorCheck: function errorCheck(err, res) {var errfun = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;var resfun = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+    if (err) {
+      typeof errfun === 'function' && errfun();
+      uni.showToast({ title: '加载失败', icon: "none" });
+      return false;
+    }
+    if (res.data.errorCode) {
+      typeof errfun === 'function' && resfun();
+      uni.showToast({ title: res.data.msg, icon: "none" });
+      return false;
+    }
+    return true;
+  },
+  // 验证用户是否登录
+  checkToken: function checkToken(_checkToken) {
+    if (_checkToken && !_user.default.token) {
+      uni.showToast({ title: '请先登录', icon: "none" });
+      uni.navigateTo({
+        url: '/pages/login/login' });
+
+      return false;
+    }
+    return true;
+  },
+  // 验证用户权限
+  checkAuth: function checkAuth(_checkAuth) {
+    // 是否已经绑定手机
+    if (_checkAuth && !_user.default.userinfo.phone) {
+      uni.showToast({ title: '请先绑定手机号码', icon: "none" });
+      uni.navigateTo({
+        url: '/pages/user-bind-phone/user-bind-phone' });
+
+      return false;
+    }
+    return true;
+  },
+  // 上传图片
+  // 上传图片
+  upload: function upload(url) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    if (options.token) {
+      // 验证是否登录
+      if (!this.checkToken(options.checkToken)) return;
+      // 验证权限
+      if (!this.checkAuth(options.checkAuth)) return;
+    }
+
+    // uni.uploadFile(options,);
+    return uni.uploadFile({
+      url: this.config.baseUrl + url,
+      filePath: options.filePath,
+      fileType: 'image',
+      name: 'imglist[]',
+      header: {
+        token: _user.default.token }
+
+      // success: (res) => {
+      //     console.log('uploadImage success, res is:', res)
+      // }
+    });
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 18:
 /*!*************************************!*\
   !*** D:/uniapp/demo/common/user.js ***!
   \*************************************/
@@ -1780,7 +1913,7 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));var _request = _interopRequireDefault(__webpack_require__(/*! ./request.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 
 {
   // 用户token
@@ -1791,18 +1924,18 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
   userinfo: false,
   // 权限验证跳转
   // 用户统计相关
-  // counts:{}
+  counts: {},
   // 绑定第三方登陆情况
   userbind: false,
-  navigate: function navigate(options) {var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'navigateTo';
+  navigate: function navigate(options) {var Nocheck = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;var type = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'navigateTo';
     // 是否登录验证
-    if (!_request.default.checkToken(true)) return;
-    // 验证是否绑定手机号
-    if (!_request.default.checkAuth(true)) return;
-    // if (!NoCheck) {
-    //     if (!$http.checkAuth(true)) return;
-    // }
-    // 跳转
+    if (!Nocheck) {
+      if (!_request.default.checkAuth(true)) return;
+
+      if (!_request.default.checkToken(true)) return;
+      // 验证是否绑定手机号
+      if (!_request.default.checkAuth(true)) return;
+    } // 跳转
     switch (type) {
       case 'navigateTo':
         uni.navigateTo(options);
@@ -1823,9 +1956,9 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
     // 获取用户信息
     this.userinfo = uni.getStorageSync("userinfo");
     this.token = uni.getStorageSync("token");
-    // this.counts = uni.getStorageSync("counts");
+    this.counts = uni.getStorageSync("counts");
     this.userbind = uni.getStorageSync("userbind");
-    // this.OnUserCounts();
+    this.OnUserCounts();
     // 如果用户id存在，则连接 
     // if (this.userinfo.id) {
     // 	// 连接socket
@@ -1849,7 +1982,7 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
               uni.setStorageSync("userinfo", this.userinfo);
               uni.setStorageSync("token", this.token);
               // 获取用户相关统计
-              // await this.getCounts();
+              _context.next = 17;return this.getCounts();case 17:
               // 连接socket
               // if (this.userinfo.id) {
               // 	$chat.Open();
@@ -1861,7 +1994,7 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
               if (!options.Noback) {
                 uni.navigateBack({ delta: 1 });
               }return _context.abrupt("return",
-              true);case 19:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}(),
+              true);case 21:case "end":return _context.stop();}}}, _callee, this);}));function login() {return _login.apply(this, arguments);}return login;}(),
 
 
   // 退出登录
@@ -1874,35 +2007,54 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
               // 清除缓存
               uni.removeStorageSync('userinfo');
               uni.removeStorageSync('token');
-              // uni.removeStorageSync('counts');
+              uni.removeStorageSync('counts');
               // 清除状态
               this.token = false;
               this.userinfo = false;
               this.userbind = false;
-              // this.counts = {};
+              this.counts = {};
               // 关闭socket
               // $chat.Close();
               // 返回home页面
               uni.switchTab({ url: "/pages/me/me" });
               // 退出成功
-              if (!showToast) {_context2.next = 11;break;}return _context2.abrupt("return",
-              uni.showToast({ title: '退出登录成功' }));case 11:case "end":return _context2.stop();}}}, _callee2, this);}));function logout() {return _logout.apply(this, arguments);}return logout;}(),
+              if (!showToast) {_context2.next = 13;break;}return _context2.abrupt("return",
+              uni.showToast({ title: '退出登录成功' }));case 13:case "end":return _context2.stop();}}}, _callee2, this);}));function logout() {return _logout.apply(this, arguments);}return logout;}(),
 
 
+  OnUserCounts: function OnUserCounts() {var _this = this;
+    uni.$on('updateData', function (data) {
+      // 文章数+1
+      if (data.type == 'updateList') {
+        _this.counts.post_count++;
+      }
+      // 评论数+1
+      if (data.type == 'updateComment') {
+        _this.counts.comments_count++;
+      }
+      // // 粉丝数和关注数变化
+      if (data.type == 'guanzhu') {
+        data.data ?
+        _this.counts.withfollow_count++ :
+        _this.counts.withfollow_count--;
+      }
+      // 更新缓存
+      uni.setStorageSync("counts", _this.counts);
+    });
+  },
+  // 获取用户相关统计信息
+  getCounts: function () {var _getCounts = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _ref3, _ref4, err, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:_context3.next = 2;return (
 
-  // // 获取用户相关统计信息
-  //  async getCounts(){
-  //      // 统计获取用户相关数据（总文章数，今日文章数，评论数 ，关注数，粉丝数，文章总点赞数）
-  //      let [err,res] =await $http.get('/user/getcounts/'+this.userinfo.id,{},{
-  //          token:true,checkToken:true
-  //      })
-  //      // 请求错误处理
-  //      if (!$http.errorCheck(err,res)) return;
-  //      // 成功
-  //      this.counts = res.data.data;
-  //      // 存储缓存
-  //      uni.setStorageSync("counts", this.counts);
-  //  },
+                _request.default.get('/user/getcounts/' + this.userinfo.id, {}, {
+                  token: true, checkToken: true }));case 2:_ref3 = _context3.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];if (
+
+
+              _request.default.errorCheck(err, res)) {_context3.next = 8;break;}return _context3.abrupt("return");case 8:
+              // 成功
+              this.counts = res.data.data;
+              // 存储缓存
+              uni.setStorageSync("counts", this.counts);case 10:case "end":return _context3.stop();}}}, _callee3, this);}));function getCounts() {return _getCounts.apply(this, arguments);}return getCounts;}(),
+
   // userinfo格式转换
   __formatUserinfo: function __formatUserinfo(obj) {
     // 手机/邮箱/账号登录
@@ -1956,71 +2108,45 @@ var Update = function Update() {};var _default = { NetWork: NetWork, Update: Upd
     return {
       provider: provider,
       openid: options.userInfo.unionId || options.userInfo.openId,
-      expires_in: options.authResult.expires_in,
+      expires_in: 7200,
+      // expires_in:!!options.authResult.expires_in ? options.authResult.expires_in:7200,
       nickName: options.userInfo.nickName,
       avatarUrl: options.userInfo.avatarUrl };
 
+  },
+  // 加入浏览历史
+  addHistoryList: function addHistoryList(item) {
+    // 取出缓存
+    console.log(this.userinfo);
+    var list = uni.getStorageSync('HistoryList_' + this.userinfo.id);
+    list = list ? JSON.parse(list) : [];
+    // 查看当前记录是否存在
+    var index = list.findIndex(function (val) {
+      return val.id === item.userid;
+    });
+    // 不存在直接追加
+    if (index == -1) {
+      list.push(item);
+      uni.setStorageSync('HistoryList_' + this.userinfo.id, JSON.stringify(list));
+      console.log("加入缓存成功");
+    }
+  },
+  // 清除浏览历史
+  clearHistory: function clearHistory() {
+    uni.removeStorageSync('HistoryList_' + this.userinfo.id);
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
-/***/ 18:
+/***/ 19:
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 19);
-
-
-/***/ }),
-
-/***/ 19:
-/*!************************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
-  \************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-// This method of obtaining a reference to the global object needs to be
-// kept identical to the way it is obtained in runtime.js
-var g = (function() {
-  return this || (typeof self === "object" && self);
-})() || Function("return this")();
-
-// Use `getOwnPropertyNames` because not all browsers support calling
-// `hasOwnProperty` on the global `self` object in a worker. See #183.
-var hadRuntime = g.regeneratorRuntime &&
-  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
-
-// Save the old regeneratorRuntime in case it needs to be restored later.
-var oldRuntime = hadRuntime && g.regeneratorRuntime;
-
-// Force reevalutation of runtime.js.
-g.regeneratorRuntime = undefined;
-
-module.exports = __webpack_require__(/*! ./runtime */ 20);
-
-if (hadRuntime) {
-  // Restore the original runtime.
-  g.regeneratorRuntime = oldRuntime;
-} else {
-  // Remove the global property added by runtime.js.
-  try {
-    delete g.regeneratorRuntime;
-  } catch(e) {
-    g.regeneratorRuntime = undefined;
-  }
-}
+module.exports = __webpack_require__(/*! regenerator-runtime */ 20);
 
 
 /***/ }),
@@ -7557,7 +7683,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7578,14 +7704,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7661,7 +7787,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8057,6 +8183,54 @@ internalMixin(Vue);
 /***/ }),
 
 /***/ 20:
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() {
+  return this || (typeof self === "object" && self);
+})() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(/*! ./runtime */ 21);
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
+
+/***/ }),
+
+/***/ 21:
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -8788,116 +8962,6 @@ internalMixin(Vue);
 
 /***/ }),
 
-/***/ 21:
-/*!****************************************!*\
-  !*** D:/uniapp/demo/common/request.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-var _config = _interopRequireDefault(__webpack_require__(/*! ./config.js */ 15));
-var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
-{
-  config: {
-    baseUrl: _config.default.webUrl,
-    header: _defineProperty({
-      'Content-Type': 'application/json;charset=UTF-8' }, "Content-Type",
-    'application/x-www-form-urlencoded'),
-
-    data: {},
-    method: "GET",
-    dataType: "json" },
-
-  request: function request() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    options.header = options.header || this.config.header;
-    options.method = options.method || this.config.method;
-    options.dataType = options.dataType || this.config.dataType;
-    options.url = this.config.baseUrl + options.url;
-    // TODO：token增加等操作
-    if (options.token) {
-      // 验证用户是否登录
-      if (!this.checkToken(options.checkToken)) return;
-      // 验证用户操作权限（验证是否绑定手机号码）
-      if (!this.checkAuth(options.checkAuth)) return;
-      options.header.token = _user.default.token;
-    }
-    return uni.request(options);
-  },
-  get: function get(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    options.url = url;
-    options.data = data;
-    options.method = 'GET';
-    return this.request(options);
-  },
-  post: function post(url, data) {var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    options.url = url;
-    options.data = data;
-    options.method = 'POST';
-    return this.request(options);
-  },
-  // 错误处理
-  errorCheck: function errorCheck(err, res) {var errfun = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;var resfun = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-    if (err) {
-      typeof errfun === 'function' && errfun();
-      uni.showToast({ title: '加载失败', icon: "none" });
-      return false;
-    }
-    if (res.data.errorCode) {
-      typeof errfun === 'function' && resfun();
-      uni.showToast({ title: res.data.msg, icon: "none" });
-      return false;
-    }
-    return true;
-  },
-  // 验证用户是否登录
-  checkToken: function checkToken(_checkToken) {
-    if (_checkToken && !_user.default.token) {
-      uni.showToast({ title: '请先登录', icon: "none" });
-      uni.navigateTo({
-        url: '/pages/login/login' });
-
-      return false;
-    }
-    return true;
-  },
-  // 验证用户权限
-  checkAuth: function checkAuth(_checkAuth) {
-    // 是否已经绑定手机
-    if (_checkAuth && !_user.default.userinfo.phone) {
-      uni.showToast({ title: '请先绑定手机号码', icon: "none" });
-      uni.navigateTo({
-        url: '/pages/user-bind-phone/user-bind-phone' });
-
-      return false;
-    }
-    return true;
-  },
-  // 上传图片
-  // 上传图片
-  upload: function upload(url) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    options.url = this.config.baseUrl + url;
-    options.header = options.header || this.config.header;
-    options.fileType = options.fileType || "image";
-    options.formData = options.formData || {};
-    options.filePath = options.filePath;
-    options.name = 'userpic';
-    // TODO：token增加等操作
-    if (options.token) {
-      // 验证是否登录
-      if (!this.checkToken(options.checkToken)) return;
-      // 验证权限
-      if (!this.checkAuth(options.checkAuth)) return;
-      options.header.token = _user.default.token;
-    }
-
-    return uni.uploadFile(options);
-  } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -8929,7 +8993,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 359:
+/***/ 365:
 /*!************************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/province.js ***!
   \************************************************************************/
@@ -9079,7 +9143,7 @@ provinceData;exports.default = _default;
 
 /***/ }),
 
-/***/ 360:
+/***/ 366:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/city.js ***!
   \********************************************************************/
@@ -10593,7 +10657,7 @@ cityData;exports.default = _default;
 
 /***/ }),
 
-/***/ 361:
+/***/ 367:
 /*!********************************************************************!*\
   !*** D:/uniapp/demo/components/mpvue-citypicker/city-data/area.js ***!
   \********************************************************************/
@@ -23158,7 +23222,7 @@ areaData;exports.default = _default;
 
 /***/ }),
 
-/***/ 418:
+/***/ 431:
 /*!****************************************************!*\
   !*** D:/uniapp/demo/components/uni-icons/icons.js ***!
   \****************************************************/
@@ -24206,7 +24270,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": {}, "pages/me/me": { "navigationBarTitleText": "我的" }, "pages/paper/paper": { "enablePullDownRefresh": true, "navigationBarTitleText": "消息" }, "pages/news/news": { "navigationBarTitleText": "动态" }, "pages/search/search": { "enablePullDownRefresh": true }, "pages/addINput/addINput": {}, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类" }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友" }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面" }, "pages/detail/detail": { "navigationBarTitleText": "内容页" }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置" }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码" }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱" }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料" }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈" }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于" }, "pages/login/login": { "navigationBarTitleText": "登录" }, "pages/user-space/user-space": { "navigationBarTitleText": "个人空间" }, "pages/user-bind-phone/user-bind-phone": { "navigationBarTitleText": "绑定手机" }, "pages/user-safe/user-safe": { "navigationBarTitleText": "账号与安全" } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/index/index": { "usingComponents": { "index-list": "/components/index/index-list", "swiper-tab-head": "/components/index/swiper-tab-head", "load-more": "/components/common/load-more", "empty-content": "/components/common/empty-content", "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar" }, "usingAutoImportComponents": {} }, "pages/me/me": { "navigationBarTitleText": "我的", "usingComponents": { "home-list-item": "/components/home/home-list-item", "home-info": "/components/home/home-info", "other-login": "/components/home/other-login", "home-data": "/components/home/home-data" }, "usingAutoImportComponents": {} }, "pages/paper/paper": { "backgroundColor": "#EEEEEE", "enablePullDownRefresh": true, "navigationBarTitleText": "消息", "usingComponents": { "paper-list": "/components/paper/paper-list", "load-more": "/components/common/load-more", "paper-left-popup": "/components/paper/paper-left-popup" }, "usingAutoImportComponents": {} }, "pages/news/news": { "navigationBarTitleText": "动态", "usingComponents": { "common-list": "/components/common/common-list", "news-nav-bar": "/components/news/news-nav-bar", "load-more": "/components/common/load-more", "topic-nav": "/components/news/topic-nav", "topic-list": "/components/news/topic-list", "empty-content": "/components/common/empty-content" }, "usingAutoImportComponents": {} }, "pages/search/search": { "enablePullDownRefresh": true, "usingComponents": { "index-list": "/components/index/index-list", "empty-content": "/components/common/empty-content", "load-more": "/components/common/load-more", "topic-list": "/components/news/topic-list", "user-list": "/components/user-list/user-list" }, "usingAutoImportComponents": {} }, "pages/addINput/addINput": { "usingComponents": { "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar", "upload-images": "/components/common/upload-images", "uni-popup": "/components/uni-popup/uni-popup" }, "usingAutoImportComponents": {} }, "pages/topic-nav/topic-nav": { "navigationBarTitleText": "话题分类", "usingComponents": { "swiper-tab-head": "/components/index/swiper-tab-head", "empty-content": "/components/common/empty-content", "load-more": "/components/common/load-more", "topic-list": "/components/news/topic-list" }, "usingAutoImportComponents": {} }, "pages/topic-detail/topic-detail": { "navigationBarTitleText": "话题详情", "enablePullDownRefresh": true, "usingComponents": { "topic-info": "/components/topic/topic-info", "load-more": "/components/common/load-more", "swiper-tab-head": "/components/index/swiper-tab-head", "common-list": "/components/common/common-list" }, "usingAutoImportComponents": {} }, "pages/user-list/user-list": { "navigationBarTitleText": "我的好友", "usingComponents": { "swiper-tab-head": "/components/index/swiper-tab-head", "tag-gender-age": "/components/common/tag-gender-age", "user-list": "/components/user-list/user-list", "load-more": "/components/common/load-more", "empty-content": "/components/common/empty-content" }, "usingAutoImportComponents": {} }, "pages/user-chat/user-chat": { "navigationBarTitleText": "聊天页面", "usingComponents": { "user-chat-bottom": "/components/user-chat/user-chat-bottom", "user-chat-list": "/components/user-chat/user-chat-list" }, "usingAutoImportComponents": {} }, "pages/detail/detail": { "navigationBarTitleText": "内容页", "usingComponents": { "detail-info": "/components/detail/detail-info", "comment-list": "/components/detail/comment-list", "user-chat-bottom": "/components/user-chat/user-chat-bottom", "more-share": "/components/common/more-share" }, "usingAutoImportComponents": {} }, "pages/user-setting/user-setting": { "navigationBarTitleText": "设置", "usingComponents": { "home-list-item": "/components/home/home-list-item" }, "usingAutoImportComponents": {} }, "pages/user-set-password/user-set-password": { "navigationBarTitleText": "修改密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user-setting-email/user-setting-email": { "navigationBarTitleText": "绑定邮箱", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user-setting-userinfo/user-setting-userinfo": { "navigationBarTitleText": "修改资料", "usingComponents": { "mpvue-city-picker": "/components/mpvue-citypicker/mpvueCityPicker" }, "usingAutoImportComponents": {} }, "pages/user-setting-help/user-setting-help": { "navigationBarTitleText": "意见反馈", "usingComponents": { "uni-collapse-item": "/components/uni-collapse-item/uni-collapse-item", "uni-collapse": "/components/uni-collapse/uni-collapse" }, "usingAutoImportComponents": {} }, "pages/user-set-about/user-set-about": { "navigationBarTitleText": "关于", "usingComponents": { "uni-collapse": "/components/uni-collapse/uni-collapse", "uni-collapse-item": "/components/uni-collapse-item/uni-collapse-item" }, "usingAutoImportComponents": {} }, "pages/login/login": { "navigationBarTitleText": "登录", "usingComponents": { "uni-status-bar": "/components/uni-status-bar/uni-status-bar", "other-login": "/components/home/other-login" }, "usingAutoImportComponents": {} }, "pages/user-space/user-space": { "navigationBarTitleText": "个人空间", "usingComponents": { "user-space-head": "/components/user-space/user-space-head", "home-data": "/components/home/home-data", "swiper-tab-head": "/components/index/swiper-tab-head", "user-space-userinfo": "/components/user-space/user-space-userinfo", "common-list": "/components/common/common-list", "load-more": "/components/common/load-more", "user-space-popup": "/components/user-space/user-space-popup", "empty-content": "/components/common/empty-content" }, "usingAutoImportComponents": {} }, "pages/user-bind-phone/user-bind-phone": { "navigationBarTitleText": "绑定手机", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/user-safe/user-safe": { "navigationBarTitleText": "账号与安全", "usingComponents": { "home-list-item": "/components/home/home-list-item" }, "usingAutoImportComponents": {} }, "pages/user-history/user-history": { "navigationBarTitleText": "浏览历史", "usingComponents": { "uni-list": "/components/uni-list/uni-list", "uni-list-item": "/components/uni-list-item/uni-list-item", "empty-content": "/components/common/empty-content" }, "usingAutoImportComponents": {} } }, "globalStyle": { "transparentTitle": "none", "navigationBarTitleText": "demo", "navigationBarBackgroundColor": "#009687", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
@@ -24311,6 +24375,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       formatStr = formatStr.replace(rStr, dateObj[RegExp.$1]);
     }
     return formatStr;
+  },
+
+  // 获取年龄
+  getAgeByBirthday: function getAgeByBirthday(data) {
+    var birthday = new Date(data.replace(/-/g, "\/"));
+    var d = new Date();
+    return d.getFullYear() - birthday.getFullYear() - (d.getMonth() < birthday.getMonth() || d.getMonth() == birthday.getMonth() && d.getDate() < birthday.getDate() ? 1 : 0);
   } };var _default =
 
 

@@ -144,7 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));
 
 
 
@@ -172,7 +172,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var detailInfo = function detailInfo() {return __webpack_require__.e(/*! import() | components/detail/detail-info */ "components/detail/detail-info").then(__webpack_require__.bind(null, /*! ../../components/detail/detail-info.vue */ 333));};var commentList = function commentList() {return __webpack_require__.e(/*! import() | components/detail/comment-list */ "components/detail/comment-list").then(__webpack_require__.bind(null, /*! ../../components/detail/comment-list.vue */ 340));};var userChatBottom = function userChatBottom() {return __webpack_require__.e(/*! import() | components/user-chat/user-chat-bottom */ "components/user-chat/user-chat-bottom").then(__webpack_require__.bind(null, /*! ../../components/user-chat/user-chat-bottom.vue */ 319));};var moreShare = function moreShare() {return __webpack_require__.e(/*! import() | components/common/more-share */ "components/common/more-share").then(__webpack_require__.bind(null, /*! ../../components/common/more-share.vue */ 347));};var _default =
+var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var detailInfo = function detailInfo() {return __webpack_require__.e(/*! import() | components/detail/detail-info */ "components/detail/detail-info").then(__webpack_require__.bind(null, /*! ../../components/detail/detail-info.vue */ 339));};var commentList = function commentList() {return __webpack_require__.e(/*! import() | components/detail/comment-list */ "components/detail/comment-list").then(__webpack_require__.bind(null, /*! ../../components/detail/comment-list.vue */ 346));};var userChatBottom = function userChatBottom() {return __webpack_require__.e(/*! import() | components/user-chat/user-chat-bottom */ "components/user-chat/user-chat-bottom").then(__webpack_require__.bind(null, /*! ../../components/user-chat/user-chat-bottom.vue */ 325));};var moreShare = function moreShare() {return __webpack_require__.e(/*! import() | components/common/more-share */ "components/common/more-share").then(__webpack_require__.bind(null, /*! ../../components/common/more-share.vue */ 353));};var _default =
 
 
 
@@ -185,6 +185,9 @@ var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js 
 
   data: function data() {
     return {
+      tempUserInfo: "",
+      focus: false,
+      reply_id: 0, // 回复id
       // 分享内容 
       sharedata: {
         title: "",
@@ -221,6 +224,25 @@ var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js 
 
   },
   methods: {
+    updateData: function updateData(data) {
+      switch (data.type) {
+        case "guanzhu":
+          this.updateGuanZhu(data);
+          break;
+        case "support":
+          this.updateSupport(data);
+          break;}
+
+    },
+    updateGuanZhu: function updateGuanZhu(data) {
+      this.detail.isFollow = data.data;
+    },
+    updateSupport: function updateSupport(data) {
+      if (data.do === 1) {
+        this.detail.likeInfo.index = 1;
+        this.detail.likeNum++;
+      }
+    },
     // 初始化分享内容
     __initShare: function __initShare(obj) {
       this.sharedata = {
@@ -311,32 +333,91 @@ var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js 
       return temp;
     },
     //提交评论
-    submit: function submit(data) {
-      if (!data || data.length == 0) {
-        uni.showToast({
-          icon: 'none',
-          position: 'bottom',
-          title: '评论不能为空' });
+    submit: function () {var _submit = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3(data) {var reply_id, _ref5, _ref6, err, res, msg, result, index;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+                uni.showLoading({
+                  title: "评论中" });
 
-      }
-      var obj = {
-        commentId: 1,
-        fatherReplyId: 0,
-        userPic: this.loginUserInfo.userPic,
-        userName: "new" + this.loginUserInfo.userName,
-        time: _time.default.gettime.gettime(new Date().getTime()),
-        content: data };
+                if (!data || data.length == 0) {
+                  uni.showToast({
+                    icon: 'none',
+                    position: 'bottom',
+                    title: '评论不能为空' });
 
-      this.comment.list.push(obj);
-      console.log(data);
-    },
+                }
+                reply_id = this.reply_id;_context3.next = 5;return (
+                  this.$http.post('post/comment', {
+                    post_id: this.detail.id,
+                    fid: this.reply_id,
+                    data: data },
+                  {
+                    token: true }));case 5:_ref5 = _context3.sent;_ref6 = _slicedToArray(_ref5, 2);err = _ref6[0];res = _ref6[1];if (!(
+
+
+                err || res.data.errorCode)) {_context3.next = 13;break;}
+                msg = res.data.errorCode ? res.data.msg : '发送失败，请检查网络';
+                uni.hideLoading();return _context3.abrupt("return",
+                uni.showToast({
+                  title: msg, icon: "none" }));case 13:
+
+
+                // 发送成功
+                uni.hideLoading();
+                uni.showToast({ title: "发送成功~" });
+                result = {
+                  id: res.data.data.id,
+                  fid: reply_id,
+                  userPic: this.User.userinfo.userpic,
+                  userName: this.User.userinfo.username,
+                  time: _time.default.gettime.gettime(new Date().getTime()),
+                  content: data };
+
+                console.log(this.User);
+                console.log("userinfo");
+                // 评论数+1
+                this.comment.commentCount++;
+                this.detail.commentNum++;
+                // 一级评论
+                if (!(reply_id === 0)) {_context3.next = 22;break;}return _context3.abrupt("return",
+                this.comment.list.push(result));case 22:
+
+                // 二级评论
+                // 找出被评论id的索引
+                index = this.comment.list.findIndex(function (val) {
+                  return val.id === reply_id;
+                });
+                if (index > -1) {
+                  // 中间插入
+                  this.comment.list.splice(index + 1, 0, result);
+                }
+                // 通知首页更新评论数
+                uni.$emit('updateData', {
+                  type: 'updateComment',
+                  post_id: this.detail.id });case 25:case "end":return _context3.stop();}}}, _callee3, this);}));function submit(_x) {return _submit.apply(this, arguments);}return submit;}(),
+
+
+
+
+
+
     //分享
     togle: function togle() {
       this.isShareShow = !this.isShareShow;
+    },
+    reply: function reply(item) {
+      this.tempUserInfo = "回复给@" + item.userName;
+      this.reply_id = item.id;
+      this.focus = true;
+    },
+    blur: function blur() {
+      this.focus = false;
+
+
+
+
     } },
 
-
   onLoad: function onLoad(e) {
+    this.User.__init();
     this.initdata(JSON.parse(e.detailData));
     //加载评论
     this.getComment();
@@ -346,6 +427,13 @@ var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js 
     if (e.index == 0) {
       this.togle();
     }
+  },
+
+  onShareAppMessage: function onShareAppMessage(res) {
+    return {
+      title: this.detail.title,
+      path: '/pages/detail/detail?detailData=' + JSON.stringify(this.detail) };
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

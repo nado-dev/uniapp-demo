@@ -114,4 +114,8 @@
         padding: 0 10rpx;
         font-size: 28rpx;
 }
+.active{
+        color: #009687 !important;
+        font-size: 32rpx;
+}
 

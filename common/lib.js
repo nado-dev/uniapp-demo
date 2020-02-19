@@ -53,11 +53,12 @@ const Update = function(){
             // 错误判断
             if(!$http.errorCheck(err, result))  return;
             // 成功
-            var data = result.data;
+            var data = result.data.data;
             if(!data.url) {
                 // wuxugenxin
                 uni.showToast({
-                    title: '无需更新'
+                    title: '无需更新',
+                    icon:"none"
                 });
                 return;
             }

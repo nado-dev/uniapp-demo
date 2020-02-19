@@ -1,5 +1,10 @@
 <template>
 	<view>
+        <!-- #ifndef APP-PLUS || H5 -->
+            <view class="icon iconfont icon-qingchu u-f-ajc" @tap="removeHistory">
+                清除浏览历史
+            </view>
+        <!-- #endif -->
 		<template v-if="list.length > 0">
             <uni-list>
                 <block v-for="(item,index) in list" :key="index">
@@ -40,19 +45,22 @@
 			this.getList();
 		},
 		onNavigationBarButtonTap() {
-			uni.showModal({
-				title: '提示',
-				content: '是否要清除浏览历史？',
-				success: res => {
-					if (res.confirm) {
-						this.User.clearHistory();
-						this.list = [];
-						uni.showToast({ title: '清除成功' });
-					}
-				}
-			});
-		},
+            this.removeHistory()
+        },
 		methods: {
+            removeHistory(){
+                uni.showModal({
+                    title: '提示',
+                    content: '是否要清除浏览历史？',
+                    success: res => {
+                        if (res.confirm) {
+                            this.User.clearHistory();
+                            this.list = [];
+                            uni.showToast({ title: '清除成功' });
+                        }
+                    }
+                });
+            },
 			getList(){
 				try{
 					let list = uni.getStorageSync('HistoryList_'+this.User.userinfo.id);

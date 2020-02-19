@@ -133,7 +133,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var homeListItem = function homeListItem() {return __webpack_require__.e(/*! import() | components/home/home-list-item */ "components/home/home-list-item").then(__webpack_require__.bind(null, /*! ../../components/home/home-list-item.vue */ 207));};var homeInfo = function homeInfo() {return __webpack_require__.e(/*! import() | components/home/home-info */ "components/home/home-info").then(__webpack_require__.bind(null, /*! ../../components/home/home-info.vue */ 214));};var otherLogin = function otherLogin() {return Promise.all(/*! import() | components/home/other-login */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/home/other-login")]).then(__webpack_require__.bind(null, /*! ../../components/home/other-login.vue */ 221));};var homeData = function homeData() {return __webpack_require__.e(/*! import() | components/home/home-data */ "components/home/home-data").then(__webpack_require__.bind(null, /*! ../../components/home/home-data.vue */ 228));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var homeListItem = function homeListItem() {return __webpack_require__.e(/*! import() | components/home/home-list-item */ "components/home/home-list-item").then(__webpack_require__.bind(null, /*! ../../components/home/home-list-item.vue */ 220));};var homeInfo = function homeInfo() {return __webpack_require__.e(/*! import() | components/home/home-info */ "components/home/home-info").then(__webpack_require__.bind(null, /*! ../../components/home/home-info.vue */ 227));};var otherLogin = function otherLogin() {return Promise.all(/*! import() | components/home/other-login */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/home/other-login")]).then(__webpack_require__.bind(null, /*! ../../components/home/other-login.vue */ 234));};var homeData = function homeData() {return __webpack_require__.e(/*! import() | components/home/home-data */ "components/home/home-data").then(__webpack_require__.bind(null, /*! ../../components/home/home-data.vue */ 241));};var _default =
+
+
 
 
 
@@ -223,8 +225,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isLogin: false,
       list: [
-      { name: "浏览历史", icon: "liulan", clickType: "", url: "" },
-      { name: "实名认证", icon: "huiyuanvip", clickType: "", url: "" }],
+      { name: "浏览历史", icon: "liulan", clickType: "nothing", url: "/pages/user-history/user-history" },
+      { name: "实名认证", icon: "huiyuanvip", clickType: "tips", url: "" },
+      { name: "设置", icon: "keyboard", clickType: "navigateTo",
+        url: "/pages/user-setting/user-setting", auth: true, Nocheck: true }],
 
       homeInfo: {
         userPic: "../../static/ATMpic.jpg",
@@ -242,7 +246,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
     if (e.index == 0) {
-      this.User.navigate({
+      // this.User.navigate({
+      //      url:"../user-setting/user-setting"
+      //  });
+      uni.navigateTo({
         url: "../user-setting/user-setting" });
 
     }

@@ -3,6 +3,7 @@
     "index-list": "/components/index/index-list",
     "swiper-tab-head": "/components/index/swiper-tab-head",
     "load-more": "/components/common/load-more",
-    "empty-content": "/components/common/empty-content"
+    "empty-content": "/components/common/empty-content",
+    "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar"
   }
 }

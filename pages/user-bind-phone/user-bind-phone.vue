@@ -85,7 +85,8 @@
 				},1000);
 			},
 			async submit(){
-				let [err,res] = await this.$http.post('/user/bindphone',{
+                console.log(this.checknum)
+				let [err,res] = await this.$http.post('user/bindphone',{
 					phone:this.phone,
 					code:this.checknum
 				},{

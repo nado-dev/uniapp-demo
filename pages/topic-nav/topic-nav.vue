@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view  style="background-color: #EEEEEE;">
 		<swiper-tab-head
 		:tabBars="tabBars" 
 		:tabIndex="tabIndex"
@@ -10,41 +10,41 @@
         <!-- 点击事件：current随tabIndex的改变
              滑动事件：@change事件更新了tabIndex的值，选中了相应的tab
          -->
-        <view class="uni-tab-bar" style="background-color: #EEEEEE;">           
-            <swiper class="swiper-box" 
-            :style="{height:swiperHeight+'px'}" 
-            :current="tabIndex"
-            @change="tabChange"> 
-                <swiper-item v-for="(items,index) in newsList" :key="index">
-                    <scroll-view scroll-y="true" 
-                    class="list" 
-                    @scrolltolower="loadMore(index)">          
-                    <!-- 有内容 图文列表和加载框-->
-                        <template  v-if="items.list.length != 0">
-                            <block v-for="(item,index1) in items.list" :key="index1">
-                                <!-- 话题列表 传入item和index的值 -->
-                                 <topic-list :item="item" :index="index1" :ischange="ischange"></topic-list>
-                            </block>	
-                                <!-- 上拉加载 -->
-                            <load-more :loadText="items.loadText"></load-more> 
-                       </template >
-                        
-                        <template v-else-if="!items.firstload">
-                            <view class="u-f-ajc" style="font-size: 50upx; font-weight: bold;color: #CCCCCC;padding-top: 100upx;">
-                                Loading...
-                            </view>
-                        </template>    
-                    <!-- 无内容 展示图片-->  
-                    <!-- 无内容默认 -->
-                       <template v-else>
-                          
-                            <empty-content></empty-content>
-                        </template>                     
-                    </scroll-view>
-                </swiper-item>         
-            </swiper>
-        </view>
+         <view class="uni-tab-bar">
+        <swiper class="swiper-box" 
+        :style="{height:swiperHeight+'px'}"
+        :current="tabIndex"
+        @change="tabChange"> 
+            <swiper-item v-for="(items,index) in newsList" :key="index">
+                <scroll-view scroll-y="true" 
+                class="list" 
+                @scrolltolower="loadMore(index)">          
+                <!-- 有内容 图文列表和加载框-->
+                    <template  v-if="items.list.length != 0">
+                        <block v-for="(item,index1) in items.list" :key="index1">
+                            <!-- 话题列表 传入item和index的值 -->
+                             <topic-list :item="item" :index="index1" :ischange="ischange"></topic-list>
+                        </block>	
+                            <!-- 上拉加载 -->
+                        <load-more :loadText="items.loadText"></load-more> 
+                   </template >
+                    
+                    <template v-else-if="!items.firstload">
+                        <view class="u-f-ajc" style="font-size: 50upx; font-weight: bold;color: #CCCCCC;padding-top: 100upx;">
+                            Loading...
+                        </view>
+                    </template>    
+                <!-- 无内容 展示图片-->  
+                <!-- 无内容默认 -->
+                   <template v-else>
+                      
+                        <empty-content></empty-content>
+                    </template>                     
+                </scroll-view>
+            </swiper-item>         
+        </swiper>
 	</view>
+    </view>
 </template>
 
 <script>
@@ -69,6 +69,12 @@
             topicList
         },
         onLoad(e) {
+            uni.getSystemInfo({
+                success: (res) => {
+                    let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
+                    this.swiperHeight = height;
+                }
+            })
             if (e.ischange) {
                 this.ischange = true;
                 // 修改页面标题
@@ -76,12 +82,7 @@
                     title:"选择所属话题"
                 })
             }
-            uni.getSystemInfo({
-                success: (res) => {
-                    let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
-                    this.swiperHeight = height;
-                }
-            })
+            
             this.getNav();
         },
 		methods: {

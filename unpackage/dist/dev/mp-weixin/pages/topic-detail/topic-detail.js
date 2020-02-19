@@ -131,7 +131,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 195));};var topicInfo = function topicInfo() {return __webpack_require__.e(/*! import() | components/topic/topic-info */ "components/topic/topic-info").then(__webpack_require__.bind(null, /*! ../../components/topic/topic-info.vue */ 298));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 188));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 256));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 208));};var topicInfo = function topicInfo() {return __webpack_require__.e(/*! import() | components/topic/topic-info */ "components/topic/topic-info").then(__webpack_require__.bind(null, /*! ../../components/topic/topic-info.vue */ 311));};var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 201));};var commonList = function commonList() {return __webpack_require__.e(/*! import() | components/common/common-list */ "components/common/common-list").then(__webpack_require__.bind(null, /*! ../../components/common/common-list.vue */ 269));};var _default =
 
 
 
@@ -212,6 +212,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   onLoad: function onLoad(e) {
     this.__init(JSON.parse(e.detail));
+    uni.$on('updateData', this.updateData);
   },
   methods: {
     __init: function __init(obj) {
@@ -247,8 +248,7 @@ __webpack_require__.r(__webpack_exports__);
         userid: item.user.id,
         userPic: item.user.userpic,
         userName: item.user.username,
-        // isFollow:!!item.user.fens.length,
-        isFollow: !!item.user.fens ? !!item.user.fens.length : 0,
+        isFollow: !!item.user.fens.length,
         id: item.id,
         title: item.title,
         type: "img", // img:图文,video:视频
@@ -257,7 +257,8 @@ __webpack_require__.r(__webpack_exports__);
         path: item.path,
         share: !!item.share,
         likeInfo: {
-          index: !!item.support ? item.support[0].type + 1 : 0, //0:没有操作，1:顶,2:踩；
+          // index:!!item.support? (item.support[0].type+1) : 0,//0:没有操作，1:顶,2:踩；
+          index: 0, //0:没有操作，1:顶,2:踩；
           likeNum: item.ding_count,
           dislikeNum: item.cai_count },
 
@@ -284,6 +285,45 @@ __webpack_require__.r(__webpack_exports__);
       this.tabIndex = index;
       this.tablist[this.tabIndex].page = 1;
       this.getList();
+    },
+    updateData: function updateData(data) {
+      switch (data.type) {
+        case 'guanzhu':
+          this.updateGuanZhu(data);
+          break;
+        case "support":
+          this.updateSupport(data);
+          break;
+        case 'updateComment':
+          this.updateComment(data);
+          break;}
+
+    },
+    // 更新关注信息
+    updateGuanZhu: function updateGuanZhu(data) {
+      this.tablist[this.tabIndex].list.forEach(function (item, index) {
+        if (item.userid === data.userid) {
+          item.isFollow = data.data;
+        }
+      });
+    },
+    updateComment: function updateComment(data) {
+      // 拿到当前对象
+      var obj = this.tablist[this.tabIndex].list.find(function (value) {
+        return value.id === data.post_id;
+      });
+      if (!obj) return;
+      obj.commentNum++; // 评论数+1
+    },
+    updateSupport: function updateSupport(data) {
+      var obj = this.tablist[this.tabIndex].list.find(function (item) {
+        return item.id === data.post_id;
+      });
+      if (!obj || obj.infonum.index === 1) return;
+      if (data.do === 1) {
+        obj.likeInfo.index = 1;
+        obj.likeNum++;
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

@@ -1,5 +1,28 @@
 <template>
 	<view>
+        <!-- 自定义导航 -->
+        <!-- #ifndef APP-PLUS || H5 -->
+        <view style="display: flex;
+        		align-items: center;
+        		padding:0 20upx;height: 88upx;
+        		position: fixed;z-index: 9999;
+        		left: 0;
+        		top: 0;
+        		right: 0;
+        		background: #FFFFFF;">
+        			<view class="iconfont icon-sousuo" 
+        			style="position: absolute;left: 30upx;color: #CCCCCC;"></view>
+        			<input style="flex: 1;padding: 5upx 0 5upx 50upx;border-radius: 4px;background: #F7F7F7;" 
+        			type="text" v-model="keyword" @confirm="getData"
+        			placeholder="搜索(=ﾟωﾟ)=" 
+        			placeholder-style="color: #CCCCCC;"/>
+        			<text style="padding-left:20upx;"
+        			@click="goBack">取消</text>
+        		</view>
+        		<view style="height: 88upx;"></view>
+        <!-- #endif -->
+        
+        
         <template v-if="list.length > 0">
             <block v-for="(item, index) in list" :key="index">
                 <!-- 搜文章 -->
@@ -208,6 +231,11 @@
                         }
                         break;
                 }
+            },
+            goBack(){
+                uni.navigateBack({
+                    delta:1
+                })
             }
 		},
         //监听搜索框文本变化

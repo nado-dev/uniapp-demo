@@ -281,7 +281,16 @@
             if(e.index == 0){
                 this.togle();
             }
-        }
+        },
+        // #ifdef MP
+            onShareAppMessage(res) {
+                return{
+                    title:this.detail.title,
+                    path:'/pages/detail/detail?detailData='+JSON.stringify(this.detail)
+                }
+            }
+        // #endif
+        
 	}
 </script>
 

@@ -1,5 +1,6 @@
 <template>
-	<view>
+
+	<view style="background-color: #EEEEEE;height: 100%;">
         
     <!-- 好友列表 -->
         <!-- tab切换 -->
@@ -8,43 +9,42 @@
         :tabIndex="tabIndex"
         @tabSwitch="tabSwitch">
         </swiper-tab-head>
-        
-        <view class="uni-tab-bar" style="background-color: #EEEEEE;">
-            <swiper class="swiper-box" 
-            :style="{height:swiperHeight+'px'}" 
-            :current="tabIndex"
-            @change="tabChange"> 
-                <swiper-item v-for="(items,index) in tabList" :key="index">
-                    <scroll-view scroll-y="true" 
-                    class="list"
-                    @scrolltolower="loadMore(index)">          
-                    <!-- 有内容 图文列表和加载框-->
-                        <template  v-if="items.list.length != 0">
-                            <block v-for="(item,index1) in items.list" :key="index1">
-                                <!-- 好友列表 -->
-                                    <user-list :item="item" :index="index1"></user-list>
-                            </block>	
-                                <!-- 上拉加载 -->
-                            <load-more :loadText="items.loadText"></load-more> 
-                       </template >
-                        
-                        <template v-else-if="!items.firstload">
-                            <view style="font-size: 50upx;font-weight: bold;color: #CCCCCC;
-                            padding-top: 100upx;" class="u-f-ajc">Loading ...</view>
-                        </template>
-                    <!-- 无内容 展示图片-->  
-                    <!-- 无内容默认 -->
-                       <template v-else>
-                          
-                            <empty-content></empty-content>
-                        </template>
-                           
-                        
-                    </scroll-view>
-                </swiper-item>         
-            </swiper>
+        <view class="uni-tab-bar">
+            
+        <swiper class="swiper-box" 
+        :style="{height:swiperHeight+'px'}"
+        :current="tabIndex"
+        @change="tabChange"> 
+            <swiper-item v-for="(items,index) in tabList" :key="index">
+                <scroll-view scroll-y="true" 
+                class="list"
+                @scrolltolower="loadMore(index)">          
+                <!-- 有内容 图文列表和加载框-->
+                    <template  v-if="items.list.length != 0">
+                        <block v-for="(item,index1) in items.list" :key="index1">
+                            <!-- 好友列表 -->
+                                <user-list :item="item" :index="index1"></user-list>
+                        </block>	
+                            <!-- 上拉加载 -->
+                        <load-more :loadText="items.loadText"></load-more> 
+                   </template >
+                    
+                    <template v-else-if="!items.firstload">
+                        <view style="font-size: 50upx;font-weight: bold;color: #CCCCCC;
+                        padding-top: 100upx;" class="u-f-ajc">Loading ...</view>
+                    </template>
+                <!-- 无内容 展示图片-->  
+                <!-- 无内容默认 -->
+                   <template v-else>
+                      
+                        <empty-content></empty-content>
+                    </template>
+                       
+                    
+                </scroll-view>
+            </swiper-item>         
+        </swiper>
         </view>
-        
         <!-- 好友列表 -->
        <!-- <block v-for="(item, index) in list" :key="index">
             <user-list :item="item" :index="index"></user-list>

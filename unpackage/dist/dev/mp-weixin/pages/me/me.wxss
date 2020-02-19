@@ -10,4 +10,18 @@
 .home-list{
     padding: 20rpx 20rpx;
 }
+.home-data{
+        
+        padding: 20rpx 80rpx;
+}
+.home-data>view{
+   
+    color: #989898;
+}
+.home-data>view>view{
+  
+    font-size: 36rpx;
+    color: #000000 !important;
+    font-weight: bold;
+}
 

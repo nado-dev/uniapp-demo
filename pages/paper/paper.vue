@@ -1,5 +1,27 @@
 <template>
-	<view class="body" style="background-color: #EEEEEE;">
+	<view class="body" >
+        
+        <!-- 自定义导航 -->
+        <!-- #ifndef APP-PLUS || H5 -->
+        <view style="display: flex;
+        		align-items: center;
+        		padding:0 20upx;height: 88upx;
+        		position: fixed;z-index: 9999;
+        		left: 0;
+        		top: 0;
+        		right: 0;
+        		background: #FFFFFF;">
+        			<view class="iconfont icon-sousuo" 
+        			style="position: absolute;left: 30upx;color: #CCCCCC;"></view>
+        			<input style="flex: 1;padding: 5upx 0 5upx 50upx;border-radius: 4px;background: #F7F7F7;" 
+        			placeholder="搜索用户" disabled=true @tap="addFriend"
+        			placeholder-style="color: #CCCCCC;"/>
+        			
+        		</view>
+        		<view style="height: 88upx;"></view>
+        <!-- #endif -->
+       
+        
         <!-- 操作菜单 -->
        <paper-left-popup
        :isPopupShow="isPopupShow" @hidePopup="hidePopup" 
@@ -94,7 +116,11 @@
             //操作菜单
             addFriend(){
                 console.log("添加好友");
+                
                 this.hidePopup();
+                uni.navigateTo({
+                    url:'../search/search?searchType=user'
+                })
             },
             //清空列表
             clearPaperList(){
@@ -161,7 +187,8 @@
                 uni.navigateTo({
                     url:"../user-list/user-list"
                 })
-            }
+            },
+          
 		}
 	}
 </script>

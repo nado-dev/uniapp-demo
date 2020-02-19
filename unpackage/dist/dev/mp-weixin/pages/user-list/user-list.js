@@ -131,7 +131,9 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 188));};var tagGenderAge = function tagGenderAge() {return __webpack_require__.e(/*! import() | components/common/tag-gender-age */ "components/common/tag-gender-age").then(__webpack_require__.bind(null, /*! ../../components/common/tag-gender-age.vue */ 305));};var userList = function userList() {return __webpack_require__.e(/*! import() | components/user-list/user-list */ "components/user-list/user-list").then(__webpack_require__.bind(null, /*! ../../components/user-list/user-list.vue */ 312));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 195));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 202));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 201));};var tagGenderAge = function tagGenderAge() {return __webpack_require__.e(/*! import() | components/common/tag-gender-age */ "components/common/tag-gender-age").then(__webpack_require__.bind(null, /*! ../../components/common/tag-gender-age.vue */ 318));};var userList = function userList() {return __webpack_require__.e(/*! import() | components/user-list/user-list */ "components/user-list/user-list").then(__webpack_require__.bind(null, /*! ../../components/user-list/user-list.vue */ 290));};var loadMore = function loadMore() {return __webpack_require__.e(/*! import() | components/common/load-more */ "components/common/load-more").then(__webpack_require__.bind(null, /*! ../../components/common/load-more.vue */ 208));};var emptyContent = function emptyContent() {return __webpack_require__.e(/*! import() | components/common/empty-content */ "components/common/empty-content").then(__webpack_require__.bind(null, /*! ../../components/common/empty-content.vue */ 215));};var _default =
+
+
 
 
 
@@ -198,118 +200,31 @@ __webpack_require__.r(__webpack_exports__);
 
   data: function data() {
     return {
-      swiperHeight: 500,
       tabIndex: 0,
       tabBars: [
-      { name: "互关", id: "huguan", num: 10 },
-      { name: "关注", id: "guanzhu", num: 20 },
-      { name: "粉丝", id: "fensi", num: 23 }],
+      { name: "互关", id: "huguan" },
+      { name: "关注", id: "guanzhu" },
+      { name: "粉丝", id: "fensi" }],
 
       tabList: [
       {
         loadText: "上拉加载更多",
-        list: [
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "1ATM",
-          gender: 1,
-          age: 28,
-          isFollow: true },
+        list: [],
+        page: 1,
+        firstload: false },
 
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false },
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false }] },
-
+      {
+        loadText: "上拉加载更多",
+        list: [],
+        page: 1,
+        firstload: false },
 
 
       {
         loadText: "上拉加载更多",
-        list: [
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "2ATM",
-          gender: 1,
-          age: 28,
-          isFollow: true },
-
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false }] },
-
-
-
-      {
-        loadText: "上拉加载更多",
-        list: [
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "3ATM",
-          gender: 1,
-          age: 28,
-          isFollow: true },
-
-        {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "ATM",
-          gender: 0,
-          age: 28,
-          isFollow: false }] }] };
-
-
+        list: [],
+        page: 1,
+        firstload: false }] };
 
 
 
@@ -317,51 +232,100 @@ __webpack_require__.r(__webpack_exports__);
 
 
   },
-  onLoad: function onLoad() {var _this = this;
-    uni.getSystemInfo({
-      success: function success(res) {
-        var height = res.windowHeight - uni.upx2px(100); //tabBar的高度是100upx
-        _this.swiperHeight = height;
-      } });
+  onLoad: function onLoad() {
 
+  },
+  onShow: function onShow() {
+    this.__init();
   },
   methods: {
+    __init: function __init() {
+      this.getList();
+    },
+
     tabSwitch: function tabSwitch(index) {
       //点击操作获取了当前的index，再将其写入tabIndex中，匹配的项目改变样式
       this.tabIndex = index;
       //console.log(index)
+      if (!this.tabList[this.tabIndex].firstload) {
+        this.getList();
+      }
     },
+
     follow: function follow() {
       this.item.isFollow != this.item.isFollow;
     },
+
     //tabBar滑动事件
     tabChange: function tabChange(e) {
       this.tabIndex = e.detail.current;
       //console.log(index);
+      if (!this.tabList[this.tabIndex].firstload) {
+        this.getList();
+      }
     },
-    loadMore: function loadMore(index) {var _this2 = this;
+    getUrl: function getUrl() {
+      var arr = ['friends/', 'follows/', 'fens/'];
+      return arr[this.tabIndex] + this.tabList[this.tabIndex].page;
+    },
+    // 获取列表
+    getList: function () {var _getList = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var currentIndex, _ref, _ref2, err, res, arr, list, i;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.prev = 0;
+
+                currentIndex = this.tabIndex;_context.next = 4;return (
+                  this.$http.get(this.getUrl(), {}, {
+                    token: true,
+                    checkToken: true }));case 4:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];if (
+
+
+                this.$http.errorCheck(err, res)) {_context.next = 11;break;}
+                this.tabList[currentIndex].loadText = "上拉加载更多";return _context.abrupt("return");case 11:
+
+
+                // 获取成功
+                arr = [];
+
+                list = res.data.data.list;
+                for (i = 0; i < list.length; i++) {
+                  arr.push(this.__format(list[i], currentIndex));
+                }
+                console.log(res);
+                console.log(list);
+
+
+                this.tabList[currentIndex].list = this.tabList[currentIndex].page > 1 ? this.tabList[currentIndex].list.concat(arr) : arr;
+                this.tabList[currentIndex].firstload = true;
+                this.tabList[currentIndex].loadText = list.length < 10 ? "没有更多数据了" : "上拉加载更多";return _context.abrupt("return");case 22:_context.prev = 22;_context.t0 = _context["catch"](0);return _context.abrupt("return");case 25:case "end":return _context.stop();}}}, _callee, this, [[0, 22]]);}));function getList() {return _getList.apply(this, arguments);}return getList;}(),
+
+
+
+
+
+    __format: function __format(item, currentIndex) {
+      return {
+        id: item.userinfo.user_id,
+        userpic: item.userpic,
+        name: item.username,
+        age: item.userinfo.age,
+        gender: item.userinfo.sex,
+        isFollow: currentIndex !== 2 };
+
+    },
+    loadMore: function loadMore(index) {
       if (this.tabList[index].loadText != "上拉加载更多") {
         return; //如果正在加载中(＾o＾)ﾉ或没有数据可以加载，则停止请求
       }
       this.tabList[index].loadText = "加载中(＾o＾)ﾉ";
       //修改状态
-      setTimeout(function () {
-        //示例:加载2000ms后从服务端获取了新的数据
-        var obj = {
-          userpic: "../../static/demo/userpic/2.jpg",
-          name: "reATM",
-          gender: 1,
-          age: 28,
-          isFollow: true };
+      this.tabList[index].page++;
+      this.getList();
 
-        _this2.tabList[index].list.push(obj); //追加
+    } },
 
-        _this2.tabList[index].loadText = "上拉加载更多"; //复原状态              
-      }, 2000);
+  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked(e) {
+    uni.navigateTo({
+      url: "../search/search?searchType=user" });
 
-      //this.tabList[index].loadText = "没有更多数据";
-
-    } } };exports.default = _default;
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ })

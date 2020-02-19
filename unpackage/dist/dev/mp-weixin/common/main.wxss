@@ -17,6 +17,9 @@
 
 
 
+
+
+
 	/*每个页面公共css */
 @charset "UTF-8";
     /*!
@@ -4229,8 +4232,10 @@ radio-group label, checkbox-group label{
 }
     /* textarea */
 .uni-textarea{
+    margin-top: 30rpx;
 	width:100%;
 	background:#FFF;
+    border: 1rpx solid #EEEEEE;
 }
 .uni-textarea textarea{
 	width:96%;
@@ -4798,5 +4803,12 @@ image{
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	        flex-direction: column;
+}
+page{
+        background: #FFFFFF;
+        height: 100%;
+}
+::-webkit-scrollbar{
+        display: none;
 }
 

@@ -133,7 +133,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvue-citypicker/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvue-citypicker/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/mpvue-citypicker/mpvueCityPicker.vue */ 354));};
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 19));
 
 
 
@@ -210,7 +210,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+var _time = _interopRequireDefault(__webpack_require__(/*! ../../common/time.js */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var mpvueCityPicker = function mpvueCityPicker() {return Promise.all(/*! import() | components/mpvue-citypicker/mpvueCityPicker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/mpvue-citypicker/mpvueCityPicker")]).then(__webpack_require__.bind(null, /*! ../../components/mpvue-citypicker/mpvueCityPicker.vue */ 360));};
 var sexOptions = ['未设置', '男', '女'];
 var qgOptions = ['未设置', '未婚', '已婚'];
 var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员', '学生'];var _default =
@@ -221,14 +221,17 @@ var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员'
 
   data: function data() {
     return {
-      userPic: "../../static/demo/userpic/10.jpg",
-      userName: "ATM",
-      gender: "未设置",
-      qinggan: "未设置",
-      job: "未设置",
-      birthday: " 未设置 ",
+      userPic: "",
+      userName: "",
+      gender: "",
+      qinggan: "",
+      job: "",
+      birthday: "  ",
       cityPickerValueDefault: [0, 0, 1], //默认选中的地址
-      location: "未设置" };
+      location: "",
+      sexOptions: ['未设置', '男', '女'],
+      qgOptions: ['未设置', '未婚', '已婚'],
+      jobOptions: ['未设置', 'IT', '教师', '服务业从业者', '公务员', '学生'] };
 
   },
   methods: {
@@ -278,7 +281,7 @@ var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员'
           uni.showActionSheet({
             itemList: sexOptions,
             success: function success(res) {
-              _this.gender = sexOptions[res.tapIndex];
+              _this.gender = res.tapIndex;
             } });
 
           break;
@@ -286,7 +289,7 @@ var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员'
           uni.showActionSheet({
             itemList: qgOptions,
             success: function success(res) {
-              _this.qinggan = qgOptions[res.tapIndex];
+              _this.qinggan = res.tapIndex;
             } });
 
           break;
@@ -303,9 +306,29 @@ var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员'
 
 
     },
-    submit: function submit() {
+    submit: function () {var _submit = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var data, _ref5, _ref6, err, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:
+                data = {
+                  name: this.userName,
+                  sex: this.gender,
+                  qg: this.qinggan,
+                  job: this.job,
+                  birthday: this.birthday,
+                  path: this.location,
+                  age: _time.default.gettime.getAgeByBirthday(this.birthday) };_context2.next = 3;return (
 
-    },
+                  this.$http.post('edituserinfo', data, {
+                    token: true,
+                    checkToken: true }));case 3:_ref5 = _context2.sent;_ref6 = _slicedToArray(_ref5, 2);err = _ref6[0];res = _ref6[1];if (
+
+
+                this.$http.errorCheck(err, res)) {_context2.next = 9;break;}return _context2.abrupt("return");case 9:
+                // 成功
+                uni.showToast({ title: '修改成功！' });
+                // 修改状态，缓存
+                this.User.userinfo.username = this.userName;
+                this.User.userinfo.userinfo = data;
+                uni.setStorageSync('userinfo', this.User.userinfo);case 13:case "end":return _context2.stop();}}}, _callee2, this);}));function submit() {return _submit.apply(this, arguments);}return submit;}(),
+
     getDate: function getDate(type) {
       var date = new Date();
       var year = date.getFullYear();
@@ -345,6 +368,15 @@ var jobOptions = ['未设置', 'IT', '教师', '服务业从业者', '公务员'
     if (this.$refs.mpvueCityPicker.showPicker) {
       this.$refs.mpvueCityPicker.pickerCancel();
     }
+  },
+  onLoad: function onLoad() {
+    this.userPic = this.User.userinfo.userpic;
+    this.userName = this.User.userinfo.username;
+    this.gender = this.User.userinfo.userinfo.sex || 0;
+    this.qinggan = this.User.userinfo.userinfo.qg || 0;
+    this.job = this.User.userinfo.userinfo.job || "请填写";
+    this.birthday = this.User.userinfo.userinfo.birthday || "请填写";
+    this.location = this.User.userinfo.userinfo.path || "请填写";
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
