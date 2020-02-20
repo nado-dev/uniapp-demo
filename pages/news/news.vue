@@ -220,7 +220,7 @@
             __format(item){
                 return {
                     userid:item.user.id,
-                    userPic:item.user.userpic,
+                    userPic:item.user.userpic || this.User.defaultUserPic,
                     userName:item.user.username,
                     isFollow:!!item.user.fens.length,
                     id:item.id,

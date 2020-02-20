@@ -104,6 +104,7 @@ export default {
                                 }
                                
                             }
+                              console.log("允许分享列表")
                               console.log("length"+data.length)
                             this.providerList = data.sort((x,y) => {
                                 return x.sort - y.sort

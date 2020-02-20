@@ -252,7 +252,7 @@
             __format(item){
                 return {
                     userid:item.user.id,
-                    userPic:item.user.userpic,
+                    userPic:item.user.userpic || this.User.defaultUserPic,
                     userName:item.user.username,
                     // isFollow:!!item.user.fens.length,
                     isFollow:!!item.user.fens.length,
@@ -358,6 +358,22 @@
             }
             this.getList()
             uni.stopPullDownRefresh()
+        },
+        // shauxin
+        onTabItemTap(e){
+            if(e.index == 0){
+                uni.showLoading({ title: '刷新中...', mask: true });
+                this.tabIndex = 0;
+                for(let i = 0;i < this.newsList.length ;i++){
+                    this.newsList[this.tabIndex].page = 1
+                }
+                this.getList()
+                uni.hideLoading();
+                uni.pageScrollTo({
+                    scrollTop: 0,
+                    duration: 300
+                });
+            }
         }
 	}
 </script>

@@ -112,23 +112,25 @@
             async changeImg(){
                 let [err,res] =await uni.chooseImage({
                     count:1,
-                    sizeType:['compressed']
+                    sizeType:['compressed'],
+                    sourceType:['camera', 'album']
                 });
                 if (!res) return;
                 // 上传
+                console.log("获取路径信息")
+                console.log(res)
+                let filepath = res.tempFilePaths[0];
                 uni.showLoading({ title: '上传中...', mask: false });
                 let [err2,res2] = await this.$http.upload('edituserpic',{
                     name: 'userpic',
-                    filePath: res.tempFilePaths[0],
+                    filePath:filepath,
                     token:true,
                     checkToken:true
-                });
-                // 请求失败
+                }); 
                 let data = JSON.parse(res2.data);
                 // 上传失败
                 if (err2 || data.errorCode) {
                     uni.showToast({ title: data.msg ? data.msg : '上传失败', icon:"none" });
-                    uni.hideLoading();
                     return false;
                 }
                 // 成功
@@ -193,6 +195,7 @@
                 this.User.userinfo.username = this.userName;
                 this.User.userinfo.userinfo = data;
                 uni.setStorageSync('userinfo',this.User.userinfo);
+                this.User.isUserInfoChange = true;
             },
             getDate(type) {
                 const date = new Date();

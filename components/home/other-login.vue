@@ -72,6 +72,7 @@
                     if (!this.$http.errorCheck(err2,res2)){
                         return false;
                     }
+                    console.log("微信登录成功返回信息")
                     console.log(res2.data.data)
                     // 登录成功 保存状态
                     this.User.token = res2.data.data.token;
@@ -122,6 +123,7 @@
                             title: '登陆中...',
                             mask: false
                         });
+                        console.log("登录成功返回信息")
                         console.log(JSON.stringify(res))
                         console.log('login success:', res);
                         // 更新保存在 store 中的登录状态

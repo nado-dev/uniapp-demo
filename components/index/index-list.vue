@@ -9,16 +9,19 @@
                 {{item.userName}}
             </view>
             <!-- 右边 关注按钮 -->
-            <view v-if="!item.isFollow" @tap="follow()">
-                <view class="icon iconfont icon-zengjia" :class="{'mk1':(!item.isFollow)}">
-                    关注
+            <view v-if="item.userid !== myid ">
+                <view v-if="!item.isFollow" @tap="follow()">
+                    <view class="icon iconfont icon-zengjia" :class="{'mk1':(!item.isFollow)}">
+                        关注
+                    </view>
+                </view>
+                <view v-else>
+                    <view class="mk1">
+                        已关注
+                    </view>
                 </view>
             </view>
-            <view v-else>
-                <view class="mk1">
-                    已关注
-                </view>
-            </view>
+            
         </view>
         <view class="index-list2" @tap="openDetail">{{item.title}}</view>
         <view class="index-list3 u-f-ajc" @tap="openDetail" v-if="item.titlePic !=''">
@@ -67,13 +70,14 @@
             item:Object,
             index:Number
         },
-        // data() {
-        //     return {
-        //         // 来自父组件的值如要修改要在子组件内创建副本再进行修改
-        //         isFollow: this.item.isFollow,
-        //         likeInfo:this.item.likeInfo
-        //     }
-        // },
+        data() {
+            return {
+                // 来自父组件的值如要修改要在子组件内创建副本再进行修改
+                // isFollow: this.item.isFollow,
+                // likeInfo:this.item.likeInfo
+                myid:this.User.userinfo.id
+            }
+        },
         methods:{
             //关注
             async follow(){
@@ -205,7 +209,7 @@
     
 }
 .index-list1>view>image{
-    width: 100%;
+    width: 100%; 
     border-radius: 100%;
     margin: 10upx;
     width: 90upx;
@@ -218,7 +222,7 @@
     color: #999999;
 }
 
-.index-list1>view:last-child{
+.index-list1>view:last-child>view{
     display: flex;
     align-items: center;
     background: #F4F4F4;

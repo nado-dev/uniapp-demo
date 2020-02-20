@@ -1,6 +1,6 @@
 <template>
 	<view>
-        <view class="icon iconfont icon-gengduo tempShare" @tap="togle()"></view>
+        <!-- <view class="icon iconfont icon-gengduo tempShare" @tap="togle()"></view> -->
         <!-- 详情 -->
 		<detail-info :item="detail" @changeevent="updateData"></detail-info>
         
@@ -225,8 +225,8 @@
                     time:time.gettime.gettime(new Date().getTime()),
                     content:data,
                 };
-                console.log(this.User)
                 console.log("userinfo")
+                console.log(this.User)
                 // 评论数+1
                 this.comment.commentCount++;
                 this.detail.commentNum++;

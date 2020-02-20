@@ -91,7 +91,7 @@ export default{
             url:this.config.baseUrl+url,
             filePath:options.filePath,
             fileType: 'image',
-            name: 'imglist[]',
+            name: options.name,
             header:{
                 token:User.token
             },

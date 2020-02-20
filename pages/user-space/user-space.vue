@@ -87,7 +87,7 @@
                 tabIndex:0,
                 userInfo:{},
                 spaceData:[
-                    {name:"发布动态", num:""},
+                    {name:"动态", num:""},
                     {name:"关注", num:''},
                     {name:"粉丝", num:''},
                 ],
@@ -139,7 +139,7 @@
                 this.userInfo = {
                     isme:isme,
                     bgimg:1,
-                    userPic:info.userpic,
+                    userPic:info.userpic || this.User.defaultUserPic,
                     userName:info.username,
                     gender:sexArr[info.userinfo.sex] || "不限",
                     age:info.userinfo.age,
@@ -223,7 +223,7 @@
                 }
                 this.loadText = "加载中(＾o＾)ﾉ";
                 this.page++;
-                this.getList()();
+                this.getList();
                 
             },
             updateGuanZhu(val){
@@ -293,6 +293,7 @@
             this.isPopupShow = true
         },
         onLoad(e) {
+            console.log(e.userid)
             this.__init(e.userid)
         },
         // #ifdef MP

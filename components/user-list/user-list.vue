@@ -1,9 +1,9 @@
 <template>
-    <view class="user-list u-f-ac u-f-jsb">
+    <view class="user-list u-f-ac u-f-jsb" @tap.stop="openSpace" >
         <!-- 左边 头像 -->
         <view class="u-f-jsb u-f-ac">
             <view class="user-list-userpic">
-                <image :src="item.userpic" mode="widthFix" lazy-load @tap.stop="openSpace"></image>
+                <image :src="item.userpic" mode="widthFix" lazy-load ></image>
             </view>
             <!-- 中间 -->
             <view class="u-f-ac">
