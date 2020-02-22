@@ -6,8 +6,8 @@
             </block>
         </uni-collapse>
         <view class="body">
-                <button class="user-setting-logout-btn "
-                type="primary" @tap="submit" >意见反馈</button>
+            <button class="user-setting-logout-btn "
+             @tap="submit" >意见反馈</button>
         </view>
         <view class="uni-textarea">
             <!-- v-mode 将文本输入框内容实时绑定 指定变量 内 -->
@@ -64,5 +64,7 @@
     left: 20upx;
     right: 20upx;
     background: #009687;
+    background-color: #009687;
+    color: #FFFFFF;
 }
 </style>

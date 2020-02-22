@@ -61,7 +61,10 @@
                         case "tips":
                             uni.showToast({
                                 icon:"none",
-                                title:"功能开发中( `_っ´)"
+                                title:"功能开发中( `_っ´)",
+                                position:"bottom"
+                                
+                                
                             })
                             break;
                 }
@@ -72,8 +75,8 @@
 
 <style scoped>
     .home-list-item{
-        padding: 10upx 10upx ;
-        border-top: 1upx solid #CCCCCC;
+        padding: 20upx 10upx ;
+        /* border-top: 1upx solid #CCCCCC; */
         border-bottom: 1upx solid #CCCCCC;
     }
     .home-list-hover{

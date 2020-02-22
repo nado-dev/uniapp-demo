@@ -6,10 +6,18 @@
             <view >
                 <image :src="item.userPic" 
                 mode="widthFix" lazy-load @tap.stop="openSpace"></image>
-                {{item.userName}}
+                <view>
+                    <view>{{item.userName}}</view>
+                    <view style="font-size: 26upx;">{{item.create_time}}</view>
+                </view>
             </view>
             <!-- 右边 关注按钮 -->
-            <view v-if="item.userid !== myid ">
+            <view v-if="item.userid !== myid "
+            style=" display: flex;
+                    align-items: center;
+                    background: #F4F4F4;
+                    border-radius: 5upx;
+                    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);">
                 <view v-if="!item.isFollow" @tap="follow()">
                     <view class="icon iconfont icon-zengjia" :class="{'mk1':(!item.isFollow)}">
                         关注
@@ -223,15 +231,11 @@
 }
 
 .index-list1>view:last-child>view{
-    display: flex;
-    align-items: center;
-    background: #F4F4F4;
-    border-radius: 5upx;
-    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
+   
 }
 
 .index-list2{
-    padding-top: 15upx;
+    padding:30upx 15upx;
     font-size: 32upx;
 }
 .index-list3{

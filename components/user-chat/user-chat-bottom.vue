@@ -89,6 +89,8 @@
     padding-bottom: 10upx;
     padding-left: 10upx;
     border-radius: 10upx;
+    margin-left: -40upx;
+    margin-right: 10upx;
 }
 .user-chat-bottom>view{  
     width: 100upx;
@@ -105,4 +107,9 @@
    background: #FFFFFF;
    color: #009687;
 }
+.user-chat-bottom>view:last-child{
+    margin: -10upx 5upx;
+}
+
+
 </style>

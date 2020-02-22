@@ -497,61 +497,78 @@ var render = function() {
           _vm._$g(4, "i")
             ? _c(
                 "v-uni-view",
-                {
-                  attrs: { _i: 4 },
-                  on: {
-                    click: function($event) {
-                      return _vm.$handleViewEvent($event)
-                    }
-                  }
-                },
+                { attrs: { _i: 4 } },
                 [
-                  _c(
-                    "v-uni-view",
-                    {
-                      staticClass: _vm._$g(5, "sc"),
-                      class: _vm._$g(5, "c"),
-                      attrs: { _i: 5 }
-                    },
-                    [_vm._v("\n                关注\n            ")]
-                  )
+                  _vm._$g(5, "i")
+                    ? _c(
+                        "v-uni-view",
+                        {
+                          attrs: { _i: 5 },
+                          on: {
+                            click: function($event) {
+                              return _vm.$handleViewEvent($event)
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "v-uni-view",
+                            {
+                              staticClass: _vm._$g(6, "sc"),
+                              class: _vm._$g(6, "c"),
+                              attrs: { _i: 6 }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    关注\n                "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    : _c(
+                        "v-uni-view",
+                        { attrs: { _i: 7 } },
+                        [
+                          _c(
+                            "v-uni-view",
+                            { staticClass: _vm._$g(8, "sc"), attrs: { _i: 8 } },
+                            [
+                              _vm._v(
+                                "\n                    已关注\n                "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
                 ],
                 1
               )
-            : _c(
-                "v-uni-view",
-                { attrs: { _i: 6 } },
-                [
-                  _c(
-                    "v-uni-view",
-                    { staticClass: _vm._$g(7, "sc"), attrs: { _i: 7 } },
-                    [_vm._v("\n                已关注\n            ")]
-                  )
-                ],
-                1
-              )
+            : _vm._e()
         ],
         1
       ),
       _c(
         "v-uni-view",
         {
-          staticClass: _vm._$g(8, "sc"),
-          attrs: { _i: 8 },
+          staticClass: _vm._$g(9, "sc"),
+          attrs: { _i: 9 },
           on: {
             click: function($event) {
               return _vm.$handleViewEvent($event)
             }
           }
         },
-        [_vm._v(_vm._$g(8, "t0"))]
+        [_vm._v(_vm._$g(9, "t0"))]
       ),
-      _vm._$g(9, "i")
+      _vm._$g(10, "i")
         ? _c(
             "v-uni-view",
             {
-              staticClass: _vm._$g(9, "sc"),
-              attrs: { _i: 9 },
+              staticClass: _vm._$g(10, "sc"),
+              attrs: { _i: 10 },
               on: {
                 click: function($event) {
                   return _vm.$handleViewEvent($event)
@@ -561,24 +578,24 @@ var render = function() {
             [
               _c("v-uni-image", {
                 attrs: {
-                  src: _vm._$g(10, "a-src"),
+                  src: _vm._$g(11, "a-src"),
                   mode: "widthFix",
                   "lazy-load": true,
-                  _i: 10
+                  _i: 11
                 }
               }),
-              _vm._$g(11, "i")
+              _vm._$g(12, "i")
                 ? [
                     _c("v-uni-view", {
-                      staticClass: _vm._$g(12, "sc"),
-                      attrs: { _i: 12 }
+                      staticClass: _vm._$g(13, "sc"),
+                      attrs: { _i: 13 }
                     }),
                     _c(
                       "v-uni-view",
-                      { staticClass: _vm._$g(13, "sc"), attrs: { _i: 13 } },
+                      { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
                       [
                         _vm._v(
-                          _vm._$g(13, "t0") + "次播放 " + _vm._$g(13, "t1")
+                          _vm._$g(14, "t0") + "次播放 " + _vm._$g(14, "t1")
                         )
                       ]
                     )
@@ -590,17 +607,17 @@ var render = function() {
         : _vm._e(),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(14, "sc"), attrs: { _i: 14 } },
+        { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
         [
           _c(
             "v-uni-view",
-            { staticClass: _vm._$g(15, "sc"), attrs: { _i: 15 } },
+            { staticClass: _vm._$g(16, "sc"), attrs: { _i: 16 } },
             [
               _c(
                 "v-uni-view",
                 {
-                  class: _vm._$g(16, "c"),
-                  attrs: { _i: 16 },
+                  class: _vm._$g(17, "c"),
+                  attrs: { _i: 17 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
@@ -609,18 +626,18 @@ var render = function() {
                 },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(17, "sc"),
-                    attrs: { _i: 17 }
+                    staticClass: _vm._$g(18, "sc"),
+                    attrs: { _i: 18 }
                   }),
-                  _vm._v(_vm._$g(16, "t0"))
+                  _vm._v(_vm._$g(17, "t0"))
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
                 {
-                  class: _vm._$g(18, "c"),
-                  attrs: { _i: 18 },
+                  class: _vm._$g(19, "c"),
+                  attrs: { _i: 19 },
                   on: {
                     click: function($event) {
                       return _vm.$handleViewEvent($event)
@@ -629,10 +646,10 @@ var render = function() {
                 },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(19, "sc"),
-                    attrs: { _i: 19 }
+                    staticClass: _vm._$g(20, "sc"),
+                    attrs: { _i: 20 }
                   }),
-                  _vm._v(_vm._$g(18, "t0"))
+                  _vm._v(_vm._$g(19, "t0"))
                 ],
                 1
               )
@@ -641,29 +658,29 @@ var render = function() {
           ),
           _c(
             "v-uni-view",
-            { attrs: { _i: 20 } },
+            { attrs: { _i: 21 } },
             [
               _c(
                 "v-uni-view",
-                { attrs: { _i: 21 } },
+                { attrs: { _i: 22 } },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(22, "sc"),
-                    attrs: { _i: 22 }
+                    staticClass: _vm._$g(23, "sc"),
+                    attrs: { _i: 23 }
                   }),
-                  _vm._v(_vm._$g(21, "t0"))
+                  _vm._v(_vm._$g(22, "t0"))
                 ],
                 1
               ),
               _c(
                 "v-uni-view",
-                { attrs: { _i: 23 } },
+                { attrs: { _i: 24 } },
                 [
                   _c("v-uni-view", {
-                    staticClass: _vm._$g(24, "sc"),
-                    attrs: { _i: 24 }
+                    staticClass: _vm._$g(25, "sc"),
+                    attrs: { _i: 25 }
                   }),
-                  _vm._v(_vm._$g(23, "t0"))
+                  _vm._v(_vm._$g(24, "t0"))
                 ],
                 1
               )
@@ -766,7 +783,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../HBuilder/HBuilder
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    /* scoped 声明该CSS样式只能被组件使用 */\n.mk1[data-v-7dea0143]{\n    font-size: 25upx;\n    padding: 0 10upx;\n}\n.u-f[data-v-7dea0143], .u-f-ac[data-v-7dea0143], .u-f-jac[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n}\n.u-f-ac[data-v-7dea0143]{\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.u-f-jac[data-v-7dea0143]{\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n            justify-content: center;\n}\n.index-list[data-v-7dea0143]{\n    /* 内边距 */\n    padding: 20upx; \n    border-bottom: 1upx solid #EFEFEF;\n    margin:15upx 20upx;\n    background-color: #FFFFFF !important; \n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list1[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n            justify-content: space-between; /* 靠边 */\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list1>uni-view>uni-image[data-v-7dea0143]{\n    width: 100%;\n    border-radius: 100%;\n    margin: 10upx;\n    width: 90upx;\n    height: 90upx;\n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list1>uni-view[data-v-7dea0143]:first-child{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    color: #999999;\n}\n.index-list1>uni-view[data-v-7dea0143]:last-child{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    background: #F4F4F4;\n    border-radius: 5upx;\n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list2[data-v-7dea0143]{\n    padding-top: 15upx;\n    font-size: 32upx;\n}\n.index-list3[data-v-7dea0143]{\n    padding-top: 15upx;\n    position: relative;/* 相对定位 */\n     box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.index-list3>uni-image[data-v-7dea0143]{\n    width: 100%;\n    /* border-radius: 20upx; */\n}\n.index-list4[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n            justify-content: space-between; /* 靠边 */\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    padding: 15upx 0;\n    font-size: 34upx;\n}\n.index-list4>uni-view[data-v-7dea0143]:first-child{ \n    display: -webkit-box; \n    display: -webkit-flex; \n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view[data-v-7dea0143]:last-child{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view[data-v-7dea0143]{\n    color: #999999;\n}\n/* 第四层 所有的图标和数字的组合 */\n.index-list4>uni-view>uni-view[data-v-7dea0143]{\n    \n    display: -webkit-box;\n    \n    display: -webkit-flex;\n    \n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view>uni-view[data-v-7dea0143]:first-child{\n    margin-right: 10upx;\n}\n/* 点赞图标和踩图标 */\n.index-list4>uni-view>uni-view>uni-view[data-v-7dea0143]{\n    margin-right:10upx ;\n}\n.index-list-play[data-v-7dea0143]{\n    position: absolute;\n    font-size: 120upx;\n    color: #FFFFFF;\n}\n.index-list-vinfo[data-v-7dea0143]{\n    position: absolute;\n    background: rgba(51,51,51,0.72);\n    color: #FFFFFF;\n    /* 距离下边界的距离 */\n    bottom: 5upx;\n    /* 距右边界的距离 */\n    right: 8upx;\n    border-radius: 40upx;\n    font-size: 25upx;\n    padding: 0 10upx;\n}\n.index-list4 .active[data-v-7dea0143],.index-list4 .active>uni-view[data-v-7dea0143]{\n    color: #009687;\n    font-size: 38upx;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    /* scoped 声明该CSS样式只能被组件使用 */\n.mk1[data-v-7dea0143]{\n    font-size: 25upx;\n    padding: 0 10upx;\n}\n.u-f[data-v-7dea0143], .u-f-ac[data-v-7dea0143], .u-f-jac[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n}\n.u-f-ac[data-v-7dea0143]{\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.u-f-jac[data-v-7dea0143]{\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n            justify-content: center;\n}\n.index-list[data-v-7dea0143]{\n    /* 内边距 */\n    padding: 20upx; \n    border-bottom: 1upx solid #EFEFEF;\n    margin:15upx 20upx;\n    background-color: #FFFFFF !important; \n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list1[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n            justify-content: space-between; /* 靠边 */\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list1>uni-view>uni-image[data-v-7dea0143]{\n    width: 100%; \n    border-radius: 100%;\n    margin: 10upx;\n    width: 90upx;\n    height: 90upx;\n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list1>uni-view[data-v-7dea0143]:first-child{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    color: #999999;\n}\n.index-list1>uni-view:last-child>uni-view[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    background: #F4F4F4;\n    border-radius: 5upx;\n    box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);\n}\n.index-list2[data-v-7dea0143]{\n    padding-top: 15upx;\n    font-size: 32upx;\n}\n.index-list3[data-v-7dea0143]{\n    padding-top: 15upx;\n    position: relative;/* 相对定位 */\n     box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.index-list3>uni-image[data-v-7dea0143]{\n    width: 100%;\n    /* border-radius: 20upx; */\n}\n.index-list4[data-v-7dea0143]{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-pack: justify;\n    -webkit-justify-content: space-between;\n            justify-content: space-between; /* 靠边 */\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    padding: 15upx 0;\n    font-size: 34upx;\n}\n.index-list4>uni-view[data-v-7dea0143]:first-child{ \n    display: -webkit-box; \n    display: -webkit-flex; \n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view[data-v-7dea0143]:last-child{\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view[data-v-7dea0143]{\n    color: #999999;\n}\n/* 第四层 所有的图标和数字的组合 */\n.index-list4>uni-view>uni-view[data-v-7dea0143]{\n    \n    display: -webkit-box;\n    \n    display: -webkit-flex;\n    \n    display: flex;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n}\n.index-list4>uni-view>uni-view[data-v-7dea0143]:first-child{\n    margin-right: 10upx;\n}\n/* 点赞图标和踩图标 */\n.index-list4>uni-view>uni-view>uni-view[data-v-7dea0143]{\n    margin-right:10upx ;\n}\n.index-list-play[data-v-7dea0143]{\n    position: absolute;\n    font-size: 120upx;\n    color: #FFFFFF;\n}\n.index-list-vinfo[data-v-7dea0143]{\n    position: absolute;\n    background: rgba(51,51,51,0.72);\n    color: #FFFFFF;\n    /* 距离下边界的距离 */\n    bottom: 5upx;\n    /* 距右边界的距离 */\n    right: 8upx;\n    border-radius: 40upx;\n    font-size: 25upx;\n    padding: 0 10upx;\n}\n.index-list4 .active[data-v-7dea0143],.index-list4 .active>uni-view[data-v-7dea0143]{\n    color: #009687;\n    font-size: 38upx;\n}\n", ""]);
 
 // exports
 
@@ -1976,7 +1993,7 @@ var render = function() {
                   staticClass: _vm._$g(4, "sc"),
                   attrs: { _i: 4 }
                 }),
-                _vm._v("账号密码登录\n            ")
+                _vm._v("账号密码登录\n        ")
               ],
               1
             )
@@ -2971,7 +2988,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../HBuilder/HBuilder
 
 
 // module
-exports.push([module.i, "\n.home-ad-pic{\r\n   \r\n   padding: 20upx 20upx;\n}\n.home-ad-pic>uni-image{\r\n    width: 100%;\r\n    border-radius: 20upx;\n}\n.home-list{\r\n    padding: 20upx 20upx ;\n}\n.home-data{\r\n        \r\n        padding: 20upx 80upx;\n}\n.home-data>uni-view{\r\n   \r\n    color: #989898;\n}\n.home-data>uni-view>uni-view{\r\n  \r\n    font-size: 36upx;\r\n    color: #000000 !important;\r\n    font-weight: bold;\n}\r\n", ""]);
+exports.push([module.i, "\n.home-ad-pic {\n\n    padding: 20upx 20upx;\n}\n.home-ad-pic>uni-image {\n    width: 100%;\n    border-radius: 20upx;\n}\n.home-list {\n    padding: 20upx 20upx;\n}\n.home-data {\n\n    padding: 20upx 80upx;\n}\n.home-data>uni-view {\n\n    color: #989898;\n}\n.home-data>uni-view>uni-view {\n\n    font-size: 36upx;\n    color: #000000 !important;\n    font-weight: bold;\n}\n", ""]);
 
 // exports
 
@@ -5892,7 +5909,12 @@ var render = function() {
                 {
                   key: item["k0"],
                   staticClass: _vm._$g("7-" + $30, "sc"),
-                  attrs: { _i: "7-" + $30 }
+                  attrs: { _i: "7-" + $30 },
+                  on: {
+                    click: function($event) {
+                      return _vm.$handleViewEvent($event)
+                    }
+                  }
                 },
                 [_vm._v(_vm._$g("7-" + $30, "t0"))]
               )
@@ -6261,7 +6283,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../HBuilder/HBuilder
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* 搜索框外层view组件 */\n.search-input{\r\n    /* 内边距 */\r\n    padding: 20upx;\n}\n.search-input>uni-input{ \r\n    background: #F4F4F4;\r\n    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.topic-search{\r\n    display: -webkit-box;\r\n    display: -webkit-flex;\r\n    display: flex;\r\n    -webkit-box-pack: center;\r\n    -webkit-justify-content: center;\r\n            justify-content: center;\r\n    -webkit-box-align: center;\r\n    -webkit-align-items: center;\r\n            align-items: center;\r\n    font-size: medium;\n}\n.topic-swiper{\r\n/*    border: 1upx solid; */\r\n    padding: 0 20upx 20upx 20upx;\r\n    /* height: 100% !important; */\n}\n.topic-swiper uni-image{\r\n    width: 100%;\r\n    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.topic-new{\r\n    padding: 20upx;\n}\n.topic-new>uni-view:first-child{\r\n    padding-bottom: 10upx;\r\n    font-size: 32upx;\n}\n.topic-new>uni-view:last-child{\r\n    padding: 10upx 0;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 搜索框外层view组件 */\n.search-input {\n    /* 内边距 */\n    padding: 20upx;\n}\n.search-input>uni-input {\n    background: #F4F4F4;\n    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.topic-search {\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    -webkit-box-pack: center;\n    -webkit-justify-content: center;\n            justify-content: center;\n    -webkit-box-align: center;\n    -webkit-align-items: center;\n            align-items: center;\n    font-size: medium;\n}\n.topic-swiper {\n    /*    border: 1upx solid; */\n    padding: 0 20upx 20upx 20upx;\n    /* height: 100% !important; */\n}\n.topic-swiper uni-image {\n    width: 100%;\n    box-shadow: 0 4upx 8upx rgba(0, 0, 0, .3);\n}\n.topic-new {\n    padding: 20upx;\n}\n.topic-new>uni-view:first-child {\n    padding-bottom: 10upx;\n    font-size: 32upx;\n}\n.topic-new>uni-view:last-child {\n    padding: 10upx 0;\n}\n", ""]);
 
 // exports
 
@@ -6519,7 +6541,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-uni-view",
-    { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
+    {
+      staticClass: _vm._$g(0, "sc"),
+      attrs: { _i: 0 },
+      on: {
+        click: function($event) {
+          return _vm.$handleViewEvent($event, { stop: true })
+        }
+      }
+    },
     [
       _c(
         "v-uni-view",
@@ -6535,11 +6565,6 @@ var render = function() {
                   mode: "widthFix",
                   "lazy-load": true,
                   _i: 3
-                },
-                on: {
-                  click: function($event) {
-                    return _vm.$handleViewEvent($event, { stop: true })
-                  }
                 }
               })
             ],
@@ -7278,7 +7303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../HBuilder/HBuilder
 
 
 // module
-exports.push([module.i, "\n.uni-textarea{\r\n    border: 1upx solid #EEEEEE;\n}\n.cell-pd {\r\n    padding: 22upx 30upx;\n}\n.list-pd {\r\n    margin-top: 50upx;\n}\n.icon-shanchu{\r\n    position: absolute;\r\n    right: 0;\r\n    top: 0;\r\n    background: #333333;\r\n    color: #FFFFFF;\r\n    padding: 2upx 10upx;\r\n    border-radius: 10upx;\r\n    z-index: 100upx;\n}\n.uni-uploader__files{\r\n    position: relative;\n}\n", ""]);
+exports.push([module.i, "\n.uni-textarea {\n    border: 1upx solid #EEEEEE;\n}\n.cell-pd {\n    padding: 22upx 30upx;\n}\n.list-pd {\n    margin-top: 50upx;\n}\n.icon-shanchu {\n    position: absolute;\n    right: 0;\n    top: 0;\n    background: #333333;\n    color: #FFFFFF;\n    padding: 2upx 10upx;\n    border-radius: 10upx;\n    z-index: 100upx;\n}\n.uni-uploader__files {\n    position: relative;\n}\n", ""]);
 
 // exports
 
@@ -7903,23 +7928,29 @@ var render = function() {
           attrs: { _i: 3 }
         },
         [
-          _vm._l(_vm._$g(4, "f"), function(item, index, $20, $30) {
+          _c("v-uni-text", { attrs: { _i: 4 } }),
+          _vm._l(_vm._$g(5, "f"), function(item, index, $20, $30) {
             return [
-              _vm._$g("5-" + $30, "i")
+              _c("v-uni-text", { key: item["k0"], attrs: { _i: "6-" + $30 } }),
+              _vm._$g("7-" + $30, "i")
                 ? [
-                    _c("v-uni-view", { attrs: { _i: "6-" + $30 } }, [
-                      _vm._v(_vm._$g("6-" + $30, "t0"))
+                    _c("v-uni-view", { attrs: { _i: "8-" + $30 } }, [
+                      _vm._v(_vm._$g("8-" + $30, "t0"))
                     ]),
-                    _vm._l(_vm._$g(7 + "-" + $30, "f"), function(
+                    _vm._l(_vm._$g(9 + "-" + $30, "f"), function(
                       list,
                       listIndex,
                       $21,
                       $31
                     ) {
                       return [
-                        _c("common-list", {
+                        _c("v-uni-text", {
                           key: list["k0"],
-                          attrs: { _i: "8-" + $30 + $31 },
+                          attrs: { _i: "10-" + $30 + $31 }
+                        }),
+                        _c("common-list", {
+                          key: list["k1"],
+                          attrs: { _i: "11-" + $30 + $31 },
                           on: {
                             changeevent: function($event) {
                               return _vm.$handleViewEvent($event)
@@ -7928,7 +7959,7 @@ var render = function() {
                         })
                       ]
                     }),
-                    _c("load-more", { attrs: { _i: "9-" + $30 } })
+                    _c("load-more", { attrs: { _i: "12-" + $30 } })
                   ]
                 : _vm._e()
             ]
@@ -9181,35 +9212,26 @@ var render = function() {
     "v-uni-view",
     { attrs: { _i: 0 } },
     [
-      _c("v-uni-view", {
-        staticClass: _vm._$g(1, "sc"),
-        attrs: { _i: 1 },
-        on: {
-          click: function($event) {
-            return _vm.$handleViewEvent($event)
-          }
-        }
-      }),
       _c("detail-info", {
-        attrs: { _i: 2 },
+        attrs: { _i: 1 },
         on: {
           changeevent: function($event) {
             return _vm.$handleViewEvent($event)
           }
         }
       }),
-      _c("v-uni-view", { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } }, [
-        _vm._v("最新评论 " + _vm._$g(3, "t0"))
+      _c("v-uni-view", { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } }, [
+        _vm._v("最新评论 " + _vm._$g(2, "t0"))
       ]),
       _c(
         "v-uni-view",
-        { staticClass: _vm._$g(4, "sc"), attrs: { _i: 4 } },
+        { staticClass: _vm._$g(3, "sc"), attrs: { _i: 3 } },
         [
-          _vm._l(_vm._$g(5, "f"), function(item, index, $20, $30) {
+          _vm._l(_vm._$g(4, "f"), function(item, index, $20, $30) {
             return [
               _c("comment-list", {
                 key: item["k0"],
-                attrs: { _i: "6-" + $30 },
+                attrs: { _i: "5-" + $30 },
                 on: {
                   reply: function($event) {
                     return _vm.$handleViewEvent($event)
@@ -9221,9 +9243,9 @@ var render = function() {
         ],
         2
       ),
-      _c("v-uni-view", { staticStyle: { height: "120upx" }, attrs: { _i: 7 } }),
+      _c("v-uni-view", { staticStyle: { height: "120upx" }, attrs: { _i: 6 } }),
       _c("user-chat-bottom", {
-        attrs: { _i: 8 },
+        attrs: { _i: 7 },
         on: {
           submit: function($event) {
             return _vm.$handleViewEvent($event)
@@ -9234,7 +9256,7 @@ var render = function() {
         }
       }),
       _c("more-share", {
-        attrs: { _i: 9 },
+        attrs: { _i: 8 },
         on: {
           togle: function($event) {
             return _vm.$handleViewEvent($event)
@@ -10176,7 +10198,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../HBuilder/HBuilder
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 分享 */\n    /* 主体 */\n.more-share{\n    z-index: 110;\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: #FFFFFF;\n}\n.more-share-hover{\n    background: #EEEEEE;\n}\n    /* 标题和取消 主体样式*/\n.more-share-title, .more-share-bottom{\n   \n    font-size: 35upx;\n    padding: 25upx;\n}\n    /* 滚动选择栏 */\n.more-share-body{\n    border-bottom: 1upx solid #EEEEEE ;\n    /* 不会换行 */\n    white-space: nowrap;\n    width: 100%;\n    height: 200upx;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    line-height: 170upx;\n}\n    /* 选项图标和文字具体样式 */\n.more-share-item{\n   \n     width: 25%;\n     display: -webkit-inline-box;\n     display: -webkit-inline-flex;\n     display: inline-flex;\n     -webkit-box-pack: center;\n     -webkit-justify-content: center;\n             justify-content: center;\n     -webkit-box-align: center;\n     -webkit-align-items: center;\n             align-items: center;\n     -webkit-box-orient: vertical;\n     -webkit-box-direction: normal;\n     -webkit-flex-direction: column;\n             flex-direction: column;\n}\n.more-share-item>uni-view:first-child{\n    width: 100upx;\n    height: 100upx;\n    border-radius: 100%;\n    color: #FFFFFF;\n    font-size: 55upx;\n}\n.more-share-item>uni-view:last-child{\n    color: #666666;\n}\n.share-wechat{\n    background: #2AD19B;\n}\n.share-wxfriends{\n    background: #514D4C;\n}\n.share-weibo{\n     background: #EE5E5E;\n}\n.share-QQ{\n     background: #4A73BA;\n}\n.share-more{\n    background: #C7ABC5;\n}\n    /* 蒙版 */\n.more-share-mask{\n    z-index: 99;\n    background:  rgba(55,55,55,0.5);\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n}\n    \n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* 分享 */\n    /* 主体 */\n.more-share{\n    z-index: 110;\n    position: fixed;\n    bottom: 0;\n    left: 0;\n    right: 0;\n    background: #FFFFFF;\n}\n.more-share-hover{\n    background: #EEEEEE;\n}\n    /* 标题和取消 主体样式*/\n.more-share-title, .more-share-bottom{\n   \n    font-size: 35upx;\n    padding: 25upx;\n}\n    /* 滚动选择栏 */\n.more-share-body{\n    border-bottom: 1upx solid #EEEEEE ;\n    /* 不会换行 */\n    white-space: nowrap;\n    width: 100%;\n    height: 200upx;\n    display: -webkit-box;\n    display: -webkit-flex;\n    display: flex;\n    line-height: 170upx;\n}\n    /* 选项图标和文字具体样式 */\n.more-share-item{\n   \n     width: 25%;\n     display: -webkit-inline-box;\n     display: -webkit-inline-flex;\n     display: inline-flex;\n     -webkit-box-pack: center;\n     -webkit-justify-content: center;\n             justify-content: center;\n     -webkit-box-align: center;\n     -webkit-align-items: center;\n             align-items: center;\n     -webkit-box-orient: vertical;\n     -webkit-box-direction: normal;\n     -webkit-flex-direction: column;\n             flex-direction: column;\n}\n.more-share-item>uni-view:first-child{\n    width: 100upx;\n    height: 100upx;\n    border-radius: 100%;\n    color: #FFFFFF;\n    font-size: 55upx;\n}\n.more-share-item>uni-view:last-child{\n    color: #666666;\n}\n.share-wechat{\n    background: #2AD19B;\n}\n.share-wxfriends{\n    background: #514D4C;\n}\n.share-weibo{\n     background: #EE5E5E;\n}\n.share-QQ{\n     background: #4A73BA;\n}\n.share-more{\n    background: #C7ABC5;\n}\n    /* 蒙版 */\n.more-share-mask{\n    z-index: 99;\n    background:  rgba(55,55,55,0.5);\n    position: fixed;\n    top: 0;\n    left: 0;\n    right: 0;\n    bottom: 0;\n}\n    \n", ""]);
 
 // exports
 

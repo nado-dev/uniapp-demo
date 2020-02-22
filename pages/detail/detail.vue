@@ -112,7 +112,7 @@
                 // 获取登陆用户信息
                //1、修改标题
                uni.setNavigationBarTitle({
-                   title:obj.title
+                   title:"@"+obj.userName
                });
                uni.showLoading({
                    title:'加载中┃電柱┃',
@@ -140,6 +140,7 @@
                 });
                 if(!error) return;
                 let data = res.data.data.detail;
+                console.log(data)
                 this.detail.content = data.content;
                 let images = [];
                 if(data.images.length != 0){
@@ -150,9 +151,10 @@
                     this.detail.morePic = images;
                     this.detail.PicTextStyle = true
                 }
+                this.detail.createTime = data.create_time;
+                this.detail.location = data.path
                 // this.detail.age = data.user.userinfo.age;
                 // this.detail.gender = data.user.userinfo.sex;
-                this.detail.createTime = data.creat_time;
                 console.log(this.detail.morePic)
                 return uni.hideLoading();
             },

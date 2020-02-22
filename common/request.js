@@ -6,7 +6,7 @@ export default{
 		baseUrl:config.webUrl,
 		header:{
 			'Content-Type':'application/json;charset=UTF-8',
-			'Content-Type':'application/x-www-form-urlencoded'
+			'Content-Type':'application/x-www-form-urlencoded',
 		},
 		data: {},
 		method: "GET",

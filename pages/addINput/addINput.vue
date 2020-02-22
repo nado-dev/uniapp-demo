@@ -19,14 +19,14 @@
         </view>
         
         <view class="user-setting-userinfo-list u-f-ac u-f-jsb" @tap="changePostClass()">
-            <view class=""> 板块 </view> 
+            <view class=""> 板块(必选)</view> 
             <view class="u-f-ac" >
                 {{postClass.title}}
                 <view class="icon iconfont icon-jinru"></view>
             </view>
         </view> 
         <view class="user-setting-userinfo-list u-f-ac u-f-jsb" @tap="changeTopic()">
-            <view class=""> 话题 </view> 
+            <view class=""> 话题(必选) </view> 
             <view class="u-f-ac">
                 {{topic.title }}
                 <view class="icon iconfont icon-jinru"></view>
@@ -289,9 +289,11 @@
 </script>
 
 <style>
+
 .tip-before-post image{
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 120%;
+    padding-bottom: 50upx;
 }
 .tip-before-post button{
     background: #009687;

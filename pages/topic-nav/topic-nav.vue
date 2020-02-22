@@ -69,6 +69,10 @@
             topicList
         },
         onLoad(e) {
+            console.log(e)
+                if(e.page){
+                    this.tabIndex = parseInt(e.page) - 1 ;
+                }
             uni.getSystemInfo({
                 success: (res) => {
                     let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
@@ -114,7 +118,7 @@
                 this.newsList[currentIndex].firstload = true;
                 // 拿到最后一页
                 if (list.length < 10) {
-                    this.newsList[currentIndex].loadText="没有更多数据了(`ε´ )";
+                    this.newsList[currentIndex].loadText="更多话题敬请期待( ﾟωﾟ)";
                 }else{
                     this.newsList[currentIndex].loadText="上拉加载更多";
                 }

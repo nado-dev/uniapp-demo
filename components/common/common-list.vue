@@ -9,8 +9,12 @@
             <!-- 右侧第一层 -->
             <view class="u-f-ac u-f-jsb">
                 <!-- 右一左边 昵称 性别+年龄 -->
-                <view class="u-f-ac">{{item.userName}}
+                <view class="">
+                     <view class="u-f-ac">{{item.userName}}</view>
+                    <view style="font-size: 20upx;"> {{item.create_time}}</view>
                 </view>
+               
+                
                 <!-- 右一右边 关注按钮-->
                 <view v-if="!item.isFollow" 
                 class="icon iconfont icon-zengjia" @tap="follow()">关注</view>
@@ -38,7 +42,7 @@
             <!-- 右侧第四层 -->
             <view class="u-f-ac u-f-jsb">
                 <!-- 右四左边 地址 -->
-                <view>{{item.location}}</view>
+                <view>{{item.path}}</view>
                 <!-- 右四右边 转发 评论 点赞 -->
                 <view class="u-f-ac">
                     <view class="icon iconfont icon-zhuanfa">{{item.shareNum}}</view>
@@ -165,7 +169,7 @@
         flex: 1;
         margin-left: 15upx;
         padding-bottom: 10upx;
-        border-bottom: 1upx solid #EEEEEE;
+        /* border-bottom: 1upx solid #EEEEEE; */
     }
     .common-list-r>view:nth-child(1){
         

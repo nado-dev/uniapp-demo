@@ -18,7 +18,7 @@
             <!-- #ifdef APP-PLUS || H5 -->
             <view class="home-data u-f-ac u-f1 u-f-ajc ">
                 <block v-for="(item, index) in homeData" :key="index">
-                    <home-data :item="item" :index="index"></home-data>
+                    <home-data :item="item" :index="index" :userid="homeInfo.id"></home-data>
                 </block>
             </view>
             <!-- #endif -->
@@ -59,6 +59,10 @@
             },
 
             async isLogin_func() {
+                uni.showLoading({
+                    title: '加载中',
+                    mask: false
+                });
                 if(this.User.isUserInfoChange){
                     await this.User.getUserInfo(this.User.userinfo.id)
                     this.User.isUserInfoChange = false;
@@ -95,6 +99,7 @@
                 // uni.reLaunch({
                 //     url:"/pages/me/me"
                 // })
+                uni.hideLoading()
             },
         },
         data() {
@@ -129,15 +134,18 @@
                 },
                 homeData: [{
                         name: "动态",
-                        num: 0
+                        num: 0,
+                        type:"latest"
                     },
                     {
                         name: "评论",
-                        num: 0
+                        num: 0,
+                        type:"comment"
                     },
                     {
                         name: "粉丝",
-                        num: 0
+                        num: 0,
+                        type:"fans"
                     }
                 ]
             }

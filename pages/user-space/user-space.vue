@@ -87,9 +87,9 @@
                 tabIndex:0,
                 userInfo:{},
                 spaceData:[
-                    {name:"动态", num:""},
-                    {name:"关注", num:''},
-                    {name:"粉丝", num:''},
+                    {name:"动态", num:"",type:""},
+                    {name:"关注", num:'',type:"follow"},
+                    {name:"粉丝", num:'',type:"fans"},
                 ],
                 tabBars:[
                     {name:"主页",id:"zhuye" },
@@ -109,6 +109,7 @@
                 this.getUserInfo(userid)
                 // 初始化统计数据
                 this.getCounts(userid)
+                this.getList()
             },
             // 初始化用户信息
             async getUserInfo(userid){
@@ -237,6 +238,10 @@
             },
             // 获取列表
             async getList(){
+                uni.showLoading({
+                    title: '加载中',
+                    mask: false
+                });
                 let page =this.page;
                 let url = this.userInfo.isme ? `user/post/${page}` : `user/${this.userinfo.id}/post/${page}`;
                 let index = this.tabIndex;
@@ -254,7 +259,7 @@
                 this.loadText= list.length < 10 ? "没有更多数据了" : "上拉加载更多";
                 console.log("发帖信息")
                 console.log(this.list)
-                return;
+                uni.hideLoading()
             },
             // 转换格式
             __format(item){
@@ -293,6 +298,9 @@
             this.isPopupShow = true
         },
         onLoad(e) {
+            if(e.index){
+                this.tabIndex = parseInt(e.index) 
+            }
             console.log(e.userid)
             this.__init(e.userid)
         },

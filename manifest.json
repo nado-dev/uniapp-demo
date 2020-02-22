@@ -113,6 +113,10 @@
     "h5" : {
         "devServer" : {
             "https" : false
+        },
+        "domain" : "http://test.aaronfang.fun",
+        "router" : {
+            "base" : "/h5/"
         }
     }
 }

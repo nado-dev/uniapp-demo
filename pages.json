@@ -61,7 +61,7 @@
         ,{
             "path" : "pages/paper/paper",
             "style" : {
-                "backgroundColor":"#EEEEEE",
+                "backgroundColor":"#EEEEEE !important",
                 "enablePullDownRefresh":true,
                 "navigationBarTitleText":"消息",
                 "app-plus":{

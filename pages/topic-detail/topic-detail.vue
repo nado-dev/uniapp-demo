@@ -9,15 +9,19 @@
         @tabSwitch="tabSwitch">
         </swiper-tab-head>
         <!-- 列表 -->
+        <!-- <text>test</text> -->
         <view class="topic-detail-list" style="background-color: #EEEEEE;">
             <!-- 循环出默认和最新 -->
+            <text></text>
             <block v-for="(item, index) in tablist" :key="index">
+                <text></text>
                 <template v-if="tabIndex == index">
                     <!-- 列表 -->
                     <view class="">
                         {{tabBars[index].name}}
                     </view>
                     <block v-for="(list, listIndex) in item.list" :key="listIndex">
+                         <text> </text>
                         <common-list :item="list" :index="listIndex" @changeevent="updateData"></common-list>          
                     </block>
                     <!-- 上拉加载 -->
@@ -75,9 +79,9 @@
         //监听下拉刷新
         onPullDownRefresh() {
             
-            this.getData();
+            this.getList();
         },
-        onLoad(e) {
+        onLoad(e) { 
             this.__init(JSON.parse(e.detail))
             uni.$on('updateData',this.updateData)
         },
@@ -92,6 +96,7 @@
         },
             // 获取数据
         async getList(){
+            uni.showLoading({ title:"加载中"})
             let url = `topic/${this.topicInfo.id}/post/${this.tablist[this.tabIndex].page}`;
             let [err,res] = await this.$http.get(url,{},{token:true});
             // 错误处理
@@ -100,13 +105,19 @@
             }
             let arr = [];
             let list = res.data.data.list;
+            
+            console.log("话题详情页资源")
+            console.log(list)
             for (let i = 0; i < list.length; i++) {
                 arr.push(this.__format(list[i]));
+                console.log(i+"pass")
             }
+           
             this.tablist[this.tabIndex].list = this.tablist[this.tabIndex].page > 1 ? 
                 this.tablist[this.tabIndex].list.concat(arr) : arr;
             this.tablist[this.tabIndex].firstload = true;
             uni.stopPullDownRefresh();
+            uni.hideLoading()
             return	this.tablist[this.tabIndex].loadText=(list.length < 10) ?"没有更多数据了" : "上拉加载更多";
         },
             // 转换格式
@@ -119,7 +130,7 @@
 			        id:item.id,
 			        title:item.title,
 			        type:"img", // img:图文,video:视频
-			        titlePic:!!item.images[0].url ? item.images[0].url : '',
+			        titlePic:!!item.titlepic ? item.titlepic : '',
 			        video:false,
 			        path:item.path,
 			        share:!!item.share,

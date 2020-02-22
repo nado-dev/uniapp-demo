@@ -11,7 +11,7 @@
         
         <view class="u-f-ac">
             <block v-for="(item, index) in nav" :key="index">
-                <view class="u-f-ajc">{{item.name}}</view>
+                <view class="u-f-ajc" @tap="openDetail(item.id)">{{item.name}}</view>
             </block>
         </view>
     </view>
@@ -27,6 +27,12 @@
             openTopicNav(){
                 uni.navigateTo({
                     url:"../../pages/topic-nav/topic-nav"
+                })
+            },
+            openDetail(index){
+                console.log(index)
+                uni.navigateTo({
+                    url:"../../pages/topic-nav/topic-nav?page="+index
                 })
             }
         }

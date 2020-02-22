@@ -270,6 +270,7 @@
                     },
                     commentNum:item.comment_count,
                     shareNum:item.sharenum,
+                    create_time:item.create_time
                 }
             },
             //tabBar点击事件

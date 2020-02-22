@@ -102,7 +102,10 @@
                
 			}
 		},
-        onLoad() {
+        onLoad(e) {
+            if(e.index){
+                this.tabIndex = parseInt(e.index) ;
+            }
             uni.getSystemInfo({
                 success: (res) => {
                     let height= res.windowHeight - uni.upx2px(100);//tabBar的高度是100upx
