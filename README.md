@@ -115,4 +115,7 @@ DEMO/
 4. 从uniapp官方拷贝`manifest.json`并自行进行相关配置
 
 ## 展示
-
+![首页](https://raw.githubusercontent.com/AaronFang123/uniapp-demo/master/demo_pic/index.jpg)
+![我的](https://raw.githubusercontent.com/AaronFang123/uniapp-demo/master/demo_pic/me.jpg)
+![聊天](https://raw.githubusercontent.com/AaronFang123/uniapp-demo/master/demo_pic/chat.jpg)
+![聊天](https://raw.githubusercontent.com/AaronFang123/uniapp-demo/master/demo_pic/news.jpg)
