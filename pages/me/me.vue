@@ -79,7 +79,8 @@
                     this.homeData[0].num = 0;
                     this.homeData[1].num = 0;
                     this.homeData[2].num = 0;
-                    this.homeData[3].num = 0;
+                  
+                    uni.hideLoading()
                     return;
                 }
                 // 用户已登录
